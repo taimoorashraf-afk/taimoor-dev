@@ -1,0 +1,279 @@
+<link href="{{ 'page.configurator-listing.css' | asset_url }}" rel="stylesheet">
+
+<section class="dealer-listing">
+  <div class="container">
+    <div class="dealer-breadcrumbs font-calling-code">
+      <a href="/pages/configurators" class="font-calling-code">SHOP ALL</a> / <span class="font-calling-code">ARTAFEX 2 CONFIGURATORS</span>
+    </div>
+
+    <div class="dealer-top-header">
+      <h2 class="dealer-top-heading font-neue-roman">Artafex 2 Configurators</h2>
+      <ul class="dealer-top-navigation">
+        <li><a href="#kits-components" class="font-calling-code">Kits and Components</a></li>
+        <li><a href="#accessories" class="font-calling-code">Accessories</a></li>
+      </ul>
+    </div>
+
+    <div class="dealer-collections">
+      <div class="dealer-collection-box" id="kits-components">
+        <h2 class="font-neue-roman">Kits and Components</h2>
+        <div class="dealer-collections-listing-carousel">
+          <div class="dealer-collections-list-item">
+            <a href="/products/artafex-2-kits" class="font-neue-roman"><img src="{{ 'artafex2-kits.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Complete Kits</h3>
+              <a href="/products/artafex-2-kits" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/2-housing" class="font-neue-roman"><img src="{{ 'artafex2-housings.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Housings</h3>
+              <a href="/products/2-housing" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/2-modules" class="font-neue-roman"><img src="{{ 'artafex2-modules.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Modules</h3>
+              <a href="/products/2-modules" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/2-trims-1" class="font-neue-roman"><img src="{{ 'artafex2-trims.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Trims</h3>
+              <a href="/products/2-trims-1" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/phasex" class="font-neue-roman"><img src="{{ 'artafex2-phaseX.png' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">PhaseX Gateway</h3>
+              <a href="/products/phasex" class="font-neue-roman">Shop {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dealer-collection-box" id="accessories">
+        <h2 class="font-neue-roman">Accessories</h2>
+        <div class="dealer-collections-listing-carousel">
+          <div class="dealer-collections-list-item">
+            <a href="/products/2-optics" class="font-neue-roman"><img src="{{ 'artafex2-optics.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Optics</h3>
+              <a href="/products/2-optics" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/2-mud-mill-work-kit" class="font-neue-roman"><img src="{{ 'Artafex2_Mudkit_Millwork.png' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Mud & Millwork Kits</h3>
+              <a href="#" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+
+          <!-- <div class="dealer-collections-list-item">
+            <a href="/products/2-mud-mill-work-kit" class="font-neue-roman"><img src="{{ 'artafex2-millwork.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Millwork</h3>
+              <a href="#" class="font-neue-roman">Configure {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div> -->
+
+          <div class="dealer-collections-list-item">
+            <a href="/products/artafex-2-ideal-to-molex-adapter" class="font-neue-roman"><img src="{{ 'artafex-2-connectors.jpg' | asset_url }}" width="226" height="305" alt="Dealer product image" /></a>
+            <div class="dealer-collections-list-content">
+              <h3 class="font-neue-roman">Connector</h3>
+              <a href="/products/artafex-2-ideal-to-molex-adapter" class="font-neue-roman">Shop {% render 'arrow-icon-configure' %}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+    // Listing page carousels
+    const breakpoint = 991;
+    
+    // Initialize carousels for each collection on mobile
+    function initConfigCollectionCarousels() {
+      if (window.innerWidth <= breakpoint) {
+        setupCollectionCarousels();
+      } else {
+        // Reset any mobile-specific styles when on desktop
+        resetCollectionCarousels();
+      }
+    }
+    
+    function setupCollectionCarousels() {
+      const collectionBoxes = document.querySelectorAll('.dealer-collection-box');
+      
+      collectionBoxes.forEach(box => {
+        const collectionId = box.getAttribute('id');
+        const itemsContainer = box.querySelector('.dealer-collections-listing-carousel');
+        const items = box.querySelectorAll('.dealer-collections-list-item');
+        
+        if (items.length <= 1) return; // Skip if only one item
+        
+        // Only setup if not already initialized
+        if (!box.classList.contains('carousel-initialized')) {
+          // Add carousel class to container
+          itemsContainer.classList.add('collection-carousel');
+          
+          // Create slider-paginations container
+          const sliderPaginations = document.createElement('div');
+          sliderPaginations.className = 'slider-paginations';
+          
+          // Create slide counter
+          const slideCounter = document.createElement('div');
+          slideCounter.className = 'slide-counter font-neue-roman';
+          slideCounter.textContent = `1/${items.length}`;
+          
+          // Create pagination container
+          const paginationContainer = document.createElement('div');
+          paginationContainer.className = 'pagination';
+          
+          // Create pagination buttons
+          for (let i = 0; i < items.length; i++) {
+            const button = document.createElement('button');
+            if (i === 0) button.classList.add('active');
+            button.addEventListener('click', function() {
+              goToCollectionSlide(itemsContainer, i, items, paginationContainer, slideCounter);
+            });
+            paginationContainer.appendChild(button);
+          }
+          
+          // Add counter and pagination to the slider-paginations container
+          sliderPaginations.appendChild(slideCounter);
+          sliderPaginations.appendChild(paginationContainer);
+          
+          // Add slider-paginations to the collection box
+          box.appendChild(sliderPaginations);
+          
+          // Add touch events for swiping
+          let startX = 0;
+          let endX = 0;
+          let currentIndex = 0;
+          
+          itemsContainer.addEventListener('touchstart', function(event) {
+            startX = event.touches[0].clientX;
+          });
+          
+          itemsContainer.addEventListener('touchmove', function(event) {
+            endX = event.touches[0].clientX;
+          });
+          
+          itemsContainer.addEventListener('touchend', function() {
+            if (startX > endX + 50) {
+              // Swipe left
+              if (currentIndex < items.length - 1) {
+                currentIndex++;
+                goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+              }
+            } else if (startX < endX - 50) {
+              // Swipe right
+              if (currentIndex > 0) {
+                currentIndex--;
+                goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+              }
+            }
+          });
+          
+          // Mark as initialized
+          box.classList.add('carousel-initialized');
+          
+          // Set initial state
+          goToCollectionSlide(itemsContainer, 0, items, paginationContainer, slideCounter);
+        }
+      });
+    }
+    
+    function goToCollectionSlide(container, index, slides, pagination, counter) {
+      const slideWidth = slides[0].offsetWidth;
+      const gap = 21; // Match the gap from your original script
+      const slideDistance = index * (slideWidth + gap);
+      
+      // Apply the transform to slide the container
+      container.style.transform = `translateX(-${slideDistance}px)`;
+      
+      // Update pagination buttons
+      const buttons = pagination.querySelectorAll('button');
+      buttons.forEach(button => button.classList.remove('active'));
+      buttons[index].classList.add('active');
+      
+      // Update slide counter
+      counter.textContent = `${index + 1}/${slides.length}`;
+    }
+    
+    function resetCollectionCarousels() {
+      const collectionBoxes = document.querySelectorAll('.dealer-collection-box');
+      
+      collectionBoxes.forEach(box => {
+        const itemsContainer = box.querySelector('.dealer-collections-listing-carousel');
+        
+        // Reset transform
+        if (itemsContainer) {
+          itemsContainer.style.transform = '';
+        }
+        
+        // Remove slider-paginations if it exists
+        const sliderPaginations = box.querySelector('.slider-paginations');
+        
+        if (sliderPaginations) sliderPaginations.remove();
+      });
+    }
+    
+    // Initialize on page load
+    initConfigCollectionCarousels();
+    
+    // Re-initialize on window resize
+    window.addEventListener('resize', initConfigCollectionCarousels);
+    
+    // Collection anchors functionality - make sure it works with the carousel
+    const collectionLinks = document.querySelectorAll('.dealer-collections-list-content a');
+    
+    collectionLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // e.preventDefault();
+        
+        // Remove active class from all links
+        collectionLinks.forEach(el => el.classList.remove('collection-active'));
+        
+        // Add active class to the clicked link
+        this.classList.add('collection-active');
+        
+        // Get the target section ID
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          // Smooth scroll to the section
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Artafex 2 Listing",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Artafex 2 Listing"
+      }
+    ]    
+  }
+{% endschema %}

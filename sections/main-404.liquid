@@ -1,0 +1,49 @@
+<style type="text/css">
+  .template-404 .title + * {
+    margin-top: 1rem;
+  }
+
+  .template-404 .title + a{
+    padding: 0 26px;
+    height: 50px;
+    border-radius: 80px;
+    margin: 0 auto;
+    color: #f9f6f3 !important;
+    font-size: 16px;
+    line-height: 23px;
+    min-width: 180px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px 13px;
+    letter-spacing: .65px;
+    border: 1px solid #292521;
+    background-color: #292521;
+    width: max-content;
+    transition: 0.3s all;
+  }
+
+  .template-404 .title + a:hover{
+    background-color: transparent;
+    color: #292521 !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    .template-404 .title + * {
+      margin-top: 2rem;
+    }
+  }
+</style>
+
+<div class="template-404 page-width page-margin center">
+  <p>
+    {{ 'templates.404.subtext' | t }}
+  </p>
+  <h1 class="title">
+    {{ 'templates.404.title' | t }}
+  </h1>
+  <a href="{{ routes.root_url }}" class="button">
+    Homepage {% render 'icon-arrow' %}
+  </a>
+</div>

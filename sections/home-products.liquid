@@ -1,0 +1,415 @@
+<section class="homepage-products {% if customer %}logged-products{% endif %}">
+    <div class="container">
+        <div class="section-title-with-btn">
+            <div class="section-titles">
+                <h2 class="section-title font-neue-light text-dark">{{ section.settings.products_heading }}</h2>
+                <p class="section-description font-neue-roman text-dark">{{ section.settings.products_content }}</p>
+            </div>
+            <div class="section-btns">
+                <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.products_sellall_url }}">{{ section.settings.products_sellall_text }} 
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                        <defs>
+                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                        </defs>
+                        <g id="Layer_2-2">
+                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="featured-products-listing">
+            <div class="product-slider-wrapper">
+                <div class="product-slider">
+                    {% for block in section.blocks %}
+                        {% assign product = all_products[block.settings.selected_product] %}
+                        {% if product %}
+                            <div class="product-list-item">
+                                <a href="{{ block.settings.p_more_url }}"><img class="featured-product-img" src="{{ product.featured_image | img_url: '500x500' }}" width="291" height="392" alt="{{ product.title }}" /></a>
+                                <div class="product-content-area">
+                                    <h2 class="product-title font-neue-roman text-dark">{{ product.title }}</h2>
+                                    <p class="product-description font-neue-roman text-dark">{{ product.description | strip_html | truncate: 100 }}</p>
+                                    <p class="product-prices font-neue-roman text-darkgrey">&nbsp;</p>
+                                    <a href="{{ block.settings.p_more_url }}" class="product-learn-more font-neue-roman text-dark">Learn More 
+                                        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                            <defs>
+                                                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                            </defs>
+                                            <g id="Layer_2-2">
+                                                <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                                                <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p>Product not found</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="slider-paginations">
+                <div class="slide-counter">1/{{ section.blocks.size }}</div>
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<style type="text/css">
+    .section-title-with-btn {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px;
+    }
+    .slider-paginations{
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+    }
+    section.homepage-products {
+        padding: 77px 0px 0px;
+    }
+
+    section.homepage-products a.learn-more-arrow {
+        min-width: 143px;
+    }
+    .section-titles h2.section-title {
+        margin: 0px;
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+    }
+    p.section-description {
+        margin: 0px;
+        margin-top: 25px;
+        font-size: 16px;
+        line-height: 26px;
+    }
+    .featured-products-listing {
+        margin-top: 56px;
+    }
+    .product-slider {
+        margin-top: 56px;
+        display: flex;
+        gap: 0px 17px;
+        /* overscroll-behavior-y: contain;
+        touch-action: pan-x; */
+    }
+    .product-list-item {
+        width: calc(25% - 8.5px);
+        display: flex;
+        flex-flow: column;
+    }
+    .featured-product-img{
+        height: 392px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .product-content-area {
+        padding-top: 35px;
+    }
+    h2.product-title {
+        font-size: 21px;
+        margin: 0px;
+        line-height: 36px;
+        border-bottom: 1.5px solid rgba(41, 37, 33, 1);
+        padding-bottom: 4px;
+    }
+    p.product-description {
+        margin: 14px 0px 0px;
+        font-size: 16px;
+        line-height: 26px;
+        min-height: 78px;
+        display: block;
+        height: 80px;
+    }
+    p.product-prices {
+        margin-top: 0px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        font-size: 16px;
+        line-height: 15px;
+        min-height: 35px;
+    }
+    .product-content-area a {
+        display: flex;
+        align-items: center;
+        gap: 0px 13px;
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: 0.65px;
+        color: rgba(41, 37, 33, 1);
+        width: max-content;
+        max-width: 100%;
+        font-weight: 500;
+    }
+    .product-content-area a svg{
+        width: 18.06px;
+    }
+    .section-btns {
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 7px;
+    }
+    .section-btns a.learn-more-arrow {
+        margin-top: 0px;
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .section-titles h2.section-title{
+            font-size: 60px;
+            line-height: 67px;
+        }
+    }
+
+    @media (max-width: 1200px){
+        h2.product-title {
+            font-size: 21px;
+            line-height: 36px;
+        }
+    }
+
+    @media (max-width: 991px){
+        .featured-products-listing {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .section-btns{
+            padding-bottom: 0px;
+        }
+
+        p.product-prices{
+            min-height: 30px;
+        }
+        p.section-description br{
+            display: none;
+        }
+        .section-btns a.learn-more-arrow {
+            margin-top: 43px;
+        }
+        .section-title-with-btn{
+            flex-wrap: wrap;
+            padding: 0px 20px;
+        }
+        a.learn-more-arrow{
+            margin-top: 30px;
+        }
+        .section-titles h2.section-title {
+            font-size: 50px;
+            line-height: 57px;
+        }
+        p.section-description {
+            margin-top: 20px;
+        }
+        .slider-paginations{
+            display: flex;
+            margin-top: 60px;
+            padding: 0px 20px;
+        }
+        .slide-counter {
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 500;
+            color: rgba(41, 37, 33, 1);
+        }
+        .product-slider-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding-left: 20px;
+        }
+
+        .product-slider {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            margin-top: 0px;
+        }
+        .product-content-area {
+            padding-top: 30px;
+        }
+        .product-list-item {
+            flex: 0 0 75vw; /* Adjusted to 75vw */
+            box-sizing: border-box;
+            width: max-content !important;
+        }
+
+        .pagination {
+            display: flex !important;
+            justify-content: center;
+            gap: 0px 38px;
+        }
+
+        .pagination button {
+            border: none;
+            background-color: rgba(194, 191, 186, 1);
+            padding: 0px;
+            cursor: pointer;
+            width: 9px;
+            height: 9px;
+            border-radius: 100%;
+        }
+
+        .pagination button.active {
+            background-color: rgba(41, 37, 33, 1);
+        }
+        section.homepage-products .container {
+            padding: 0px;
+        }
+    }
+
+</style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.product-slider');
+    const slides = document.querySelectorAll('.product-list-item');
+    const paginationContainer = document.querySelector('.pagination');
+    const slideCounter = document.querySelector('.slide-counter'); // Slide counter element
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    const breakpoint = 991;
+
+    let startX = 0;
+    let endX = 0;
+
+    function updateSlideCounter(index) {
+        slideCounter.textContent = `${index + 1}/${slideCount}`;
+    }
+
+    function createPagination() {
+        paginationContainer.innerHTML = '';
+        for (let i = 0; i < slideCount; i++) {
+            const button = document.createElement('button');
+            if (i === 0) button.classList.add('active');
+            button.addEventListener('click', function () {
+                goToSlide(i);
+            });
+            paginationContainer.appendChild(button);
+        }
+    }
+
+    function goToSlide(index) {
+        const slideWidth = slider.offsetWidth * 0.84; // Adjusted for 75vw
+        let slideDistance = index * slideWidth;
+
+        // Adjust slideDistance for the last slide to ensure it is fully visible
+        const maxSlideDistance = (slideCount * slideWidth) - slider.offsetWidth;
+        if (slideDistance > maxSlideDistance) {
+            slideDistance = maxSlideDistance;
+        }
+
+        slider.style.transform = `translateX(-${slideDistance}px)`;
+        paginationContainer.querySelectorAll('button').forEach(button => button.classList.remove('active'));
+        paginationContainer.children[index].classList.add('active');
+        currentIndex = index;
+
+        // Update the slide counter
+        updateSlideCounter(index);
+    }
+
+    function initializeSlider() {
+        if (window.innerWidth <= breakpoint) {
+            createPagination();
+            goToSlide(currentIndex);
+            updateSlideCounter(currentIndex); // Initial counter update
+        } else {
+            slider.style.transform = 'translateX(0)';
+            paginationContainer.innerHTML = '';
+            slideCounter.textContent = ''; // Clear counter on larger screens
+        }
+    }
+
+    function handleTouchStart(event) {
+        startX = event.touches[0].clientX;
+    }
+
+    function handleTouchMove(event) {
+        endX = event.touches[0].clientX;
+    }
+
+    function handleTouchEnd() {
+        if (startX > endX + 50) { // Swipe left
+            if (currentIndex < slideCount - 1) {
+                goToSlide(currentIndex + 1);
+            }
+        } else if (startX < endX - 50) { // Swipe right
+            if (currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+            }
+        }
+    }
+
+    slider.addEventListener('touchstart', handleTouchStart);
+    slider.addEventListener('touchmove', handleTouchMove);
+    slider.addEventListener('touchend', handleTouchEnd);
+
+    window.addEventListener('resize', initializeSlider);
+    initializeSlider(); // Initialize on page load
+});
+
+
+</script>
+
+{% schema %}
+{
+    "name": "Home Products",
+    "settings": [
+        {
+            "type": "text",
+            "id": "products_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "textarea",
+            "id": "products_content",
+            "label": "Section content"
+        },
+        {
+            "type": "text",
+            "id": "products_sellall_text",
+            "label": "See all button text"
+        },
+        {
+            "type": "text",
+            "id": "products_sellall_url",
+            "label": "See all button URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "name": "Product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "selected_product",
+                    "label": "Select a product"
+                },
+                {
+                    "type": "text",
+                    "id": "p_more_url",
+                    "label": "Place URL of learn more"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home Products",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}
+

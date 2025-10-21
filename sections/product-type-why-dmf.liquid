@@ -1,0 +1,304 @@
+<section class="series-whydmf" style="background-color: {{ section.settings.section_bg_color }}">
+    <div class="page-width">
+        <div class="top-section-row">
+            <div class="top-col-left">
+                <h2 class="font-neue-light" style="color: {{ section.settings.section_text_color }}">{{ section.settings.why_section_heading }} <br><span class="font-austin-italic">{{ section.settings.why_section_subheading }}</span></h2>
+            </div>
+            <div class="top-col-right">
+                <p class="font-neue-roman" style="color: {{ section.settings.section_text_color }}">{{ section.settings.why_section_content }}</p>
+            </div>
+        </div>
+        <div class="why-dmf-masonry masonry-on-desktop">
+            <div class="why-dmf-masonry-col1">
+                <img src="{{ section.settings.why_img1 | image_url }}" width="394" height="409" alt="why dmf masonry image" />
+                <img src="{{ section.settings.why_img2 | image_url }}" width="394" height="279" alt="why dmf masonry image" />
+            </div>
+            <div class="why-dmf-masonry-col2">
+                <img src="{{ section.settings.why_img3 | image_url }}" width="394" height="544" alt="why dmf masonry image" />
+            </div>
+            <div class="why-dmf-masonry-col3">
+                <img src="{{ section.settings.why_img4 | image_url }}" width="394" height="201" alt="why dmf masonry image" />
+                <img src="{{ section.settings.why_img5 | image_url }}" width="394" height="428" alt="why dmf masonry image" />
+            </div>
+        </div>
+        <div class="why-dmf-masonry masonry-on-mobile">
+            <div class="why-dmf-masonry-col1">
+                <img src="{{ section.settings.why_img1 | image_url }}" width="355" height="490" alt="why dmf masonry image" />
+                <img src="{{ section.settings.why_img2 | image_url }}" width="355" height="251" alt="why dmf masonry image" />
+            </div>
+            <div class="why-dmf-masonry-col2">
+                <img src="{{ section.settings.why_img4 | image_url }}" width="355" height="181" alt="why dmf masonry image" />
+                <img src="{{ section.settings.why_img3 | image_url }}" width="355" height="490" alt="why dmf masonry image" />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style type="text/css">
+    .series-whydmf {
+        padding: 6.944vw 0px;
+    }
+
+    .top-section-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0px 122.5px;
+        margin-bottom: 6.944vw;
+        min-height: 145px;
+        padding-right: 60px;
+    }
+    .top-col-left {
+        width: max-content;
+        min-width: max-content;
+        padding-left: 60px;
+    }
+    .top-col-left h2 {
+        margin: 0px;
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+    }
+    .top-col-right {
+        width: 40%;
+    }
+    .top-col-right p {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+
+    .top-col-left h2 span{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+
+    /*
+    ** Masonry Grid
+    */
+    .masonry-on-desktop{
+        display: flex;
+        width: 100%;
+        gap: 17px;
+        align-items: flex-end;
+    }
+
+    .why-dmf-masonry img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .why-dmf-masonry-col1,
+    .why-dmf-masonry-col3{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 17px 0px;
+    }
+
+    .why-dmf-masonry-col2 {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .masonry-on-mobile{
+        display: none;
+    }
+
+    .why-dmf-masonry-col1,
+    .why-dmf-masonry-col2,
+    .why-dmf-masonry-col3 {
+        width: 33.33%;
+    }
+
+    .series-whydmf .top-section-row{
+        margin-top: 0px;
+    }
+
+    .why-dmf-masonry-col1 img:first-child {
+        height: 409px;
+        object-fit: cover;
+    }
+
+    .why-dmf-masonry-col1 img:last-child {
+        height: 279px;
+        object-fit: cover;
+    }
+
+    .why-dmf-masonry-col2 img {
+        height: 544px;
+        object-fit: cover;
+    }
+
+    .why-dmf-masonry-col3 img:first-child {
+        height: 201px;
+        object-fit: cover;
+    }
+
+    .why-dmf-masonry-col3 img:last-child {
+        height: 428px;
+        object-fit: cover;
+    }
+
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .series-whydmf {
+            padding: 100px 0px;
+        }
+        .top-section-row {
+            margin-bottom: 100px;
+        }
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .top-col-left h2 span{
+            font-size: 64px;
+            line-height: 68px;
+        }
+    }
+
+    @media (max-width: 1300px){
+        .why-dmf-masonry img{
+            height: auto !important;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px){
+        .top-col-left{
+            min-width: unset;
+        }
+    }
+
+    @media (max-width: 991px){
+        .top-section-row{
+            flex-wrap: wrap;
+            gap: 16px 0px;
+            margin-bottom: 50px;
+            padding-right: 0px;
+        }
+        .top-col-left, 
+        .top-col-right {
+            width: 100%;
+            min-width: unset;
+            padding-left: 0px;
+        }
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 64px;
+        }
+        .top-col-left h2 span {
+            font-size: 64px;
+            line-height: 68px;
+        }
+    }
+
+    @media (max-width: 767px){
+        .masonry-on-desktop{
+            display: none;
+        }
+        .masonry-on-mobile {
+            display: flex;
+            width: 100%;
+            gap: 17px;
+        }
+        section.series-whydmf .top-col-left h2,
+        section.series-whydmf .top-col-left h2 span{
+            font-size: 50px;
+            line-height: 57px;
+        }
+        .why-dmf-masonry-col1, .why-dmf-masonry-col2 {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            flex-flow: column;
+            gap: 17px 0px;
+        }
+        .series-whydmf .top-section-row {
+            margin-bottom: 50px;
+            padding-right: 0px;
+        }
+        .series-whydmf {
+            padding: 60px 0px;
+        }
+    }
+
+    @media (max-width: 600px){
+        .top-col-left h2 br{
+            display: none;
+        }
+    }
+</style>
+
+
+
+{% schema %}
+{
+    "name": "Product Type Why Dmf",
+    "settings": [
+        {
+            "type": "color",
+            "id": "section_bg_color",
+            "label": "Section Background Color",
+            "default": "#FFFFFF"
+        },
+        {
+            "type": "color",
+            "id": "section_text_color",
+            "label": "Section Text Color",
+            "default": "#292521"
+        },
+        {
+            "type": "text",
+            "id": "why_section_heading",
+            "label": "Section Heading"
+        },
+        {
+            "type": "text",
+            "id": "why_section_subheading",
+            "label": "Section Sub Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "why_section_content",
+            "label": "Section Content"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img2",
+            "label": "Image 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img3",
+            "label": "Image 3"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img4",
+            "label": "Image 4"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img5",
+            "label": "Image 5"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Type Why Dmf",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

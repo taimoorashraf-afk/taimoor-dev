@@ -1,0 +1,26 @@
+{% layout none %}
+
+{%- comment -%}
+  This uses the same price snippet/logic your PDP uses.
+  Copy any conditions you need (e.g. customer.b2b?, customization_settings, etc.)
+{%- endcomment -%}
+
+{%- assign customization_settings = product.metafields.custom.custom_configuration_options.value -%}
+
+{%- if customer and customer.b2b? -%}
+  {%- unless customization_settings -%}
+    {%- render 'price',
+      product: product,
+      use_variant: true,
+      show_badges: true,
+      price_class: 'price--card'
+    -%}
+  {%- endunless -%}
+{%- else -%}
+  {%- render 'price',
+    product: product,
+    use_variant: true,
+    show_badges: true,
+    price_class: 'price--card'
+  -%}
+{%- endif -%}

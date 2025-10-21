@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
+
+<div class="form-row">
+    <label class="form-labels font-neue-roman">Total Linear Footage of Fixtures 
+        <div class="tooltip">
+            <svg width="11" height="11" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="16" height="16" rx="8" stroke="#292521"/>
+                <path d="M7.75 9.73684V9.42105C7.75 8.76316 8 8.39474 8.92105 7.6579C9.72368 7.02632 9.93421 6.71053 9.93421 6.19737C9.93421 5.4079 9.39474 4.94737 8.48684 4.94737C7.53947 4.94737 7.02632 5.44737 7.02632 6.39474V6.5H6V6.28947C6 4.82895 6.89474 4 8.5 4C10.0263 4 11 4.81579 11 6.07895C11 7.02632 10.7237 7.46053 9.69737 8.28947C8.94737 8.89474 8.77632 9.10526 8.77632 9.48684V9.73684H7.75ZM8.34211 13C7.77632 13 7.35526 12.5789 7.35526 12.0132C7.35526 11.4474 7.77632 11.0263 8.34211 11.0263C8.9079 11.0263 9.32895 11.4474 9.32895 12.0132C9.32895 12.5789 8.9079 13 8.34211 13Z" fill="#292521"/>
+            </svg>
+            <span class="tooltip-text font-neue-roman">
+                <span class="metafield-rich_text_field">
+                    <p>Total Linear Footage of Fixtures</p>
+                </span>
+            </span>
+        </div>
+    </label>
+    <input id="total-linear-footage" min="1" max="9999" name="" type="number"  class="field-styles">
+    <span total-linear-footage-error class="error" style="display: none;" ></span>
+</div>
+<div class="form-row select-styles">
+    <label class="form-labels font-neue-roman">Mounting Type</label>
+    <div class="select-box-styles">
+        <select id="mounting-type" name="" class="dropdown-styles font-neue-roman">
+            <option value="flat-track">Flat Track</option>
+            <option value="45-deg-track" >45 Degree Track</option>
+        </select>
+        <div class="select-arrow">
+            <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.62282 8.4032L15.5 1.52625L14.974 1L8.545 7.40251L2.11603 1L1.59 1.52625L8.545 8.48125L8.62282 8.4032Z" fill="#292521" stroke="#292521"></path>
+            </svg>
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <p class="zone-wattage font-neue-roman">Total Wattage: <span id="total-wattage"></span></p>
+    <p class="zone-wattage font-neue-roman margin-b-0">Number of drivers needed: <span id="total-drivers"></span></p>
+    <p class="weight-100 italic font-size-15">Max. 20' of fixtures per driver.</p>
+</div>
+{% if customer.b2b? %}
+    <div class="form-row form-action-btns">
+        <button id="trigger-bom" class="form-btn-styles font-neue-roman" disabled >Create BOM</button>
+        
+        <!-- <button class="form-btn-styles font-neue-roman">Save to Project</button> -->
+    </div>
+    <script src="{{ 'helper.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'linear-by-footage.js' | asset_url }}" defer="defer"></script>
+{% endif %}

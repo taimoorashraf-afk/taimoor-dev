@@ -1,0 +1,84 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-series-banner": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "H Series",
+        "main_subtitle": "in your hallway closet",
+        "main_txt": "Our award-winning small-aperture lighting solution is designed and engineered to keep ceilings quiet and\nuncluttered.",
+        "main_banner_img_desktop": "shopify://shop_images/PDP4_Hero2_D.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/Series2_HeroM_B.jpg"
+      }
+    },
+    "rich_text_wd9gph": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yG8DFA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Configure H Series",
+            "heading_size": "h1"
+          }
+        },
+        "text_UL3kqc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We don't have a public facing H Series configurator. I believe the dealer link will just show a contact us button. </p>"
+          }
+        },
+        "button_KewPBP": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yG8DFA",
+        "text_UL3kqc",
+        "button_KewPBP"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "series-why-dmf": {
+      "type": "series-why-dmf",
+      "settings": {
+        "why_section_heading": "Artful lighting",
+        "why_section_subheading": "for daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 30 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/Transform_TopLeft_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/Transform_Central_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_BottomRight_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main-series-banner",
+    "rich_text_wd9gph",
+    "series-why-dmf"
+  ]
+}

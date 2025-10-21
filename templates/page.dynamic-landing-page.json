@@ -1,0 +1,34 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "configurator_carousel_r8fbpd": {
+      "type": "configurator-carousel",
+      "name": "Configurator Carousel",
+      "settings": {
+        "quick_links_heading": "",
+        "congrats_text": "",
+        "freight_text": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "configurator_carousel_r8fbpd"
+  ]
+}

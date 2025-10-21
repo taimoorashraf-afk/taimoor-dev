@@ -1,0 +1,55 @@
+@media (min-width: 992px){
+    .mega-menu summary > a,
+    .header__inline-menu.header__inline-menu--right > .list-menu.list-menu--inline li > .header__menu-item {
+      color: #F9F6F3 !important;
+    }
+
+    a:-webkit-any-link,
+    a:-webkit-any-link span{
+      color: #F9F6F3;
+    }
+
+    .stickyHeader a:-webkit-any-link,
+    .stickyHeader a:-webkit-any-link span{
+      color: #292521 !important;
+    }
+
+    .stickyHeader .mega-menu summary > a,
+    .stickyHeader .header__inline-menu.header__inline-menu--right > .list-menu.list-menu--inline li > .header__menu-item{
+      color: #292521 !important;
+    }
+}
+
+@media (max-width: 991px){
+    header.header a#cart-icon-bubble,
+    a.login.btn-mobile {
+        color: #F9F6F3;
+    }
+    .header__icon--menu svg:first-child path{
+        stroke: #F9F6F3;
+    }
+    .header__icon .cart-count-bubble {
+        background: #F9F6F3;
+        color: #292521;
+    }
+    .header__icon--menu .icon path {
+        stroke: #F9F6F3;
+    }
+    .stickyHeader .header__icon--menu .icon path {
+        stroke: #292521;
+    }
+    .stickyHeader header.header a#cart-icon-bubble,
+    .stickyHeader a.login.btn-mobile {
+        color: #292521;
+    }
+    .stickyHeader .header__icon--menu svg:first-child path{
+        stroke: #292521;
+    }
+    .stickyHeader .header__icon .cart-count-bubble {
+        background: #292521;
+        color: #F9F6F3;
+    }
+    .top-col-right p {
+        display: block;
+    }
+}

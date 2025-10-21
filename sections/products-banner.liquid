@@ -1,0 +1,270 @@
+<section class="products-banners">
+    <img class="products-banner-img" src="{{ section.settings.products_banner_img | img_url: 'original' }}" width="1920" height="820" alt="product banner" />
+    <div class="container">
+        <div class="row">
+            <div class="banner-left-content">
+                <h2 class="font-neue-light text-light">{{ section.settings.heading_topline }} <br><span class="font-austin-italic">{{ section.settings.heading_topline_italic }}</span></h2>
+                <p class="font-neue-roman text-light">{{ section.settings.product_banner_content }}</p>
+            </div>
+            <div class="banner-right-content">
+                <div class="product-transparent-boxes">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'text_block' %}
+                        {% assign loop_index = forloop.index %}
+                            <div class="product-transparent-box-item">
+                                <div class="transparent-box-upper-row">
+                                    <div class="transparent-percentage-box font-austin-italic text-light">{{ block.settings.transparent_box_number }}</div>
+                                        <img src="{{ block.settings.transparent_box_icon | img_url: 'original' }}" width="20" height="38" alt="transparent box icon" />
+                                    </div>
+                                    <div class="transparent-box-bottom-row">
+                                        <p class="font-neue-roman text-light">{{ block.settings.transparent_box_content }}</p>
+                                    </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.products-banners {
+        margin-top: 100px;
+        position: relative;
+        height: 820px;
+    }
+    .products-banner-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    section.products-banners .container {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0 auto;
+        left: 50%;
+        width: 1215px;
+        max-width: 100%;
+    }
+    .banner-left-content h2 {
+        font-size: 5.556vw;
+        line-height: 4.653vw;
+        margin-bottom: 36px;
+        letter-spacing: 0.65px;
+        margin-top: 0px;
+    }
+    .banner-left-content h2 span {
+        font-size: 5.972vw;
+        line-height: 6.111vw;
+        margin-top: 3px;
+        display: block;
+    }
+    .banner-left-content p {
+        margin: 0px;
+        width: 595px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        font-size: 16px;
+        line-height: 26px;
+    }
+    section.products-banners .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .product-transparent-box-item {
+        width: 239px;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 13.5px 22px 20.5px 22px;
+        border-radius: 8px;
+        backdrop-filter: blur(16px);
+    }
+    .product-transparent-boxes {
+        display: flex;
+        flex-flow: column;
+        gap: 35px 0px;
+    }
+    .transparent-box-upper-row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .product-transparent-box-item .transparent-box-upper-row img{
+        max-width: 26px;
+        max-height: 38px;
+    }
+    .transparent-box-upper-row img {
+        filter: brightness(0) invert(1);
+        display: flex;
+        align-items: flex-start;
+        height: max-content;
+        margin-top: 12px;
+        object-fit: contain;
+    }
+    .transparent-percentage-box {
+        font-size: 5.972vw;
+        line-height: 6.111vw;
+    }
+    .transparent-box-bottom-row p {
+        font-size: 14px;
+        line-height: 26px;
+        margin: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .transparent-box-upper-row svg {
+        width: 29px;
+        min-width: 29px;
+    }
+    .transparent-box-upper-row svg path{
+        fill: rgba(239, 235, 230, 1);
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .banner-left-content h2 {
+            font-size: 80px;
+            line-height: 67px;
+        }
+        .banner-left-content h2 span,
+        .transparent-percentage-box {
+            font-size: 86px;
+            line-height: 88px;
+        }   
+    }
+
+    @media (max-width: 991px){
+        section.products-banners .container{
+            position: relative;
+            top: 0px;
+            left: 0px;
+            transform: none;
+        }
+        .transparent-box-upper-row img{
+            filter: none;
+        }
+        section.products-banners{
+            margin-top: 81px;
+        }
+        .banner-left-content h2 {
+            font-size: 60px;
+            line-height: 64px;
+            color: rgba(41, 37, 33, 1);
+            margin-bottom: 16px;
+        }
+        .banner-left-content h2 br{
+            display: none;
+        }
+        .banner-left-content p{
+            color: rgba(41, 37, 33, 1);
+            display: block;
+        }
+        section.products-banners .row{
+            flex-wrap: wrap;
+        }
+        .banner-right-content {
+            margin-top: 40px;
+        }
+        .banner-left-content,
+        .banner-right-content{
+            width: 100%;
+        }
+        .banner-left-content h2 span{
+            font-size: 64px;
+            line-height: 68px;
+            display: inline;
+        }
+        .banner-left-content {
+            margin-top: 40px;
+        }
+        .product-transparent-box-item {
+            width: 100%;
+            background: rgba(249, 246, 243, 0.6);
+        }
+        .product-transparent-boxes{
+            gap: 21px 0px;
+        }
+        .transparent-percentage-box {
+            font-size: 64px;
+            line-height: 68px;
+            color: rgba(41, 37, 33, 1);
+        }
+        .transparent-box-bottom-row p{
+            color: rgba(41, 37, 33, 1);
+        }
+        .product-transparent-box-item svg path {
+            fill: rgba(41, 37, 33, 1);
+        }
+        .transparent-box-upper-row svg{
+            margin-top: 8px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Products Banner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading_topline",
+            "label": "Heading topline"
+        },
+        {
+            "type": "text",
+            "id": "heading_topline_italic",
+            "label": "Heading topline in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "product_banner_content",
+            "label": "Banner content"
+        },
+        {
+            "type": "image_picker",
+            "id": "products_banner_img",
+            "label": "Upload Banner Image"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "text_block",
+            "name": "Add Transparent Box",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "transparent_box_number",
+                    "label": "Add percentage here"
+                },
+                {
+                    "type": "textarea",
+                    "id": "transparent_box_content",
+                    "label": "Box content"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "transparent_box_icon",
+                    "label": "Transparent box icon"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Products Banner",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

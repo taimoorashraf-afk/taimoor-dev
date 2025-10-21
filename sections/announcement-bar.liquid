@@ -1,0 +1,424 @@
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+  if section.settings.enable_country_selector or x
+  
+    assign language_country_selector = true
+  endif
+  if section.blocks.size > 0
+    assign announcement_bar = true
+  endif
+-%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+<style>
+
+.js .shopify-section-group-header-group.announcement-bar-section {
+    z-index: 9999;
+}
+
+.search-modal__content label.field__label {
+    padding-left: 10px;
+    color: rgba(90, 88, 87, 1);
+    font-style: italic;
+}
+
+  .modal__close-button.link{
+    display:none;
+  }
+
+  .header__icons {
+    padding-right: 0;
+}
+  
+  .search-modal {
+    height: auto;
+    top: auto;
+    bottom: auto;
+    left: 30px;
+    position: relative;
+    z-index: 99999999;
+    background: transparent;
+}
+.search-modal__content {
+    position: absolute;
+    width: 466px;
+    bottom: auto !important;
+    top: 52px !important;
+    z-index: 99999;
+    left: auto;
+    right: -150px;
+    padding: 0;
+}
+
+  .search-modal__content .field:after{
+    box-shadow:none;
+    border:0;
+  }
+
+  predictive-search.search-modal__form {
+    background: #FFF;
+    color: #000;
+    box-shadow: 1px 1px 10px #CCC;
+    padding: 0px;
+    border-radius: 8px;
+}
+
+  .search-modal__content .reset__button {
+    right: 0;
+}
+
+  .search-modal__content button.reset__button.field__button {
+    text-transform: uppercase;
+    font-family: 'Calling Code';
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: underline;
+    width: auto;
+    height: auto;
+    right: 5px;
+    top: 12px;
+    font-size: 14px;
+    line-height: 17.5px;
+    letter-spacing: 0.65px;
+}
+
+  .search-modal__content button.search__button.field__button svg {
+    width: 19px;
+    height: 20px;
+}
+
+.search-modal__content button.reset__button.field__button svg.icon.icon-close {
+    border: 0;
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+}
+
+  .search-modal__content .search__input.field__input {
+    background: transparent;
+    padding: 0px 30px;
+    height: 39px;
+    border-bottom: 1.5px solid #292521;
+    font-style: italic;
+    color: rgba(90, 88, 87, 1);
+}
+
+  .search-modal__content .search__button {
+    right: auto;
+        width: 2.4rem;
+}
+
+  .search-modal .search__button .icon {
+    color: #292521;
+}
+
+.search-modal__content button.reset__button.field__button > svg {
+    height: 13px;
+    width: 12px;
+    margin-left: 5px;
+}
+
+
+  
+</style>
+
+<div
+  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+    {%- if section.settings.show_social and social_icons -%}
+      {%- render 'social-icons' -%}
+    {%- endif -%}
+    {%- if section.blocks.size == 1 -%}
+      <div
+        class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
+        role="region"
+        aria-label="{{ 'sections.header.announcement' | t }}"
+        {{ block.shopify_attributes }}
+      >
+
+
+            <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+              
+          {%- if customer -%}
+              {% render 'header-search' , input_id: 'Search-In-Modal-1' %}
+          {% endif %}
+
+
+
+         {%- if shop.customer_accounts_enabled -%}
+          <div class="login-area">
+            {% comment %} <a href="{%- if customer -%} https://shopify.com/{{ shop.id }}/account/profile {%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.userMenu != blank %} small-hide{% endif %}"> {% endcomment %}
+            <a href="/customer_authentication/login?return_to={{ "/pages/configurators" | url_encode }}" class="header__icon header__icon--account link focus-inset{% if section.settings.userMenu != blank %} small-hide{% endif %}">
+              <account-icon>
+                  {%- if customer -%}
+                   Account
+                  {%- else -%}
+                    Dealer Login
+                  {%- endif -%}
+                </account-icon>
+            </a>
+            {%- if customer -%}
+              <div class="account-dropdown">
+                <ul class="dropdown-items">
+                  <li><a class="font-neue-roman" href="https://shopify.com/{{ shop.id }}/account/orders">Orders</a></li>
+                  <li><a class="font-neue-roman" href="/pages/projects">Projects</a></li>
+                  <li><a class="font-neue-roman" href="https://shopify.com/{{ shop.id }}/account/profile">Profile</a></li>
+                </ul>
+              </div>
+            {%- endif -%}
+          </div>
+        
+      {%- endif -%}
+              
+      {%- if customer -%}
+        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+          <span class="cart-name">{{ 'templates.cart.cart' | t }}</span>
+          <div class="cart-count-bubble">
+              <span aria-hidden="true">
+                {% if cart.item_count > 99 %}
+                  99+
+                {% else %}
+                  {{ cart.item_count }}
+                {% endif %}
+              </span>
+              <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+          </div>
+        </a>
+      {% endif %}
+              
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+        {%- endcase -%}
+      {%- endfor -%}
+
+    </div>
+        
+      </div>
+    {%- elsif section.blocks.size > 1 -%}
+      <slideshow-component
+        class="announcement-bar"
+        role="region"
+        aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
+        aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
+      >
+        <div class="announcement-bar-slider slider-buttons">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+          <div
+            class="grid grid--1-col slider slider--everywhere"
+            id="Slider-{{ section.id }}"
+            aria-live="polite"
+            aria-atomic="true"
+            data-autoplay="{{ section.settings.auto_rotate }}"
+            data-speed="{{ section.settings.change_slides_speed }}"
+          >
+            {%- for block in section.blocks -%}
+              <div
+                class="slideshow__slide slider__slide grid__item grid--1-col"
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+                role="group"
+                aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
+                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                tabindex="-1"
+              >
+                <div
+                  class="announcement-bar__announcement"
+                  role="region"
+                  aria-label="{{ 'sections.header.announcement' | t }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- if block.settings.text != blank -%}
+                    {%- if block.settings.link != blank -%}
+                      <a
+                        href="{{ block.settings.link }}"
+                        class="announcement-bar__link link link--text focus-inset animate-arrow"
+                      >
+                    {%- endif -%}
+                    <p class="announcement-bar__message h5">
+                      <span>{{ block.settings.text | escape }}</span>
+                      {%- if block.settings.link != blank -%}
+                        {% render 'icon-arrow' %}
+                      {%- endif -%}
+                    </p>
+                    {%- if block.settings.link != blank -%}
+                      </a>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+        </div>
+      </slideshow-component>
+      {%- if request.design_mode -%}
+        <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+        <style>
+          /* theme editor power preview fix */
+          .announcement-bar-slider .slider__slide[aria-hidden='true'] {
+            visibility: hidden;
+          }
+        </style>
+      {%- endif -%}
+    {%- endif -%}
+    <div class="localization-wrapper">
+      {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+        <localization-form class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+            <div>
+              <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
+              {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {% endif %}
+
+      {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+        <localization-form class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
+            <div>
+              <h2 class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+              {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "class": "announcement-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__1.content",
+      "info": "t:sections.announcement-bar.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.announcement-bar.presets.name",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

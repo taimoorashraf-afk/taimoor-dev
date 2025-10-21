@@ -1,0 +1,310 @@
+.contact {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+  padding-top: 56px;
+}
+.contact.page-width {
+  padding-left: 69.5px;
+  padding-right: 69.5px;
+}
+
+.contact .contact-info-left h2 {
+font-size: 4.167vw;
+line-height: 4.653vw;
+letter-spacing: 0.65px;
+margin: 0px 0px;
+}
+
+.contact .contact-info-left p {
+font-size: 16px;
+line-height: 26px;
+letter-spacing: 0.65px;
+color: rgba(41, 37, 33, 1);
+width: 100%;
+margin-bottom: 30px;
+margin-top: 10px;
+}
+
+.contact .contact-info-left p:last-child{
+margin: 0px;
+}
+
+.contact .contact-info-left p a {
+color: #000;
+text-decoration: underline;
+display: block;
+}
+
+.contact-form-right .contact__button button.button {
+width: 100%;
+display: flex;
+justify-content: space-between;
+font-size: 16px;
+padding: 0px 26px;
+line-height: 23px;
+letter-spacing: 0.65px;
+background-color: rgba(41, 37, 33, 1);
+transition: 0.3s all;
+border: 1px solid rgba(41, 37, 33, 1);
+height: 48px;
+border-radius: 80px;
+font-family: 'Neue Haas Grotesk Display Pro';
+font-weight: 450 !important;
+}
+
+.contact-form-right .contact__button button.button:after{
+display: none;
+}
+
+.contact-form-right .contact__button button.button:hover{
+background-color: transparent;
+color: rgba(41, 37, 33, 1);
+border-color: rgba(41, 37, 33, 1);
+}
+
+.contact-form-right .contact__button button.button:hover svg path{
+stroke: rgba(41, 37, 33, 1);
+}
+
+.contact-form-right .contact__button button.button svg{
+width: 18.06px;
+height: auto;
+}
+
+.contact-form-right {
+background: rgba(249, 246, 243, 1);
+padding: 40px 32px 50px;
+width: 599px;
+max-width: 100%;
+border-radius: 8px;
+}
+
+.contact-form-right h3 {
+  border-bottom: 1.5px solid rgba(41, 37, 33, 1);
+  padding-bottom: 13px;
+  font-size: 21px;
+  line-height: 36px;
+  margin-bottom: 34px;
+  margin-top: 0px;
+  letter-spacing: 0.65px;
+}
+
+.contact__fields input {
+  padding: 0px 21px;
+  height: 48px;
+  font-weight: 500;
+  color: rgba(41, 37, 33, 1);
+  font-size: 16px;
+  line-height: 16px;
+  font-family: 'Neue Haas Grotesk Display Pro';
+}
+
+.contact-form-right select{
+  padding: 0px 21px !important;
+  height: 48px;
+  color: rgba(41, 37, 33, 1);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: 'Neue Haas Grotesk Display Pro';
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  background: transparent;
+  border: 1px solid rgba(194, 191, 186, 1);
+  border-radius: 8px;
+  padding-right: 40px !important;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.job-function{
+position: relative;
+}
+
+.contact-form-right textarea {
+  height: 101px;
+  resize: none;
+  padding: 17px 21px !important;
+  font-family: 'Neue Haas Grotesk Display Pro';
+  font-weight: 500;
+}
+
+.contact__fields .field__label {
+  top: 50%;
+  transform: translateY(-50%);
+  left: 21px;
+  font-family: 'Neue Haas Grotesk Display Pro';
+  color: rgba(41, 37, 33, 1);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.contact-form-right form#ContactForm .field label.form__label.field__label {
+  left: 23px;
+  font-family: 'Neue Haas Grotesk Display Pro';
+  color: rgba(41, 37, 33, 1);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
+  margin: 0px;
+  top: 21px;
+}
+
+.job-function{
+margin-bottom: 16px;
+width: 100%;
+}
+
+.contact-info-left p:nth-child(2) {
+  margin-top: 10px !important;
+}
+
+.contact-pg-info {
+  font-size: 14px;
+  line-height: 26px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  letter-spacing: 0.65px;
+  color: rgba(90, 88, 87, 1);
+}
+
+.contact-form-right .field__input {
+  background: transparent;
+  border-radius: 8px;
+  border: 1px solid rgba(194, 191, 186, 1);
+  padding: 0px 21px;
+  outline: none;
+  box-shadow: none;
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
+}
+
+.contact-form-right .field__input:valid + label,
+.contact-form-right .field__input:focus + label,
+.field__input:not(:placeholder-shown)~.field__label {
+  background-color: transparent;
+  top: 2px;
+  padding: 0px;
+  left: 23px;
+  transform: none;
+}
+
+.contact-form-right form#ContactForm .field textarea:valid + label, 
+.contact-form-right form#ContactForm .field textarea:focus + label {
+  background-color: rgba(249, 246, 243, 1);
+  top: 2px !important;
+  padding: 0px;
+  left: 23px;
+  transform: none;
+  font-size: 10px !important;
+}  
+
+.contact-form-right .field:before, .contact-form-right .field:after{
+box-shadow:none !important;
+}
+
+.contact-form-right .select-arrow {
+  position: absolute;
+  right: 21px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.contact img {
+  max-width: 100%;
+}
+
+.contact .form__message {
+  align-items: flex-start;
+}
+
+.contact .icon-success {
+  margin-top: 0.2rem;
+}
+
+.contact .field {
+  margin-bottom: 16px;
+}
+
+.contact__button span {
+    height: 23px;
+    width: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.contact__button {
+  margin-top: 3rem;
+}
+
+/*
+** Responsive
+*/
+@media (min-width: 1500px){
+  .contact .contact-info-left h2{
+    font-size: 60px;
+    line-height: 67px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .contact__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 16px;
+  }
+
+  .contact .field {
+    margin-bottom: 16px;
+  }
+  
+  .contact__button{
+    margin-top: 56px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  
+  .contact-form-right {
+      width: 100%;
+      margin-top: 44px;
+      padding: 32px 26.5px;
+  }
+  .contact {
+    padding: 50px 20px;
+    flex-direction: column;
+  }
+  .contact-form-right textarea{
+    height: 133px;
+  }
+  .contact .contact-info-left p{
+    margin-top: 20px;
+  }
+  .contact-info-left h2 {
+      font-size: 60px !important;
+      line-height: 64px !important;
+  }
+  .contact-info-left p:nth-child(2) {
+      margin-top: 20px !important;
+  }
+  .contact-form-right h3{
+    padding-bottom: 16px;
+    margin-bottom: 39px;
+  }
+}
+
+@media (max-width: 767px){
+  .contact .field,
+  .job-function {
+      margin-bottom: 16px;
+  }
+  .contact__button {
+      margin-top: 40px;
+  }
+}

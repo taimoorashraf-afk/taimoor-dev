@@ -1,0 +1,390 @@
+{% comment %} Stylesheet {% endcomment %}
+<link href="{{ 'page.configurator-landing.css' | asset_url }}" rel="stylesheet">
+
+<div class="configurator-landing">
+  <div class="container">
+    <section class="customer-carousel-grid-row">
+      {% comment %} Carousel items start {% endcomment %}
+       <div class="landing-pg-carousel">
+        <div class="customer-carousel-column customer-columns">
+          <div class="column-content">
+            <div class="customer-details">
+              <h2 class="font-neue-roman">{{ section.settings.welcome_back_text }} {{ customer.first_name }}!</h2>
+              {% assign customer_company = customer.current_company.metafields.metadata.tier %}
+              {% assign customer_ffa = customer.current_company.metafields.custom.ffaLimit %}
+
+              <p class="font-neue-roman">{{ section.settings.congrats_text }} <strong> {{ customer_company }} Status</strong>. <br>{{ section.settings.freight_text }} ${{ customer_ffa }}</p>
+
+              <h2 class="font-neue-roman quick-links-heading">{{ section.settings.quick_links_heading  }}</h2>
+              
+              {% assign navigation_blocks = section.blocks | where: 'type', 'navigation_link' %}
+              {% if navigation_blocks.size > 0 %}
+                <ul class="quick-links">
+                  {%- for block in navigation_blocks -%}
+                    {% if block.settings.show_navigation_link %}
+                      {% assign link_type = block.settings.link_type | default: 'custom' %}
+                      {% assign href = block.settings.nav_link_url %}
+                      {% if link_type == 'orders' or link_type == 'profile' %}
+                        {% if customer %}
+                          {% assign href = routes.account_url %}
+                        {% else %}
+                          {% assign href = routes.account_login_url %}
+                        {% endif %}
+                      {% elsif link_type == 'addresses' %}
+                        {% if customer %}
+                          {% assign href = routes.account_addresses_url %}
+                        {% else %}
+                          {% assign href = routes.account_login_url %}
+                        {% endif %}
+                      {% elsif link_type == 'logout' %}
+                        {% assign href = routes.account_logout_url %}
+                      {% elsif link_type == 'login' %}
+                        {% assign href = routes.account_login_url %}
+                      {% else %}
+                        {% assign cleaned_url = block.settings.nav_link_url | default: '' | strip %}
+                        {% assign link_text = block.settings.nav_link_text | downcase | strip %}
+                        {% if cleaned_url == '' or cleaned_url == '#' %}
+                          {% if link_text contains 'order' %}
+                            {% if customer %}
+                              {% assign href = routes.account_url %}
+                            {% else %}
+                              {% assign href = routes.account_login_url %}
+                            {% endif %}
+                          {% elsif link_text contains 'profile' or link_text contains 'account' %}
+                            {% if customer %}
+                              {% assign href = routes.account_url %}
+                            {% else %}
+                              {% assign href = routes.account_login_url %}
+                            {% endif %}
+                          {% elsif link_text contains 'address' %}
+                            {% if customer %}
+                              {% assign href = routes.account_addresses_url %}
+                            {% else %}
+                              {% assign href = routes.account_login_url %}
+                            {% endif %}
+                          {% elsif link_text contains 'log out' or link_text == 'logout' %}
+                            {% assign href = routes.account_logout_url %}
+                          {% elsif link_text contains 'log in' or link_text == 'login' or link_text contains 'sign in' %}
+                            {% assign href = routes.account_login_url %}
+                          {% endif %}
+                        {% endif %}
+                      {% endif %}
+                      <li {{ block.shopify_attributes }}>
+                        <a href="{{ href }}" 
+                           class="font-calling-code"
+                           {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                          {{ block.settings.nav_link_text }}
+                        </a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% for block in section.blocks %}
+          {% if block.type == 'image_block' %}
+              <div class="customer-carousel-column">
+                <div class="column-content">
+                  <a href="{{ block.settings.discover_button_text_url }}">{{ block.settings.animated_box_image | image_url: width: 1200 | image_tag: alt: 'grid image', loading: 'lazy' }}</a>
+
+                  <span class="image-grid-title font-neue-roman">{{ block.settings.animated_box_tag }}</span>
+                  <div class="content">
+                      <div class="col-content-row">
+                          <div class="col-content-left">
+                              <h2 class="text-white font-neue-light">{{ block.settings.animated_box_heading }} <br><span class="font-austin-italic">{{ block.settings.animated_box_heading_italic }}</span></h2>
+                              <div class="column-btns-row">
+                                  <a class="learn-more-arrow btn-light font-neue-roman" href="{{ block.settings.discover_button_text_url }}">{{ block.settings.discover_button_text }} 
+                                  <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                      <defs>
+                                          <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                      </defs>
+                                      <g id="Layer_2-2">
+                                          <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                          <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                      </g>
+                                  </svg>
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
+        {% endfor %}
+       </div>
+
+       <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+
+      <div class="carousel-controls">
+        <button id="prev-btn" class="prevslide-btn disabled">
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                  <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+              </g>
+          </svg>
+        </button>
+        <button id="next-btn" class="nextslide-btn">
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+              </g>
+          </svg>
+        </button>
+      </div>
+    </section>
+  </div>
+</div>
+        
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // Landing page carousel
+    const row = document.querySelector('.landing-pg-carousel');
+    const columns = document.querySelectorAll('.customer-carousel-column');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const progressBar = document.querySelector('.progress-bar .progress');
+    let currentIndex = 0;
+    const totalColumns = columns.length;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    
+    // Add conditional class to second slide based on total slides
+    function applyConditionalClass() {
+      const secondSlide = columns[1]; // Second slide (0-indexed)
+      
+      if (secondSlide) {
+        if (totalColumns === 2) {
+          // Add class if there are exactly 2 slides
+          secondSlide.classList.add('extend-second-slide');
+        } else {
+          // Remove class if there are 3 or more slides
+          secondSlide.classList.remove('extend-second-slide');
+        }
+      }
+    }
+    
+    // Apply the conditional class on load
+    applyConditionalClass();
+    
+    function updateCarousel() {
+      if (window.innerWidth <= 991 && window.innerWidth >= 600) {
+        row.style.transform = `translateX(calc(-${currentIndex * 90}% - ${currentIndex * 18}px))`;
+      }else{
+        row.style.transform = `translateX(calc(-${currentIndex * 316}px - ${currentIndex * 18}px))`;
+      }
+
+      updateProgressBar();
+      updateButtonState();
+    }
+
+    function updateProgressBar() {
+      const progressPercentage = ((currentIndex + 1) / totalColumns) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+    }
+
+    function updateButtonState() {
+      if (currentIndex === 0) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+
+      if (currentIndex === totalColumns - 1) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+
+    prevBtn.addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (currentIndex < totalColumns - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Initial state of buttons
+    updateButtonState();
+
+    // Touch events for swiping
+    row.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      prevTranslate = currentTranslate;
+    });
+
+    row.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      const moveX = e.touches[0].clientX;
+      const difference = startX - moveX;
+
+      if (difference > 50 && currentIndex < totalColumns - 1) {
+        nextBtn.click();
+        isDragging = false; // Prevent multiple actions
+      } else if (difference < -50 && currentIndex > 0) {
+        prevBtn.click();
+        isDragging = false; // Prevent multiple actions
+      }
+    });
+
+    row.addEventListener('touchend', function() {
+      isDragging = false;
+    });
+
+    // Window resize event to reset carousel position on resizing
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 991) {
+        updateCarousel();
+      } else {
+        row.style.transform = 'translateX(0)';
+      }
+    });
+
+    // Initial check
+    if (window.innerWidth <= 991) {
+      updateCarousel();
+    }
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Configurator Carousel",
+    "settings": [
+      {
+        "type": "text",
+        "id": "welcome_back_text",
+        "label": "Welcome back text",
+        "default": "Welcome back"
+      },
+      {
+        "type": "text",
+        "id": "congrats_text",
+        "label": "Congratulation text"
+      },
+      {
+        "type": "text",
+        "id": "freight_text",
+        "label": "Freight text"
+      },
+      {
+        "type": "text",
+        "id": "quick_links_heading",
+        "label": "Quick Links Heading"
+      },
+
+    ],
+    "blocks": [
+        {
+            "type": "image_block",
+            "name": "Add Image Box",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "animated_box_image",
+                    "label": "Add Image"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_tag",
+                    "label": "Image box tag"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_heading",
+                    "label": "Image box heading"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_heading_italic",
+                    "label": "Image box heading on italic"
+                },
+                {
+                    "type": "text",
+                    "id": "discover_button_text",
+                    "label": "Discover button text"
+                },
+                {
+                    "type": "text",
+                    "id": "discover_button_text_url",
+                    "label": "Discover button URL."
+                }
+            ]
+        },
+        {
+          "type": "navigation_link",
+          "name": "Navigation Link",
+          "settings": [
+            {
+              "type": "text",
+              "id": "nav_link_text",
+              "label": "Link Text",
+              "default": "Navigation Link"
+            },
+            {
+              "type": "select",
+              "id": "link_type",
+              "label": "Link Type",
+              "default": "custom",
+              "options": [
+                { "value": "custom", "label": "Custom URL" },
+                { "value": "orders", "label": "My Orders (Account)" },
+                { "value": "profile", "label": "My Profile (Account)" },
+                { "value": "addresses", "label": "My Addresses" },
+                { "value": "login", "label": "Log in" },
+                { "value": "logout", "label": "Log out" }
+              ]
+            },
+            {
+              "type": "url",
+              "id": "nav_link_url",
+              "label": "Link URL",
+              "info": "Used only when Link Type is Custom URL"
+            },
+            {
+              "type": "checkbox",
+              "id": "show_navigation_link",
+              "label": "Show navigation link",
+              "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "open_in_new_tab",
+              "label": "Open in new tab",
+              "default": false
+            }
+          ]
+        }
+    ],
+    "presets": [
+      {
+        "name": "Configurator Carousel"
+      }
+    ]
+  }
+{% endschema %}

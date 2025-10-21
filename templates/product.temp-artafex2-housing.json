@@ -1,0 +1,297 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "product_customizer_643xc8": {
+          "type": "product-customizer",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "product_customizer_643xc8",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "products_banner_6nc9hN": {
+      "type": "products-banner",
+      "blocks": {
+        "text_block_gEz9jz": {
+          "type": "text_block",
+          "settings": {
+            "transparent_box_number": "75%",
+            "transparent_box_content": "Reduction in energy consumption",
+            "transparent_box_icon": "shopify://shop_images/product-icon3.svg"
+          }
+        },
+        "text_block_QkkJBY": {
+          "type": "text_block",
+          "settings": {
+            "transparent_box_number": "15+",
+            "transparent_box_content": "Technical awards for DMF recessed lighting systems",
+            "transparent_box_icon": "shopify://shop_images/AwardIcon_White3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_gEz9jz",
+        "text_block_QkkJBY"
+      ],
+      "settings": {
+        "heading_topline": "Silent beauty",
+        "heading_topline_italic": "engineered.",
+        "product_banner_content": "",
+        "products_banner_img": "shopify://shop_images/PDP2_Hero_D.jpg"
+      }
+    },
+    "products_image_grids_Hinjx8": {
+      "type": "products-image-grids",
+      "blocks": {
+        "image_block_PGMtHg": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/PDP_DMFSection_1_D.jpg",
+            "animated_box_heading": "Brilliance Engineered",
+            "animated_box_content": "Designed and engineered to artfully light life’s everyday moments."
+          }
+        },
+        "image_block_PVPXYc": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/PDP_DMFSection_2_D.jpg",
+            "animated_box_heading": "Lighting with purpose",
+            "animated_box_content": "Artafex by DMF Lighting perfects your home’s look and feel, highlighting art, architecture, and textures."
+          }
+        },
+        "image_block_fTLLmK": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/PDP_DMFSection_3_D.jpg",
+            "animated_box_heading": "Designed to disappear",
+            "animated_box_content": "Sleek recessed downlighting designed to blend in seamlessly for clean ceilings."
+          }
+        }
+      },
+      "block_order": [
+        "image_block_PGMtHg",
+        "image_block_PVPXYc",
+        "image_block_fTLLmK"
+      ],
+      "settings": {
+        "grid_top_heading": "Illuminate what you see,",
+        "grid_top_heading_italic": "elevate how you feel.",
+        "grid_top_content": "The quality of your light can profoundly enhance the quality of your life. DMF products ensure your home looks and feels luxurious.",
+        "bottom_area_heading_center": "Artful lighting for <br>",
+        "bottom_area_heading_italic": " daily luxury",
+        "bottom_heading_col1": "150+",
+        "bottom_content_col1": "Unique patents awarded",
+        "bottom_heading_col2": "4M+",
+        "bottom_content_col2": "Possible configurations of modular components",
+        "bottom_heading_col3": "99",
+        "bottom_content_col3": "Variation of colors studied to develop <br>\nTrue Spectrum®"
+      }
+    },
+    "product_details_tabs_HDdmVR": {
+      "type": "product-details-tabs",
+      "blocks": {
+        "tab_block_bjmWUx": {
+          "type": "tab_block",
+          "settings": {
+            "tab_heading": "Dimmable",
+            "tab_icon": "shopify://shop_images/tab-icon2.svg"
+          }
+        },
+        "tab_block_xwc98a": {
+          "type": "tab_block",
+          "settings": {
+            "tab_heading": "Energy star",
+            "tab_icon": "shopify://shop_images/description-icon2.svg"
+          }
+        },
+        "tab_block_yGDeAK": {
+          "type": "tab_block",
+          "settings": {
+            "tab_heading": "UL Certified",
+            "tab_icon": "shopify://shop_images/description-icon3.svg"
+          }
+        },
+        "slide_block_8X7KDi": {
+          "type": "slide_block",
+          "settings": {
+            "product_slide_title": "Artafex 2”",
+            "product_slide_content": "Fusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "slide_block_GBXkKa": {
+          "type": "slide_block",
+          "settings": {
+            "product_slide_title": "Artafex 2”",
+            "product_slide_content": "Fusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        },
+        "slide_block_UBQkeR": {
+          "type": "slide_block",
+          "settings": {
+            "product_slide_title": "Artafex 2”",
+            "product_slide_content": "Fusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n\nFusce aliquet non pretium tellus nunc maximus odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          }
+        }
+      },
+      "block_order": [
+        "tab_block_bjmWUx",
+        "tab_block_xwc98a",
+        "tab_block_yGDeAK",
+        "slide_block_8X7KDi",
+        "slide_block_GBXkKa",
+        "slide_block_UBQkeR"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "products_accordions_DmjUXd": {
+      "type": "products-accordions",
+      "settings": {
+        "Downloads_heading": "Downloads"
+      }
+    },
+    "home_products_nLc8T4": {
+      "type": "home-products",
+      "blocks": {
+        "product_xnyExr": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex-linear",
+            "p_more_url": ""
+          }
+        },
+        "product_zzgxrt": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex2",
+            "p_more_url": ""
+          }
+        },
+        "product_qnbztz": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex4",
+            "p_more_url": ""
+          }
+        },
+        "product_rd8VAX": {
+          "type": "product",
+          "settings": {
+            "selected_product": "drd5s",
+            "p_more_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_xnyExr",
+        "product_zzgxrt",
+        "product_qnbztz",
+        "product_rd8VAX"
+      ],
+      "settings": {
+        "products_heading": "Products",
+        "products_content": "DMF Lighting systems combine impeccable form with superior function to precisely illuminate <br>\nand perfectly accentuate the beauty and comfort of your home.",
+        "products_sellall_text": "See All",
+        "products_sellall_url": "/pages/products"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "products_banner_6nc9hN",
+    "products_image_grids_Hinjx8",
+    "product_details_tabs_HDdmVR",
+    "products_accordions_DmjUXd",
+    "home_products_nLc8T4",
+    "related-products"
+  ]
+}

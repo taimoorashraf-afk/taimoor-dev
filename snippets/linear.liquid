@@ -1,0 +1,129 @@
+<style>
+
+  .tabs-container {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #C2BFBA
+  }
+
+  .tab-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .tab-button {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  #by-footage-section {
+    display: none;
+  }
+
+  .linear-tab-button-wrapper{
+    width: calc(50% - 8px);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 38px;
+    border-radius: 8px;
+    text-align: center;
+    padding: 0 10px;
+    
+  }
+
+  .linear-tab{
+    width: 100%;
+    position: absolute;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 1.25px solid #c2bfba;
+    border-radius: 8px;
+    margin: 0;
+    background-color: #c2bfba1a;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .linear-tab.active{
+    border-color: #292521;
+  }
+
+  .configurato-heading{
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.65px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  #linear-accordion-container .linear-accordion:nth-child(1) .accordion-header{
+    border-top: none;
+  }
+  .dmx-short-desc{
+    border-bottom: 1px solid #292521;
+    padding-bottom: 20px;
+  }
+</style>
+
+<div class="tabs-container">
+  <div>
+    <h2 class="configurato-heading">Configurator Type</h2>
+  </div>
+  <div class="tab-buttons">
+    <div class="linear-tab-button-wrapper">
+      <button class="tab-button active linear-tab" data-tab="by-zone-section">By Zone</button>
+    </div>
+    <div class="linear-tab-button-wrapper">
+      <button class="tab-button linear-tab" data-tab="by-footage-section">By Foot</button>
+    </div>
+  </div>
+</div>
+
+<div id="by-zone-section" class="active">
+    {% render "linear-by-zone" %}
+</div>
+
+<div id="by-footage-section">
+    {% render "linear-by-footage" %}
+</div>
+
+{% render "bom-calculator" %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const sections = document.querySelectorAll('#by-zone-section, #by-footage-section');
+    const bomWrapper = document.querySelector('.bill-of-material')
+    const addToCartButton = document.getElementById('pc-linear-add-to-cart')
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Hide all sections
+        sections.forEach(section => section.style.display = 'none');
+        
+        // Show selected section
+        const targetId = button.getAttribute('data-tab');
+        document.getElementById(targetId).style.display = 'block';
+        
+        //resetting BOM without resetting values 
+        if(bomWrapper) bomWrapper.style.display = "none";
+        if(addToCartButton) addToCartButton.setAttribute('disabled', true)
+
+      });
+    });
+
+  });
+
+</script>

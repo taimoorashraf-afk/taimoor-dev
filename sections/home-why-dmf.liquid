@@ -1,0 +1,472 @@
+<section class="home-why-dmf">
+    <div class="container">
+        <h2 class="font-neue-light text-light">{{ section.settings.why_section_heading }}</h2>
+        <div class="why-dmf-row">
+            <div class="why-dmf-left">
+                <p class="font-neue-roman text-light">{{ section.settings.why_section_content }}</p>
+                <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.why_learnmore_url }}">{{ section.settings.why_learnmore_text }} 
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                        <defs>
+                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                        </defs>
+                        <g id="Layer_2-2">
+                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                        </g>
+                    </svg>
+                </a>
+                <div class="why-dmf-grid-images">
+                    <img src="{{ section.settings.why_img1 | img_url: 'original' }}" width="291" height="402" alt="why dmf" />
+                    <img src="{{ section.settings.why_img2 | img_url: 'original' }}" width="291" height="402" alt="why dmf" />
+                </div>
+            </div>
+            <div class="why-dmf-right">
+                <img src="{{ section.settings.why_img3 | img_url: 'original' }}" width="494" height="664" alt="why dmf" />
+            </div>
+        </div>
+        <div class="why-dmf-mobile">
+            <p class="font-neue-roman text-light">{{ section.settings.why_section_content }}</p>
+            <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.why_learnmore_url }}">{{ section.settings.why_learnmore_text }} 
+                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                    <defs>
+                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                    </defs>
+                    <g id="Layer_2-2">
+                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="why-dmf-carousel">
+                <div class="why-dmf-carousel-wrapper">
+                    <div class="why-dmf-slider">
+                        <div class="why-dmf-carousel-item">
+                            <img src="{{ section.settings.why_img1 | img_url: 'original' }}" width="757" height="410" alt="why dmf" />
+                        </div>
+                        <div class="why-dmf-carousel-item">
+                            <img src="{{ section.settings.why_img2 | img_url: 'original' }}" width="757" height="410" alt="why dmf" />
+                        </div>
+                        <div class="why-dmf-carousel-item">
+                            <img src="{{ section.settings.why_img3 | img_url: 'original' }}" width="757" height="410" alt="why dmf" />
+                        </div>
+                    </div>
+                </div>
+                <div class="dmf-slider-paginations">
+                    <div class="dmf-slide-counter">1/3</div>
+                    <div class="dmf-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.home-why-dmf {
+        background-color: rgba(41, 37, 33, 1);
+        padding: 0px;
+        margin-top: 6.875vw;
+        padding: 0px 20px;
+    }
+    section.home-why-dmf .container{
+        padding: 5.417vw 0px 7.361vw;
+    }
+
+    section.main-heading-lights {
+        display: none !important;
+    }
+    section.home-why-dmf h2 {
+        font-size: 4.167vw;
+        margin: 0px;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        color: rgba(249, 246, 243, 1);
+    }
+    .why-dmf-row {
+        display: flex;
+        gap: 0px 118px;
+        align-items: flex-end;
+    }
+
+    section.home-why-dmf .why-dmf-right {
+        display: flex;
+        align-items: flex-end;
+    }
+    .why-dmf-left p {
+        margin: 36px 0px 0px;
+        width: 445px;
+        max-width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+    }
+    
+    .why-dmf-grid-images {
+        display: flex;
+        margin-top: 7.153vw;
+        gap: 0px 17px;
+        width: max-content;
+    }
+    .why-dmf-row a.learn-more-arrow,
+    .why-dmf-mobile a.learn-more-arrow {
+        border-color: rgba(249, 246, 243, 1);
+        color: rgba(249, 246, 243, 1);
+        margin-top: 40px;
+        background-color: transparent !important;
+    }
+    .why-dmf-row a.learn-more-arrow:hover,
+    .why-dmf-mobile a.learn-more-arrow:hover{
+        background-color: rgba(249, 246, 243, 1) !important;
+        color: rgba(41, 37, 33, 1) !important;
+    }
+    .why-dmf-row a.learn-more-arrow svg path,
+    .why-dmf-mobile a.learn-more-arrow svg path{
+        stroke: rgba(249, 246, 243, 1);
+    }
+    .why-dmf-row a.learn-more-arrow:hover svg path, 
+    .why-dmf-mobile a.learn-more-arrow:hover svg path{
+        stroke: rgba(41, 37, 33, 1);
+    }
+    .why-dmf-left {
+        width: 55%;
+        height: inherit;
+    }
+    .why-dmf-right {
+        width: 45%;
+        height: inherit;
+    }
+    .why-dmf-grid-images img {
+        width: 291px;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .why-dmf-right img {
+        border-radius: 8px;
+        width: 500px;
+        height: auto;
+        object-fit: cover;
+    }
+    .why-dmf-mobile{
+        display: none;
+    }
+    .dmf-pagination {
+        display: flex !important;
+        justify-content: center;
+        gap: 0px 38px;
+    }
+    .dmf-pagination button {
+        border: none;
+        background-color: rgba(90, 88, 87, 1);
+        padding: 0px;
+        cursor: pointer;
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+    }
+    .dmf-pagination button.active {
+        background-color: rgba(249, 246, 243, 1);
+    }
+    .dmf-slider-paginations{
+        display: flex;
+        margin-top: 68px;
+        padding: 0px 20px 0px 0px;
+    }
+    .dmf-slide-counter {
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 500;
+        color: rgba(249, 246, 243, 1);
+    }
+    .why-dmf-carousel-wrapper {
+        overflow: hidden;
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .why-dmf-slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        margin-top: 0px;
+        /* overscroll-behavior-y: contain;
+        touch-action: pan-x; */
+    }
+
+    .why-dmf-mobile p {
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+        font-weight: 500;
+    }
+    .why-dmf-left a.learn-more-arrow.btn-transparent svg .cls-1, 
+    .why-dmf-left a.learn-more-arrow.btn-transparent svg .cls-2{
+        stroke: rgba(249, 246, 243, 1);
+    }
+    .why-dmf-left a.learn-more-arrow.btn-transparent:hover svg .cls-1, 
+    .why-dmf-left a.learn-more-arrow.btn-transparent:hover svg .cls-2{
+        stroke: rgba(41, 37, 33, 1) !important;
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        section.home-why-dmf h2{
+            font-size: 60px;
+            line-height: 67px;
+        }
+        section.home-why-dmf .container{
+            padding: 78px 0px 106px;
+        }
+        
+    }
+
+    @media (max-width: 1280px) and (min-width: 992px){
+        .why-dmf-row {
+            gap: 0px 8.194vw;
+        }
+        .why-dmf-right img{
+            width: 100%;
+            height: auto;
+        }
+
+        .why-dmf-grid-images img {
+            width: 50%;
+            height: auto;
+        }
+
+        .why-dmf-grid-images{
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .why-dmf-mobile{
+            display: block;
+        }
+        .why-dmf-mobile p{
+            padding-right: 20px;
+        }
+        section.home-why-dmf .container:after {
+            content: '';
+            background: rgba(249, 246, 243, 1);
+            width: calc(100% - 20px);
+            height: 0.75px;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            bottom: -60px;
+            left: -10px;
+        }
+        .why-dmf-mobile a.learn-more-arrow{
+            margin-top: 39px;
+        }
+        .why-dmf-mobile a.learn-more-arrow svg .cls-1,
+        .why-dmf-mobile a.learn-more-arrow svg .cls-2{
+            stroke: rgba(249, 246, 243, 1);
+        }
+        .why-dmf-mobile a.learn-more-arrow:hover svg .cls-1,
+        .why-dmf-mobile a.learn-more-arrow:hover svg .cls-2{
+            stroke: rgba(41, 37, 33, 1) !important;
+        }
+        .why-dmf-carousel {
+            margin-top: 50px;
+        }
+        .why-dmf-row{
+            display: none;
+        }
+        .dmf-slider-paginations {
+            align-items: center;
+            justify-content: space-between;
+            gap: 0px 10px;
+            margin-top: 51px;
+        }
+        section.home-why-dmf{
+            padding: 0px;
+            margin-top: 70px;
+        }
+        section.home-why-dmf .container {
+            padding: 70px 0px 62px 20px;
+            border-bottom: none;
+        }
+        section.home-why-dmf h2 {
+            font-size: 60px;
+            line-height: 64px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+        .why-dmf-row a.learn-more-arrow {
+            border-color: rgba(249, 246, 243, 1);
+            color: rgba(249, 246, 243, 1);
+            margin-top: 30px;
+        }
+        .why-dmf-carousel-wrapper{
+            padding-left: 0px;
+        }
+        .why-dmf-slider{
+            gap: 0px 17px;
+        }
+        .why-dmf-carousel-item{
+            min-width: 78%;
+            width: 78%;
+        }
+        .why-dmf-carousel-item img {
+            border-radius: 8px;
+            max-height: 410px;
+            height: 410px;
+            width: 100%;
+            object-fit: cover;
+        }
+    } 
+</style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    const slider = document.querySelector('.why-dmf-slider');
+    const slides = document.querySelectorAll('.why-dmf-carousel-item');
+    const paginationContainer = document.querySelector('.dmf-pagination');
+    const slideCounter = document.querySelector('.dmf-slide-counter');
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    const breakpoint = 991;
+
+    // Variables to track touch position
+    let startX = 0;
+    let endX = 0;
+
+    function updateSlideCounter(index) {
+        slideCounter.textContent = `${index + 1}/${slideCount}`;
+    }
+
+    function createPagination() {
+        paginationContainer.innerHTML = '';
+        for (let i = 0; i < slideCount; i++) {
+            const button = document.createElement('button');
+            if (i === 0) button.classList.add('active');
+            button.addEventListener('click', function () {
+                goToSlide(i);
+            });
+            paginationContainer.appendChild(button);
+        }
+    }
+
+    function goToSlide(index) {
+        const slideWidth = slides[0].offsetWidth; // Get the width of a single slide
+        const gap = 17; // The horizontal gap between slides
+        let slideDistance = index * (slideWidth + gap); // Include the gap in the distance calculation
+
+        // Calculate the maximum slide distance allowed
+        const maxSlideDistance = (slideCount - 1) * (slideWidth + gap); // Include the gap in the max calculation
+
+        // Ensure the slide distance doesn't exceed the maximum allowed distance
+        if (slideDistance > maxSlideDistance) {
+            slideDistance = maxSlideDistance;
+        }
+
+        // Apply the transform to slide the container
+        slider.style.transform = `translateX(-${slideDistance}px)`;
+        
+        // Update pagination buttons
+        paginationContainer.querySelectorAll('button').forEach(button => button.classList.remove('active'));
+        paginationContainer.children[index].classList.add('active');
+        
+        // Update current index and slide counter
+        currentIndex = index;
+        updateSlideCounter(index);
+    }
+
+    function initializeSlider() {
+        if (window.innerWidth <= breakpoint) {
+            createPagination();
+            goToSlide(currentIndex);
+            updateSlideCounter(currentIndex);
+        } else {
+            slider.style.transform = 'translateX(0)';
+            slider.style.width = '100%';
+            slides.forEach(slide => {
+                slide.style.flex = `1 0 calc(100% / ${slideCount})`;
+            });
+            paginationContainer.innerHTML = '';
+            slideCounter.textContent = '';
+        }
+    }
+
+    // Touch event handlers for mobile swipe
+    function handleTouchStart(event) {
+        startX = event.touches[0].clientX;
+    }
+
+    function handleTouchMove(event) {
+        endX = event.touches[0].clientX;
+    }
+
+    function handleTouchEnd() {
+        if (startX > endX + 50) {
+            // Swipe left
+            if (currentIndex < slideCount - 1) {
+                goToSlide(currentIndex + 1);
+            }
+        } else if (startX < endX - 50) {
+            // Swipe right
+            if (currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+            }
+        }
+    }
+
+    slider.addEventListener('touchstart', handleTouchStart);
+    slider.addEventListener('touchmove', handleTouchMove);
+    slider.addEventListener('touchend', handleTouchEnd);
+
+    window.addEventListener('resize', initializeSlider);
+    initializeSlider();
+});
+
+</script>
+
+{% schema %}
+{
+    "name": "Why DMF",
+    "settings": [
+        {
+            "type": "text",
+            "id": "why_section_heading",
+            "label": "Section Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "why_section_content",
+            "label": "Section Content"
+        },
+        {
+            "type": "text",
+            "id": "why_learnmore_text",
+            "label": "Learn more text"
+        },
+        {
+            "type": "text",
+            "id": "why_learnmore_url",
+            "label": "Learn more URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img1",
+            "label": "Image 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img2",
+            "label": "Image 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "why_img3",
+            "label": "Image 3"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Why DMF",
+            "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

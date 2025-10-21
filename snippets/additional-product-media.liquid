@@ -1,0 +1,21 @@
+{% comment  %} 
+{% assign additional_media = product.metafields.custom.additional_media.value %}
+{% if additional_media %}
+    {% for product in additional_media %}
+        {% for media in product.media %}
+            {% assign media_position = forloop.index %}
+            {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}      
+                  <li
+                    id="Slide-{{ section.id }}-{{ media.id }}"
+                    class=" product__media-item targeted-image grid__item slider__slide hidden {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+                    data-media-id="{{ section.id }}-{{ media.id }}"
+                  >
+                    {% render 'product-thumbnail',
+                      media: media
+                    %}
+                  </li>
+            {%- endunless -%}
+        {% endfor %} 
+    {% endfor %}
+{% endif %}
+{% endcomment %}

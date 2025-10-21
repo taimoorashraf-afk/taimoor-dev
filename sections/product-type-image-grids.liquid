@@ -1,0 +1,695 @@
+<section class="products-img-grids">
+    <div class="container">
+        <div class="top-section-row">
+            <div class="top-col-left">
+                <h2 class="font-neue-light text-dark">{{ section.settings.grid_top_heading }} <br><span class="font-austin-italic">{{ section.settings.grid_top_heading_italic }}</span></h2>
+            </div>
+            <div class="top-col-right">
+                <p class="font-neue-roman text-dark">{{ section.settings.grid_top_content }}</p>
+            </div>
+        </div>        
+    </div>
+    <div class="product-img-grid-sections">
+        <div class="container">
+            <div class="product-grids-images">
+                {% for block in section.blocks %}
+                    {% if block.type == 'image_block' %}
+                    {% assign loop_index = forloop.index %}
+                        <div class="product-grids-img-item">
+                            <img src="{{ block.settings.animated_box_image | img_url: 'original' }}" width="598" height="845" alt="product image" />
+                            <div class="product-grid-img-content">
+                                <h2 class="text-light font-neue-light">{{ block.settings.animated_box_heading }} <span class="font-austin-italic">{{ block.settings.animated_box_heading_italic }}</span></h2>
+                                <p class="text-light font-neue-roman">{{ block.settings.animated_box_content }}</p>
+                                <a class="learn-more-arrow btn-light font-neue-roman" href="{{ block.settings.explore_button_url }}">{{ block.settings.explore_button_text }} 
+                                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                        <defs>
+                                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                        </defs>
+                                        <g id="Layer_2-2">
+                                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="product-progress-bar">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="product-carousel-controls">
+                <button class="carousel-control-prev" type="button" aria-label="Previous">
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                    <defs>
+                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                    </defs>
+                    <g id="Layer_2-2">
+                        <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                        <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+                    </g>
+                </svg>
+                </button>
+                <button class="carousel-control-next" type="button" aria-label="Next">
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                    <defs>
+                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                    </defs>
+                    <g id="Layer_2-2">
+                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                    </g>
+                </svg>
+                </button>
+            </div>
+            
+            <div class="product-grids-bottom-area">
+                <h2 class="font-neue-light text-light">{{ section.settings.bottom_area_heading_center }} <span class="font-austin-italic">{{ section.settings.bottom_area_heading_italic }}</span></h2>
+                <div class="bottom-content-grids">
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col1 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col1 }}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col2 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col2 }}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col3 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col3 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    .header__heading-logo-wrapper svg path {
+        fill: #F9F6F3;
+    }
+    .stickyHeader .header__heading-logo-wrapper svg path {
+        fill: #141414;
+    }
+    .stickyHeader .header__menu-item span{
+        color: #292521;
+    }
+    .top-section-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0px 122.5px;
+        margin: 100px 0px;
+        padding-right: 60px;
+        min-height: 145px;
+    }
+    .top-col-left {
+        padding-left: 60px;
+        min-width: max-content;
+        width: max-content;
+    }
+    .top-col-left h2 {
+        margin: 0px;
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+    }
+    .top-col-left h2 span {
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .top-col-right {
+        width: 40%;
+    }
+    .top-col-right p {
+        margin: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+    .product-grids-images {
+        display: flex;
+        gap: 0px 17px;
+        position: relative;
+        top: -260px;
+        height: 845.34px;
+        /* overscroll-behavior-y: contain;
+        touch-action: pan-x; */
+    }
+    .product-grids-img-item {
+        border-radius: 8px;
+        position: relative;
+    }
+    .product-grids-img-item img {
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .product-grid-img-content {
+        position: absolute;
+        bottom: 19px;
+        width: calc(100% - 40px);
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 20px 22px 28px;
+        backdrop-filter: blur(16px);
+        border-radius: 8px;
+        transition: 0.3s all;
+    }
+    .product-grid-img-content a{
+        background-color: rgba(249, 246, 243, 1);
+        min-width: 157px;
+        line-height: 26px;
+    }
+    .product-grid-img-content h2 {
+        font-size: 2.778vw;
+        line-height: 2.917vw;
+        margin: 0px 0px 16px;
+        width: 380px;
+        max-width: 100%;
+    }
+    .product-grid-img-content h2 span{
+        font-size: 2.917vw;
+        line-height: 3.194vw;
+    }
+    .product-grid-img-content p{
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        width: 486px;
+        max-width: 100%;
+    }
+    .product-img-grid-sections {
+        background-color: rgba(41, 37, 33, 1);
+        margin-top: 360px;
+        padding-bottom: 0px;
+        height: 1199px;
+    }
+    .product-grids-bottom-area {
+        position: relative;
+        top: -160px;
+    }
+    .product-grids-bottom-area h2 {
+        font-size: 5.556vw;
+        line-height: 4.653vw;
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        top: -12px;
+    }
+    .product-grids-bottom-area h2:first-line{
+        line-height: 7.18vw;
+    }
+    .product-grids-bottom-area h2 span{
+        font-size: 5.972vw;
+        line-height: 6.111vw;
+    }
+    .bottom-content-grids {
+        display: flex;
+        margin-top: 60px;
+        height: 138px;
+    }
+    .bottom-content-grid-item {
+        width: 33.33%;
+        display: flex;
+        justify-content: center;
+        padding: 0px 50px;
+    }
+    .bottom-contents{
+        width: 320px;
+        height: 120px;
+        text-align: center;
+    }
+    .bottom-content-grid-item:first-child {
+        padding-left: 26.5px;
+    }
+    .bottom-content-grid-item:last-child {
+        padding-right: 26.5px;
+    }
+    .bottom-content-grid-item:nth-child(2) {
+        border-left: 1px solid rgba(194, 191, 186, 1);
+        border-right: 1px solid rgba(194, 191, 186, 1);
+    }
+    .bottom-contents h3{
+        font-size: 3.75vw;
+        line-height: 4.028vw;
+        margin: 0px;
+    }
+    .bottom-contents p {
+        font-size: 16px;
+        line-height: 26px;
+        margin: 10px 0px 0px;
+
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 67px;
+        }
+
+        .top-col-left h2 span{
+            font-size: 64px;
+            line-height: 68px;
+        }
+        .transparent-pg-banner h2 span,
+        .product-grids-bottom-area h2 span{
+            font-size: 86px;
+            line-height: 88px;
+        }
+        .product-grids-bottom-area h2 {
+            font-size: 80px;
+            line-height: 67px;
+        }
+        .bottom-contents h3{
+            font-size: 54px;
+            line-height: 58px;
+            margin: 0px;
+        }
+        .product-grid-img-content h2{
+            font-size: 40px;
+            line-height: 42px;
+        }
+
+        .product-grids-bottom-area h2:first-line{
+            line-height: 103.392px;
+        }
+        
+        .product-grid-img-content h2 span{
+            font-size: 42px;
+            line-height: 46px;
+        }
+    }
+
+    @media (max-width: 991px){
+        .product-grid-img-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        .product-grids-img-item {
+            left: 3px;
+        }
+        .product-grids-img-item.p-slide-active {
+            left: 0px;
+        }
+    }
+
+    @media (min-width: 768px){
+        .product-progress-bar, 
+        .product-carousel-controls{
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px){
+        .top-section-row{
+            margin: 60px 0px 50px;
+            flex-flow: column;
+            padding-right: 0px;
+        }
+        .product-grid-img-content p{
+            -webkit-line-clamp: 5;
+        }
+
+        .product-grid-img-content{
+            bottom: -277px;
+            background: url('https://cdn.shopify.com/s/files/1/0667/3865/1301/t/3/assets/product-type-img-background.png?v=1727976283') no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(41, 37, 33, 0.4);
+            backdrop-filter: blur(50px);
+            min-height: 360px;
+        }
+        .top-col-left{
+            padding-left: 0px;
+        }
+        .top-col-left, 
+        .top-col-right {
+            width: 100%;
+            min-width: unset;
+        }
+        .top-col-left h2{
+            margin-bottom: 15px;
+            font-size: 50px;
+            line-height: 58px;
+        }
+        .top-col-left h2 span{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: rgba(90, 88, 87, 1);
+            opacity: 1;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            height: 1.5px;
+            background-color: rgba(249, 246, 243, 1);
+            transition: width 0.3s;
+            display: block !important;
+        }
+
+        .product-progress-bar{
+            background-color: rgba(90, 88, 87, 1);
+            width: 100%;
+            height: 1.5px;
+            position: relative;
+            top: -30px;
+        }
+
+        .bottom-contents p{
+            margin: 0px;
+        }
+
+        .product-grids-images{
+            flex-wrap: nowrap;
+            position: relative;
+            transition: transform 0.5s ease;
+            margin-bottom: 176px;
+            top: -180px;
+            height: auto;
+        }
+
+        section.products-img-grids {
+            position: relative;
+        }
+
+        .product-img-grid-sections{
+            margin-top: 230px;
+            padding-bottom: 86px;
+            height: auto;
+        }
+
+        .product-grids-img-item{
+            flex: 0 0 100%;
+            height: 498px;
+        }
+        .product-grid-img-content h2,
+        .product-grid-img-content h2 span{
+            font-size: 40px;
+            line-height: 42px;
+            display: block;
+        }
+        .product-carousel-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0px 17px;
+        }
+        .product-carousel-controls svg{
+            width: 18.06px;
+        }
+        .product-carousel-controls svg .cls-1,
+        .product-carousel-controls svg .cls-2{
+            stroke: rgba(249, 246, 243, 1);
+        }
+        
+        .product-grids-bottom-area {
+            position: relative;
+            top: 0px;
+            margin-top: 94px;
+        }
+
+        .product-grids-bottom-area h2 {
+            font-size: 60px;
+            line-height: 64px;
+            top: 0px !important;
+            display: grid;
+        }
+
+        .product-grids-bottom-area h2 br{
+            display: none !important;
+        }
+
+        .product-grids-bottom-area h2 span {
+            font-size: 64px;
+            line-height: 68px;
+        }
+
+        .bottom-content-grids{
+            margin-top: 80px;
+            flex-wrap: wrap;
+            height: auto;
+        }
+
+        .bottom-content-grid-item {
+            padding: 0px 17px 30px;
+            width: 100%;
+            border-bottom: 1px solid rgba(194, 191, 186, 1);
+            margin-bottom: 30px;
+        }
+
+        .bottom-content-grid-item:nth-child(2){
+            border-left: none;
+            border-right: none;
+        }
+
+        .bottom-contents h3 {
+            font-size: 42px;
+            line-height: 46px;
+            margin: 0px 0px 5px;
+        }
+
+        .bottom-content-grid-item:last-child {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            border-bottom: none;
+        }
+        
+    }
+
+
+</style>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.product-grids-img-item');
+    const totalItems = items.length;
+    let currentIndex = 0;
+
+    // Initialize the progress bar
+    const progressBar = document.querySelector('.progress-bar');
+
+    function updateCarousel() {
+        const progress = (currentIndex / (totalItems - 1)) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Disable buttons based on current index
+        document.querySelector('.carousel-control-prev').classList.toggle('disabled', currentIndex === 0);
+        document.querySelector('.carousel-control-next').classList.toggle('disabled', currentIndex === totalItems - 1);
+
+        // Update active class on slides
+        items.forEach((item, index) => {
+            item.classList.toggle('p-slide-active', index === currentIndex);
+        });
+    }
+
+    // Set initial state
+    updateCarousel();
+
+    // Get the gap value
+    const gapValue = 17; // The defined gap in pixels
+
+    // Function to handle translation based on currentIndex
+    function translateCarousel() {
+        const translateXValue = -((currentIndex * 100) + (currentIndex * (gapValue / window.innerWidth * 100)));
+        document.querySelector('.product-grids-images').style.transform = 'translateX(' + translateXValue + '%)';
+        updateCarousel();
+    }
+
+    // Next button functionality
+    document.querySelector('.carousel-control-next').addEventListener('click', function() {
+        if (currentIndex < totalItems - 1) {
+            currentIndex++;
+            translateCarousel();
+        }
+    });
+
+    // Previous button functionality
+    document.querySelector('.carousel-control-prev').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            translateCarousel();
+        }
+    });
+
+    // Touch functionality for mobile
+    let startX = 0;
+
+    document.querySelector('.product-grids-images').addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX; // Get initial touch position
+    });
+
+    document.querySelector('.product-grids-images').addEventListener('touchend', function(e) {
+        const endX = e.changedTouches[0].clientX; // Get final touch position
+        const diffX = startX - endX; // Calculate the difference
+
+        // Determine the swipe direction
+        if (diffX > 50) { // Swipe left (next)
+            if (currentIndex < totalItems - 1) {
+                currentIndex++;
+                translateCarousel();
+            }
+        } else if (diffX < -50) { // Swipe right (previous)
+            if (currentIndex > 0) {
+                currentIndex--;
+                translateCarousel();
+            }
+        }
+    });
+});
+</script>
+
+{% schema %}
+{
+    "name": "Products Image Grids",
+    "settings": [
+        {
+            "type": "text",
+            "id": "grid_top_heading",
+            "label": "Top left heading"
+        },
+        {
+            "type": "text",
+            "id": "grid_top_heading_italic",
+            "label": "Top left heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "grid_top_content",
+            "label": "Top content"
+        },
+        {
+            "type": "text",
+            "id": "bottom_area_heading_center",
+            "label": "Bottom center heading"
+        },
+        {
+            "type": "text",
+            "id": "bottom_area_heading_italic",
+            "label": "Bottom center heading in italic"
+        },
+        {
+            "type": "header",
+            "content": "Column 1"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col1",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col1",
+            "label": "Content"
+        },
+        {
+            "type": "header",
+            "content": "Column 2"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col2",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col2",
+            "label": "Content"
+        },
+        {
+            "type": "header",
+            "content": "Column 3"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col3",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col3",
+            "label": "Content"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image_block",
+            "name": "Add Image Box",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "animated_box_image",
+                    "label": "Add Image"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_heading",
+                    "label": "Image box heading"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_heading_italic",
+                    "label": "Image box heading in italic"
+                },
+                {
+                    "type": "textarea",
+                    "id": "animated_box_content",
+                    "label": "Image box content"
+                },
+                {
+                    "type": "text",
+                    "id": "explore_button_text",
+                    "label": "Explore button text"
+                },
+                {
+                    "type": "text",
+                    "id": "explore_button_url",
+                    "label": "Explore button URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Products Image Grids",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

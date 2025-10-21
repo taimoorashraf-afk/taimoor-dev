@@ -1,0 +1,305 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "configurator_listing_jpWYdM": {
+      "type": "configurator-listing",
+      "blocks": {
+        "category_YQjgPd": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "New Construction",
+            "category_display_name": "New Construction Kits - Round / Square",
+            "category_anchor": "new-construction",
+            "category_section": "new-construction",
+            "show_category": true
+          }
+        },
+        "product_card_nyXNTA": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "new-construction",
+            "category_section": "new-construction",
+            "product_image": "shopify://shop_images/New_Construction_Round_9a10d2a0-301d-4239-90de-bf0c12319f23.png",
+            "product_name": "New Construction Round",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_zQRkYE": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "new-construction",
+            "category_section": "new-construction",
+            "product_image": "shopify://shop_images/Chicago_Plenum_Round_c2f6357a-3342-41fa-b5e7-c8eaa1951bc6.png",
+            "product_name": "Chicago Plenum Round",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_VVrLcD": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "new-construction",
+            "category_section": "new-construction",
+            "product_image": "shopify://shop_images/Chicago_Plenum_Square_222d134a-812c-40af-b8b0-f701dfebda2f.png",
+            "product_name": "New Construction Square",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_TJMEAi": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "new-construction",
+            "category_section": "new-construction",
+            "product_image": "shopify://shop_images/Chicago_Plenum_Square_222d134a-812c-40af-b8b0-f701dfebda2f.png",
+            "product_name": "Chicago Plenum Square",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "category_FHY6H4": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "remodel/conversion",
+            "category_display_name": "Remodel / Conversion Kits",
+            "category_anchor": "remodel",
+            "category_section": "remodel",
+            "show_category": true
+          }
+        },
+        "product_card_jqmTai": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "remodel",
+            "category_section": "remodel",
+            "product_image": "shopify://shop_images/Remodel_Round_d7411bbc-8260-4789-9ef3-c9b268f43b31.png",
+            "product_name": "Remodel Round",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_nP7fKp": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "remodel",
+            "category_section": "remodel",
+            "product_image": "shopify://shop_images/Remodel_Square_2fc19fbf-46d7-4c1d-a8ce-5e0c7622fa92.png",
+            "product_name": "Remodel Square",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_NHRd6g": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "remodel",
+            "category_section": "remodel",
+            "product_image": "shopify://shop_images/6_to_2_Conversion_Kit_Round.png",
+            "product_name": "6 to 2 Conversion Kit Round",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_hbbxdV": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "remodel",
+            "category_section": "remodel",
+            "product_image": "shopify://shop_images/6_to_2_Conversion_Kit_Square.png",
+            "product_name": "6 to 2 Conversion Kit Square",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_89n9cd": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "remodel",
+            "category_section": "remodel",
+            "product_image": "shopify://shop_images/5-4_to_2_Conversion_Kit_Round.png",
+            "product_name": "5-4 to 2 Conversion Kit Round",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "category_MLmYcB": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Components",
+            "category_display_name": "Components",
+            "category_anchor": "components",
+            "category_section": "components",
+            "show_category": true
+          }
+        },
+        "product_card_Qrj93b": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "components",
+            "category_section": "components",
+            "product_image": "shopify://shop_images/PhaseX_Gateway_240e1018-7478-4f8a-9db5-aaecfef45291.jpg",
+            "product_name": "PhaseX Gateway",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_EP7MHQ": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "components",
+            "category_section": "components",
+            "product_image": "shopify://shop_images/Housings_8071326c-e226-47a6-928b-0523220552fa.png",
+            "product_name": "Housings",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_PpWKaj": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "components",
+            "category_section": "components",
+            "product_image": "shopify://shop_images/Modules_438a46e3-09ac-44d6-aa4d-5742fe76ae81.png",
+            "product_name": "Modules",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_bMxiBG": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "components",
+            "category_section": "components",
+            "product_image": "shopify://shop_images/Trims_5ee3d5a7-bfd1-482f-8069-2b0531b55e06.png",
+            "product_name": "Trims",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "category_P6DbgP": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Accessories",
+            "category_display_name": "Accessories",
+            "category_anchor": "accessories",
+            "category_section": "accessories",
+            "show_category": true
+          }
+        },
+        "product_card_njMUft": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "accessories",
+            "category_section": "accessories",
+            "product_image": "shopify://shop_images/Optics_fa90d7e5-eab2-4f09-9108-92c7f01829cd.png",
+            "product_name": "Optics",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_E4znkr": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "accessories",
+            "category_section": "accessories",
+            "product_image": "shopify://shop_images/Mudkit_302a8d2b-4472-431b-893a-dd8baf424029.png",
+            "product_name": "Mudkit",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_AgcFfi": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "accessories",
+            "category_section": "accessories",
+            "product_image": "shopify://shop_images/Millwork.png",
+            "product_name": "Millwork",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_JDwEQ9": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "accessories",
+            "category_section": "accessories",
+            "product_image": "shopify://shop_images/Connectors_328397c5-ccfa-4987-ae85-200d8ca9c148.png",
+            "product_name": "Connectors",
+            "product_url": "#",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        }
+      },
+      "block_order": [
+        "category_YQjgPd",
+        "product_card_nyXNTA",
+        "product_card_zQRkYE",
+        "product_card_VVrLcD",
+        "product_card_TJMEAi",
+        "category_FHY6H4",
+        "product_card_jqmTai",
+        "product_card_nP7fKp",
+        "product_card_NHRd6g",
+        "product_card_hbbxdV",
+        "product_card_89n9cd",
+        "category_MLmYcB",
+        "product_card_Qrj93b",
+        "product_card_EP7MHQ",
+        "product_card_PpWKaj",
+        "product_card_bMxiBG",
+        "category_P6DbgP",
+        "product_card_njMUft",
+        "product_card_E4znkr",
+        "product_card_AgcFfi",
+        "product_card_JDwEQ9"
+      ],
+      "name": "Configurator Listing",
+      "settings": {
+        "main_heading": "Artafex 2 Configurators",
+        "show_breadcrumbs": true,
+        "breadcrumb_home_text": "Shop All",
+        "breadcrumb_home_url": "/pages/shop",
+        "breadcrumb_current_text": "Artafex 2 Configurators"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "configurator_listing_jpWYdM"
+  ]
+}

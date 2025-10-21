@@ -1,0 +1,150 @@
+{% comment %}
+  Renders a product media modal. Also see 'product-media-gallery'
+
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+
+  Usage:
+  {% render 'product-media-modal' %}
+{% endcomment %}
+
+{% comment %} <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
+  <div
+    class="product-media-modal__dialog color-{{ section.settings.color_scheme }} gradient"
+    role="dialog"
+    aria-label="{{ 'products.modal.label' | t }}"
+    aria-modal="true"
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-{{ section.id }}"
+      type="button"
+      class="product-media-modal__toggle"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      {% render 'icon-close' %}
+    </button>
+
+    <div
+      class="product-media-modal__content color-{{ section.settings.color_scheme }} gradient"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0"
+    >
+      {%- liquid
+        if product.selected_or_first_available_variant.featured_media != null
+          assign media = product.selected_or_first_available_variant.featured_media
+          render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
+        endif
+      -%}
+
+      {%- for media in product.media -%}
+        {%- liquid
+          if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
+            assign variant_image = true
+          else
+            assign variant_image = false
+          endif
+
+          unless media.id == product.selected_or_first_available_variant.featured_media.id
+            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+          endunless
+        -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</product-modal> {% endcomment %}
+
+
+<div id="CustomModal-{{ section.id }}" class="custom-modal" aria-hidden="true">
+  <div class="custom-modal__overlay"></div>
+  <div
+    class="custom-modal__content color-{{ section.settings.color_scheme }} gradient"
+    role="dialog"
+    aria-modal="true"
+    tabindex="-1"
+  >
+    <button
+      id="ModalClose-{{ section.id }}"
+      type="button"
+      class="custom-modal__close"
+      aria-label="{{ 'accessibility.close' | t }}"
+    >
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="36" height="36" rx="18" fill="#EFEBE6"/>
+        <path d="M13.057 13.7506L22.2494 22.943M12.9038 23.0962L17.6532 18.3468L22.0962 13.9038" stroke="#292521" stroke-width="1.5"/>
+      </svg>
+    </button>
+
+    <div
+      class="custom-modal__body"
+      role="document"
+      aria-label="{{ 'products.modal.label' | t }}"
+      tabindex="0"
+    >
+    </div>
+  </div>
+</div>
+
+
+
+<style type="text/css">
+  .custom-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal[aria-hidden="false"] {
+  display: block; /* Show when active */
+}
+
+.custom-modal__overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.custom-modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 8px;
+  max-width: 90%;
+  width: 600px;
+  padding: 0px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.custom-modal__content .custom-modal__body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.custom-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.custom-modal__body{
+  height: 600px;
+  max-height: 90vh;
+}
+</style>

@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "image_nqzWYK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/footer-logo-light.svg",
+            "subtext": "<p>Providers of luxury LED downlighting products and systems for artfully lighting life’s everyday moments</p>",
+            "image_width": 550,
+            "alignment": ""
+          }
+        },
+        "link_list_hE797X": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<a href=\"/pages/products\" title=\"Products\">Products</a>",
+            "menu": "footer-products"
+          }
+        },
+        "link_list_XH9EPn": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<a href=\"/pages/whydmf\" title=\"Why DMF\">Why DMF</a>",
+            "menu": "footer-company"
+          }
+        },
+        "link_list_P9cRNG": {
+          "type": "link_list",
+          "settings": {
+            "heading": "<a href=\"/pages/resources\" title=\"Resources\">Resources</a>",
+            "menu": "footer-support"
+          }
+        }
+      },
+      "block_order": [
+        "image_nqzWYK",
+        "link_list_hE797X",
+        "link_list_XH9EPn",
+        "link_list_P9cRNG"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "copy_txt": "<p>DMF Lighting. All Rights Reserved.</p>",
+        "terms_txt": "Terms and Conditions",
+        "terms_url": "https://cdn.shopify.com/s/files/1/0891/9567/5959/files/Terms-and-Conditions.pdf?v=1736101027",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

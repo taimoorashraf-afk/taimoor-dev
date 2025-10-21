@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "animated_image_grids_tqAVRU": {
+      "type": "animated-image-grids",
+      "settings": {
+        "extended_image_1": "shopify://shop_images/Homepage_01_expand.png",
+        "grid_mobile_1": "shopify://shop_images/Hompage_01.png",
+        "img_tag_1": "Layers of lighting",
+        "img_heading1": "Lighting",
+        "img_italic_heading1": "in layers ",
+        "img_content1": "Flexible products that give  you  the power to combine, blend,  and layer your lighting. ",
+        "img_learnmore1": "#layers-of-lighting",
+        "extended_image_2": "shopify://shop_images/Homepage_03_Artafex2_Disappear_C_expand_D.png",
+        "grid_mobile_2": "shopify://shop_images/Homepage_03_Artafex2_Disappear_C_expand_M.png",
+        "img_tag_2": "Recessed",
+        "img_heading2": "Designed to ",
+        "img_italic_heading2": "disappear ",
+        "img_content2": "Sleek recessed downlighting designed  to  blend in seamlessly for clean ceilings ",
+        "img_learnmore2": "/pages/recessed",
+        "extended_image_3": "shopify://shop_images/Homepage_03_Linear_E_expand_D.jpg",
+        "grid_mobile_3": "shopify://shop_images/Homepage_03_m_expand_M2.jpg",
+        "img_tag_3": "Artafex Linear",
+        "img_heading3": "Linear lighting",
+        "img_italic_heading3": "artfully elevated",
+        "img_content3": "The new standard in linear lighting",
+        "img_learnmore3": "/pages/artafex-2",
+        "extended_image_4": "shopify://shop_images/Homepage_04_expand.png",
+        "grid_mobile_4": "shopify://shop_images/Homepage_04_m_expand.png",
+        "img_tag_4": "Why DMF",
+        "img_heading4": "Brilliance",
+        "img_italic_heading4": "Engineered",
+        "img_content4": "Designed and engineered to artfully light life’s everyday moments",
+        "img_learnmore4": "/pages/whydmf",
+        "bottom_main_heading": " Illuminate what you see, <br>",
+        "bottom_main_heading_italic": "elevate how you feel ",
+        "bottom_text_left": "Light stirs emotion,",
+        "bottom_text_left_italic": "and shapes the atmosphere.",
+        "bottom_text_right": "The quality of light that illuminates our homes can impact the quality of life we experience each day, from the color and clarity of what we see to the comfort and contentment we all long to feel. "
+      }
+    },
+    "animated_importance_light_BmX7kJ": {
+      "type": "animated-importance-light",
+      "settings": {
+        "heading_top_center": "",
+        "heading_top_center_italic": "",
+        "heading_topline": "Our unique True Spectrum®",
+        "importance_heading": "Reveal the true beauty ",
+        "importance_heading_italic": "of your home.",
+        "importance_content": "With True Spectrum® color-rendering technology, <br> DMF products capture colors more faithfully to display them <br> as they appear under natural light.",
+        "importance_learnmore_text": "Learn More",
+        "importance_learnmore": "/pages/recessed",
+        "importance_img": "shopify://shop_images/ImportanceofLight2LOW_D.jpg"
+      }
+    },
+    "layers_of_lighting_fiChDE": {
+      "type": "layers-of-lighting",
+      "blocks": {
+        "carousel_item_EecKhe": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Warm Dim",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_WarmDim_D_9f6ea24e-4802-4c0d-a134-d01b0f892fa2.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_WarmDim_M_940a29e0-2710-41e6-af18-9a9c20bd585c.jpg"
+          }
+        },
+        "carousel_item_Re4gi7": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "General",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_General_D_03c0ec1c-5cc7-4971-9a40-642d35d2288d.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_General_M_f3b6222d-6ce0-4c4b-8e5b-c732009f5d13.jpg"
+          }
+        },
+        "carousel_item_VBtwy6": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Accent",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_Accent_D_debdd6ea-e337-46fe-a2c7-7395cb0068bb.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_Accent_M_17a0672b-c069-4b17-87c4-785f818c670d.jpg"
+          }
+        },
+        "carousel_item_BLCTeA": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Wall Wash",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_WallWash_D_95a409c7-fdfb-428f-89a3-77fd8e5a8634.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_WallWash_M_7c4b40be-0ae0-4039-ac07-05cc45890a30.jpg"
+          }
+        },
+        "carousel_item_TjYwpq": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Task",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_Task_D_30ed93f0-9161-4b64-b0a5-ba2cea6aa4c8.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_Task_M_db85ccf4-1b4b-4f7c-be46-4e3f8be71b51.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_item_EecKhe",
+        "carousel_item_Re4gi7",
+        "carousel_item_VBtwy6",
+        "carousel_item_BLCTeA",
+        "carousel_item_TjYwpq"
+      ],
+      "settings": {
+        "layers_heading": "A living canvas",
+        "layers_heading_italic": "painted in light",
+        "layers_content": "From ambient washes and accent arrays to finely tuned options for focusing on tasks, our multifaceted products provide a full palette of light to artfully illuminate your space.",
+        "layers_defaultbg": "shopify://shop_images/Layers_WarmDim_D_9f6ea24e-4802-4c0d-a134-d01b0f892fa2.jpg"
+      }
+    },
+    "benefits_digital_controls_RL9L9P": {
+      "type": "benefits-digital-controls",
+      "settings": {
+        "benefits_topline": "your light, your mood",
+        "benefits_heading": "Set the scene to match the mood",
+        "benefits_heading_italic": "with the moment. ",
+        "benefits_content": "With digital controls that invite you to choose from a selection of preset “scenes” or create your own custom settings, our flexible products empower you to automate changes in mood to match the moment of the day.",
+        "benefits_learnmore_text": "Learn More",
+        "benefits_learnmore_url": "/pages/phasex",
+        "benefits_video_iframe": "6kupbjtxkl"
+      }
+    },
+    "home_products_wYCD6d": {
+      "type": "home-products",
+      "blocks": {
+        "product_tEwVBK": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex-linear",
+            "p_more_url": "https://dmfluxury.com/pages/linear"
+          }
+        },
+        "product_UphgqJ": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex2",
+            "p_more_url": "/pages/artafex-2"
+          }
+        },
+        "product_BGanLc": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex4",
+            "p_more_url": "/pages/artafex-4"
+          }
+        },
+        "product_JjG6Ta": {
+          "type": "product",
+          "settings": {
+            "selected_product": "drd5s",
+            "p_more_url": "/pages/surface-mounts"
+          }
+        }
+      },
+      "block_order": [
+        "product_tEwVBK",
+        "product_UphgqJ",
+        "product_BGanLc",
+        "product_JjG6Ta"
+      ],
+      "settings": {
+        "products_heading": "Products",
+        "products_content": "DMF Lighting systems combine impeccable form with superior function to precisely illuminate <br> and perfectly accentuate the beauty and comfort of your home.",
+        "products_sellall_text": "See All",
+        "products_sellall_url": "/pages/products"
+      }
+    },
+    "home_why_dmf_iCPQbP": {
+      "type": "home-why-dmf",
+      "settings": {
+        "why_section_heading": "Why DMF",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 40 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_learnmore_text": "Learn More",
+        "why_learnmore_url": "/pages/whydmf",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_3_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "animated_image_grids_tqAVRU",
+    "animated_importance_light_BmX7kJ",
+    "layers_of_lighting_fiChDE",
+    "benefits_digital_controls_RL9L9P",
+    "home_products_wYCD6d",
+    "home_why_dmf_iCPQbP"
+  ]
+}

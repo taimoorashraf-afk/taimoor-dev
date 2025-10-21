@@ -1,0 +1,210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_grid_product_type": {
+      "type": "image-grids-product-type",
+      "blocks": {
+        "text_block_6LQYcm": {
+          "type": "text_block",
+          "settings": {
+            "tag_type_imagebox": "Linear",
+            "image_type_imagebox": "shopify://shop_images/ProductType1_03_Linear2_D_1876f97a-4005-49b5-81dc-4645aafa2aed.jpg",
+            "heading_type_imagebox": "Linear lighting,",
+            "heading_type_imagebox_italic": "artfully elevated",
+            "buttontext_imagebox": "Discover",
+            "buttonurl_imagebox": "/pages/linear"
+          }
+        },
+        "text_block_GRNcjJ": {
+          "type": "text_block",
+          "settings": {
+            "tag_type_imagebox": "Recessed",
+            "image_type_imagebox": "shopify://shop_images/X2TRDSWHFL__1.png",
+            "heading_type_imagebox": "Designed",
+            "heading_type_imagebox_italic": "to disappear",
+            "buttontext_imagebox": "Discover",
+            "buttonurl_imagebox": "/pages/recessed"
+          }
+        },
+        "text_block_XJXwP7": {
+          "type": "text_block",
+          "settings": {
+            "tag_type_imagebox": "Surface",
+            "image_type_imagebox": "shopify://shop_images/ProductType1_02_DRD5S2_D.jpg",
+            "heading_type_imagebox": "Elegant solutions",
+            "heading_type_imagebox_italic": "for utility spaces",
+            "buttontext_imagebox": "Discover",
+            "buttonurl_imagebox": "/pages/surface-mounts"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_6LQYcm",
+        "text_block_GRNcjJ",
+        "text_block_XJXwP7"
+      ],
+      "settings": {
+        "type_main_title": "Beautifully designed,",
+        "type_main_title_italic": "precisely engineered.",
+        "type_main_txt": "Developed exclusively for luxury homes, DMF’s Artafex premium lighting products apply True Spectrum® <br> color-\nrendering technology, based on a study of 99 color variations, to ensure that everything in your home looks the way it should."
+      }
+    },
+    "layers_of_lighting": {
+      "type": "layers-of-lighting",
+      "blocks": {
+        "carousel_item_9x7Dj3": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Warm Dim",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_WarmDim_D_9f6ea24e-4802-4c0d-a134-d01b0f892fa2.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_WarmDim_M_940a29e0-2710-41e6-af18-9a9c20bd585c.jpg"
+          }
+        },
+        "carousel_item_eBnbEb": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "General",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_General_D_03c0ec1c-5cc7-4971-9a40-642d35d2288d.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_General_M_f3b6222d-6ce0-4c4b-8e5b-c732009f5d13.jpg"
+          }
+        },
+        "carousel_item_CaddnA": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Accent",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_Accent_D_debdd6ea-e337-46fe-a2c7-7395cb0068bb.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_Accent_M_17a0672b-c069-4b17-87c4-785f818c670d.jpg"
+          }
+        },
+        "carousel_item_aaKHX3": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Wall Wash",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_WallWash_D_95a409c7-fdfb-428f-89a3-77fd8e5a8634.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_WallWash_M_7c4b40be-0ae0-4039-ac07-05cc45890a30.jpg"
+          }
+        },
+        "carousel_item_wqPpRd": {
+          "type": "carousel_item",
+          "settings": {
+            "layers_btn_text": "Task",
+            "layers_btn_desktopimage": "shopify://shop_images/Layers_Task_D_30ed93f0-9161-4b64-b0a5-ba2cea6aa4c8.jpg",
+            "layers_btn_mobileimage": "shopify://shop_images/Layers_Task_M_db85ccf4-1b4b-4f7c-be46-4e3f8be71b51.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_item_9x7Dj3",
+        "carousel_item_eBnbEb",
+        "carousel_item_CaddnA",
+        "carousel_item_aaKHX3",
+        "carousel_item_wqPpRd"
+      ],
+      "settings": {
+        "layers_heading": "A living canvas",
+        "layers_heading_italic": "painted in light",
+        "layers_content": "From ambient washes and accent arrays to finely tuned options for focusing on tasks, our multifaceted products provide a full palette of light to artfully illuminate your space.",
+        "layers_defaultbg": "shopify://shop_images/Layers_WarmDim_D_9f6ea24e-4802-4c0d-a134-d01b0f892fa2.jpg"
+      }
+    },
+    "explore_products": {
+      "type": "explore-products",
+      "blocks": {
+        "image_block_chKtWt": {
+          "type": "image_block",
+          "settings": {
+            "recessed_images": "shopify://shop_images/Transform_TopLeft_D.jpg"
+          }
+        },
+        "image_block_mdiHYj": {
+          "type": "image_block",
+          "settings": {
+            "recessed_images": "shopify://shop_images/Transform_BottomLeft_D.jpg"
+          }
+        },
+        "image_block_aG7KyD": {
+          "type": "image_block",
+          "settings": {
+            "recessed_images": "shopify://shop_images/Transform_Central_D.jpg"
+          }
+        },
+        "image_block_DRPqXL": {
+          "type": "image_block",
+          "settings": {
+            "recessed_images": "shopify://shop_images/Transform_TopRight_D.jpg"
+          }
+        },
+        "image_block_JeGRyP": {
+          "type": "image_block",
+          "settings": {
+            "recessed_images": "shopify://shop_images/Transform_BottomRight_D.jpg"
+          }
+        },
+        "image_block2_YTBfdm": {
+          "type": "image_block2",
+          "settings": {
+            "surface_images": "shopify://shop_images/Transform_TopLeft_Lin_D.jpg"
+          }
+        },
+        "image_block2_JbBdbY": {
+          "type": "image_block2",
+          "settings": {
+            "surface_images": "shopify://shop_images/Transform_BottomLeft_LinD.jpg"
+          }
+        },
+        "image_block2_zf43W4": {
+          "type": "image_block2",
+          "settings": {
+            "surface_images": "shopify://shop_images/Transform_Central_Linear_D.jpg"
+          }
+        },
+        "image_block2_QDhLi6": {
+          "type": "image_block2",
+          "settings": {
+            "surface_images": "shopify://shop_images/Transform_TopRight_Linear_D.jpg"
+          }
+        },
+        "image_block2_4UCVxm": {
+          "type": "image_block2",
+          "settings": {
+            "surface_images": "shopify://shop_images/Transform_BottomRight_Lin_D.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_chKtWt",
+        "image_block_mdiHYj",
+        "image_block_aG7KyD",
+        "image_block_DRPqXL",
+        "image_block_JeGRyP",
+        "image_block2_YTBfdm",
+        "image_block2_JbBdbY",
+        "image_block2_zf43W4",
+        "image_block2_QDhLi6",
+        "image_block2_4UCVxm"
+      ],
+      "settings": {
+        "explore_main_heading": "Discover how our lighting  can enhance",
+        "explore_main_heading_italic": "your home's beauty",
+        "explore_main_heading_remaining": "",
+        "explore_main_content": "From a range of aesthetics for different interior styles to small aperture models for clean, quiet ceilings, DMF products offer luxury you can see and feel.",
+        "explore_tab_title1": "Recessed",
+        "explore_tab_title2": "Linear",
+        "explore_tab_title3": ""
+      }
+    }
+  },
+  "order": [
+    "image_grid_product_type",
+    "layers_of_lighting",
+    "explore_products"
+  ]
+}

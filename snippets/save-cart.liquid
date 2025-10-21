@@ -1,0 +1,369 @@
+<div class="search-container">
+  <input
+    type="text"
+    id="search-input"
+    class="search-form__input"
+    placeholder="Search and select a project"
+    aria-label="Search"
+    maxlength="25"
+    autocomplete="off"
+  >
+  <ul id="search-suggestions" class="suggestions-list" style="display: none;"></ul>
+  <button id="add-project-btn" class="add-project-button" disabled>Add to Project</button>
+  <div id="message-container" style="display: none;"></div>
+</div>
+
+<style>
+  .search-container {
+    margin-top: 20px;
+    display: none;
+    gap: 16px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .product-customizer + fixture-accordion .search-container{
+    display: flex;
+  }
+  .search-container .search-form__input {
+    width: 60%;
+  }
+  #message-container {
+    margin-top: 10px;
+    color: green;
+    font-size: 16px;
+    z-index: 1000;
+    line-height: 16px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+    font-weight: 450 !important;
+    letter-spacing: 0.65px;
+    display: none;
+  }
+
+  #message-container.error {
+    color: red;
+  }
+  .add-project-button {
+    height: 50px;
+    font-size: 16px;
+    line-height: 23px;
+    background-color: #292521;
+    border: 1px solid #292521;
+    padding: 0 26px;
+    border-radius: 80px;
+    color: #f9f6f3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 0.65px;
+    min-width: max-content;
+  }
+
+  .add-project-button:hover {
+    color: #292521;
+    background-color: transparent;
+  }
+
+  .add-project-button:disabled {
+    background-color: #999;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .add-project-button:disabled:hover {
+    color: #f9f6f3;
+    background-color: #999;
+  }
+
+  .suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    top: 50px;
+    border: 1px solid #ccc;
+    background: #efebe6;
+    position: absolute;
+    width: 60%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    border-radius: 5px; /* Optional rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow */
+  }
+
+  /* Custom scrollbar styles */
+  .suggestions-list::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    height: 8px; /* Height of the scrollbar */
+  }
+
+  .suggestions-list::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scroll thumb */
+    border-radius: 4px; /* Rounded corners for the scroll thumb */
+  }
+
+  .suggestions-list::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scroll thumb on hover */
+  }
+
+  .suggestions-list::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Background color of the scrollbar track */
+    border-radius: 4px; /* Rounded corners for the track */
+  }
+
+  /* Style for individual suggestion items */
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .suggestion-item:hover {
+    background: #f0f0f0;
+  }
+
+  /* No results styling */
+  .no-results {
+    padding: 10px;
+    color: #999;
+  }
+  .search-form__input {
+    border: 1.25px solid #c2bfba;
+    margin: 0;
+    width: 70%;
+    height: 50px;
+    padding: 0 21px;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #5a5857;
+    box-shadow: none !important;
+    outline: none !important;
+    font-family: Neue Haas Grotesk Display Pro !important;
+    font-weight: 450 !important;
+  }
+  .search-form__input:focus {
+    outline: none; /* Ensures no outline on focus */
+  }
+
+  /*
+** Responsive
+*/
+
+  @media (max-width: 991px) {
+    .search-container {
+      flex-flow: column;
+    }
+    .search-container .search-form__input {
+      width: 100%;
+    }
+  }
+</style>
+<script src="{{ 'api-domain-config.js' | asset_url }}"></script>
+<script>
+  const product = {{ product | json }}; // Get product details from Liquid
+
+  function extractProductsFromData(payload) {
+    const products = [];
+    // Track SKUs to prevent duplicates
+    const processedSkus = new Set();
+    for (const key in payload) {
+      if (payload[key].edges && payload[key].edges.length > 0) {
+        for (const item of payload[key].edges) {
+          const productNode = item.node;
+          // Get the SKU from the variant
+          const sku = productNode.variants?.nodes[0]?.sku;
+          // Only add if we haven't processed this SKU yet
+          if (sku && !processedSkus.has(sku)) {
+            processedSkus.add(sku);
+            products.push({
+              id: productNode.id,
+              title: productNode.title,
+              defaultVariantId: productNode.variants?.nodes[0]?.id,
+              defaultVariant: productNode.variants?.nodes[0],
+              metadata: productNode.metadata?.value,
+              class: productNode.class?.value,
+              sku: sku
+            });
+          }
+        }
+      }
+    }
+    window.bundleData = products; // Set global variable for use elsewhere
+    console.log('Extracted products:', products);
+    return products;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.getElementById('search-input');
+    const suggestionsList = document.getElementById('search-suggestions');
+    const addButton = document.getElementById('add-project-btn');
+    const quantityInput = document.querySelector('.js-qty__num');
+    const fixtureInput = document.querySelector('.fixture_input');
+    const shopifyCompanyId = {{customer.current_company.id | json}};
+    const API_SEARCH_URL = buildApiUrl(`/api/cartProjects/all?search=&companyId=${shopifyCompanyId}`);
+    const API_UPDATE_URL = buildApiUrl('api/cartProjects/updateProject');
+
+    let selectedProjectId = null;
+
+    addButton.disabled = true;
+
+    // Set up a MutationObserver to watch the Add to Cart button state
+    const addToCartButton = document.querySelector('.pc-add-to-cart');
+    if (addToCartButton) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'disabled') {
+            const isDisabled = addToCartButton.hasAttribute('disabled');
+            addButton.disabled = isDisabled;
+            if (isDisabled) {
+              addButton.textContent = 'Make Selections';
+            } else {
+              addButton.textContent = 'Add to Project';
+            }
+          }
+        });
+      });
+      observer.observe(addToCartButton, { attributes: true });
+    }
+
+    // Listen for custom event from product-customizer.js
+    document.addEventListener('productCustomizerAPIResponse', function(event) {
+      console.log('Received productCustomizerAPIResponse event:', event.detail);
+      if (!event.detail || !event.detail.data) {
+        console.error('Customizer event data missing!');
+      }
+      const products = extractProductsFromData(event.detail?.data || []);
+      let additionalProducts = event.detail.additionalSkus || [];
+      console.log('additionalProducts:', additionalProducts);
+      window.bundleData = [...products, ...additionalProducts];
+      console.log('window.bundleData set:', window.bundleData);
+    });
+
+    // Function to fetch suggestions
+    const fetchSuggestions = async (query) => {
+      try {
+        const url = API_SEARCH_URL.replace('search=', `search=${encodeURIComponent(query)}`);
+        const response = await fetch(url);
+        const data = await response.json();
+        suggestionsList.innerHTML = '';
+        if (data.data.length > 0) {
+          data.data.forEach((project) => {
+            const li = document.createElement('li');
+            li.textContent = project.name;
+            li.setAttribute('data-id', project._id);
+            li.classList.add('suggestion-item');
+            suggestionsList.appendChild(li);
+          });
+          suggestionsList.style.display = 'block';
+        } else {
+          suggestionsList.innerHTML = '<li class="no-results">No results found</li>';
+          suggestionsList.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Error fetching suggestions:', error);
+      }
+    };
+
+    // Event listener for input typing
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      if (query) {
+        fetchSuggestions(query);
+      } else {
+        suggestionsList.style.display = 'none';
+      }
+    });
+
+    // Event listener for selecting a suggestion
+    suggestionsList.addEventListener('click', (e) => {
+      if (e.target.classList.contains('suggestion-item')) {
+        const selectedName = e.target.textContent;
+        selectedProjectId = e.target.getAttribute('data-id');
+        searchInput.value = selectedName;
+        suggestionsList.style.display = 'none';
+      }
+    });
+
+    // Hide suggestions on clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-container')) {
+        suggestionsList.style.display = 'none';
+      }
+    });
+
+    function showMessage(message, isSuccess = true) {
+      const messageContainer = document.getElementById('message-container');
+      messageContainer.textContent = message;
+      messageContainer.className = isSuccess ? '' : 'error';
+      messageContainer.style.display = 'block';
+      setTimeout(() => {
+        messageContainer.style.display = 'none';
+      }, 3000);
+    }
+
+    // Add button click event to send data to the API
+    addButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      console.log('window.bundleData when clicking:', window.bundleData);
+      if (!selectedProjectId) {
+        showMessage('Please select a project first.', false);
+        return;
+      }
+      if (addButton.disabled) {
+        showMessage('Please complete all product selections first.', false);
+        return;
+      }
+      if (!window.bundleData || window.bundleData.length === 0) {
+        showMessage('No products available to add to project.', false);
+        return;
+      }
+      const currentQuantity = parseInt(quantityInput.value) || 1;
+      const currentFixture = fixtureInput ? fixtureInput.value : '';
+      const requestData = {
+        projectId: selectedProjectId,
+        updates: [],
+        newItems: window.bundleData.map(product => ({
+          product_id: product.id?.split('/').pop() || null,
+          variant_id: product.defaultVariantId?.split('/')?.pop() || null,
+          quantity: currentQuantity,
+          handle: product.handle,
+          product_title: product.title,
+          originalPrice: parseFloat(product.defaultVariant?.price?.amount),
+          variant_title: product.defaultVariant?.title || null,
+          properties: {
+            "MODULE TYPE": "General",
+            currentFixture: currentFixture,
+            "PRODUCT_SKU": product.sku || product.defaultVariant?.sku || '',
+          },
+          featured_image: {
+            url: product.featured_image_url || '',
+            alt: product.title,
+          },
+        }))
+      };
+      console.log('Sending request data to API:', requestData);
+      try {
+        const response = await fetch(API_UPDATE_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        });
+        const responseData = await response.json();
+        if (response.ok) {
+          console.log('API Response:', responseData);
+          showMessage('Product added to project successfully!');
+        } else {
+          console.error('Error:', responseData);
+          showMessage('Failed to add product to project.', false);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        showMessage('An error occurred while adding the product to the project.', false);
+      }
+    });
+  });
+</script>

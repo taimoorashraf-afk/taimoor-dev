@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_series_banner_ffA4FK": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Built for the coast.",
+        "main_subtitle": "Crafted to endure.",
+        "main_txt": "Coastal beauty comes with harsh conditions. Salt, humidity, and wind accelerate corrosion, making marine-grade trims essential for lasting performance and appearance.",
+        "main_banner_img_desktop": "shopify://shop_images/SolutionCoastal_Hero_D4.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/SolutionCoastal_Hero_M3.jpg"
+      }
+    },
+    "solutions_image_grids_CWrnUP": {
+      "type": "solutions-image-grids",
+      "blocks": {
+        "image_block_PLwHXn": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/SolutionsCoastal_block1_C.jpg",
+            "animated_box_heading": "Materials & finishes <br>",
+            "animated_box_heading_italic": "that last",
+            "animated_box_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem ex, placerat in hendrerit vitae, vestibulum non turpis. Cras cursus elit viverra enim accumsan commodo.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        },
+        "image_block_KtBH6B": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/SolutionsCoastal_block1_D.jpg",
+            "animated_box_heading": "Where sophistication",
+            "animated_box_heading_italic": "meets strength",
+            "animated_box_content": "The Artafex 4 IP/Marine-Grade Trim combines refined design with robust protection. Engineered to withstand coastal conditions, it offers fully sealed, impact-resistant construction while complementing the elegant aesthetics of luxury homes.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_PLwHXn",
+        "image_block_KtBH6B"
+      ],
+      "settings": {
+        "grid_top_heading": "Engineered for beauty <br>",
+        "grid_top_heading_italic": "that stands the test of time",
+        "grid_top_content": "Marine-grade finishes protect fixtures from salt, moisture, and corrosion, ensuring lasting elegance in even the harshest coastal environments."
+      }
+    },
+    "solutions_image_carousel_UcCNgm": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_A4GFF8": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/SolutionCoastal_Footer.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_A4GFF8"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "Precision in every detail",
+        "first_content": "IP/Marine-Grade Trim exemplifies this balance of design and durability. Featuring a fully sealed, impact-resistant front lens, it achieves IP66 and IK10 ratings, ensuring exceptional protection against water, salt, and physical wear. Available in black or white finishes, it complements any luxury coastal aesthetic while maintaining DMF’s standard of refined performance.",
+        "learnmore_text": "",
+        "learnmore_url": "#",
+        "learnmore_url_loggedin": "",
+        "second_heading": "",
+        "second_content": "",
+        "bottom_learnmore_text": "",
+        "bottom_learnmore_url": "#",
+        "bottom_learnmore_text_dealer": "",
+        "bottom_learnmore_url_dealer": ""
+      }
+    },
+    "solutions_video_carousel_kg4Mpj": {
+      "type": "solutions-video-carousel",
+      "blocks": {
+        "text_block_qTQ8BK": {
+          "type": "text_block",
+          "settings": {
+            "carousel_video": "ws88cgfze0"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_qTQ8BK"
+      ],
+      "name": "Solutions Video Carousels",
+      "settings": {
+        "video_first_heading": "Crafted for lasting elegance",
+        "video_first_content": "DMF’s marine-grade trims are crafted from aluminum with a specialized epoxy-based powder coating—a finish originally developed for demanding marine applications. <br>\nThis multi-layer system, combining an epoxy primer and a super-durable polyester topcoat, creates a surface resistant to UV, abrasion, and corrosion, even in the harshest conditions. <br>\n<br>\n\nThese finishes meet or exceed the rigorous AAMA 2605 standard for corrosion resistance — the same benchmark used in architectural metals for luxury waterfront construction.",
+        "video_learnmore_text": "",
+        "video_learnmore_url": "",
+        "video_second_heading": "",
+        "video_second_content": "",
+        "video_bottom_learnmore_text": "",
+        "video_bottom_learnmore_url": ""
+      }
+    },
+    "product_type_why_dmf_gUff6w": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#292521",
+        "section_text_color": "#f9f6f3",
+        "why_section_heading": "Artful lighting for",
+        "why_section_subheading": "daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 40 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/SolutionCoastal_Hero_D2.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img4": "shopify://shop_images/SolutionCoastal_Footer.jpg",
+        "why_img5": "shopify://shop_images/WhyDMF_DrivenEng_c1f2e59e-7940-4184-a54c-765f4cfc61f1.jpg"
+      }
+    }
+  },
+  "order": [
+    "main_series_banner_ffA4FK",
+    "solutions_image_grids_CWrnUP",
+    "solutions_image_carousel_UcCNgm",
+    "solutions_video_carousel_kg4Mpj",
+    "product_type_why_dmf_gUff6w"
+  ]
+}

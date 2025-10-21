@@ -1,0 +1,44 @@
+{% comment %} for product page only {% endcomment %}
+<custom-box>
+    <div class="customizer-fixtures-section">
+        <label class="label-styles font-neue-roman">Fixture Type <span class="optional-text font-neue-roman">(optional)</span></label>
+        <input class="fixture_input" type="text" name="properties[Fixture Type]" edit-fixture-field placeholder="Enter Fixture Type" maxlength="25" autocomplete="off" />
+    </div>
+</custom-box>
+
+{% style %}
+.customizer-fixtures-section{
+    width: 445px;
+    max-width: 100%;
+    padding-top: 30px;
+}
+.label-styles {
+    font-size: 16px;
+    line-height: 26px;
+    color: #292521;
+    margin-bottom: 10px;
+    display: block;
+}
+.customizer-fixtures-section input {
+    border: 1.25px solid #c2bfba;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    padding: 0 21px;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: .75px;
+    color: #5a5857;
+    box-shadow: none !important;
+    outline: none !important;
+    font-family: Neue Haas Grotesk Display Pro !important;
+    font-weight: 450 !important;
+}
+.optional-text {
+    font-size: 14px;
+    line-height: 16px;
+    color: #5a5857;
+}
+{% endstyle %}

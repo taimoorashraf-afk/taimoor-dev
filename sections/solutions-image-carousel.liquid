@@ -1,0 +1,586 @@
+<div class="solutions-image-carousels {% if section.settings.content_layout == 'content_right' %}content-right{% endif %}" id="solutions-img-carousel">
+    <div class="page-width">
+        <div class="row" >
+            <div class="carousel-left-col">
+                <div class="content-box">
+                    <h2 class="font-neue-light">{{ section.settings.first_heading }}</h2>
+                    <p class="font-neue-roman">{{ section.settings.first_content }}</p>
+                    {% unless section.settings.learnmore_text == blank %}
+                        {% if section.settings.learnmore_url_loggedin %}
+                            {% if customer %}
+                                <a class="font-neue-roman" href="{{ section.settings.learnmore_url_loggedin }}">{{ section.settings.learnmore_text }}
+                                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                        <defs>
+                                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                        </defs>
+                                        <g id="Layer_2-2">
+                                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                        </g>
+                                    </svg>
+                                </a>
+                                {% else %}
+                                <a class="font-neue-roman" href="{{ section.settings.learnmore_url }}">{{ section.settings.learnmore_text }}
+                                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                        <defs>
+                                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                        </defs>
+                                        <g id="Layer_2-2">
+                                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                        </g>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                            {% else %}
+                            <a class="font-neue-roman" href="{{ section.settings.learnmore_url }}">{{ section.settings.learnmore_text }}
+                                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                    <defs>
+                                    <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                    </defs>
+                                    <g id="Layer_2-2">
+                                    <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                    <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                    </g>
+                                </svg>
+                            </a>
+                        {% endif %}
+                        
+                      {% endunless %}
+                </div>
+
+                <div class="content-box">
+                    <h2 class="font-neue-light">{{ section.settings.second_heading }}</h2>
+                    <p class="font-neue-roman">{{ section.settings.second_content }}</p>
+                    {% if customer %}
+                        {% unless section.settings.bottom_learnmore_text_dealer == blank %}
+                            <a class="font-neue-roman" href="{{ section.settings.bottom_learnmore_url_dealer }}">{{ section.settings.bottom_learnmore_text_dealer }}
+                              <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                <defs>
+                                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                </defs>
+                                <g id="Layer_2-2">
+                                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                </g>
+                              </svg>
+                            </a>
+                        {% endunless %}
+                    {% else %}
+                        {% unless section.settings.bottom_learnmore_text == blank %}
+                            <a class="font-neue-roman" href="{{ section.settings.bottom_learnmore_url }}">{{ section.settings.bottom_learnmore_text }}
+                              <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                <defs>
+                                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                </defs>
+                                <g id="Layer_2-2">
+                                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                </g>
+                              </svg>
+                            </a>
+                        {% endunless %}
+                    {% endif %}
+                    
+                </div>
+            </div>
+            <div class="carousel-right-col">
+                <div class="solution-img-carousel">
+                    <div class="carousel-container">
+                        {% for block in section.blocks %}
+                            <div class="carousel-img-item{% if forloop.first %} active{% endif %}" {{ block.shopify_attributes }}>
+                                {% if block.settings.carousel_image %}
+                                    <img src="{{ block.settings.carousel_image | img_url: 'master' }}" width="711" height="560" alt="carousel image">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="carousel-navigation">
+                        <div class="pagination">
+                            <span class="current font-neue-roman">1</span>/<span class="total">{{ section.blocks.size }}</span>
+                        </div>
+                        <div class="dots">
+                            {% for block in section.blocks %}
+                                <span class="dot{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .solutions-image-carousels .row {
+        display: flex;
+        align-items: center;
+        gap: 0 173px;
+        min-height: 560px;
+    }
+    .solutions-image-carousels{
+        margin-bottom: 142px !important;
+        position: relative;
+    }
+    .carousel-left-col {
+        width: 442px;
+    }
+    .carousel-right-col {
+        width: 711px;
+        max-width: 100%;
+    }
+    .solution-img-carousel {
+        width: 711px;
+        max-width: 100%;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+    }
+    .carousel-img-item img {
+        width: 711px;
+        max-width: 100%;
+        height: 560px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    .content-box:first-child {
+        margin-bottom: 70px;
+    }
+    .content-box h2 {
+        font-size: 40px;
+        line-height: 42px;
+        color: #292521;
+        padding-bottom: 16px;
+        border-bottom: 1.5px solid #292521;
+        margin-bottom: 16px;
+        margin-top: 0;
+    }
+    .content-box p {
+        font-size: 16px;
+        line-height: 26px;
+        color: #292521;
+        margin: 0px 0px 21px;
+    }
+    .content-box a {
+        display: flex;
+        gap: 0px 13px;
+        font-size: 16px;
+        line-height: 23px;
+        color: #292521;
+    }
+    .content-box a svg{
+        width: 18.06px;
+        height: auto;
+    }
+
+    .content-right .row {
+        flex-flow: column-reverse;
+    }
+
+    .content-right .solution-img-carousel{
+        left: 0;
+        right: unset;
+    }
+
+    .content-right .carousel-left-col {
+        margin-left: auto;
+    }
+
+    .content-right .carousel-img-item img {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .content-right .row{
+        justify-content: center;
+    }
+
+    .content-right .carousel-navigation{
+      padding-left: 37px;
+      padding-right: 0px;
+    }
+
+    /*
+    ** Carousel
+    */
+    .carousel-container {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-img-item {
+        display: none;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel-img-item.active {
+        display: block;
+    }
+
+    .carousel-navigation {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0px 10px;
+        padding-right: 37px;
+        margin-top: 16px;
+    }
+
+    .dots {
+        display: flex;
+        gap: 10px 38px;
+    }
+
+    .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+        background: #C2BFBA;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background: #292521;
+    }
+
+    .pagination {
+        color: #292521;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (max-width: 1100px) and (min-width: 992px){
+        .solution-img-carousel,
+        .carousel-right-col{
+            width: 50%;
+        }
+        .carousel-left-col{
+            width: 44%;
+        }
+    }
+    @media (max-width: 991px){
+        .solution-img-carousel {
+            position: relative;
+        }
+        .solutions-image-carousels .row {
+            flex-flow: column-reverse;
+        }
+        .carousel-left-col,
+        .carousel-right-col {
+            width: 100%;
+        }
+        .carousel-img-item img {
+            width: 100%;
+            height: 377px;
+            border-radius: 8px !important;
+        }
+        .carousel-left-col {
+            margin-top: 47px;
+        }
+        #solutions-img-carousel .carousel-navigation{
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .content-box:first-child{
+            margin-bottom: 50px;
+        }
+        div#solutions-img-carousel {
+            margin-bottom: 101px !important;
+        }
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Create a unique identifier for each carousel
+    document.querySelectorAll('.solution-img-carousel').forEach((carousel, carouselIndex) => {
+        const carouselId = `carousel-${carouselIndex}`;
+        carousel.setAttribute('data-carousel-id', carouselId);
+        
+        let currentSlide = 0;
+        const slides = carousel.querySelectorAll('.carousel-img-item');
+        const dots = carousel.querySelectorAll('.dot');
+        const currentPage = carousel.querySelector('.current');
+        const totalPages = carousel.querySelector('.total');
+        const totalSlides = slides.length;
+        
+        // Set initial total
+        totalPages.textContent = totalSlides;
+        
+        // Track autoplay state
+        let autoplayEnabled = true;
+        let autoplayTimer = null;
+        
+        // Update carousel state
+        function updateCarousel() {
+            // Only update this specific carousel
+            const thisCarousel = document.querySelector(`[data-carousel-id="${carouselId}"]`);
+            const thisSlides = thisCarousel.querySelectorAll('.carousel-img-item');
+            const thisDots = thisCarousel.querySelectorAll('.dot');
+            const thisCurrentPage = thisCarousel.querySelector('.current');
+            
+            // Update slides
+            thisSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update dots
+            thisDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update pagination
+            thisCurrentPage.textContent = currentSlide + 1;
+        }
+        
+        // Start autoplay
+        function startAutoplay() {
+            if (autoplayEnabled && !autoplayTimer) {
+                autoplayTimer = setInterval(() => {
+                    if (!document.hidden) {  // Only advance if page is visible
+                        currentSlide = (currentSlide + 1) % totalSlides;
+                        updateCarousel();
+                    }
+                }, 3000);
+            }
+        }
+        
+        // Stop autoplay
+        function stopAutoplay() {
+            if (autoplayTimer) {
+                clearInterval(autoplayTimer);
+                autoplayTimer = null;
+            }
+        }
+        
+        // Reset autoplay timer
+        function resetAutoplay() {
+            stopAutoplay();
+            // Only restart if autoplay is enabled
+            if (autoplayEnabled) {
+                startAutoplay();
+            }
+        }
+        
+        // Initialize autoplay
+        startAutoplay();
+        
+        // Add click handlers to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+                resetAutoplay();
+            });
+        });
+        
+        // Pause auto-advance on hover
+        carousel.addEventListener('mouseenter', () => {
+            stopAutoplay();
+        });
+        
+        // Resume auto-advance when mouse leaves
+        carousel.addEventListener('mouseleave', () => {
+            if (autoplayEnabled) {
+                startAutoplay();
+            }
+        });
+        
+        // Touch handling with complete disabling of autoplay during touch
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let userInteracting = false;
+        
+        // Completely disable autoplay during user interaction
+        function disableAutoplay() {
+            autoplayEnabled = false;
+            stopAutoplay();
+        }
+        
+        // Re-enable autoplay after user is done
+        function enableAutoplay() {
+            autoplayEnabled = true;
+            startAutoplay();
+        }
+        
+        // When user starts touching carousel
+        carousel.addEventListener('touchstart', function(e) {
+            userInteracting = true;
+            touchStartX = e.changedTouches[0].screenX;
+            
+            // Immediately disable autoplay
+            disableAutoplay();
+            
+            // Prevent default to avoid page scrolling (optional)
+            // e.preventDefault();
+        }, { passive: false });
+        
+        // As user moves finger
+        carousel.addEventListener('touchmove', function(e) {
+            if (userInteracting) {
+                // Ensure autoplay remains disabled
+                disableAutoplay();
+            }
+        }, { passive: true });
+        
+        // When user lifts finger
+        carousel.addEventListener('touchend', function(e) {
+            if (userInteracting) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                userInteracting = false;
+                
+                // Wait a full second before re-enabling autoplay
+                setTimeout(function() {
+                    enableAutoplay();
+                }, 1000);
+            }
+        });
+        
+        // When touch is canceled
+        carousel.addEventListener('touchcancel', function(e) {
+            if (userInteracting) {
+                userInteracting = false;
+                
+                // Wait a full second before re-enabling autoplay
+                setTimeout(function() {
+                    enableAutoplay();
+                }, 1000);
+            }
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const difference = touchStartX - touchEndX;
+            
+            if (Math.abs(difference) > swipeThreshold) {
+                if (difference > 0) {
+                    // Swipe left
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                } else {
+                    // Swipe right
+                    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                }
+                updateCarousel();
+            }
+        }
+        
+        // Handle page visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoplay();
+            } else if (autoplayEnabled && !userInteracting) {
+                startAutoplay();
+            }
+        });
+    });
+});
+</script>
+
+{% schema %}
+{
+    "name": "Solutions Image Carousels",
+    "settings": [
+        {
+            "type": "select",
+            "id": "content_layout",
+            "label": "Content Layout",
+            "options": [
+                {
+                    "value": "content_left",
+                    "label": "Content on Left"
+                },
+                {
+                    "value": "content_right",
+                    "label": "Content on Right"
+                }
+            ],
+            "default": "content_left"
+        },
+        {
+            "type": "text",
+            "id": "first_heading",
+            "label": "First heading"
+        },
+        {
+            "type": "textarea",
+            "id": "first_content",
+            "label": "First content"
+        },
+        {
+            "type": "text",
+            "id": "learnmore_text",
+            "label": "Top learn more text"
+        },
+        {
+            "type": "text",
+            "id": "learnmore_url",
+            "label": "Top learn more URL for guests"
+        },
+        {
+            "type": "text",
+            "id": "learnmore_url_loggedin",
+            "label": "Top learn more URL for dealers"
+        },
+        {
+            "type": "text",
+            "id": "second_heading",
+            "label": "Second heading"
+        },
+        {
+            "type": "textarea",
+            "id": "second_content",
+            "label": "Second content"
+        },
+        {
+            "type": "text",
+            "id": "bottom_learnmore_text",
+            "label": "Bottom learn more text - Homeowner"
+        },
+        {
+            "type": "text",
+            "id": "bottom_learnmore_url",
+            "label": "Bottom learn more URL"
+        },
+        {
+            "type": "text",
+            "id": "bottom_learnmore_text_dealer",
+            "label": "Bottom learn more text - Dealer"
+        },
+        {
+            "type": "text",
+            "id": "bottom_learnmore_url_dealer",
+            "label": "Bottom learn more URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image_block",
+            "name": "Add Carousel Images",
+            "limit": 8,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "carousel_image",
+                    "label": "Add Carousel Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Solutions Image Carousels",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

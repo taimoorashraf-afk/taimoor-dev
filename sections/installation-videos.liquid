@@ -1,0 +1,269 @@
+<section class="installation-videos">
+    <div class="container">
+        <h2 class="section-title font-neue">Installation Videos</h2>
+
+        <div class="videos-carousel-container">
+            <div id="video_carousels" class="videos-carousel">
+                <div class="video-carousel-item">
+                    <video width="320" height="240" poster="{{ 'video-poster1.png' | asset_url }}">
+                        <source src="{{ 'dummy-video.mp4' | asset_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img class="video-play-btn" src="{{ 'play-btns.png' | asset_url }}" alt="play button" />
+                    <p class="video-description">Ut semper at diam et ornare. A nibh lacinia, viverra justo accumsan, vulputate eros.</p>
+                </div>
+
+                <div class="video-carousel-item">
+                    <video width="320" height="240" poster="{{ 'video-poster2.png' | asset_url }}">
+                        <source src="{{ 'dummy-video.mp4' | asset_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img class="video-play-btn" src="{{ 'play-btns.png' | asset_url }}" alt="play button" />
+                    <p class="video-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit porttitor.</p>
+                </div>
+
+                <div class="video-carousel-item">
+                    <video width="320" height="240" poster="{{ 'video-poster1.png' | asset_url }}">
+                        <source src="{{ 'dummy-video.mp4' | asset_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img class="video-play-btn" src="{{ 'play-btns.png' | asset_url }}" alt="play button" />
+                    <p class="video-description">Ut semper at diam et ornare. A nibh lacinia, viverra justo accumsan, vulputate eros.</p>
+                </div>
+
+                <div class="video-carousel-item">
+                    <video width="320" height="240" poster="{{ 'video-poster2.png' | asset_url }}">
+                        <source src="{{ 'dummy-video.mp4' | asset_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img class="video-play-btn" src="{{ 'play-btns.png' | asset_url }}" alt="play button" />
+                    <p class="video-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit porttitor.</p>
+                </div>
+
+                <div class="video-carousel-item">
+                    <video width="320" height="240" poster="{{ 'video-poster1.png' | asset_url }}">
+                        <source src="{{ 'dummy-video.mp4' | asset_url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <img class="video-play-btn" src="{{ 'play-btns.png' | asset_url }}" alt="play button" />
+                    <p class="video-description">Ut semper at diam et ornare. A nibh lacinia, viverra justo accumsan, vulputate eros.</p>
+                </div>
+            </div>
+            <div class="progress-bar-track"><div class="progress-bar"></div></div>
+            <div class="video-carousel-btns">
+                <button class="carousel-btn prev-btn"><img src="{{ 'icon-arrow.png' | asset_url }}" alt="prev icon" /></button>
+                <button class="carousel-btn next-btn"><img src="{{ 'icon-arrow.png' | asset_url }}" alt="prev icon" /></button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<style type="text/css">
+    section.installation-videos .container {
+        padding: 0px;
+    }
+    section.installation-videos {
+        padding: 60px 0px 35px;
+    }
+    section.installation-videos .section-title{
+        margin: 0px 0px 20px;
+    }
+
+    /* Videos Carousel */
+    .videos-carousel-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .videos-carousel {
+        display: flex;
+        transition: transform 0.3s ease;
+        gap: 0px 17px;
+    }
+
+    .video-carousel-item {
+        flex: 0 0 40%;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    img.video-play-btn {
+        position: absolute;
+        top: 33%;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+
+    .carousel-btn {
+        background-color: rgba(90, 88, 87, 1);
+        opacity: 0.4;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-btn img{
+        filter: brightness(0) invert(1);
+    }
+    
+    .carousel-btn:hover{
+        opacity: 1;
+    }
+
+    .video-carousel-btns{
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 0px 17px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    
+    .prev-btn {
+        left: 0;
+    }
+
+    .prev-btn svg{
+        transform: rotate(180deg);
+    }
+
+    .prev-btn svg path{ 
+        stroke: rgba(249, 246, 243, 1);
+    }
+
+    .next-btn {
+        right: 0;
+    }
+
+    .video-carousel-item video {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .video-description {
+        font-size: 16px;
+        line-height: 26px;
+        color: rgba(41, 37, 33, 1);
+        letter-spacing: 0.65px;
+        margin: 0px;
+    }
+
+    .progress-bar {
+        display: none;
+        height: 1.5px;
+        background-color: rgba(194, 191, 186, 1);
+        width: 0;
+        transition: width 0.3s ease;
+    }
+
+    .progress-bar-track {
+        display: block;
+        width: 100%;
+        background-color: rgba(90, 88, 87, 1);
+        min-width: 100%;
+        position: relative;
+        height: 1.5px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .video-carousel-item {
+            flex: 0 0 80%;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+        .video-carousel-item {
+            flex: 0 0 45%;
+        }
+    }
+
+    @media (max-width: 767px){
+        section.installation-videos {
+            padding: 30px 0px 20px;
+        }
+        section.installation-videos .section-title {
+            margin: 0px 0px 20px;
+            font-size: 30px;
+            line-height: 42px;
+        }
+        .progress-bar {
+            display: block !important;
+        }
+        .video-carousel-btns {
+            margin-top: 30px;
+            margin-bottom: 0px;
+        }
+    }
+
+    @media (max-width: 600px){
+        img.video-play-btn {
+            top: 17.5vw;
+            width: 7.833vw;
+            height: 7.833vw;
+        }
+    }
+
+</style>
+
+<script type="text/javascript">
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const carousel = document.querySelector('.videos-carousel');
+    let scrollPosition = 0;
+
+    // Show controls when clicking video poster
+    document.querySelectorAll('.video-play-btn').forEach((playBtn) => {
+        playBtn.addEventListener('click', () => {
+            const video = playBtn.previousElementSibling;
+            if (video.tagName === 'VIDEO') {
+                video.controls = true;
+                video.play();
+                playBtn.style.display = 'none';  // Hide the play button
+            }
+        });
+    });
+
+    // Custom Progress bar
+    const progressBar = document.querySelector('.progress-bar');
+    const totalItems = carousel.querySelectorAll('.video-carousel-item').length;
+
+    function updateProgressBar() {
+        const progress = (scrollPosition / ((carousel.scrollWidth - carousel.clientWidth) / totalItems)) / totalItems;
+        progressBar.style.width = `${Math.min(progress * 100, 100)}%`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const itemWidth = carousel.querySelector('.video-carousel-item').offsetWidth;
+        if (scrollPosition < (carousel.scrollWidth - carousel.clientWidth)) {
+            scrollPosition += itemWidth;
+            carousel.style.transform = `translateX(-${scrollPosition}px)`;
+            updateProgressBar();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const itemWidth = carousel.querySelector('.video-carousel-item').offsetWidth;
+        if (scrollPosition > 0) {
+            scrollPosition -= itemWidth;
+            carousel.style.transform = `translateX(-${scrollPosition}px)`;
+            updateProgressBar();
+        }
+    });
+
+    // Initialize the progress bar when the page loads
+    updateProgressBar();
+
+</script>

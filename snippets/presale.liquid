@@ -1,0 +1,42 @@
+{% comment %}
+Reusable Presale (STOQ) component.
+Usage:
+  {% render 'presale', product: product, product_id: product.id, variant_id: product.selected_or_first_available_variant.id %}
+Make sure to include the asset:
+  <script src="{{ 'presale.js' | asset_url }}" defer="defer"></script>
+Optional override without product:
+  {% render 'presale', product_id: id, variant_id: vid, show_when_available: true %}
+{% endcomment %}
+
+<div
+    data-presale 
+    {% if product_id %}data-product-id="{{ product_id }}"{% endif %}
+    {% if variant_id %}data-variant-id="{{ variant_id }}"{% endif %}
+>
+<button
+    type="button"
+    class="button font-neue-roman"
+    data-presale-button
+    style="display:none;background-color:#292521;"
+    aria-hidden="true"
+    {% if product_id %}data-product-id="{{ product_id }}"{% endif %}
+    {% if variant_id %}data-variant-id="{{ variant_id }}"{% endif %}
+>
+    <span>Notify Me When Available</span>
+</button>
+</div>
+
+<!-- hide quantity selector, fixture type, add to cart button , default notify me button, and projects button if notify me is true -->
+{% if template.name == 'product' %}
+  <style>
+    .restock-rocket-button-container-float-right,
+    .product-form__input.product-form__quantity,
+    .product-form,
+    .price span.price__badge-sold-out {
+      display: none;
+    }
+  </style>
+{% endif %}
+
+
+

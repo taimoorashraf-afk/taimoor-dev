@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-series-banner": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Artafex 2",
+        "main_subtitle": "gracefully stylish.",
+        "main_txt": "Our award-winning small-aperture lighting solution is designed and engineered to keep ceilings quiet and\nuncluttered.",
+        "main_banner_img_desktop": "shopify://shop_images/PDP4_Hero2_D.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/Series2_HeroM_B.jpg"
+      }
+    },
+    "animated-image-grids-series": {
+      "type": "animated-image-grids-series",
+      "blocks": {
+        "text_block_AjYApw": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Simply",
+            "block_text_2": "interchangeable",
+            "block_bottom_heading": "Flexibility",
+            "block_percentage_txt": "Different <br> combinations",
+            "block_percentage_txt_lower": "With a flexible design, you can customize every detail for both function and aesthetics.",
+            "block_percent_number": "65,000",
+            "block_p_txt": "The simple universal housing fits both fixed and adjustable modules for easy interchangeability.",
+            "block_tag": "Modularity",
+            "block_image_large": "shopify://shop_images/Series_2inch_1Modul_Expanded_D2.jpg"
+          }
+        },
+        "text_block_Vw76KY": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Unrivaled color",
+            "block_text_2": "depth and brilliance",
+            "block_bottom_heading": "Unveiling true beauty",
+            "block_percentage_txt": "variation of colors studied to develop True Spectrum®",
+            "block_percentage_txt_lower": "Now the finishes that were so carefully selected in the home will reach their full potential beauty",
+            "block_percent_number": "99",
+            "block_p_txt": "Our exclusive True Spectrum® chipset provides industry-leading color rendering and richness.",
+            "block_tag": "Engineering",
+            "block_image_large": "shopify://shop_images/Series_2inch_2TrueSp_Expanded_D4.jpg"
+          }
+        },
+        "text_block_iEqMKc": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Sophistication",
+            "block_text_2": "for any space",
+            "block_bottom_heading": "Thoughtfully designed",
+            "block_percentage_txt": "Different styles and finishes to choose from",
+            "block_percentage_txt_lower": "Our trims blend effortlessly with your home's style, creating a serene, cohesive flow throughout the home.",
+            "block_percent_number": "26",
+            "block_p_txt": "DMF brings the showroom sophistication of <br>\n small-aperture lighting to the entire home.",
+            "block_tag": "Aesthetic",
+            "block_image_large": "shopify://shop_images/Series_2inch_3Aest_Expanded_D.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_AjYApw",
+        "text_block_Vw76KY",
+        "text_block_iEqMKc"
+      ],
+      "settings": {
+        "main_title": "An ambiance of",
+        "main_subtitle": "modern elegance",
+        "main_txt": "Every element of the Artafex 2 is engineered <br> to elevate the beauty of your home while receding <br> tastefully within any\nspace."
+      }
+    },
+    "animated-tab-carousel": {
+      "type": "animated-tab-carousel",
+      "blocks": {
+        "text_block_rRL8d4": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Housing",
+            "tab_content": "The Artafex 2 NC housing, compatible with fixed and adjustable modules, features a pull-down latch for easy below-ceiling servicing. Available in NC round and square or Remodel round and square, it includes our patent-pending Precision Lock Collars for flawless installation and no over-cutting.",
+            "tab_main_img": "shopify://shop_images/Series_2inch_Tech_HousingSmall_D.png",
+            "tab_icon": "shopify://shop_images/Housing2.svg"
+          }
+        },
+        "text_block_gUypKy": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Module",
+            "tab_content": "A marriage of large-fixture performance with small-aperture design for a quiet ceiling. Delivers up to 1250 lm with True Spectrum® color rendering and allows easy beam angle repositioning in the adjustable version.",
+            "tab_main_img": "shopify://shop_images/Series_04_Artafex2_Modules.png",
+            "tab_icon": "shopify://shop_images/Module2.svg"
+          }
+        },
+        "text_block_DjfjMV": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Trim",
+            "tab_content": "Designed to blend seamlessly or stand out, with architecture-grade finishes and deep die-cast aluminum for exceptional performance. Available in round, square, pinhole, and wall wash options, with microflange or no flange, in stylish finishes.",
+            "tab_main_img": "shopify://shop_images/Series_04_Artafex2_Trim.png",
+            "tab_icon": "shopify://shop_images/Trim3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_rRL8d4",
+        "text_block_gUypKy",
+        "text_block_DjfjMV"
+      ],
+      "settings": {
+        "main_title": "Simple, small and",
+        "main_subtitle": "Sophisticated",
+        "main_txt_url_homeowner": "/products/2-trims",
+        "main_txt_url_dealer": "/products/2-trims-1"
+      }
+    },
+    "series-why-dmf": {
+      "type": "series-why-dmf",
+      "settings": {
+        "why_section_heading": "Artful lighting",
+        "why_section_subheading": "for daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 30 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/Transform_TopLeft_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/Transform_Central_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_BottomRight_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main-series-banner",
+    "animated-image-grids-series",
+    "animated-tab-carousel",
+    "series-why-dmf"
+  ]
+}

@@ -1,0 +1,11 @@
+@media (max-width: 991px){
+    section.layers-of-lighting{
+        height: 680px !important;
+    }
+    .layers-content-left span.font-austin-italic{
+        padding-top: 3px !important;
+    }
+    .layers-content-left h2{
+        margin-bottom: 20px !important;
+    }
+}

@@ -1,0 +1,363 @@
+<section class="layers-of-lighting" id="layers-of-lighting">
+    <img src="{{ section.settings.layers_defaultbg | img_url: 'master' }}" width="1920" height="678" class="swatch-initial-img" alt="layers of lighting image" />
+    <div class="container">
+        <div class="row">
+            <div class="layers-content-left">
+                <h2 class="text-light font-neue-light">{{ section.settings.layers_heading }} <br><span class="font-austin-italic">{{ section.settings.layers_heading_italic }}</span></h2>
+                <p class="text-light font-neue-roman">{{ section.settings.layers_content }}</p>
+            </div>
+            <div class="layers-content-right"></div>
+        </div>
+        <div class="layers-btns-carousel">
+            {% for block in section.blocks %}
+                <div class="btn-carousel-item">
+                    <a class="text-light font-neue-roman" href="#">{{ block.settings.layers_btn_text }}</a>
+                    <div class="swatch-imgs">
+                        <img src="{{ block.settings.layers_btn_desktopimage | img_url: 'master' }}" data-mobile-src="{{ block.settings.layers_btn_mobileimage | img_url: 'master' }}" width="1920" height="678" class="swatch-clicked-img" alt="{{ block.settings.layers_btn_text }}" />
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    .swatch-initial-img, .swatch-clicked-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .swatch-initial-img {
+        opacity: 1; /* Show initial image by default */
+    }
+    .swatch-clicked-img.active {
+        opacity: 1; /* Show the clicked image */
+    }
+    section.layers-of-lighting {
+        position: relative;
+        height: 678px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-start;
+    }
+    section.layers-of-lighting .row {
+        z-index: 2;
+        position: relative;
+    }
+    .layers-content-left h2 {
+        font-size: 5.556vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        margin: 0px 0px 36px;
+        height: 165px;
+    }
+    .layers-content-left p {
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+        margin: 0px;
+        width: 444px;
+        max-width: 100%;
+    }
+    .layers-btns-carousel {
+        display: flex;
+        margin: 40px 0px 46px;
+        gap: 0px 21px;
+    }
+    .btn-carousel-item{
+        width: 20%;
+    }
+    .btn-carousel-item a {
+        padding: 0px 15px;
+        font-size: 13px;
+        line-height: 23px;
+        height: 50px;
+        letter-spacing: 0.65px;
+        border-radius: 80px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        position: relative;
+        width: 100%;
+        background-color: rgba(239, 235, 230, 0.2);
+        backdrop-filter: blur(16px);
+        color: #efebe6;
+    }
+    .btn-carousel-item a:before {
+        content: '';
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 80px;
+        top: 0px;
+        left: 0px;
+        pointer-events: none;
+    }
+    .btn-carousel-item a:hover{
+        color: rgba(41, 37, 33, 1);
+        background-color: rgba(249, 246, 243, 1);
+    }
+
+    .activated-btn {
+        background-color: #F9F6F3 !important;
+        color: #292521 !important;
+    }
+
+    .layers-content-left {
+        width: 463px;
+        max-width: 100%;
+    }
+
+    .layers-content-left span.font-austin-italic {
+        font-size: 5.972vw;
+        line-height: 6.111vw;
+    }
+    
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .layers-content-left h2{
+            font-size: 80px;
+            line-height: 67px;
+        }
+        .layers-content-left span.font-austin-italic {
+            font-size: 86px;
+            line-height: 88px;
+        }
+    }
+
+    @media (max-width: 767px){
+        .layers-content-left h2 {
+            font-size: 60px;
+            line-height: 64px;
+            margin-bottom: 25px;
+            padding: 0px 20px;
+            height: auto;
+        }
+        .layers-content-left p br {
+            display: none;
+        }
+        .layers-content-left p{
+            padding: 0px 20px;
+        }
+        .layers-content-left span.font-austin-italic {
+            font-size: 64px;
+            line-height: 68px;
+        }
+        .swatch-clicked-img{
+            position: absolute !important;
+            z-index: 1;
+        }
+        .layers-btns-carousel {
+            display: flex;
+            padding: 0;
+            position: unset !important;
+            overflow: visible;
+            overflow-x: scroll;
+            margin: 32px 0px;
+            gap: 0px 16px;
+            padding-left: 20px;
+            scroll-behavior: smooth;
+        }
+
+        section.layers-of-lighting{
+            height: 678px;
+        }
+
+        section.layers-of-lighting .container {
+            position: unset !important;
+            overflow: visible;
+            padding: 0px;
+        }
+
+        .swatch-imgs {
+            position: unset;
+        }
+
+        .btn-carousel-item {
+            min-width: 100px;
+            flex-shrink: 0;
+            cursor: pointer;
+            user-select: none;
+            position: unset !important;
+            width: calc(100% / 3);
+        }
+
+        .layers-btns-carousel::-webkit-scrollbar {
+            display: none;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    const initialImg = document.querySelector('.swatch-initial-img');
+    const swatchImages = document.querySelectorAll('.swatch-clicked-img');
+    const buttons = document.querySelectorAll('.btn-carousel-item a');
+    buttons[0].classList.add('activated-btn');
+
+    function updateImagesForScreenSize() {
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+        swatchImages.forEach(img => {
+            if (isMobile) {
+                img.src = img.getAttribute('data-mobile-src');
+            } else {
+                img.src = img.getAttribute('src'); // Default desktop image
+            }
+        });
+    }
+
+    // Call it initially to set the correct images based on screen size
+    updateImagesForScreenSize();
+
+    // Also call it on resize to handle dynamic changes in screen size
+    window.addEventListener('resize', updateImagesForScreenSize);
+
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Reset all images to be hidden
+            swatchImages.forEach(img => img.classList.remove('active'));
+            initialImg.classList.remove('active');
+
+            // Show the clicked image
+            swatchImages[index].classList.add('active');
+
+            // Remove 'activated-btn' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('activated-btn'));
+
+            // Add 'activated-btn' class to the clicked button
+            button.classList.add('activated-btn');
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('.layers-btns-carousel');
+    let isDragging = false;
+    let startPos = 0;
+    let scrollLeft = 0;
+
+    // Mouse and touch start events
+    carousel.addEventListener('mousedown', (event) => {
+        isDragging = true;
+        startPos = event.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+        carousel.classList.add('grabbing');
+    });
+
+    carousel.addEventListener('touchstart', (event) => {
+        isDragging = true;
+        startPos = event.touches[0].pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+        carousel.classList.add('grabbing');
+    });
+
+    // Mouse and touch move events
+    carousel.addEventListener('mousemove', (event) => {
+        if (!isDragging) return;
+        event.preventDefault();
+        const x = event.pageX - carousel.offsetLeft;
+        const walk = (x - startPos) * 2; // Adjust scrolling speed here
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    carousel.addEventListener('touchmove', (event) => {
+        if (!isDragging) return;
+        const x = event.touches[0].pageX - carousel.offsetLeft;
+        const walk = (x - startPos) * 2; // Adjust scrolling speed here
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // End of dragging
+    carousel.addEventListener('mouseup', () => {
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+    });
+
+    carousel.addEventListener('touchend', () => {
+        isDragging = false;
+        carousel.classList.remove('grabbing');
+    });
+});
+
+
+
+
+</script>
+
+{% schema %}
+{
+    "name": "Layers Of Lighting",
+    "settings": [
+        {
+            "type": "text",
+            "id": "layers_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "layers_heading_italic",
+            "label": "Section heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "layers_content",
+            "label": "Section content"
+        },
+        {
+            "type": "image_picker",
+            "id": "layers_defaultbg",
+            "label": "Section's default background image"
+        }
+    ],
+    "blocks": [
+        {
+        "type": "carousel_item",
+        "name": "Carousel Buttons",
+        "settings": [
+            {
+            "type": "text",
+            "id": "layers_btn_text",
+            "label": "Button text"
+            },
+            {
+            "type": "image_picker",
+            "id": "layers_btn_desktopimage",
+            "label": "Desktop image for button"
+            },
+            {
+            "type": "image_picker",
+            "id": "layers_btn_mobileimage",
+            "label": "Mobile image for button"
+            }
+        ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Layers Of Lighting",
+        "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

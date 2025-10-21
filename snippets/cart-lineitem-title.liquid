@@ -1,0 +1,28 @@
+
+{% liquid
+    assign item_metadata = item.product.metafields.custom.metadataoptions.value
+    assign item_classname = item.product.metafields.custom.class_name.value
+
+    assign bundle_item = false 
+
+    if item.properties['_bundleId']
+        assign bundle_item = true
+    endif
+
+    if item_classname == null and bundle_item == false
+        assign item_type = 'default_shopify_product'
+    else
+        assign item_type = 'bundle_child_item'
+    endif
+%}
+
+{% if bundle_item %}
+    {{ item.product.title | escape}} <!-- bundle title -->
+    {% else %}
+        {% if item_type == 'default_shopify_product' %}
+            {{ item.product.title | escape }} <!-- default shopify product title -->
+        {% elsif item_type == 'bundle_child_item' %}
+            {{ item_classname | escape }} <!-- bundle child item will display class name here instead of title -->
+        {% endif %}    
+{% endif %}
+

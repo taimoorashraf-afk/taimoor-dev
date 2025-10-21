@@ -1,0 +1,1323 @@
+<!-- Custom Image Grids -->
+<section class="image-grids-animation series-animated-grids">
+  <div class="container">
+    <div class="top-section-row">
+        <div class="top-col-left">
+            <h2 class="font-neue-light text-dark">{{ section.settings.main_title }} <br><span class="font-austin-italic">{{ section.settings.main_subtitle }}</span></h2>
+        </div>
+        <div class="top-col-right">
+            <p class="font-neue-roman text-dark">{{ section.settings.main_txt }}</p>
+        </div>
+    </div>
+    <div class="image-grid-row">
+
+  {% for block in section.blocks %}
+    {% if block.type == 'text_block' %}
+
+      <div class="column">
+        <div class="column-content">
+          <img src="{{ block.settings.block_image_large | image_url }}" width="394" height="555" class="extendedImage" alt="grid image" />
+          <img class="image-grid-modal" src="{{ block.settings.block_image_large | image_url }}" width="1604" height="1116" alt="grid image mobile" />
+          <span class="image-grid-title font-neue-roman text-light">{{ block.settings.block_tag }}</span>
+          <div class="content">
+            <div class="col-content-row">
+                <div class="col-content-left">
+                    <h2 class="text-light font-neue-light">{{ block.settings.block_text_1 }} <br><span class="font-austin-italic">{{ block.settings.block_text_2 }}</span></h2>
+                    <p class="text-light font-neue-roman">{{ block.settings.block_p_txt }}</p>
+                    <div class="column-btns-row">
+                        <a class="learn-more-arrow btn-light font-neue-roman grid-trigger" href="javascript:void(0)">Learn More 
+                          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                              <defs>
+                                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                              </defs>
+                              <g id="Layer_2-2">
+                                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                              </g>
+                          </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-content-right">
+                    <div class="transparent-content upper-content">
+                        <h3 class="font-austin-italic text-light">{{ block.settings.block_percent_number }} {% comment %}<img src="{{ 'series-percentageicon.svg' | asset_url }}" alt="content badge" /> {% endcomment %}</h3>
+                        <p class="font-neue-roman text-light">{{ block.settings.block_percentage_txt }}</p>
+                    </div>
+                    <div class="transparent-content bottom-content">
+                        <h3 class="bordered-heading text-light font-neue-roman">{{ block.settings.block_bottom_heading }}</h3>
+                        <p class="font-neue-roman text-light">{{ block.settings.block_percentage_txt_lower }} </p>
+                        {% comment %} <div class="content-icons">
+
+                            <img src="{{ 'series-img-grid-icon1.svg' | asset_url }}" alt="content icon" />
+                            <img src="{{ 'series-img-grid-icon2.svg' | asset_url }}" alt="content icon" />
+                            <img src="{{ 'series-img-grid-icon3.svg' | asset_url }}" alt="content icon" />
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            <button class="close-btn">
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="18" fill="#F9F6F3"></rect>
+                <path d="M13.057 13.7506L22.2494 22.943M12.9038 23.0962L17.6532 18.3468L22.0962 13.9038" stroke="#292521" stroke-width="1.5"></path>
+              </svg>
+            </button>
+          </div>
+      </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+      </div>
+
+      
+
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <div class="carousel-controls">
+      <button id="prev-btn">
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+            <defs>
+                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+            </defs>
+            <g id="Layer_2-2">
+                <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+            </g>
+        </svg>
+      </button>
+      <button id="next-btn">
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+            <defs>
+                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+            </defs>
+            <g id="Layer_2-2">
+                <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+            </g>
+        </svg>
+      </button>
+    </div>
+      
+    <h2 class="section-center-heading">{{ section.settings.bottom_main_heading }} <span class="font-austin-italic">{{ section.settings.bottom_main_heading_italic }}</span></h2>
+  </div>
+</section>
+
+<!-- Modal Structure -->
+<div id="imageGridModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="image-grid-title modals-tags text-light"></span>
+      <img id="modal-image" src="" width="600" height="849" alt="modal image" class="modal-image" />
+      <div class="modal-contentarea">
+        <h2 class="modal-title font-neue-light text-light"></h2>
+        <p class="modal-text font-neue-roman text-light"></p>
+        <div class="modal-transparent-content">
+            <div class="transparent-contents modal-transparent-top">
+                <span class="font-austin-italic text-light">{{ block.settings.block_percent_number }}</span>
+                <p class="text-light font-neue-roman text-light">Maecenas eget est at purus lobortis facilisis.</p>
+                <img src="{{ 'series-percentageicon.svg' | asset_url }}" width="23" height="29" alt="content badge" />
+            </div>
+            <div class="transparent-contents modal-transparent-bottom">
+                <h3 class="text-light font-neue-roman">Lorem ipsum dolor</h3>
+                <p class="text-light font-neue-roman">Fusce aliquet non pretium tellus nunc maximus odio sit amet, consectetur adipiscing elit.</p>
+                <div class="content-icons">
+                    <img src="{{ 'content-icon1.png' | asset_url }}" width="20" height="29" alt="content icon" />
+                    <img src="{{ 'content-icon2.png' | asset_url }}" width="20" height="29" alt="content icon" />
+                    <img src="{{ 'content-icon3.png' | asset_url }}" width="15" height="29" alt="content icon" />
+                </div>
+            </div>
+        </div>
+        <a class="modal-link btn-light" href="#">Learn More 
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+              </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+  <div class="modal-action-btns">
+    <button id="prev-modal-btn">
+      <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+          <defs>
+              <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+          </defs>
+          <g id="Layer_2-2">
+              <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+              <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+          </g>
+      </svg>
+    </button>
+    <button id="next-modal-btn">
+      <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+          <defs>
+              <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+          </defs>
+          <g id="Layer_2-2">
+              <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+              <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+          </g>
+      </svg>
+    </button>
+  </div>
+  <button id="close-modal-btn">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="18" fill="#F9F6F3"/>
+      <path d="M13.057 13.7506L22.2494 22.943M12.9038 23.0962L17.6532 18.3468L22.0962 13.9038" stroke="#292521" stroke-width="1.5"/>
+    </svg>
+  </button>
+</div>
+
+
+
+<style type="text/css">
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #f3f0ea;
+    padding: 0px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+    height: 100%;
+}
+
+img#modal-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: left;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.modal-body {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+h2.modal-title {
+    font-size: 40px;
+    line-height: 42px;
+    color: rgba(249, 246, 243, 1);
+    margin-bottom: 16px;
+}
+
+p.modal-text {
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(249, 246, 243, 1);
+    margin-bottom: 30px;
+    margin-top: 16px;
+}
+
+.modal-contentarea {
+    padding: 20px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+#close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  z-index: 2;
+}
+
+a.modal-link.btn-light {
+    display: flex;
+    align-items: normal;
+    gap: 0px 10px;
+    width: max-content;
+    max-width: 100%;
+    min-width: 180px;
+}
+
+a.modal-link svg{
+  width: 18.06px;
+}
+
+.container {
+  width: 1215px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.custom-modal{
+  display: none;
+}
+.image-grid-row{
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  gap: 0px 17px;
+  /* overscroll-behavior-y: contain;
+  touch-action: pan-x; */
+}
+.top-col-left h2 {
+    margin: 0px;
+    font-size: 4.167vw;
+    line-height: 4.653vw;
+}
+.top-col-right {
+    width: 40%;
+}
+.top-col-left {
+    width: max-content;
+    min-width: max-content;
+}
+.series-animated-grids .column {
+  width: 33.33%;
+  margin: 0;
+  transition: 0.5s all;
+  position: relative;
+  box-sizing: border-box;
+  height: 555px;
+  z-index: 2;
+  border-radius: 8px;
+}
+
+.image-grids-animation .column img {
+  width: 100%;
+  object-fit: cover;
+  object-position: left;
+  transition: 0.5s ease;
+}
+
+.transparent-content.upper-content img {
+    margin-left: auto;
+}
+
+.column .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    padding: 19px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 1;
+    margin-top: 0px;
+    flex-flow: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.column.active .column-content {
+  z-index: 9;
+  width: calc(200% + 17px);
+}
+
+.column.active {
+    z-index: 9;
+}
+
+.bordered-heading {
+    font-size: 21px;
+    margin: 0px;
+    line-height: 36px;
+    border-bottom: 1.5px solid rgba(249, 246, 243, 1);
+    padding-bottom: 0;
+    letter-spacing: 0.65px;
+}
+
+.upper-content {
+    margin-bottom: 17px;
+    padding-top: 13.5px !important;
+    height: 150px;
+}
+
+.upper-content img {
+    width: 23px;
+    height: 29px;
+}
+
+.upper-content h3 {
+    display: flex;
+    align-items: flex-start;
+    font-size: 4.444vw;
+    line-height: 4.722vw;
+    gap: 0px 16px;
+    margin: 0px;
+}
+
+.upper-content h3 img {
+    width: 23px !important;
+    margin-top: 14px;
+}
+
+.transparent-content p {
+    margin-top: 10px !important;
+}
+
+.column.active:last-child .column-content {
+  right: 0;
+}
+
+.column.active:not(:last-child) .column-content {
+  left: 0;
+}
+
+.column:not(:last-child) .column-content {
+  left: 0;
+}
+
+.column-content {
+  transition: width 0.5s ease, transform 0.5s ease;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.column:last-child .column-content {
+    right: 0px;
+}
+
+.column.active .content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.close-btn {
+  position: absolute;
+  top: 19px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0px;
+}
+
+.close-btn{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.series-animated-grids .column.active .close-btn{
+    opacity: 1;
+    visibility: visible;
+}
+
+.col-learnmore-styles {
+    border-bottom: 1px solid rgba(249, 246, 243, 1);
+    padding-bottom: 0px;
+    line-height: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.series-animated-grids .column.active .col-learnmore-styles {
+    opacity: 1;
+    visibility: visible;
+}
+
+.col-content-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    gap: 0px 109px;
+}
+
+.col-content-left {
+    width: 100%;
+    min-width: 100%;
+}
+
+.series-animated-grids .column.active .col-content-left{
+  width: 60%;
+  min-width: unset;
+}
+
+.col-content-left p{
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.col-content-right p {
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.upper-content p {
+    margin-top: 0px !important;
+}
+
+.col-content-right {
+    width: 40%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s all;
+    top: 100%;
+    position: relative;
+}
+
+.content-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px 44px;
+    margin-top: 20px;
+}
+
+.content-icons img {
+    max-width: 20px;
+    justify-content: space-between;
+    object-fit: contain !important;
+}
+
+.content-icons img:first-child {
+    width: 21px;
+    height: 29px;
+}
+
+.content-icons img:nth-child(2) {
+    width: 20.79px;
+    height: 29px;
+}
+
+.content-icons img:last-child {
+    width: 15.34px;
+    height: 29px;
+}
+
+.transparent-content {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 287px;
+    padding: 13.5px 22px;
+    border-radius: 8px;
+    max-width: 100%;
+    backdrop-filter: blur(16px);
+}
+
+.transparent-content.bottom-content {
+    padding: 20px 22px;
+    height: 212px;
+}
+
+.series-animated-grids .column.active .col-content-right{
+    opacity: 1;
+    visibility: visible;
+    top: 0px;
+}
+
+.clickedNextElement{
+  z-index: -1;
+}
+
+span.image-grid-title {
+    position: absolute;
+    top: 19px;
+    left: 20px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    border-radius: 80px;
+    font-size: 13px;
+    line-height: 23px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1;
+}
+
+.image-grids-animation .column:nth-child(2) span.image-grid-title:before {
+    background-color: rgba(41, 37, 33, 0.36);
+}
+
+.image-grids-animation .column:nth-child(2) span.image-grid-title{
+  color: rgba(249, 246, 243, 1);
+}
+
+span.image-grid-title:before {
+    content: '';
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border-radius: 80px;
+    z-index: -1;
+    display: block;
+    background-color: rgba(41, 37, 33, 0.36);
+}
+
+.extendedImage {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s ease;
+  border-radius: 8px;
+}
+
+h2.section-center-heading {
+    letter-spacing: 0.045vw;
+    font-size: 5.556vw;
+    line-height: 6.111vw;
+    text-align: center;
+    margin: 0px;
+}
+
+.text-flexbox {
+    display: flex;
+    align-items: center;
+    gap: 0px 8.194vw;
+    padding-top: 6.944vw;
+}
+
+.flex-text-left {
+    width: 50%;
+}
+
+.flex-text-left h3 {
+    margin: 0px;
+    font-size: 4.167vw;
+    line-height: 4.653vw;
+    letter-spacing: 0.045vw;
+}
+
+.flex-text-right {
+    width: 50%;
+}
+
+.flex-text-right p {
+    font-size: 16px;
+    line-height: 26px;
+    margin: 0px;
+    letter-spacing: 0.65px;
+    width: 437px;
+    max-width: 100%;
+}
+
+section.image-grids-animation {
+    padding: 100px 0px;
+}
+
+.top-section-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0px 122.5px;
+    margin-bottom: 6.944vw;
+    padding-right: 60px;
+    min-height: 145px;
+}
+
+.column-content h2 {
+    margin: 0px;
+    font-size: 2.778vw;
+    line-height: 2.917vw;
+    letter-spacing: 0.65px;
+}
+
+.column-content h2 span{
+  font-size: 2.917vw;
+  line-height: 3.194vw;
+  display: block;
+  padding-top: 10px;
+}
+
+.column-content .content .col-content-left p {
+    width: 100%;
+    max-width: 100%;
+    margin: 0px;
+    display: none;
+    overflow: hidden;
+    transition: 0.5s ease;
+}
+
+.series-animated-grids .column.active .col-content-left p {
+    display: block;
+    margin-top: 16px;
+}
+
+a.learn-more-arrow {
+    background-color: rgba(249, 246, 243, 1);
+}
+
+.column-btns-row a.learn-more-arrow {
+    margin-top: 0px;
+    min-width: max-content;
+    gap: 0px 15px;
+}
+
+.column-btns-row {
+    display: flex;
+    align-items: center;
+    gap: 0px 32px;
+    margin-top: 21px;
+}
+
+.carousel-controls{
+  display: none;
+}
+
+.carousel-controls svg{
+  width: 18.06px;
+}
+
+.carousel-controls button svg .cls-1, 
+.carousel-controls button svg .cls-2{
+  stroke: rgba(249, 246, 243, 1);
+}
+
+.carousel-controls button:hover svg .cls-1, 
+.carousel-controls button:hover svg .cls-2{
+  stroke: rgba(249, 246, 243, 1) !important;
+}
+
+.modal-action-btns {
+    position: absolute;
+    bottom: 19px;
+    right: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0px 17px;
+    z-index: 2;
+}
+
+.modal-action-btns button {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: rgba(90, 88, 87, 1);
+}
+
+button#prev-modal-btn img {
+    transform: rotate(180deg);
+}
+
+.modal-action-btns button img {
+    filter: brightness(0) invert(1);
+}
+
+.top-col-right p{
+    margin: 0px;
+}
+
+.transparent-content.bottom-content p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.transparent-content.upper-content p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.transparent-content.upper-content p br{
+  display: none;
+}
+
+.image-grid-modal{
+    display: none;
+}
+
+
+/*
+** Responsive
+*/
+
+@media (min-width: 1500px){
+  .column-content h2{
+    font-size: 40px;
+    line-height: 42px;
+  }
+
+  .column-content h2 span{
+    font-size: 42px;
+    line-height: 46px;
+  }
+
+  .upper-content h3{
+    font-size: 64px;
+    line-height: 68px;
+  }
+}
+
+@media (max-width: 1250px) and (min-width: 992px){
+    .series-animated-grids .column{
+        height: 45vw;
+    }
+}
+
+@media (min-width: 992px){
+  div#imageGridModal {
+      display: none !important;
+  }
+}
+
+@media (max-width: 991px){
+
+  section.image-grids-animation {
+    padding: 60px 0px;
+  }
+
+  .column.active .extendedImage{
+    object-position: left;
+  }
+
+  .modal-transparent-top span img {
+      display: none;
+  }
+
+  section.image-grids-animation .progress-bar{
+    margin-top: 50px !important;
+  }
+
+  .top-col-left {
+      padding-left: 0px !important;
+  }
+
+  .column-content h2{
+    font-size: 40px;
+    line-height: 42px;
+  }
+
+  .column-content h2 span{
+    font-size: 42px;
+    line-height: 46px;
+  }
+
+  .modal-transparent-content {
+    display: flex;
+    flex-flow: column;
+    gap: 16px 0px;
+  }
+
+  .transparent-contents {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin-bottom: 13px;
+    backdrop-filter: blur(16px);
+  }
+
+  .modal-transparent-bottom h3 {
+    font-size: 21px;
+    line-height: 36px;
+    margin: 0px;
+    letter-spacing: 0.65px;
+    border-bottom: 1.5px solid rgba(249, 246, 243, 1);
+  }
+
+  .modal-transparent-bottom p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 26px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .modal-transparent-top {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 0px 17px;
+    margin-bottom: 0px;
+  }
+
+  .modal-transparent-top span {
+    font-size: 64px;
+    line-height: 68px;
+    letter-spacing: 0.65px;
+  }
+
+  .modal-transparent-top p {
+    margin: 0px;
+    font-size: 14px;
+    line-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .modal-transparent-top p br{
+    display: none;
+  }
+
+  .modal-transparent-top img{
+    margin-top: 8px;
+    width: 23px;
+    height: 29px;
+  }
+  
+  .series-animated-grids .column.active .close-btn{
+    display: none;
+  }
+
+  .series-animated-grids .column{
+    width: 100% !important;
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  .series-animated-grids .column.active .col-content-right,
+  .series-animated-grids .column.active .col-learnmore-styles{
+    display: none;
+  }
+
+  .series-animated-grids .column.active .col-content-left p{
+    display: none;
+    transition: 0.5s all;
+  }
+
+  .top-section-row{
+    flex-wrap: wrap;
+    gap: 15px 0px;
+    margin-bottom: 50px;
+    padding-right: 0px;
+  }
+
+  .top-col-left,
+  .top-col-right{
+    width: 100%;
+    min-width: unset;
+  }
+
+  .top-col-left h2 {
+    font-size: 50px;
+    line-height: 57px;
+  }
+
+  .carousel-controls {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0px 17px;
+      margin-bottom: 0px;
+  }
+
+  .carousel-controls button {
+    background-color: rgba(90, 88, 87, 1);
+    opacity: 1;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-controls button:hover {
+    background-color: rgba(90, 88, 87, 1);
+  }
+
+  .progress-bar {
+    height: 1.5px;
+    background-color: rgba(90, 88, 87, 1);
+    margin: -30px auto 50px !important;
+  }
+
+  .progress-bar .progress {
+    height: 100%;
+    background-color: rgba(194, 191, 186, 1);
+    width: 0%;
+    transition: width 0.3s ease;
+    display: block;
+  }
+
+  .image-grid-row{
+    gap: 0px 17px;
+    display: flex;
+    overflow: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .column {
+    flex: 0 0 75%;
+    min-width: 75%;
+    scroll-snap-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    margin: 0px !important;
+  }
+
+  .column.active .column-content{
+    width: 100%;
+  }
+
+  h2.section-center-heading {
+      font-size: 60px;
+      line-height: 64px;
+      letter-spacing: 0.65px;
+  }
+
+  .text-flexbox{
+    padding-top: 84px;
+    gap: 15px 0px;
+    flex-wrap: wrap;
+  }
+
+  .flex-text-left h3 {
+      font-size: 50px;
+      line-height: 57px;
+      letter-spacing: 0.65px;
+  }
+
+  .flex-text-left,
+  .flex-text-right{
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px){
+    .series-animated-grids .column {
+        flex: 0 0 100%;
+        min-width: 100%;
+        height: 505px;
+    }
+
+    span.image-grid-title{
+      font-size: 13px;
+      line-height: 23px;
+    }
+}
+
+</style>
+
+<script type="text/javascript">
+document.querySelectorAll('.grid-trigger').forEach(button => {
+  button.addEventListener('click', function() {
+    resetColumns();
+    const column = this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+    column.classList.add('active');
+    const nextColumn = column.nextElementSibling;
+    if (nextColumn) {
+      nextColumn.classList.add('clickedNextElement');
+    }
+  });
+});
+
+document.querySelectorAll('.close-btn').forEach(button => {
+  button.addEventListener('click', function(event) {
+    event.stopPropagation();
+    const column = this.parentElement.parentElement.parentElement;
+    column.classList.remove('active');
+    const nextColumn = column.nextElementSibling;
+    if (nextColumn) {
+      nextColumn.classList.remove('clickedNextElement');
+    }
+  });
+});
+
+function resetColumns() {
+  document.querySelectorAll('.column').forEach(column => {
+    column.classList.remove('active');
+    column.classList.remove('clickedNextElement');
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const row = document.querySelector('.image-grid-row');
+  const columns = document.querySelectorAll('.column');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const progressBar = document.querySelector('.progress-bar .progress');
+  let currentIndex = 0;
+  const totalColumns = columns.length;
+
+  function updateCarousel() {
+     if (window.innerWidth <= 767) {
+        row.style.transform = `translateX(-${currentIndex * 103}%)`;    
+    }else{
+        row.style.transform = `translateX(-${currentIndex * 102}%)`;
+    }
+    
+    updateProgressBar();
+    updateButtonState();
+    // console.log(`Current Index: ${currentIndex}`);
+  }
+
+  function updateProgressBar() {
+    const progressPercentage = ((currentIndex + 1) / totalColumns) * 100;
+    progressBar.style.width = `${progressPercentage}%`;
+    // console.log(`Progress Bar Width: ${progressPercentage}%`);
+  }
+
+  function updateButtonState() {
+    prevBtn.classList.toggle('disabled', currentIndex === 0);
+    nextBtn.classList.toggle('disabled', currentIndex === totalColumns - 1);
+  }
+
+  prevBtn.addEventListener('click', function() {
+    // console.log('Previous button clicked');
+    currentIndex = (currentIndex - 1 + totalColumns) % totalColumns;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', function() {
+    // console.log('Next button clicked');
+    currentIndex = (currentIndex + 1) % totalColumns;
+    updateCarousel();
+  });
+
+  // Touch events for swiping with debounce
+  let startX;
+  let isSwiping = false;
+
+  row.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    isSwiping = true;  // Start swiping
+  });
+
+  row.addEventListener('touchmove', function(e) {
+    if (!isSwiping) return;
+
+    let moveX = e.touches[0].clientX;
+    let difference = startX - moveX;
+    
+    if (difference > 50) {
+      nextBtn.click();
+      isSwiping = false;  // Prevent further moves until touchend
+    } else if (difference < -50) {
+      prevBtn.click();
+      isSwiping = false;  // Prevent further moves until touchend
+    }
+  });
+
+  row.addEventListener('touchend', function() {
+    isSwiping = false;  // Reset after swipe ends
+  });
+
+  // Window resize event to reset carousel position on resizing
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 991) {
+      updateCarousel();
+    } else {
+      row.style.transform = 'translateX(0)';
+    }
+  });
+
+  // Initial check
+  if (window.innerWidth <= 991) {
+    updateCarousel();
+  }
+  
+});
+
+
+// Modal on mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('imageGridModal');
+  const modalContent = modal.querySelector('.modal-content');
+  const modalContentArea = modal.querySelector('.modal-contentarea');
+  const modalImage = modal.querySelector('#modal-image');
+  const modalTitle = modal.querySelector('.modal-title');
+  const modalText = modal.querySelector('.modal-text');
+  const modalTag = modal.querySelector('.modals-tags');
+  const modalLink = modal.querySelector('.modal-link');
+  const modalTransparentTopSpan = modal.querySelector('.modal-transparent-top span');
+  const modalTransparentTopP = modal.querySelector('.modal-transparent-top p');
+  const modalTransparentBottomH3 = modal.querySelector('.modal-transparent-bottom h3');
+  const modalTransparentBottomP = modal.querySelector('.modal-transparent-bottom p');
+  const columns = document.querySelectorAll('.image-grid-row .column');
+  const prevModalBtn = document.getElementById('prev-modal-btn');
+  const nextModalBtn = document.getElementById('next-modal-btn');
+  let currentIndex = 0;
+
+  function updateModalContent(index) {
+    const column = columns[index];
+    const columnContent = column.querySelector('.content');
+    const imageSrc = column.querySelector('.image-grid-modal').src;
+    const title = columnContent.querySelector('h2').innerHTML;
+    const text = columnContent.querySelector('p').innerHTML;
+    const gridTag = column.querySelector('.image-grid-title').textContent;
+    const linkHref = columnContent.querySelector('a').href;
+    const upperContentH3Text = column.querySelector('.transparent-content.upper-content h3').innerHTML;
+    const upperContentPText = column.querySelector('.transparent-content.upper-content p').innerHTML;
+    const bottomContentH3Text = column.querySelector('.transparent-content.bottom-content h3').innerHTML;
+    const bottomContentPText = column.querySelector('.transparent-content.bottom-content p').innerHTML;
+
+    modalImage.src = imageSrc; // Set the image source
+    modalTitle.innerHTML = title;
+    modalText.innerHTML = text;
+    modalTag.textContent = gridTag;
+    modalLink.href = linkHref;
+    modalTransparentTopSpan.innerHTML = upperContentH3Text;
+    modalTransparentTopP.innerHTML = upperContentPText;
+    modalTransparentBottomH3.innerHTML = bottomContentH3Text;
+    modalTransparentBottomP.innerHTML = bottomContentPText;
+
+    // Disable or enable buttons based on index
+    prevModalBtn.classList.toggle('disabled', currentIndex === 0);
+    nextModalBtn.classList.toggle('disabled', currentIndex === columns.length - 1);
+  }
+
+  // Initialize with disabled previous button
+  prevModalBtn.classList.add('disabled');
+
+  document.querySelectorAll('.grid-trigger').forEach((button, index) => {
+    button.addEventListener('click', function() {
+      currentIndex = index;
+      updateModalContent(currentIndex);
+      modal.style.display = 'flex';
+    });
+  });
+
+  document.getElementById('close-modal-btn').addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  document.getElementById('next-modal-btn').addEventListener('click', function() {
+    currentIndex = (currentIndex + 1) % columns.length;
+    updateModalContent(currentIndex);
+  });
+
+  document.getElementById('prev-modal-btn').addEventListener('click', function() {
+    currentIndex = (currentIndex - 1 + columns.length) % columns.length;
+    updateModalContent(currentIndex);
+  });
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Animated Grid Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "main_subtitle",
+      "label": "Main Sub Title"
+    },
+    {
+      "type": "textarea",
+      "id": "main_txt",
+      "label": "Main Text"
+    }
+  ],
+   "blocks": [
+    {
+      "type": "text_block",
+      "name": "Grid Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_text_1",
+          "label": "Main Title"
+        },
+        {
+          "type": "text",
+          "id": "block_text_2",
+          "label": "Main Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "block_bottom_heading",
+          "label": "Block Bottom Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "block_percentage_txt",
+          "label": "Block Percentage Text Upper"
+        },
+        {
+          "type": "textarea",
+          "id": "block_percentage_txt_lower",
+          "label": "Block Percentage Text Lower"
+        },
+        {
+          "type": "text",
+          "id": "block_percent_number",
+          "label": "Block Percent Number"
+        },
+        {
+          "type": "textarea",
+          "id": "block_p_txt",
+          "label": "Block Para Text"
+        },
+        {
+          "type": "text",
+          "id": "block_tag",
+          "label": "Block Tag"
+        },
+       {
+          "type": "image_picker",
+          "id": "block_image_large",
+          "label": "Image Large"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Animated Grid Section"
+    }
+  ]
+}
+{% endschema %}
+

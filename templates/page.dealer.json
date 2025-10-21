@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "sales_map_QFVNtK": {
+      "type": "sales-map",
+      "settings": {
+        "heading": "Sales Representatives"
+      }
+    },
+    "main": {
+      "type": "main-page-login",
+      "blocks": {
+        "list_item_dQRjzy": {
+          "type": "list_item",
+          "settings": {
+            "bullet_point": "Easily configure and order DMF products entirely online."
+          }
+        },
+        "list_item_7Micnb": {
+          "type": "list_item",
+          "settings": {
+            "bullet_point": "Most orders ship within two business days."
+          }
+        },
+        "list_item_CaCtCF": {
+          "type": "list_item",
+          "settings": {
+            "bullet_point": "Four decades of quality in one click"
+          }
+        }
+      },
+      "block_order": [
+        "list_item_dQRjzy",
+        "list_item_7Micnb",
+        "list_item_CaCtCF"
+      ],
+      "name": "Become a Dealer",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "heading": "Not a dealer yet?",
+        "heading_in_italic": "Become a dealer",
+        "description": "<p>DMF is committed to product innovation as well as providing the best experience before, during, and after a sale. Select the type of application, the lighting source features, the preferred visual aesthetic of the trim, and the quantity. The portal automatically ensures compatibility and eliminates product choice errors.</p>",
+        "apply_button_link": "shopify://pages/new-dealer",
+        "apply_button_text": "Apply",
+        "link_1": "#",
+        "link_1_text": "",
+        "link_2": "shopify://pages/whydmf",
+        "link_2_text": "Learn More",
+        "image": "shopify://shop_images/Layers_General_M.jpg"
+      }
+    },
+    "quote_section_TxiRe9": {
+      "type": "quote-section",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "main_txt": "“Ultimately, we believe lighting is about enhancing the things that people love in their homes\"",
+        "main_txt_italic": "",
+        "main_txt_remaining": "",
+        "quote_name": "Mike Libman",
+        "designation": "DMF Lighting",
+        "image_right": "shopify://shop_images/WhyDMF_Footer_2_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "sales_map_QFVNtK",
+    "main",
+    "quote_section_TxiRe9"
+  ]
+}

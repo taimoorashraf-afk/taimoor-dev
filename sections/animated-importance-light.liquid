@@ -1,0 +1,360 @@
+<section class="main-heading-lights">
+    <div class="container">
+        <h2 class="section-center-heading font-neue-light">{{ section.settings.heading_top_center }} <span class="font-austin-italic">{{ section.settings.heading_top_center_italic }}</span></h2>
+    </div>    
+</section>
+
+<section class="importance-of-lights">
+    <div class="container">
+        <div class="row">
+            <div class="importance-content-area">
+                <span class="section-top-tagline font-calling-code">{{ section.settings.heading_topline }}</span>
+                <h2 class="font-neue-light">{{ section.settings.importance_heading }} <br><span class="font-austin-italic">{{ section.settings.importance_heading_italic }}</span></h2>
+                <div class="font-neue-roman imp-contents">{{ section.settings.importance_content }}</div>
+                <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.importance_learnmore }}">{{ section.settings.importance_learnmore_text }} 
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                        <defs>
+                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                        </defs>
+                        <g id="Layer_2-2">
+                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="importance-animation-image">
+                <img src="{{ section.settings.importance_img | img_url: 'original' }}" width="711" height="749" alt="importance of lights" />
+                <div class="animation-shutter-wrapper">
+                    <div class="animation-shutter">
+                        <img src="{{ 'shutter-imgs.png' | asset_url }}" width="711" height="748" alt="shutter image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.importance-of-lights {
+        position: relative;
+        margin: 100px 0px;
+        padding: 0;
+    }
+    section.importance-of-lights .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .importance-content-area {
+        width: 494px;
+        min-width: 494px;
+        max-width: 100%;
+        padding-top: 51px;
+    }
+    .importance-animation-image {
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        width: 711px;
+        height: 38.889vw;
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        right: 0px;
+    }
+    .animation-shutter-wrapper {
+        position: absolute;
+        width: 711px;
+        height: 38.889vw;
+        right: 0px;
+        top: 0px;
+    }
+    .importance-animation-image img{
+        width: 711px;
+        max-width: 100%;
+        height: 38.889vw;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        min-height: 100%;
+        max-height: 100%;
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        right: 0px;
+    }
+    .animation-shutter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 25%;
+        height: 100%;
+        transition: width 0s ease-out;
+    }
+    .animation-shutter img{
+        height: 100%;
+        object-position: left;
+        pointer-events: none;
+    }
+    span.section-top-tagline {
+        font-size: 14px;
+        line-height: 28px;
+        text-transform: uppercase;
+        letter-spacing: 0.65px;
+        margin-bottom: 3px;
+    }
+    .importance-content-area h2 {
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        margin: 0px 0px 36px 0px;
+    }
+    .importance-content-area h2 span.font-austin-italic{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .imp-contents {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+
+    .imp-contents p {
+        margin: 0px;
+    }
+    .importance-content-area a.learn-more-arrow {
+        margin-top: 40px;
+        background-color: transparent;
+    }
+
+    /** Responsive */
+    @media (min-width: 1500px){
+        .importance-content-area h2{
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .importance-content-area h2 span.font-austin-italic{
+            font-size: 64px;
+            line-height: 68px;
+        }
+    }
+
+    @media (max-width: 1366px) and (min-width: 1200px){
+        .importance-animation-image{
+            width: 600px;
+        }
+        .animation-shutter-wrapper{
+            width: 680px;
+        }
+    }
+
+    @media (max-width: 1199px) and (min-width: 992px){
+        .importance-animation-image img{
+            width: 400px;
+            height: 500px;
+        }
+        .importance-animation-image,
+        .animation-shutter-wrapper{
+            width: 400px;
+        }
+    }
+
+    @media (max-width: 991px){
+        section.importance-of-lights .row {
+            flex-flow: column-reverse;
+        }
+
+        .importance-content-area h2 {
+            font-size: 50px;
+            line-height: 57px;
+            margin-bottom: 20px;
+        }
+
+        .importance-content-area{
+            min-width: unset;
+        }
+        .importance-content-area h2 span.font-austin-italic{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .importance-content-area a.learn-more-arrow {
+            margin-top: 30px;
+        }
+        .importance-animation-image, .importance-content-area {
+            width: 100%;
+        }
+        .importance-animation-image{
+            position: relative;
+            border-radius: 8px;
+            height: auto;
+            max-width: 100%;
+            width: 100%;
+        }
+        .importance-animation-image img{
+            border-radius: 8px;
+            position: relative;
+            top: unset; 
+            transform: none;
+            height: auto;
+            width: 100%;
+        }
+
+        .animation-shutter-wrapper{
+            height: 100%;
+            width: 100%;
+        }
+        section.importance-of-lights {
+            padding: 70px 0px;
+            margin: 0px;
+        }
+        .importance-content-area {
+            padding: 28px 0px 0px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    const shutter = document.querySelector('.animation-shutter');
+    let isDragging = false;
+
+    // Initially cover the entire image
+    shutter.style.width = '100%';
+
+    // Function to handle scroll event
+    function handleScroll() {
+        const section = document.querySelector('.importance-of-lights');
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionHeight = section.offsetHeight;
+        const windowHeight = window.innerHeight;
+
+        // Calculate scroll position and percentage within the section
+        if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+            let scrollPercentage = (windowHeight - sectionTop) / windowHeight;
+
+            if (scrollPercentage >= 0 && scrollPercentage <= 1) {
+                // Open the shutter as the section scrolls into view
+                let newWidth = 100 - (scrollPercentage * 100);
+                shutter.style.width = `${newWidth}%`;
+            }
+        } else if (sectionTop <= -sectionHeight) {
+            // Close the shutter when the user scrolls past the section
+            let scrollPercentage = Math.abs(sectionTop + sectionHeight) / windowHeight;
+            let newWidth = Math.min(100, scrollPercentage * 100);
+            shutter.style.width = `${newWidth}%`;
+        } else if (sectionTop >= windowHeight) {
+            // Ensure shutter is fully closed when section is above viewport
+            shutter.style.width = '100%';
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', function () {
+        if (!isDragging) {
+            handleScroll();
+        }
+    });
+
+    // Handle dragging movement (remains the same as in your original code)
+    function handleDrag(event) {
+        let clientX = event.clientX || event.touches[0].clientX;
+        if (isDragging) {
+            let moveX = clientX - startX;  // Normal direction (right to left)
+            let newWidth = ((initialWidth - moveX) / shutter.parentElement.offsetWidth) * 100;
+
+            // Limit the width between 0% and 100%
+            if (newWidth >= 0 && newWidth <= 100) {
+                shutter.style.width = `${newWidth}%`;
+            }
+        }
+    }
+
+    function startDrag(event) {
+        isDragging = true;
+        startX = event.clientX || event.touches[0].clientX;
+        initialWidth = shutter.offsetWidth;
+        document.body.style.cursor = 'ew-resize'; // Change cursor to indicate drag
+        event.preventDefault(); // Prevent text selection and scrolling
+    }
+
+    function stopDrag() {
+        if (isDragging) {
+            isDragging = false;
+            document.body.style.cursor = ''; // Reset cursor
+        }
+    }
+
+    // Add event listeners for dragging
+    shutter.addEventListener('mousedown', startDrag);
+    shutter.addEventListener('touchstart', startDrag);
+
+    document.addEventListener('mousemove', handleDrag);
+    document.addEventListener('touchmove', handleDrag);
+
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
+});
+
+
+</script>
+
+{% schema %}
+{
+    "name": "Importance of Lights",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading_top_center",
+            "label": "Centered Heading"
+        },
+        {
+            "type": "text",
+            "id": "heading_top_center_italic",
+            "label": "Centered Heading in italic"
+        },
+        {
+            "type": "text",
+            "id": "heading_topline",
+            "label": "Heading topline"
+        },
+        {
+            "type": "text",
+            "id": "importance_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "importance_heading_italic",
+            "label": "Section heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "importance_content",
+            "label": "Section content"
+        },
+        {
+            "type": "text",
+            "id": "importance_learnmore_text",
+            "label": "Learn more button text"
+        },
+        {
+            "type": "text",
+            "id": "importance_learnmore",
+            "label": "Learn more URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "importance_img",
+            "label": "Upload Image"
+        }
+    ],
+    "presets": [
+        {
+        "name": "Importance of Lights",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "configurator_listing_XMqzb7": {
+      "type": "configurator-listing",
+      "name": "Configurator Listing",
+      "settings": {},
+      "blocks": {
+        "category_kits_components": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Kits and Components",
+            "category_display_name": "Kits and Components",
+            "category_anchor": "kits-components",
+            "category_section": "section1",
+            "show_category": true
+          }
+        },
+        "product_card_artafex2": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "kits-components",
+            "category_section": "section1",
+            "product_image": "shopify://shop_images/Artafex_2.png",
+            "product_name": "Artafex 2",
+            "product_url": "/pages/artafex-2",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "product_card_artafex4": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "kits-components",
+            "category_section": "section1",
+            "product_image": "shopify://shop_images/Artafex_4.png",
+            "product_name": "Artafex 4",
+            "product_url": "/pages/artafex-4",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        },
+        "category_accessories": {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Accessories",
+            "category_display_name": "Accessories",
+            "category_anchor": "accessories",
+            "category_section": "section1",
+            "show_category": true
+          }
+        },
+        "product_card_surface": {
+          "type": "product_card",
+          "settings": {
+            "parent_category": "accessories",
+            "category_section": "section1",
+            "product_image": "shopify://shop_images/Surface.png",
+            "product_name": "Surface",
+            "product_url": "/pages/surface-mounts",
+            "button_text": "Configure",
+            "show_product": true
+          }
+        }
+      },
+      "block_order": [
+        "category_kits_components",
+        "product_card_artafex2",
+        "product_card_artafex4",
+        "category_accessories",
+        "product_card_surface"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "configurator_listing_XMqzb7"
+  ]
+}
+
+

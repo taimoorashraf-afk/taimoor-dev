@@ -1,0 +1,25 @@
+<!-- bundle properties -->
+{% assign itemProperties = item.properties  %}
+{% for bundle_item in item.item_components %}
+    <p class="property-item property-site-black">
+        <span class="property-value no-wrap ">(x{{bundle_item.quantity}}) </span>
+        <span class="property-value no-wrap">{{bundle_item.sku}}</span>
+        - 
+        <span class="print-hide property-value no-wrap">{{ bundle_item.price | money_with_currency}}</span>
+        <span class="printed-price property-value no-wrap">{{ bundle_item.price | money_with_currency}}</span>
+    </p>
+
+    <div class="metadata-properties-wrapper">
+        
+        {% assign metadata_parts = bundle_item.product.metafields.custom.metadataoptions.value | split: ', ' %}
+        
+        {% for part in metadata_parts %}
+        {% assign key_value = part | split: ': ' %}
+        <p class="property-item">
+            <span class="property-label">{{ key_value[0] }}:</span>
+            <span class="property-value">{{ key_value[1] }}</span>
+        </p>
+        {% endfor %}
+    </div>
+
+{% endfor %} 

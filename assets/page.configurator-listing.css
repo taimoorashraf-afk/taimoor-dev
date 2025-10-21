@@ -1,0 +1,190 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.dealer-breadcrumbs a, 
+.dealer-breadcrumbs span,
+.dealer-breadcrumbs {
+    font-size: 9px;
+    line-height: 100%;
+}
+
+.dealer-breadcrumbs a,
+.dealer-breadcrumbs{
+    color: #292521;
+}
+
+.dealer-breadcrumbs span{
+    color: #5A5857;
+    text-transform: uppercase;
+}
+
+.dealer-breadcrumbs{
+    margin: 4px 0px 10px;
+}
+
+.dealer-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 12px;
+}
+
+.dealer-collections .category-new-construction-kits-square {
+    border-top: none;
+    padding-top: 0px;
+}
+
+.dealer-top-heading {
+    font-size: 35px;
+    line-height: 67px;
+    color: #292521;
+    margin: 0;
+}
+
+ul.dealer-top-navigation {
+    margin: 0;
+    padding: 0 0 16px;
+    display: flex;
+    list-style: none;
+    gap: 0px 49px;
+}
+
+ul.dealer-top-navigation li a {
+    font-size: 14px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: #292521;
+}
+
+.dealer-collection-box {
+    border-top: 1px solid #292521;
+    padding-top: 10px;
+    margin-bottom: 40px;
+}
+
+.dealer-collection-box h2 {
+    font-size: 23px;
+    line-height: 67px;
+    margin: 0px 0px 5px;
+}
+
+.dealer-collections-list-item img {
+    width: 226px;
+    height: 305px;
+    border-radius: 8px;
+    display: block;
+    object-fit: cover;
+}
+
+.dealer-collections-list-content h3 {
+    font-size: 16px;
+    line-height: 36px;
+    color: #292521;
+    margin: 10px 0px 0px;
+}
+
+.dealer-collections-list-content a {
+    color: #292521;
+    font-size: 14px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    gap: 0px 8px;
+}
+
+.dealer-collections-listing-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 21px;
+}
+
+.dealer-collections {
+    padding-bottom: 60px;
+}
+
+.slider-paginations,
+.dealer-pagination {
+    display: none;
+}
+
+/*
+** Responsive
+*/
+
+@media (max-width: 991px){
+    .dealer-breadcrumbs a, 
+    .dealer-breadcrumbs span, 
+    .dealer-breadcrumbs {
+        font-size: 8px;
+    }
+    .dealer-breadcrumbs {
+        margin-bottom: 12px;
+    }
+    .dealer-top-header{
+        flex-wrap: wrap;
+    }
+    .dealer-top-heading {
+        font-size: 30px;
+        width: 100%;
+    }
+    ul.dealer-top-navigation {
+        margin-top: 2px;
+        padding-bottom: 0;
+        gap: 0px 32px;
+        flex-wrap: wrap;
+    }
+    .dealer-top-header{
+        padding-bottom: 22px;
+    }
+    .dealer-collection-box{
+        padding-top: 12px;
+        margin-bottom: 0;
+    }
+    .dealer-collection-box h2 {
+        font-size: 20px;
+        line-height: 30px;
+        margin: 0 0 9px;
+    }
+    .dealer-collections-listing-carousel{
+        flex-wrap: nowrap;
+        transition: transform .5s ease-in-out;
+    }
+    .slider-paginations,
+    .dealer-pagination {
+        display: flex;
+        margin-top: 30px;
+        padding: 0 0 31px;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .slide-counter {
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 500;
+        color: #292521;
+    }
+    .pagination,
+    .dealer-pagination-buttons {
+        display: flex !important;
+        justify-content: center;
+        gap: 0px 38px;
+    }
+    .pagination button.active,
+    .dealer-pagination-buttons button.active {
+        background-color: #292521;
+    }
+    .pagination button,
+    .dealer-pagination-buttons button {
+        border: none;
+        background-color: #c2bfba;
+        padding: 0;
+        cursor: pointer;
+        width: 9px;
+        height: 9px;
+        border-radius: 100%;
+    }
+    .dealer-collections {
+        padding-bottom: 54.67px;
+    }
+}

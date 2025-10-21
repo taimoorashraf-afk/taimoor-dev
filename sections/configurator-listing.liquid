@@ -1,0 +1,358 @@
+<link href="{{ 'page.configurator-listing.css' | asset_url }}" rel="stylesheet">
+
+<section class="dealer-listing">
+  <div class="container">
+    {% if section.settings.show_breadcrumbs %}
+      <div class="dealer-breadcrumbs font-calling-code">
+        <a href="{{ section.settings.breadcrumb_home_url }}" class="font-calling-code">{{ section.settings.breadcrumb_home_text | upcase }}</a> / 
+        <span class="font-calling-code">{{ section.settings.breadcrumb_current_text | upcase }}</span>
+      </div>
+    {% endif %}
+
+    <div class="dealer-top-header">
+      <h2 class="dealer-top-heading font-neue-roman">{{ section.settings.main_heading }}</h2>
+      
+      {% comment %} Simple navigation - get unique categories {% endcomment %}
+      {% assign category_blocks = section.blocks | where: 'type', 'category' %}
+      
+      {% if category_blocks.size > 0 %}
+        <ul class="dealer-top-navigation">
+          {% assign processed_anchors = '' %}
+          {% for category in category_blocks %}
+            {% if category.settings.show_category %}
+              {% unless processed_anchors contains category.settings.category_anchor %}
+                {% assign processed_anchors = processed_anchors | append: category.settings.category_anchor | append: ',' %}
+                <li>
+                  <a href="#{{ category.settings.category_anchor }}" class="font-calling-code">{{ category.settings.category_nav_name }}</a>
+                </li>
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="dealer-collections">
+      {% comment %} Display each category section {% endcomment %}
+      {% for category in category_blocks %}
+        {% if category.settings.show_category %}
+          <div class="dealer-collection-box category-{{ category.settings.category_display_name | handleize }}" id="{{ category.settings.category_anchor }}" {{ category.shopify_attributes }}>
+            <h2 class="font-neue-roman">{{ category.settings.category_display_name }}</h2>
+            
+            <div class="dealer-collections-listing-carousel">
+              {% comment %} Get products for this category {% endcomment %}
+              {% for block in section.blocks %}
+                {% if block.type == 'product_card' and block.settings.parent_category == category.settings.category_anchor and block.settings.category_section == category.settings.category_section and block.settings.show_product %}
+                  <div class="dealer-collections-list-item" {{ block.shopify_attributes }}>
+                    <a href="{{ block.settings.product_url }}" class="font-neue-roman">
+                      <img src="{{ block.settings.product_image | img_url: '226x305' }}" 
+                           width="226" 
+                           height="305" 
+                           alt="{{ block.settings.product_name }}" />
+                    </a>
+                    <div class="dealer-collections-list-content">
+                      <h3 class="font-neue-roman">{{ block.settings.product_name }}</h3>
+                      <a href="{{ block.settings.product_url }}" class="font-neue-roman">
+                        {{ block.settings.button_text }} 
+                        {% render 'arrow-icon-configure' %}
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+    // Navigation functionality
+    const navLinks = document.querySelectorAll('.dealer-top-navigation a');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Get target section
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Mobile carousel functionality
+    const breakpoint = 991;
+    
+    function initDealerCarousels() {
+      if (window.innerWidth <= breakpoint) {
+        setupDealerCarousels();
+      } else {
+        resetDealerCarousels();
+      }
+    }
+    
+    function setupDealerCarousels() {
+      const carousels = document.querySelectorAll('.dealer-collections-listing-carousel');
+      
+      carousels.forEach(carousel => {
+        const items = carousel.querySelectorAll('.dealer-collections-list-item');
+        
+        if (items.length <= 1) return;
+        
+        if (!carousel.classList.contains('carousel-initialized')) {
+          carousel.classList.add('dealer-carousel');
+          
+          // Create pagination container
+          const paginationContainer = document.createElement('div');
+          paginationContainer.className = 'dealer-pagination';
+          
+          // Create slide counter
+          const slideCounter = document.createElement('div');
+          slideCounter.className = 'dealer-slide-counter';
+          slideCounter.textContent = `1/${items.length}`;
+          
+          // Create pagination buttons
+          const buttonContainer = document.createElement('div');
+          buttonContainer.className = 'dealer-pagination-buttons';
+          
+          for (let i = 0; i < items.length; i++) {
+            const button = document.createElement('button');
+            if (i === 0) button.classList.add('active');
+            button.addEventListener('click', function() {
+              goToDealerSlide(carousel, i, items, buttonContainer, slideCounter);
+            });
+            buttonContainer.appendChild(button);
+          }
+          
+          paginationContainer.appendChild(slideCounter);
+          paginationContainer.appendChild(buttonContainer);
+          
+          // Insert pagination after carousel
+          carousel.parentNode.insertBefore(paginationContainer, carousel.nextSibling);
+          
+          // Touch events
+          let startX = 0;
+          let currentIndex = 0;
+          
+          carousel.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+          });
+          
+          carousel.addEventListener('touchend', function(e) {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+              if (diff > 0 && currentIndex < items.length - 1) {
+                currentIndex++;
+                goToDealerSlide(carousel, currentIndex, items, buttonContainer, slideCounter);
+              } else if (diff < 0 && currentIndex > 0) {
+                currentIndex--;
+                goToDealerSlide(carousel, currentIndex, items, buttonContainer, slideCounter);
+              }
+            }
+          });
+          
+          carousel.classList.add('carousel-initialized');
+          goToDealerSlide(carousel, 0, items, buttonContainer, slideCounter);
+        }
+      });
+    }
+    
+    function goToDealerSlide(carousel, index, items, buttons, counter) {
+      const itemWidth = items[0].offsetWidth;
+      const gap = 21;
+      const slideDistance = index * (itemWidth + gap);
+      
+      carousel.style.transform = `translateX(-${slideDistance}px)`;
+      
+      // Update pagination
+      const buttonElements = buttons.querySelectorAll('button');
+      buttonElements.forEach(btn => btn.classList.remove('active'));
+      buttonElements[index].classList.add('active');
+      
+      // Update counter
+      counter.textContent = `${index + 1}/${items.length}`;
+    }
+    
+    function resetDealerCarousels() {
+      const carousels = document.querySelectorAll('.dealer-collections-listing-carousel');
+      
+      carousels.forEach(carousel => {
+        carousel.style.transform = '';
+        carousel.classList.remove('carousel-initialized');
+        
+        // Remove pagination
+        const pagination = carousel.parentNode.querySelector('.dealer-pagination');
+        if (pagination) pagination.remove();
+      });
+    }
+    
+    // Initialize
+    initDealerCarousels();
+    window.addEventListener('resize', initDealerCarousels);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Configurator Listing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Product Configurators"
+    },
+    {
+      "type": "header",
+      "content": "Breadcrumbs"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_home_text",
+      "label": "Breadcrumb Home Text",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "id": "breadcrumb_home_url",
+      "label": "Breadcrumb Home URL"
+    },
+    {
+      "type": "text",
+      "id": "breadcrumb_current_text",
+      "label": "Current Page Breadcrumb",
+      "default": "Configurators"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_nav_name",
+          "label": "Navigation Name",
+          "info": "Name shown in top navigation",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "category_display_name",
+          "label": "Section Display Name",
+          "info": "Heading for this specific section",
+          "default": "Category Section"
+        },
+        {
+          "type": "text",
+          "id": "category_anchor",
+          "label": "Category Anchor ID",
+          "info": "Used for navigation links (e.g., 'kits-components', 'accessories')",
+          "default": "category"
+        },
+        {
+          "type": "text",
+          "id": "category_section",
+          "label": "Section Identifier",
+          "info": "Unique identifier for this section (use when same anchor has multiple sections)",
+          "default": "section1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_category",
+          "label": "Show this category section",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_category",
+          "label": "Parent Category Anchor ID",
+          "info": "Must match the Category Anchor ID from category block",
+          "default": "category"
+        },
+        {
+          "type": "text",
+          "id": "category_section",
+          "label": "Category Section Identifier",
+          "info": "Must match the Section Identifier from category block",
+          "default": "section1"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Product URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Configure"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product",
+          "label": "Show this product",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Configurator Listing",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Kits and Components",
+            "category_display_name": "Kits and Components",
+            "category_anchor": "kits-components",
+            "category_section": "section1"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_nav_name": "Accessories",
+            "category_display_name": "Accessories", 
+            "category_anchor": "accessories",
+            "category_section": "section1"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

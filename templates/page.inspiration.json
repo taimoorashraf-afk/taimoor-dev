@@ -1,0 +1,124 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "gallery_sec_qHRgzQ": {
+      "type": "gallery-sec",
+      "blocks": {
+        "image_Agcafw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration1_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>Indulge in a serene escape, where perfect lighting brings luxury to life. <a href=\"/pages/artafex-2\" target=\"_blank\" title=\"Artafex 2\">Learn more about Artafex 2</a></p>",
+            "caption_dealer": "<p>Indulge in a serene escape, where perfect lighting brings luxury to life. <a href=\"/pages/artafex-2\" target=\"_blank\" title=\"Artafex 2\">Learn more about Artafex 2</a></p>"
+          }
+        },
+        "image_AKH7PY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration2_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>Classic style, beautifully lit in a serene blue dining room. <a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Learn more about Artafex 4</a></p>",
+            "caption_dealer": "<p>Classic style, beautifully lit in a serene blue dining room. <a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Learn more about Artafex 4</a></p>"
+          }
+        },
+        "image_At7eF9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration3_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>A cozy sanctuary, where warm dim light sets a serene mood. Learn more about our <a href=\"/pages/digital-solution\" target=\"_blank\" title=\"Digital Solution\">Digital Solutions</a></p>",
+            "caption_dealer": "<p>A cozy sanctuary, where warm dim light sets a serene mood. Learn more about our <a href=\"/pages/digital-solution\" target=\"_blank\" title=\"Digital Solution\">Digital Solutions</a></p>"
+          }
+        },
+        "image_qh37qm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration4_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>A light bringing modern art to life. Configure your ceiling with our <a href=\"/products/2-trims\" target=\"_blank\" title=\"/products/2-trims\">Artafex 2 configurator</a></p>",
+            "caption_dealer": "<p>A light bringing modern art to life. Configure your ceiling with our <a href=\"/products/2-trims-1\" target=\"_blank\" title=\"/products/2-trims-1\">Artafex 2 configurator</a></p>"
+          }
+        },
+        "image_AqJzPc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration5_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>Recessed lighting adds a touch of luxury to a modern bathroom sanctuary. Discover <a href=\"/pages/whydmf\" target=\"_blank\" title=\"Why DMF\">why DMF </a>is the right solution for your beautiful home</p>",
+            "caption_dealer": "<p>Recessed lighting adds a touch of luxury to a modern bathroom sanctuary. Discover <a href=\"/pages/whydmf\" target=\"_blank\" title=\"Why DMF\">why DMF </a>is the right solution for your beautiful home</p>"
+          }
+        },
+        "image_VAKtrB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration6_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>A serene welcome: the perfect light greets you at the door, bringing life to every detail.<br/><a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Discover Artafex 4</a></p>",
+            "caption_dealer": "<p>A serene welcome: the perfect light greets you at the door, bringing life to every detail.<br/><a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Discover Artafex 4</a></p>"
+          }
+        },
+        "image_b6CyUW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration7_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>Nature-inspired beauty in every detail: DMF is the perfect complement to this organic design. <a href=\"/pages/products\" target=\"_blank\" title=\"Products\">Learn more about our product offering</a></p>",
+            "caption_dealer": "<p>Nature-inspired beauty in every detail: DMF is the perfect complement to this organic design. <a href=\"/pages/products\" target=\"_blank\" title=\"Products\">Learn more about our product offering</a></p>"
+          }
+        },
+        "image_kFtPEy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration8_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>A colorful living room, bathed in perfect light—designed to spark joy and create lasting memories. <a href=\"/pages/artafex-2\" target=\"_blank\" title=\"Artafex 2\">Discover more about Artafex 2</a></p>",
+            "caption_dealer": "<p>A colorful living room, bathed in perfect light—designed to spark joy and create lasting memories. <a href=\"/pages/artafex-2\" target=\"_blank\" title=\"Artafex 2\">Discover more about Artafex 2</a></p>"
+          }
+        },
+        "image_kEUUrY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inspiration9_D.jpg",
+            "image_alt": "Gallery Image",
+            "caption": "<p>A bright, elegant kitchen with perfect lighting to inspire your culinary creativity. <a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Discover Artafex 4</a></p>",
+            "caption_dealer": "<p>A bright, elegant kitchen with perfect lighting to inspire your culinary creativity. <a href=\"/pages/artafex-4\" target=\"_blank\" title=\"Artafex 4\">Discover Artafex 4</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_Agcafw",
+        "image_AKH7PY",
+        "image_At7eF9",
+        "image_qh37qm",
+        "image_AqJzPc",
+        "image_VAKtrB",
+        "image_b6CyUW",
+        "image_kFtPEy",
+        "image_kEUUrY"
+      ],
+      "settings": {
+        "title": "Our Gallery"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "gallery_sec_qHRgzQ"
+  ]
+}

@@ -1,0 +1,511 @@
+<link href="{{ 'page.configurator-landing.css' | asset_url }}" rel="stylesheet">
+
+<div class="configurator-landing">
+  <div class="container">
+    <section class="customer-carousel-grid-row">
+      {% comment %} Carousel items start {% endcomment %}
+       <div class="landing-pg-carousel">
+        <div class="customer-carousel-column customer-columns">
+          <div class="column-content">
+            <div class="customer-details">
+              <h2 class="font-neue-roman">Welcome back {{ customer.first_name }}!</h2>
+              {% assign customer_company = customer.current_company.metafields.metadata.tier %}
+              {% assign customer_ffa = customer.current_company.metafields.metadata.ffaLimit %}
+
+              <p class="font-neue-roman">Congratulations on your <strong> {{ customer_company }} Status</strong>. <br>Free Freight on order over ${{ customer_ffa }}</p>
+              {% comment %} <p class="customer-status font-neue-roman">You are $25,000 from your Diamond Status</p> {% endcomment %}
+
+              <h2 class="font-neue-roman quick-links-heading">Quick Links</h2>
+              <ul class="quick-links">
+                <li><a href="/pages/projects" class="font-calling-code">PROJECTS</a></li>
+                <li><a href="https://shopify.com/{{ shop.id }}/account/orders" class="font-calling-code">ORDERS</a></li>
+                <li><a href="/pages/resources?autoselect=artafex-2" class="font-calling-code">ARTAFEX 2 SPEC SHEETS</a></li>
+                <li><a href="/pages/resources?autoselect=artafex-4" class="font-calling-code">ARTAFEX 4 SPEC SHEETS</a></li>
+                <li><a href="/pages/resources?autoselect=linear" class="font-calling-code">LINEAR SPEC SHEETS</a></li>
+                <li><a href="/pages/resources?autoselect=phasex" class="font-calling-code">PHASEX SPEC SHEETS</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-carousel-column">
+          <div class="column-content">
+            <a class="" href="/pages/linear">
+              <img src="{{ 'ShopPage_Linear.jpg' | asset_url }}" alt="grid image" />
+            </a>
+
+            <span class="image-grid-title font-neue-roman">New</span>
+            <div class="content">
+                <div class="col-content-row">
+                    <div class="col-content-left">
+                        <h2 class="text-white font-neue-light"><a href="/pages/linear">Linear lighting <br><span class="font-austin-italic">made simple</span></a></h2>
+                        <div class="column-btns-row">
+                            <a class="learn-more-arrow btn-light font-neue-roman" href="/pages/linear">Discover 
+                            <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                <defs>
+                                    <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                </defs>
+                                <g id="Layer_2-2">
+                                    <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                    <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                </g>
+                            </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-carousel-column">
+          <div class="column-content">
+            <a class="" href="/pages/phaseX">
+              <img src="{{ 'customer-carousel-img2.jpg' | asset_url }}" alt="grid image" />
+            </a>
+
+            <span class="image-grid-title font-neue-roman">Moving fast</span>
+            <div class="content">
+                <div class="col-content-row">
+                    <div class="col-content-left">
+                        <h2 class="text-white font-neue-light"><a href="/pages/phaseX">Discover PhaseX <br><span class="font-austin-italic">digital lighting</span></a></h2>
+                        <div class="column-btns-row">
+                            <a class="learn-more-arrow btn-light font-neue-roman" href="/pages/phaseX">Discover 
+                            <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                <defs>
+                                    <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                </defs>
+                                <g id="Layer_2-2">
+                                    <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                    <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                </g>
+                            </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+
+      <div class="carousel-controls">
+        <button id="prev-btn" class="prevslide-btn disabled">
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                  <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+              </g>
+          </svg>
+        </button>
+        <button id="next-btn" class="nextslide-btn">
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+              </g>
+          </svg>
+        </button>
+      </div>
+  
+      {% comment %} Carousel items end {% endcomment %}
+    </section>
+
+    <section class="config-collections">
+      <div class="config-top-header">
+        <h2 class="font-neue-light">Configurators</h2>
+        <ul class="collection-anchors">
+          <li><a href="#recessed" class="font-calling-code collection-active">RECESSED</a></li>
+          <li><a href="#linear" class="font-calling-code">LINEAR</a></li>
+          <li><a href="#surface" class="font-calling-code">SURFACE</a></li>
+        </ul>
+      </div>
+      <div class="config-bottom-area">
+        <div class="config-collection-box" id="recessed">
+          <h2 class="font-neue-roman">Recessed</h2>
+          <div class="collection-list-boxes">
+            <div class="collection-list-item">
+              <a href="/pages/artafex-2-configurators"><img src="{{ 'config-artafex-2.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">Artafex 2</h3>
+                <a href="/pages/artafex-2-configurators">Configure 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+              </div>
+            </div>
+
+            <div class="collection-list-item">
+              <a href="/pages/artafex-4-configurators"><img src="{{ 'config-artafex-4.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">Artafex 4</h3>
+                <a href="/pages/artafex-4-configurators">Configure 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="config-collection-box" id="linear">
+          <h2 class="font-neue-roman">Linear</h2>
+          <div class="collection-list-boxes">
+            <div class="collection-list-item">
+              <a href="/products/linear-foot"><img src="{{ 'Create-Complete-BOMS.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">Create Complete BOMS</h3>
+                <a href="/products/linear-foot">Configure 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+              </div>
+            </div>
+
+            <div class="collection-list-item">
+              <a href="/pages/linear-component"><img src="{{ 'Select-Individual-Components.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">Select Individual Components</h3>
+                <a href="/pages/linear-component">Configure 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+              </div>
+            </div>
+
+            <div class="collection-list-item">
+              <a href="/pages/phasex-linear"><img src="{{ 'PhaseX_Linear.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">PhaseX Linear Preview</h3>
+                <a href="/pages/phasex-linear">Discover 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+                {% comment %} <p class="collection-btn-disclaimer font-neue-roman">
+                  Artafex PhaseX Linear is coming soon. Get notified as soon as this product is available to ship by signing up below.
+                </p> {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="config-collection-box" id="surface">
+          <h2 class="font-neue-roman">Surface</h2>
+          <div class="collection-list-boxes">
+            <div class="collection-list-item">
+              <a href="/products/surface-mounts-configure"><img src="{{ 'config-surface.jpg' |  asset_url }}" width="226" height="305" alt="collection image" /></a>
+
+              <div class="collection-content">
+                <h3 class="font-neue-roman">Surface</h3>
+                <a href="/products/surface-mounts-configure">Configure 
+                  {% render 'arrow-icon-configure' %}
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.collection-anchors a');
+
+    links.forEach(link => {
+      link.addEventListener('click', function (e) {
+        // Remove 'collection-active' from all links
+        links.forEach(el => el.classList.remove('collection-active'));
+        
+        // Add 'collection-active' to the clicked link
+        this.classList.add('collection-active');
+      });
+    });
+
+    // Landing page carousel
+    const row = document.querySelector('.landing-pg-carousel');
+    const columns = document.querySelectorAll('.customer-carousel-column');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const progressBar = document.querySelector('.progress-bar .progress');
+    let currentIndex = 0;
+    const totalColumns = columns.length;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    
+    function updateCarousel() {
+      if (window.innerWidth <= 991 && window.innerWidth >= 600) {
+        row.style.transform = `translateX(calc(-${currentIndex * 90}% - ${currentIndex * 18}px))`;
+      }else{
+        row.style.transform = `translateX(calc(-${currentIndex * 316}px - ${currentIndex * 18}px))`;
+      }
+
+      updateProgressBar();
+      updateButtonState();
+    }
+
+    function updateProgressBar() {
+      const progressPercentage = ((currentIndex + 1) / totalColumns) * 100;
+      progressBar.style.width = `${progressPercentage}%`;
+    }
+
+    function updateButtonState() {
+      if (currentIndex === 0) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+
+      if (currentIndex === totalColumns - 1) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+
+    prevBtn.addEventListener('click', function() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (currentIndex < totalColumns - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Initial state of buttons
+    updateButtonState();
+
+    // Touch events for swiping
+    row.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      prevTranslate = currentTranslate;
+    });
+
+    row.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      const moveX = e.touches[0].clientX;
+      const difference = startX - moveX;
+
+      if (difference > 50 && currentIndex < totalColumns - 1) {
+        nextBtn.click();
+        isDragging = false; // Prevent multiple actions
+      } else if (difference < -50 && currentIndex > 0) {
+        prevBtn.click();
+        isDragging = false; // Prevent multiple actions
+      }
+    });
+
+    row.addEventListener('touchend', function() {
+      isDragging = false;
+    });
+
+    // Window resize event to reset carousel position on resizing
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= 991) {
+        updateCarousel();
+      } else {
+        row.style.transform = 'translateX(0)';
+      }
+    });
+
+    // Initial check
+    if (window.innerWidth <= 991) {
+      updateCarousel();
+    }
+
+    // Landing collection carousels
+    const breakpoint = 991; // Same breakpoint as your existing script
+    
+    // Initialize carousels for each collection on mobile
+    function initConfigCollectionCarousels() {
+      if (window.innerWidth <= breakpoint) {
+        setupCollectionCarousels();
+      } else {
+        // Reset any mobile-specific styles when on desktop
+        resetCollectionCarousels();
+      }
+    }
+    
+    function setupCollectionCarousels() {
+      const collectionBoxes = document.querySelectorAll('.config-collection-box');
+      
+      collectionBoxes.forEach(box => {
+        const collectionId = box.getAttribute('id');
+        const itemsContainer = box.querySelector('.collection-list-boxes');
+        const items = box.querySelectorAll('.collection-list-item');
+        
+        if (items.length <= 1) return; // Skip if only one item
+        
+        // Only setup if not already initialized
+        if (!box.classList.contains('carousel-initialized')) {
+          // Add carousel class to container
+          itemsContainer.classList.add('collection-carousel');
+          
+          // Create slider-paginations container
+          const sliderPaginations = document.createElement('div');
+          sliderPaginations.className = 'slider-paginations';
+          
+          // Create slide counter
+          const slideCounter = document.createElement('div');
+          slideCounter.className = 'slide-counter';
+          slideCounter.textContent = `1/${items.length}`;
+          
+          // Create pagination container
+          const paginationContainer = document.createElement('div');
+          paginationContainer.className = 'pagination';
+          
+          // Create pagination buttons
+          for (let i = 0; i < items.length; i++) {
+            const button = document.createElement('button');
+            if (i === 0) button.classList.add('active');
+            button.addEventListener('click', function() {
+              goToCollectionSlide(itemsContainer, i, items, paginationContainer, slideCounter);
+            });
+            paginationContainer.appendChild(button);
+          }
+          
+          // Add counter and pagination to the slider-paginations container
+          sliderPaginations.appendChild(slideCounter);
+          sliderPaginations.appendChild(paginationContainer);
+          
+          // Add slider-paginations to the collection box
+          box.appendChild(sliderPaginations);
+          
+          // Add touch events for swiping
+          let startX = 0;
+          let endX = 0;
+          let currentIndex = 0;
+          
+          itemsContainer.addEventListener('touchstart', function(event) {
+            startX = event.touches[0].clientX;
+          });
+          
+          itemsContainer.addEventListener('touchmove', function(event) {
+            endX = event.touches[0].clientX;
+          });
+          
+          itemsContainer.addEventListener('touchend', function() {
+            if (startX > endX + 50) {
+              // Swipe left
+              if (currentIndex < items.length - 1) {
+                currentIndex++;
+                goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+              }
+            } else if (startX < endX - 50) {
+              // Swipe right
+              if (currentIndex > 0) {
+                currentIndex--;
+                goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+              }
+            }
+          });
+          
+          // Mark as initialized
+          box.classList.add('carousel-initialized');
+          
+          // Set initial state
+          goToCollectionSlide(itemsContainer, 0, items, paginationContainer, slideCounter);
+        }
+      });
+    }
+    
+    function goToCollectionSlide(container, index, slides, pagination, counter) {
+      const slideWidth = slides[0].offsetWidth;
+      const gap = 21; // Match the gap from your original script
+      const slideDistance = index * (slideWidth + gap);
+      
+      // Apply the transform to slide the container
+      container.style.transform = `translateX(-${slideDistance}px)`;
+      
+      // Update pagination buttons
+      const buttons = pagination.querySelectorAll('button');
+      buttons.forEach(button => button.classList.remove('active'));
+      buttons[index].classList.add('active');
+      
+      // Update slide counter
+      counter.textContent = `${index + 1}/${slides.length}`;
+    }
+    
+    function resetCollectionCarousels() {
+      const collectionBoxes = document.querySelectorAll('.config-collection-box');
+      
+      collectionBoxes.forEach(box => {
+        const itemsContainer = box.querySelector('.collection-list-boxes');
+        
+        // Reset transform
+        if (itemsContainer) {
+          itemsContainer.style.transform = '';
+        }
+        
+        // Remove slider-paginations if it exists
+        const sliderPaginations = box.querySelector('.slider-paginations');
+        
+        if (sliderPaginations) sliderPaginations.remove();
+      });
+    }
+    
+    // Initialize on page load
+    initConfigCollectionCarousels();
+    
+    // Re-initialize on window resize
+    window.addEventListener('resize', initConfigCollectionCarousels);
+    
+    // Collection anchors functionality - make sure it works with the carousel
+    const collectionLinks = document.querySelectorAll('.collection-anchors a');
+    
+    collectionLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Remove active class from all links
+        collectionLinks.forEach(el => el.classList.remove('collection-active'));
+        
+        // Add active class to the clicked link
+        this.classList.add('collection-active');
+        
+        // Get the target section ID
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          // Smooth scroll to the section
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
+
+{% schema %}
+  {
+    "name": "Static Configurator",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Static Configurator"
+      }
+    ]
+  }
+{% endschema %}

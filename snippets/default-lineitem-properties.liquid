@@ -1,0 +1,17 @@
+{% for properties in itemProperties %}
+    <br>
+    {% assign showProperty = true %}
+    {% assign firstCharacter = properties.first%}
+
+    {% if properties.first contains 'Fixture Type' or firstCharacter contains '_' or firstCharacter contains 'SKU' %}
+    {% assign showProperty = false %}
+    {% endif %}
+
+    {% if showProperty %}
+        <p class="property-item">
+            <span class="property-label ">{{properties.first}}:</span>
+            <span class="property-value">{{properties.last}}</span>
+        </p>
+    {% endif %}
+
+{% endfor %}

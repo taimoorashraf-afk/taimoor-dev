@@ -1,0 +1,738 @@
+{% comment %}
+  save-parent-product.liquid - Complete working version
+  Usage: {% render 'save-parent-product', current_product: product, loop_index: forloop.index %}
+{% endcomment %}
+<script src="{{ 'api-domain-config.js' | asset_url }}"></script>
+{%- assign working_product = current_product | default: product -%}
+{%- assign working_loop_index = loop_index | default: forloop.index | default: 1 -%}
+{%- assign working_product_sku = product_sku | default: '' -%}
+
+{%- if working_product == blank or working_product.id == blank -%}
+  {%- assign has_product_context = false -%}
+  {%- assign unique_id = 'project-search-modal-' | append: 'now' | date: '%s' -%}
+  {%- assign debug_context = 'no-product' -%}
+{%- else -%}
+  {%- assign has_product_context = true -%}
+  
+  {%- if working_product_sku == blank -%}
+    {%- assign working_product_sku = working_product.sku -%}
+    {%- if working_product_sku == blank and working_product.selected_or_first_available_variant.sku != blank -%}
+      {%- assign working_product_sku = working_product.selected_or_first_available_variant.sku -%}
+    {%- endif -%}
+    {%- if working_product_sku == blank and working_product.variants[0].sku != blank -%}
+      {%- assign working_product_sku = working_product.variants[0].sku -%}
+    {%- endif -%}
+  {%- endif -%}
+  
+  {%- assign timestamp = 'now' | date: '%s%L' -%}
+  {%- assign unique_id = 'project-search-' | append: working_product.id | append: '-' | append: working_loop_index | append: '-' | append: timestamp -%}
+  {%- assign debug_context = 'product-' | append: working_product.id -%}
+{%- endif -%}
+
+<div class="project-search-wrapper" id="{{ unique_id }}">
+  <div class="project-search-container" 
+       {%- if has_product_context -%}
+       data-product-id="{{ working_product.id }}" 
+       data-product-handle="{{ working_product.handle }}" 
+       data-product-title="{{ working_product.title | escape }}" 
+       data-product-price="{{ working_product.price }}" 
+       data-variant-id="{{ working_product.variants.first.id }}" 
+       data-product-sku="{{ working_product_sku | escape }}"
+       data-product-image="{{ working_product.featured_image | img_url: 'large' }}"
+       {%- else -%}
+       data-product-id="" 
+       data-product-handle="" 
+       data-product-title="" 
+       data-product-price="0" 
+       data-variant-id="" 
+       data-product-sku=""
+       data-product-image=""
+       {%- endif -%}
+       data-container-id="{{ unique_id }}"
+       data-has-context="{{ has_product_context }}"
+       data-debug-context="{{ debug_context }}"
+       data-initialized="false">
+    
+    <input
+      type="text"
+      class="project-search-input"
+      placeholder="Search and select a project"
+      aria-label="Search"
+      maxlength="50"
+      autocomplete="off"
+    >
+    <ul class="project-suggestions-list" style="display: none;"></ul>
+    <button type="button" class="project-add-button">Add to Project</button>
+    <div class="project-message" style="display: none;"></div>
+  </div>
+</div>
+
+{% unless project_search_styles_loaded %}
+  {% assign project_search_styles_loaded = true %}
+  <style>
+  .project-search-wrapper {
+    margin: 20px 0;
+    width: 445px;
+    max-width: 100%;
+  }
+
+  .add-project-button:disabled {
+    background-color: #999;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .add-project-button,
+  .project-add-button {
+    height: 50px;
+    font-size: 16px;
+    line-height: 23px;
+    background-color: #292521;
+    border: 1px solid #292521;
+    padding: 0 26px;
+    border-radius: 80px;
+    color: #f9f6f3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 0.65px;
+    min-width: max-content;
+  }
+
+  .search-container {
+    margin-top: 20px;
+    gap: 16px;
+    position: relative;
+    flex-wrap: wrap;
+    display: none;
+  }
+
+  .project-search-container {
+    margin-top: 20px;
+    gap: 16px;
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+  }
+
+  .search-form__input,
+  .project-search-input {
+    border: 1.25px solid #c2bfba;
+    margin: 0;
+    width: 70%;
+    height: 50px;
+    padding: 0 21px;
+    border-radius: 8px;
+    background-color: transparent;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.75px;
+    color: #5a5857;
+    box-shadow: none !important;
+    outline: none !important;
+    font-family: Neue Haas Grotesk Display Pro !important;
+    font-weight: 450 !important;
+  }
+
+  .add-project-button:disabled {
+    background-color: #999;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .project-suggestions-list li{
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .project-search-input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .project-add-button {
+    height: 50px;
+    font-size: 16px;
+    background-color: #292521;
+    border: 1px solid #292521;
+    padding: 0 26px;
+    border-radius: 80px;
+    color: #f9f6f3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .project-add-button:hover {
+    color: #292521;
+    background-color: transparent;
+  }
+
+  .project-add-button:disabled {
+    background-color: #999;
+    border-color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .project-suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 70%;
+    min-width: 70%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #efebe6;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .project-suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: none !important;
+  }
+
+  .project-suggestion-item:hover,
+  .project-suggestion-item.selected {
+    background: #f0f0f0;
+  }
+
+  #message-container.error {
+      color: red;
+  }
+  .project-message{
+    width: 100%;
+    color: green;
+  }
+  #message-container {
+      margin-top: 10px;
+      color: green;
+      font-size: 16px;
+      z-index: 1000;
+      line-height: 16px;
+      font-family: 'Neue Haas Grotesk Display Pro';
+      font-weight: 450 !important;
+      letter-spacing: 0.65px;
+      display: none;
+  }
+
+  .project-message.error {
+    color: red;
+  }
+
+  @media (max-width: 768px) {
+    .project-search-container {
+      flex-direction: column;
+    }
+    
+    .project-search-input,
+    .project-suggestions-list {
+      width: 100%;
+    }
+  }
+  </style>
+{% endunless %}
+
+{% unless project_search_script_loaded %}
+  {% assign project_search_script_loaded = true %}
+  
+  <script>
+  (function() {
+    'use strict';
+    
+    if (window.ProjectSearchLoaded) {
+      console.log('🔄 Project Search already loaded, skipping...');
+      return;
+    }
+    
+    window.ProjectSearchLoaded = true;
+    console.log('🚀 Loading Project Search Script...');
+    
+    const CONFIG = {
+      companyId: {{ customer.current_company.id | json }},
+      apiUrl: buildApiUrl('api/cartProjects'),
+      debug: true
+    };
+
+    console.log('⚙️ Config:', CONFIG);
+
+    if (!CONFIG.companyId) {
+      console.log('❌ No company ID found');
+      return;
+    }
+
+    const STATE = {
+      activeRequests: new Set(),
+      searchTimeouts: new Map(),
+      initializedContainers: new Set()
+    };
+
+    const Utils = {
+      log: function(message, data = null) {
+        if (CONFIG.debug) {
+          console.log(message, data || '');
+        }
+      },
+
+      showMessage: function(messageEl, text, isError = false) {
+        if (!messageEl) return;
+        messageEl.textContent = text;
+        messageEl.className = isError ? 'project-message error' : 'project-message';
+        messageEl.style.display = 'block';
+        setTimeout(() => {
+          messageEl.style.display = 'none';
+        }, 4000);
+      },
+
+      getProductData: function(container) {
+        const modal = document.getElementById('myModal');
+        const isInModal = modal && modal.style.display === 'block' && container.closest('#myModal');
+        
+        if (isInModal) {
+          Utils.log('📱 Getting modal data');
+          const title = document.getElementById('modalTitle')?.textContent?.trim() || '';
+          const priceEl = document.getElementById('modalPrice');
+          const price = priceEl ? parseFloat(priceEl.textContent.replace(/[^0-9.]/g, '')) || 0 : 0;
+          const variantId = document.getElementById('variant_id')?.value || '';
+          const image = document.getElementById('prod-img')?.src || '';
+          const sku = document.getElementById('modal-sku-field')?.value || '';
+          
+          // Get fixture type from modal
+          const currentFixture = Utils.getFixtureType(container);
+          
+          const modalData = {
+            id: variantId ? variantId.split('/').pop() : null,
+            title: title,
+            price: price,
+            handle: '',
+            variantId: variantId,
+            image: image,
+            sku: sku,
+            fixtureType: currentFixture,
+            source: 'modal'
+          };
+          
+          Utils.log('📊 Modal product data:', modalData);
+          return modalData;
+        } else {
+          Utils.log('📦 Getting container data');
+          const hasContext = container.dataset.hasContext === 'true';
+          
+          if (!hasContext) {
+            Utils.log('⚠️ No product context in container');
+            return {
+              id: null,
+              title: '',
+              price: 0,
+              handle: '',
+              variantId: '',
+              image: '',
+              sku: '',
+              fixtureType: '',
+              source: 'no-context'
+            };
+          }
+          
+          // Get fixture type from main listing
+          const currentFixture = Utils.getFixtureType(container);
+          
+          const containerData = {
+            id: container.dataset.productId,
+            title: container.dataset.productTitle,
+            price: parseFloat(container.dataset.productPrice) / 100,
+            handle: container.dataset.productHandle,
+            variantId: container.dataset.variantId,
+            image: container.dataset.productImage,
+            sku: container.dataset.productSku,
+            fixtureType: currentFixture,
+            source: 'container'
+          };
+          
+          Utils.log('📊 Container product data:', containerData);
+          return containerData;
+        }
+      },
+
+      getFixtureType: function(container) {
+        // Multiple ways to find fixture type based on common patterns
+        const fixtureSelectors = [
+          // Common fixture type selectors
+          'select[name*="fixture"]',
+          'input[name*="fixture"]',
+          'select[name*="FIXTURE"]',
+          'input[name*="FIXTURE"]',
+          '[name="properties[Fixture Type]"]',
+          '[name="properties[FIXTURE_TYPE]"]',
+          '[name="properties[fixture_type]"]',
+          '.fixture-type-select',
+          '.fixture-select',
+          '#fixture-type',
+          '#fixtureType',
+          // Check in the same form as the container
+          'select[name*="type"]',
+          'input[name*="type"]:checked'
+        ];
+
+        // First, try to find fixture input in the same form as the container
+        const form = container.closest('form') || container.closest('.list-view-item')?.querySelector('form');
+        
+        if (form) {
+          for (let selector of fixtureSelectors) {
+            const element = form.querySelector(selector);
+            if (element) {
+              const value = element.type === 'radio' || element.type === 'checkbox' 
+                ? (element.checked ? element.value : '')
+                : element.value;
+              
+              if (value && value.trim() !== '') {
+                Utils.log('🔧 Found fixture type:', value);
+                return value.trim();
+              }
+            }
+          }
+        }
+
+        // If not found in form, check globally in modal or document
+        for (let selector of fixtureSelectors) {
+          const element = document.querySelector(selector);
+          if (element) {
+            const value = element.type === 'radio' || element.type === 'checkbox' 
+              ? (element.checked ? element.value : '')
+              : element.value;
+            
+            if (value && value.trim() !== '') {
+              Utils.log('🔧 Found global fixture type:', value);
+              return value.trim();
+            }
+          }
+        }
+
+        // Fallback - check for any selected dropdown or radio in the vicinity
+        const contextElement = container.closest('.list-view-item') || container.closest('.modal-content') || document;
+        const allSelects = contextElement.querySelectorAll('select');
+        const allRadios = contextElement.querySelectorAll('input[type="radio"]:checked');
+        
+        // Check selects
+        for (let select of allSelects) {
+          if (select.value && select.value.trim() !== '' && select.value !== '0') {
+            Utils.log('🔧 Found fallback fixture from select:', select.value);
+            return select.value.trim();
+          }
+        }
+        
+        // Check checked radios
+        for (let radio of allRadios) {
+          if (radio.value && radio.value.trim() !== '') {
+            Utils.log('🔧 Found fallback fixture from radio:', radio.value);
+            return radio.value.trim();
+          }
+        }
+
+        Utils.log('⚠️ No fixture type found, using default');
+        return ''; // Default fallback
+      }
+    };
+
+    function searchProjects(query, containerId, callback) {
+      if (!query || query.trim().length < 1) {
+        callback([]);
+        return;
+      }
+
+      const searchKey = `search-${containerId}-${query.trim()}`;
+      
+      if (STATE.activeRequests.has(searchKey)) {
+        Utils.log('❌ Duplicate search prevented:', searchKey);
+        return;
+      }
+
+      Utils.log('🔍 Starting search:', { query: query.trim(), containerId });
+      STATE.activeRequests.add(searchKey);
+
+      const url = `${CONFIG.apiUrl}/all?search=${encodeURIComponent(query.trim())}&companyId=${CONFIG.companyId}`;
+      
+      fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => {
+        Utils.log('📡 Response status:', response.status);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        Utils.log('✅ Search results:', data);
+        callback(data?.data || []);
+      })
+      .catch(error => {
+        Utils.log('❌ Search error:', error);
+        callback([]);
+      })
+      .finally(() => {
+        setTimeout(() => STATE.activeRequests.delete(searchKey), 1000);
+      });
+    }
+
+    function addToProject(projectId, productData, containerId, callback) {
+      const addKey = `add-${containerId}-${projectId}`;
+      
+      if (STATE.activeRequests.has(addKey)) {
+        callback('Request already in progress');
+        return;
+      }
+
+      STATE.activeRequests.add(addKey);
+
+      const quantitySelectors = [
+        '#quantity',
+        '.quantity__input',
+        'input[name="quantity"]',
+        '[data-quantity]'
+      ];
+      
+      let quantity = 1;
+      for (let selector of quantitySelectors) {
+        const input = document.querySelector(selector);
+        if (input && input.value) {
+          quantity = parseInt(input.value) || 1;
+          break;
+        }
+      }
+
+      const requestData = {
+        projectId: projectId,
+        updates: [],
+        newItems: [{
+          product_id: productData.id?.toString() || null,
+          variant_id: productData.variantId?.split('/')?.pop() || productData.variantId,
+          quantity: quantity,
+          handle: productData.handle || '',
+          product_title: productData.title,
+          originalPrice: productData.price || 0,
+          variant_title: null,
+          properties: {
+            "MODULE TYPE": "General",
+            "PRODUCT_SKU": productData.sku || '',
+            currentFixture: productData.fixtureType || ''
+          },
+          featured_image: {
+            url: productData.image || '',
+            alt: productData.title
+          }
+        }]
+      };
+
+      Utils.log('📤 Adding to project:', requestData);
+
+      fetch(`${CONFIG.apiUrl}/updateProject`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        Utils.log('✅ Add success:', data);
+        callback(null, 'Product added successfully!');
+      })
+      .catch(error => {
+        Utils.log('❌ Add error:', error);
+        callback(error.message || 'Error adding product');
+      })
+      .finally(() => {
+        setTimeout(() => STATE.activeRequests.delete(addKey), 2000);
+      });
+    }
+
+    function initializeContainer(container) {
+      const containerId = container.dataset.containerId || `fallback-${Date.now()}`;
+      
+      if (STATE.initializedContainers.has(containerId)) {
+        Utils.log('⚠️ Container already initialized:', containerId);
+        return;
+      }
+
+      Utils.log('🏗️ Initializing container:', containerId);
+      STATE.initializedContainers.add(containerId);
+      container.dataset.initialized = 'true';
+
+      const searchInput = container.querySelector('.project-search-input');
+      const suggestionsList = container.querySelector('.project-suggestions-list');
+      const addButton = container.querySelector('.project-add-button');
+      const messageEl = container.querySelector('.project-message');
+
+      if (!searchInput || !suggestionsList || !addButton || !messageEl) {
+        Utils.log('❌ Required elements not found in:', containerId);
+        return;
+      }
+
+      let selectedProjectId = null;
+      let selectedProjectName = '';
+
+      const debouncedSearch = function(query) {
+        const timeoutKey = `timeout-${containerId}`;
+        
+        if (STATE.searchTimeouts.has(timeoutKey)) {
+          clearTimeout(STATE.searchTimeouts.get(timeoutKey));
+        }
+        
+        const timeout = setTimeout(() => {
+          searchProjects(query, containerId, function(projects) {
+            suggestionsList.innerHTML = '';
+            
+            if (projects && projects.length > 0) {
+              projects.forEach(project => {
+                const li = document.createElement('li');
+                li.className = 'project-suggestion-item';
+                li.textContent = project.name || 'Unnamed Project';
+                li.dataset.projectId = project._id;
+                suggestionsList.appendChild(li);
+              });
+              suggestionsList.style.display = 'block';
+            } else {
+              suggestionsList.innerHTML = '<li style="padding: 10px; color: #999; font-style: italic;">No projects found</li>';
+              suggestionsList.style.display = 'block';
+            }
+          });
+          STATE.searchTimeouts.delete(timeoutKey);
+        }, 800);
+        
+        STATE.searchTimeouts.set(timeoutKey, timeout);
+      };
+
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.trim();
+        Utils.log('📝 Input event:', { query, containerId });
+        
+        selectedProjectId = null;
+        selectedProjectName = '';
+        
+        if (query.length > 0) {
+          debouncedSearch(query);
+        } else {
+          suggestionsList.style.display = 'none';
+        }
+      });
+
+      suggestionsList.addEventListener('click', function(e) {
+        if (e.target.classList.contains('project-suggestion-item')) {
+          selectedProjectId = e.target.dataset.projectId;
+          selectedProjectName = e.target.textContent;
+          searchInput.value = selectedProjectName;
+          suggestionsList.style.display = 'none';
+          Utils.log('✅ Project selected:', { selectedProjectName, selectedProjectId });
+        }
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!container.contains(e.target)) {
+          suggestionsList.style.display = 'none';
+        }
+      });
+
+      addButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        Utils.log('🔘 Add button clicked:', { selectedProjectId, containerId });
+        
+        if (!selectedProjectId) {
+          Utils.showMessage(messageEl, 'Please search and select a project first', true);
+          return;
+        }
+
+        const productData = Utils.getProductData(container);
+        Utils.log('📦 Product data for add:', productData);
+        Utils.log('🔧 Fixture type detected:', productData.fixtureType);
+        
+        if (!productData.title) {
+          Utils.showMessage(messageEl, 'Product information not available', true);
+          return;
+        }
+
+        if (addButton.disabled) return;
+
+        addButton.disabled = true;
+        addButton.textContent = 'Adding...';
+
+        addToProject(selectedProjectId, productData, containerId, function(error, success) {
+          addButton.disabled = false;
+          addButton.textContent = 'Add to Project';
+          
+          if (error) {
+            Utils.showMessage(messageEl, error, true);
+          } else {
+            Utils.showMessage(messageEl, success, false);
+            searchInput.value = '';
+            selectedProjectId = null;
+            selectedProjectName = '';
+          }
+        });
+      });
+
+      Utils.log('✅ Container initialized:', containerId);
+    }
+
+    function initializeAll() {
+      Utils.log('🔄 Looking for containers...');
+      
+      const containers = document.querySelectorAll('.project-search-container[data-initialized="false"]');
+      Utils.log('📦 Found containers:', containers.length);
+      
+      containers.forEach((container, index) => {
+        const containerId = container.dataset.containerId || `fallback-${index}`;
+        const hasContext = container.dataset.hasContext === 'true';
+        const productId = container.dataset.productId || 'none';
+        const productTitle = container.dataset.productTitle || 'none';
+        const debugContext = container.dataset.debugContext || 'unknown';
+        
+        Utils.log(`🏗️ Processing container ${index + 1}:`, {
+          containerId: containerId,
+          hasContext: hasContext,
+          productId: productId,
+          productTitle: productTitle,
+          debugContext: debugContext
+        });
+        
+        if (container.dataset.initialized !== 'true') {
+          initializeContainer(container);
+        }
+      });
+      
+      if (containers.length === 0) {
+        Utils.log('⚠️ No containers found to initialize');
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeAll);
+    } else {
+      setTimeout(initializeAll, 100);
+    }
+
+    const modal = document.getElementById('myModal');
+    if (modal) {
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            if (modal.style.display === 'block') {
+              setTimeout(initializeAll, 200);
+            }
+          }
+        });
+      });
+      observer.observe(modal, { attributes: true });
+    }
+
+    Utils.log('🎯 Project Search Script Loaded Successfully');
+
+  })();
+  </script>
+{% endunless %}

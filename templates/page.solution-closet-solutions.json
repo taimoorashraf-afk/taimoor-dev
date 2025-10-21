@@ -1,0 +1,204 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_series_banner_ffA4FK": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Tall",
+        "main_subtitle": "C",
+        "main_txt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut libero ac ex dictum blandit. Phasellus sed ultrices massa, vitae vehicula tortor.",
+        "main_banner_img_desktop": "shopify://shop_images/solutions-banner.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/solutions-banner-mobile.jpg"
+      }
+    },
+    "solutions_image_grids_CWrnUP": {
+      "type": "solutions-image-grids",
+      "blocks": {
+        "image_block_PLwHXn": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/solutions-grid1.jpg",
+            "animated_box_heading": "Spray foam",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem ex, placerat in hendrerit vitae, vestibulum non turpis. Cras cursus elit viverra enim accumsan commodo.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        },
+        "image_block_KtBH6B": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/solutions-grid2.jpg",
+            "animated_box_heading": "Extention collar",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lorem ex, placerat in hendrerit vitae, vestibulum non turpis. Cras cursus elit viverra enim accumsan commodo.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_PLwHXn",
+        "image_block_KtBH6B"
+      ],
+      "settings": {
+        "grid_top_heading": "Solutions for ipsum sit amet adipiscing elit",
+        "grid_top_heading_italic": "dis innovation",
+        "grid_top_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus ornare ipsum consectetur pellentesque. Aliquam interdum feugiat turpis et venenatis."
+      }
+    },
+    "solutions_image_carousel_UcCNgm": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_A4GFF8": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/carousel-img1.jpg"
+          }
+        },
+        "image_block_by7QKN": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/Series_Linear_1Modul_Expanded_D.jpg"
+          }
+        },
+        "image_block_TfH6YA": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/carousel-img1.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_A4GFF8",
+        "image_block_by7QKN",
+        "image_block_TfH6YA"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "Ipsum sit amet",
+        "first_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "learnmore_text": "Learn More",
+        "learnmore_url": "#",
+        "learnmore_url_loggedin": "",
+        "second_heading": "Adipiscing elit",
+        "second_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "bottom_learnmore_text": "Learn More",
+        "bottom_learnmore_url": "#",
+        "bottom_learnmore_text_dealer": "",
+        "bottom_learnmore_url_dealer": ""
+      }
+    },
+    "solutions_video_carousel_RkWg6J": {
+      "type": "solutions-video-carousel",
+      "blocks": {
+        "text_block_et7kz4": {
+          "type": "text_block",
+          "settings": {
+            "carousel_video": "ttyha4hmpd"
+          }
+        },
+        "text_block_WA4kV7": {
+          "type": "text_block",
+          "settings": {
+            "carousel_video": "jryf38pk3l"
+          }
+        },
+        "text_block_Lbm8B6": {
+          "type": "text_block",
+          "settings": {
+            "carousel_video": "kbsoy6p0qu"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_et7kz4",
+        "text_block_WA4kV7",
+        "text_block_Lbm8B6"
+      ],
+      "settings": {
+        "video_first_heading": "Elit amet tortor",
+        "video_first_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "video_learnmore_text": "Learn More",
+        "video_learnmore_url": "#",
+        "video_second_heading": "Aenean turpis",
+        "video_second_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "video_bottom_learnmore_text": "Learn More",
+        "video_bottom_learnmore_url": "#"
+      }
+    },
+    "solutions_image_carousel_QryF7C": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_XGYq98": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/carousel-img3.jpg"
+          }
+        },
+        "image_block_WYmrNj": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/carousel-img1.jpg"
+          }
+        },
+        "image_block_jW34cw": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/carousel-img3.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_XGYq98",
+        "image_block_WYmrNj",
+        "image_block_jW34cw"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "Pellentesque volutpar",
+        "first_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "learnmore_text": "Learn More",
+        "learnmore_url": "#",
+        "learnmore_url_loggedin": "",
+        "second_heading": "Maximus odio",
+        "second_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare, tortor ac mollis aliquet, metus nisl semper.",
+        "bottom_learnmore_text": "Learn More",
+        "bottom_learnmore_url": "#",
+        "bottom_learnmore_text_dealer": "",
+        "bottom_learnmore_url_dealer": ""
+      }
+    },
+    "product_type_why_dmf_gUff6w": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#292521",
+        "section_text_color": "#f9f6f3",
+        "why_section_heading": "Lorem ipsum",
+        "why_section_subheading": "lighting dis ut magnis",
+        "why_section_content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tortor augue, vestibulum in est at, volutpat condimentum leo. Aliquam viverra vitae sapien sed blandit. Quisque id ligula pretium, porta elit dignissim, consequat sem.",
+        "why_img1": "shopify://shop_images/series-dmf-1.png",
+        "why_img2": "shopify://shop_images/series-dmf-2.png",
+        "why_img3": "shopify://shop_images/series-dmf-3.png",
+        "why_img4": "shopify://shop_images/series-dmf-4.png",
+        "why_img5": "shopify://shop_images/series-dmf-5.png"
+      }
+    }
+  },
+  "order": [
+    "main_series_banner_ffA4FK",
+    "solutions_image_grids_CWrnUP",
+    "solutions_image_carousel_UcCNgm",
+    "solutions_video_carousel_RkWg6J",
+    "solutions_image_carousel_QryF7C",
+    "product_type_why_dmf_gUff6w"
+  ]
+}

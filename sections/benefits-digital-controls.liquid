@@ -1,0 +1,262 @@
+<section class="benefits-digital-controls">
+    <div class="container">
+        <div class="row">
+            <div class="benefits-digital-controls-image">
+                {% assign wistia_videoID = section.settings.benefits_video_iframe %}
+                <iframe width="560" height="315" src="https://fast.wistia.com/embed/iframe/{{ wistia_videoID }}?version=v1" title="Wistia video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="benefits-digital-controls-content-area">
+                <span class="section-top-tagline font-calling-code">{{ section.settings.benefits_topline }}</span>
+                <h2 class="font-neue-light">{{ section.settings.benefits_heading }} <br><span class="font-austin-italic">{{ section.settings.benefits_heading_italic }}</span></h2>
+                <p class="font-neue-roman">{{ section.settings.benefits_content }}</p>
+                <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.benefits_learnmore_url }}">{{ section.settings.benefits_learnmore_text }} 
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                        <defs>
+                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                        </defs>
+                        <g id="Layer_2-2">
+                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.benefits-digital-controls {
+        position: relative;
+        margin: 100px 0px;
+        padding: 0px;
+    }
+    section.benefits-digital-controls .row {
+        display: flex;
+        justify-content: space-between;
+        min-width: 100%;
+    }
+    .benefits-digital-controls-content-area {
+        width: 494px;
+        min-width: 494px;
+        padding-top: 51px;
+    }
+    .benefits-digital-controls-image {
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        height: 560px;
+        width: 611px;
+    }
+
+    .benefits-digital-controls-image iframe{
+        /* height: 38.889vw; */
+        height: 560px;
+        width: 711px;
+        max-width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .benefits-digital-controls-image {
+        left: 0px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    span.section-top-tagline {
+        font-size: 14px;
+        line-height: 26px;
+        text-transform: uppercase;
+        letter-spacing: 0.65px;
+        margin-bottom: 3px;
+    }
+    .benefits-digital-controls-content-area h2 {
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        margin: 0px 0px 36px 0px;
+    }
+    .benefits-digital-controls-content-area h2 span.font-austin-italic{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .benefits-digital-controls-content-area p {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+    .benefits-digital-controls-content-area a.learn-more-arrow {
+        margin-top: 40px;
+    }
+
+    /** Responsive */
+    @media (min-width: 1500px){
+        .benefits-digital-controls-content-area h2{
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .benefits-digital-controls-content-area h2 span.font-austin-italic{
+            font-size: 64px;
+            line-height: 68px;
+        }
+    }
+
+    @media (max-width: 1366px) and (min-width: 1200px) {
+        .benefits-digital-controls-image iframe{
+            width: 600px;
+        }
+        .benefits-digital-controls-image{
+            width: 500px;
+        }
+    }
+
+    @media (max-width: 1199px) and (min-width: 992px){
+        .benefits-digital-controls-image iframe{
+            width: 400px;
+            height: 500px;
+        }
+        .benefits-digital-controls-image{
+            width: 300px;
+        }
+    }
+
+    @media (max-width: 991px){
+        section.benefits-digital-controls .row {
+            flex-flow: column;
+        }
+
+        .benefits-digital-controls-image iframe{
+            position: relative;
+            top: unset;
+            transform: none;
+            width: 100%;
+            height: 378px;
+            border-radius: 8px;
+        }
+        .benefits-digital-controls-image, .benefits-digital-controls-content-area {
+            width: 100%;
+        }
+
+        .benefits-digital-controls-content-area h2 span.font-austin-italic{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .benefits-digital-controls-content-area h2 {
+            font-size: 50px;
+            line-height: 57px;
+            margin-bottom: 20px;
+        }
+        .benefits-digital-controls-image {
+            position: relative;
+            transform: none;
+            top: 0px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+        .benefits-digital-controls-image img{
+            border-radius: 8px;
+        }
+        section.benefits-digital-controls {
+            padding: 73px 0px;
+            margin: 0px;
+        }
+        .benefits-digital-controls-content-area {
+            padding: 28px 0px 0px;
+            min-width: unset;
+        }
+        .benefits-digital-controls-content-area a.learn-more-arrow{
+            margin-top: 30px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+    // Video control logic
+    const videoFrame = document.querySelector('.benefits-digital-controls-image iframe');
+    const section = document.querySelector('.benefits-digital-controls');
+    
+    // Initialize the IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Check if the section is intersecting with the viewport
+            if (entry.isIntersecting) {
+                // Play the video
+                const src = videoFrame.getAttribute('src');
+                videoFrame.setAttribute('src', src + '&autoplay=1');
+            } else {
+                // Pause the video by reloading the iframe without autoplay
+                const src = videoFrame.getAttribute('src').replace('&autoplay=1', '');
+                videoFrame.setAttribute('src', src);
+            }
+        });
+    }, {
+        threshold: 0.5 // Adjust this value based on when you want the video to start/stop (0.5 means 50% of the section needs to be visible)
+    });
+    
+    // Observe the section
+    observer.observe(section);
+});
+
+</script>
+
+{% schema %}
+{
+    "name": "Benefits Digital Controls",
+    "settings": [
+        {
+            "type": "text",
+            "id": "benefits_topline",
+            "label": "Heading topline"
+        },
+        {
+            "type": "text",
+            "id": "benefits_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "benefits_heading_italic",
+            "label": "Section heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "benefits_content",
+            "label": "Section content"
+        },
+        {
+            "type": "text",
+            "id": "benefits_learnmore_text",
+            "label": "Learn more button text"
+        },
+        {
+            "type": "text",
+            "id": "benefits_learnmore_url",
+            "label": "Learn more button URL"
+        },
+        {
+            "type": "textarea",
+            "id": "benefits_video_iframe",
+            "label": "Video embed code"
+        }
+    ],
+    "presets": [
+        {
+        "name": "Benefits Digital Controls",
+        "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

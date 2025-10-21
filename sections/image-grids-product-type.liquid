@@ -1,0 +1,499 @@
+<section class="product-type-grids">
+  <div class="container">
+    <div class="top-section-row">
+        <div class="top-col-left">
+            <h2 class="font-neue-light text-dark">{{ section.settings.type_main_title }} <br><span class="font-austin-italic">{{ section.settings.type_main_title_italic }}</span></h2>
+        </div>
+        <div class="top-col-right">
+            <p class="font-neue-roman text-dark">{{ section.settings.type_main_txt }}</p>
+        </div>
+    </div>
+    <div class="product-type-grid-row">
+        {% for block in section.blocks %}
+            {% if block.type == 'text_block' %}
+
+            <div class="product-type-column">
+                <div class="column-content">
+                <img src="{{ block.settings.image_type_imagebox | image_url }}" width="394" height="550" alt="grid image" />
+                <span class="image-grid-title font-neue-roman">{{ block.settings.tag_type_imagebox }}</span>
+                <div class="content">
+                    <div class="col-content-row">
+                        <div class="col-content-left">
+                            <h2 class="text-white font-neue-light">{{ block.settings.heading_type_imagebox }} <br><span class="font-austin-italic">{{ block.settings.heading_type_imagebox_italic }}</span></h2>
+                            <div class="column-btns-row">
+                                <a class="learn-more-arrow btn-light font-neue-roman" href="{{ block.settings.buttonurl_imagebox }}">{{ block.settings.buttontext_imagebox }} 
+                                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                                    <defs>
+                                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                                    </defs>
+                                    <g id="Layer_2-2">
+                                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+                                    </g>
+                                </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+      
+
+    <div class="product-type-progress-bar">
+      <div class="product-type-progress"></div>
+    </div>
+
+    <div class="product-type-carousel-controls">
+      <button id="prev-btn">
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+            <defs>
+                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+            </defs>
+            <g id="Layer_2-2">
+                <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+            </g>
+        </svg>
+      </button>
+      <button id="next-btn">
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+            <defs>
+                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+            </defs>
+            <g id="Layer_2-2">
+                <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+            </g>
+        </svg>
+      </button>
+    </div>     
+  </div>
+</section>
+
+
+<style type="text/css">
+    .top-section-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0px 122.5px;
+        margin-bottom: 6.944vw;
+        min-height: 145px;
+        padding-right: 60px;
+    }
+    .top-col-left {
+        width: max-content;
+        min-width: max-content;
+        padding-left: 60px;
+    }
+    .top-col-left h2 {
+        margin: 0px;
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+    }
+    .top-col-right {
+        width: 40%;
+    }
+    .top-col-right p {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+    .layers-content-left span.font-austin-italic{
+        padding-top: 10px;
+        display: block;
+    }
+    .top-col-left h2 span{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .product-type-grid-row {
+        display: flex;
+        position: relative;
+        gap: 0px 17px;
+        transition: transform 0.5s ease;
+        /* overscroll-behavior-y: contain;
+        touch-action: pan-x; */
+    }
+    .product-type-column {
+        width: 33.33%;
+        margin: 0;
+        transition: 0.5s all;
+        position: relative;
+        box-sizing: border-box;
+        height: 550px;
+        z-index: 2;
+        border-radius: 8px;
+        padding: 19px 20px;
+    }
+    .product-type-column .column-content {
+        transition: width 0.5s ease, transform 0.5s ease;
+        border-radius: 8px;
+        display: flex;
+        align-items: flex-end;
+        height: 100%;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .product-type-column .column-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: 0.5s ease;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        border-radius: 8px;
+    }
+    .product-type-column .column-content .content {
+        position: relative;
+    }
+    .product-type-column .image-grid-title {
+        padding: 6.5px 20px;
+        position: absolute;
+        top: 19px;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(16px);
+        color: rgba(249, 246, 243, 1);
+        border-radius: 80px;
+        font-size: 13px;
+        line-height: 23px;
+        letter-spacing: 0.65px;
+    }
+    .col-content-left h2{
+        font-size: 2.778vw;
+        line-height: 2.917vw;
+        margin: 0px 0px 21px;
+    }
+    .product-type-grid-row .col-content-left h2 span {
+        font-size: 2.917vw;
+        line-height: 3.194vw;
+    }
+    .column-btns-row a.learn-more-arrow {
+        min-width: 157px;
+    }
+    .product-type-column a.learn-more-arrow {
+        background-color: rgba(249, 246, 243, 1);
+    }
+    .product-type-column a.learn-more-arrow:hover {
+        background-color: rgba(41, 37, 33, 1);
+    }
+    .product-type-carousel-controls{
+        display: none;
+    }
+    section.product-type-grids {
+        margin-bottom: 100px;
+        padding-top: 50px;
+    }
+    .product-type-progress-bar {
+        height: 1.5px;
+        width: 100%;
+        background-color: rgba(90, 88, 87, 1);
+        position: relative;
+        margin: 50px 0px 30px;
+        display: none;
+    }
+    .product-type-progress {
+        background-color: rgba(194, 191, 186, 1);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        display: block !important;
+        height: 1.5px;
+        transition: width 0.3s ease;
+    }
+    
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px) {
+        .top-section-row {
+            margin-bottom: 100px;
+        }
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .top-col-left h2 span{
+            font-size: 64px;
+            line-height: 68px;
+        }
+        .col-content-left h2{
+            font-size: 40px;
+            line-height: 42px;
+        }
+        .product-type-grid-row .col-content-left h2 span {
+            font-size: 42px;
+            line-height: 46px;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px){
+        .top-col-left{
+            min-width: unset;
+        }
+    }
+
+    @media (max-width: 991px){
+        .top-section-row{
+            flex-wrap: wrap;
+            gap: 16px 0px;
+            margin-bottom: 50px;
+            padding-right: 0px;
+        }
+        .top-col-left, 
+        .top-col-right {
+            width: 100%;
+            min-width: unset;
+            padding-left: 0px;
+        }
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 64px;
+        }
+        .top-col-left h2 span {
+            font-size: 64px;
+            line-height: 68px;
+        }
+        .product-type-column{
+            height: 500px;
+        }
+        .product-type-column {
+            flex: 0 0 100%;
+            min-width: 100%;
+        }
+        .col-content-left h2{
+            font-size: 40px;
+            line-height: 42px;
+        }
+
+        .product-type-grid-row .col-content-left h2 span{
+            font-size: 42px;
+            line-height: 46px;
+        }
+        .product-type-column{
+            padding: 19px;
+        }
+        section.product-type-grids .container {
+            overflow-x: hidden;
+        }
+        .product-type-carousel-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0px 17px;
+        }
+        .product-type-carousel-controls button {
+            background-color: rgba(90, 88, 87, 1);
+            width: 45px;
+            height: 45px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0px;
+        }
+        .product-type-carousel-controls button svg{
+            width: 18.06px;
+        }
+        .product-type-carousel-controls button svg .cls-1,
+        .product-type-carousel-controls button svg .cls-2{
+            stroke: rgba(249, 246, 243, 1);
+        }
+        section.product-type-grids {
+            margin-bottom: 60px;
+        }
+        .product-type-progress-bar{
+            display: block;
+        }
+    }
+
+    @media (max-width: 600px){
+        .top-col-left h2 br{
+            display: none;
+        }
+    }
+
+</style>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        const row = document.querySelector('.product-type-grid-row');
+        const columns = document.querySelectorAll('.product-type-column');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.querySelector('.product-type-progress');
+        let currentIndex = 0;
+        const totalColumns = columns.length;
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        
+        function updateCarousel() {
+            const columnWidth = columns[0].offsetWidth;
+            const gapWidth = 17; // Your defined gap value in pixels
+            const totalWidth = columnWidth + gapWidth;
+            row.style.transform = `translateX(-${currentIndex * totalWidth}px)`;
+            updateProgressBar();
+            updateButtonState();
+        }
+
+
+        function updateProgressBar() {
+            const progressPercentage = ((currentIndex + 1) / totalColumns) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+        }
+
+        function updateButtonState() {
+            if (currentIndex === 0) {
+            prevBtn.classList.add('disabled');
+            } else {
+            prevBtn.classList.remove('disabled');
+            }
+
+            if (currentIndex === totalColumns - 1) {
+            nextBtn.classList.add('disabled');
+            } else {
+            nextBtn.classList.remove('disabled');
+            }
+        }
+
+        prevBtn.addEventListener('click', function() {
+            if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', function() {
+            if (currentIndex < totalColumns - 1) {
+            currentIndex++;
+            updateCarousel();
+            }
+        });
+
+        // Initial state of buttons
+        updateButtonState();
+
+        // Touch events for swiping
+        row.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            prevTranslate = currentTranslate;
+        });
+
+        row.addEventListener('touchmove', function(e) {
+            if (!isDragging) return;
+            const moveX = e.touches[0].clientX;
+            const difference = startX - moveX;
+
+            if (difference > 50 && currentIndex < totalColumns - 1) {
+            nextBtn.click();
+            isDragging = false; // Prevent multiple actions
+            } else if (difference < -50 && currentIndex > 0) {
+            prevBtn.click();
+            isDragging = false; // Prevent multiple actions
+            }
+        });
+
+        row.addEventListener('touchend', function() {
+            isDragging = false;
+        });
+
+        // Window resize event to reset carousel position on resizing
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 991) {
+            updateCarousel();
+            } else {
+            row.style.transform = 'translateX(0)';
+            }
+        });
+
+        // Initial check
+        if (window.innerWidth <= 991) {
+            updateCarousel();
+        }
+    });
+
+
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Image Grids Product Type",
+  "settings": [
+    {
+      "type": "text",
+      "id": "type_main_title",
+      "label": "Main title"
+    },
+    {
+      "type": "text",
+      "id": "type_main_title_italic",
+      "label": "Main title in italic"
+    },
+    {
+      "type": "textarea",
+      "id": "type_main_txt",
+      "label": "Main content"
+    }
+  ],
+  "blocks": [
+        {
+            "type": "text_block",
+            "name": "Add Image Box",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "tag_type_imagebox",
+                    "label": "Tag on imagebox"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_type_imagebox",
+                    "label": "Add Image"
+                },
+                {
+                    "type": "text",
+                    "id": "heading_type_imagebox",
+                    "label": "Heading on image box"
+                },
+                {
+                    "type": "text",
+                    "id": "heading_type_imagebox_italic",
+                    "label": "Heading on image box in italic"
+                },
+                {
+                    "type": "text",
+                    "id": "buttontext_imagebox",
+                    "label": "Discover button text"
+                },
+                {
+                    "type": "text",
+                    "id": "buttonurl_imagebox",
+                    "label": "Discover button URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Image Grids Product Type"
+        }
+    ]
+}
+{% endschema %}
+

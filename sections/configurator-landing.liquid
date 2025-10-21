@@ -1,0 +1,363 @@
+<link href="{{ 'page.configurator-landing.css' | asset_url }}" rel="stylesheet">
+
+<div class="configurator-landing">
+    <div class="container">
+        <section class="config-collections">
+        <div class="config-top-header">
+            <h2 class="font-neue-light">{{ section.settings.main_heading }}</h2>
+            
+            {% assign category_blocks = section.blocks | where: 'type', 'category' %}
+            {% if category_blocks.size > 0 %}
+            <ul class="collection-anchors">
+                {% for category in category_blocks %}
+                {% if category.settings.show_category %}
+                    <li>
+                    <a href="#{{ category.settings.category_anchor }}" 
+                        class="font-calling-code{% if forloop.first %} collection-active{% endif %}"
+                        {{ category.shopify_attributes }}>
+                        {{ category.settings.category_name | upcase }}
+                    </a>
+                    </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        
+        <div class="config-bottom-area">
+            {% for category in category_blocks %}
+            {% if category.settings.show_category %}
+                <div class="config-collection-box" id="{{ category.settings.category_anchor }}" {{ category.shopify_attributes }}>
+                <h2 class="font-neue-roman">{{ category.settings.category_display_name }}</h2>
+                
+                <div class="collection-list-boxes">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'product_card' and block.settings.parent_category == category.settings.category_anchor and block.settings.show_product %}
+                        <div class="collection-list-item" {{ block.shopify_attributes }}>
+                        <a href="{{ block.settings.product_url }}">
+                            <img src="{{ block.settings.product_image | img_url: '226x305' }}" 
+                                width="226" 
+                                height="305" 
+                                alt="{{ block.settings.product_name }}" />
+                        </a>
+
+                        <div class="collection-content">
+                            <h3 class="font-neue-roman">{{ block.settings.product_name }}</h3>
+                            <a href="{{ block.settings.product_url }}">
+                            {{ block.settings.button_text }}
+                            {% render 'arrow-icon-configure' %}
+                            </a>
+                        </div>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        </section>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const links = document.querySelectorAll('.collection-anchors a');
+
+        links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            // Remove 'collection-active' from all links
+            links.forEach(el => el.classList.remove('collection-active'));
+            
+            // Add 'collection-active' to the clicked link
+            this.classList.add('collection-active');
+        });
+        });
+
+        // Landing collection carousels
+        const breakpoint = 991; // Same breakpoint as your existing script
+        
+        // Initialize carousels for each collection on mobile
+        function initConfigCollectionCarousels() {
+        if (window.innerWidth <= breakpoint) {
+            setupCollectionCarousels();
+        } else {
+            // Reset any mobile-specific styles when on desktop
+            resetCollectionCarousels();
+        }
+        }
+        
+        function setupCollectionCarousels() {
+        const collectionBoxes = document.querySelectorAll('.config-collection-box');
+        
+        collectionBoxes.forEach(box => {
+            const collectionId = box.getAttribute('id');
+            const itemsContainer = box.querySelector('.collection-list-boxes');
+            const items = box.querySelectorAll('.collection-list-item');
+            
+            if (items.length <= 1) return; // Skip if only one item
+            
+            // Only setup if not already initialized
+            if (!box.classList.contains('carousel-initialized')) {
+            // Add carousel class to container
+            itemsContainer.classList.add('collection-carousel');
+            
+            // Create slider-paginations container
+            const sliderPaginations = document.createElement('div');
+            sliderPaginations.className = 'slider-paginations';
+            
+            // Create slide counter
+            const slideCounter = document.createElement('div');
+            slideCounter.className = 'slide-counter';
+            slideCounter.textContent = `1/${items.length}`;
+            
+            // Create pagination container
+            const paginationContainer = document.createElement('div');
+            paginationContainer.className = 'pagination';
+            
+            // Create pagination buttons
+            for (let i = 0; i < items.length; i++) {
+                const button = document.createElement('button');
+                if (i === 0) button.classList.add('active');
+                button.addEventListener('click', function() {
+                goToCollectionSlide(itemsContainer, i, items, paginationContainer, slideCounter);
+                });
+                paginationContainer.appendChild(button);
+            }
+            
+            // Add counter and pagination to the slider-paginations container
+            sliderPaginations.appendChild(slideCounter);
+            sliderPaginations.appendChild(paginationContainer);
+            
+            // Add slider-paginations to the collection box
+            box.appendChild(sliderPaginations);
+            
+            // Add touch events for swiping
+            let startX = 0;
+            let endX = 0;
+            let currentIndex = 0;
+            
+            itemsContainer.addEventListener('touchstart', function(event) {
+                startX = event.touches[0].clientX;
+            });
+            
+            itemsContainer.addEventListener('touchmove', function(event) {
+                endX = event.touches[0].clientX;
+            });
+            
+            itemsContainer.addEventListener('touchend', function() {
+                if (startX > endX + 50) {
+                // Swipe left
+                if (currentIndex < items.length - 1) {
+                    currentIndex++;
+                    goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+                }
+                } else if (startX < endX - 50) {
+                // Swipe right
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    goToCollectionSlide(itemsContainer, currentIndex, items, paginationContainer, slideCounter);
+                }
+                }
+            });
+            
+            // Mark as initialized
+            box.classList.add('carousel-initialized');
+            
+            // Set initial state
+            goToCollectionSlide(itemsContainer, 0, items, paginationContainer, slideCounter);
+            }
+        });
+        }
+        
+        function goToCollectionSlide(container, index, slides, pagination, counter) {
+        const slideWidth = slides[0].offsetWidth;
+        const gap = 21; // Match the gap from your original script
+        const slideDistance = index * (slideWidth + gap);
+        
+        // Apply the transform to slide the container
+        container.style.transform = `translateX(-${slideDistance}px)`;
+        
+        // Update pagination buttons
+        const buttons = pagination.querySelectorAll('button');
+        buttons.forEach(button => button.classList.remove('active'));
+        buttons[index].classList.add('active');
+        
+        // Update slide counter
+        counter.textContent = `${index + 1}/${slides.length}`;
+        }
+        
+        function resetCollectionCarousels() {
+        const collectionBoxes = document.querySelectorAll('.config-collection-box');
+        
+        collectionBoxes.forEach(box => {
+            const itemsContainer = box.querySelector('.collection-list-boxes');
+            
+            // Reset transform
+            if (itemsContainer) {
+            itemsContainer.style.transform = '';
+            }
+            
+            // Remove slider-paginations if it exists
+            const sliderPaginations = box.querySelector('.slider-paginations');
+            
+            if (sliderPaginations) sliderPaginations.remove();
+        });
+        }
+        
+        // Initialize on page load
+        initConfigCollectionCarousels();
+        
+        // Re-initialize on window resize
+        window.addEventListener('resize', initConfigCollectionCarousels);
+        
+        // Collection anchors functionality - make sure it works with the carousel
+        const collectionLinks = document.querySelectorAll('.collection-anchors a');
+        
+        collectionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            collectionLinks.forEach(el => el.classList.remove('collection-active'));
+            
+            // Add active class to the clicked link
+            this.classList.add('collection-active');
+            
+            // Get the target section ID
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+            // Smooth scroll to the section
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        });
+
+        // Set first collection anchor as active on page load
+        if (collectionLinks.length > 0) {
+            collectionLinks[0].classList.add('collection-active');
+        }
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Configurator Landing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Configurators"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name (for navigation)",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "category_display_name",
+          "label": "Category Display Name (for section heading)",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "category_anchor",
+          "label": "Category Anchor ID",
+          "info": "Used for navigation links (e.g., 'recessed', 'linear', 'surface')",
+          "default": "category"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_category",
+          "label": "Show this category",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_category",
+          "label": "Parent Category Anchor ID",
+          "info": "Enter the anchor ID of the category this product belongs to (e.g., 'recessed', 'linear', 'surface'). Must match the Category Anchor ID from the category block.",
+          "default": "recessed"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product Name",
+          "default": "Product Name"
+        },
+        {
+          "type": "url",
+          "id": "product_url",
+          "label": "Product URL"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Configure"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_product",
+          "label": "Show this product",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Configurator Landing",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Recessed",
+            "category_display_name": "Recessed",
+            "category_anchor": "recessed"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Linear",
+            "category_display_name": "Linear", 
+            "category_anchor": "linear"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Surface",
+            "category_display_name": "Surface",
+            "category_anchor": "surface"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

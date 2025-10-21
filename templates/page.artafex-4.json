@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-series-banner": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Exceptionally versatile",
+        "main_subtitle": "completely customizable.",
+        "main_txt": "Our most multifaceted recessed lighting system with housings that work in almost all installations and ceiling designs, including concrete and low-profile.",
+        "main_banner_img_desktop": "shopify://shop_images/Series4_HeroD.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/Series4_HeroM.jpg"
+      }
+    },
+    "animated-image-grids-series": {
+      "type": "animated-image-grids-series",
+      "blocks": {
+        "text_block_AjYApw": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Completely",
+            "block_text_2": "modular",
+            "block_bottom_heading": "Engineered to be modular",
+            "block_percentage_txt": "Different combinations",
+            "block_percentage_txt_lower": "Interchangeable trims, colors, and beam angles to offer design and installation flexibility.",
+            "block_percent_number": "170K",
+            "block_p_txt": "Our modular 4” solution allows you to\ncombine styles, shapes, and colors to\ncustomize your ceiling.",
+            "block_tag": "Modularity",
+            "block_image_large": "shopify://shop_images/Series_4inch_1Modul_Expanded_D_New.jpg"
+          }
+        },
+        "text_block_Vw76KY": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Engineered",
+            "block_text_2": "to perform",
+            "block_bottom_heading": "Seamless Dimming Control",
+            "block_percentage_txt": "Smooth Dimming",
+            "block_percentage_txt_lower": "Offers high-performance dimming with local or centralized controls.",
+            "block_percent_number": "0.1%",
+            "block_p_txt": "Bespoke driver provides exceptional control with soft on/off; 1% or .1% smooth flicker-free dimming",
+            "block_tag": "Engineering",
+            "block_image_large": "shopify://shop_images/Series_2inch_2Eng_Expanded_D.jpg"
+          }
+        },
+        "text_block_iEqMKc": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Décor",
+            "block_text_2": "forward",
+            "block_bottom_heading": "Carefully crafted",
+            "block_percentage_txt": "Different styles and finishes to choose from",
+            "block_percentage_txt_lower": "Our finishes blend effortlessly with your home's style, creating a calm, cohesive vibe throughout.",
+            "block_percent_number": "29",
+            "block_p_txt": "Designed to enhance the architectural\nfeatures and accentuate the aesthetic\nof your home.",
+            "block_tag": "Aesthetic",
+            "block_image_large": "shopify://shop_images/Series_4inch_3Aest_Expanded_D.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_AjYApw",
+        "text_block_Vw76KY",
+        "text_block_iEqMKc"
+      ],
+      "settings": {
+        "main_title": "More options for",
+        "main_subtitle": "the modern home.",
+        "main_txt": "The Artafex 4 is compatible with nearly all of our decorative trim options, available in a wide variety of modern styles, shapes, colors, and finishes."
+      }
+    },
+    "animated-tab-carousel": {
+      "type": "animated-tab-carousel",
+      "blocks": {
+        "text_block_rRL8d4": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Housing",
+            "tab_content": "Applicable for both new construction and remodels, the housings fit a plethora of ceiling designs, from sloped and shallow to wood and concrete.\n<br>\nAvailable in both round and square version, the square housing is designed to shift and rotate on the shelf and includes laser alignment tabs.",
+            "tab_main_img": "shopify://shop_images/Series_4inch_Tech_Housing_D.png",
+            "tab_icon": "shopify://shop_images/Housing2_3f5bdbc6-0296-45b6-92b7-6531e159a10f.svg"
+          }
+        },
+        "text_block_gUypKy": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Modules",
+            "tab_content": "Deliver up to 1500 lumens with True Spectrum® color rendering to simulate natural sunlight and enhance architectural features. Features include 1% TRIAC/ELV dimming, DALI-2 digital dimming down to 0.1%, or the exclusive revolutionary PhaseX technology.",
+            "tab_main_img": "shopify://shop_images/Series_4inch_Tech_Module_D_aa7cbdff-4aeb-4d01-bb02-0678c15766df.png",
+            "tab_icon": "shopify://shop_images/Module2.svg"
+          }
+        },
+        "text_block_DjfjMV": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Trim",
+            "tab_content": "Precision-crafted aluminum solutions\nthat work with both adjustable and fixed. With a modern aesthetic and options for\ntastefully accenting or seamlessly\nblending into the ceiling.\n<br>\nAvailable in round, square, pinhole,\nwall wash, and decorative styles\ntotaling 68 variations.",
+            "tab_main_img": "shopify://shop_images/Series_4inch_Tech_Trim_D.png",
+            "tab_icon": "shopify://shop_images/Trim3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_rRL8d4",
+        "text_block_gUypKy",
+        "text_block_DjfjMV"
+      ],
+      "settings": {
+        "main_title": "The perfect solution for",
+        "main_subtitle": "enhancing your home's aesthetic",
+        "main_txt_url_homeowner": "/products/4-trims-1",
+        "main_txt_url_dealer": "/products/dealer-4-trims"
+      }
+    },
+    "series-why-dmf": {
+      "type": "series-why-dmf",
+      "settings": {
+        "why_section_heading": "Artful lighting",
+        "why_section_subheading": "for daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 30 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/Transform_TopLeft_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/Transform_Central_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_BottomRight_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main-series-banner",
+    "animated-image-grids-series",
+    "animated-tab-carousel",
+    "series-why-dmf"
+  ]
+}

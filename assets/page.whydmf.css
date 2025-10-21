@@ -1,0 +1,228 @@
+header.header.header--middle-center a.header__heading-link svg,
+header.header.header--middle-center a.header__heading-link svg path {
+  fill: #fff;
+}
+
+.transparent-pg-banner {
+  width: 100%;
+  height: 800px;
+  background-size: cover !important;
+  background-position: center !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.stickyHeader span.header__active-menu-item,
+.stickyHeader header-menu a.products-menu-item {
+  color: rgba(18, 18, 18) !important;
+  fill: #000;
+}
+.transparent-pg-banner h2 {
+  font-size: 5.556vw;
+  line-height: 4.653vw;
+  letter-spacing: 0.65px;
+  margin: 0px 0px 36px;
+}
+
+.transparent-pg-banner h2 span {
+  font-size: 5.972vw;
+  line-height: 6.111vw;
+}
+.transparent-pg-banner p {
+  margin: 0px;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 0.65px;
+  width: 444px;
+  color: #f9f6f3;
+  max-width: 100%;
+}
+
+.featured-products-listing .product-list-item {
+  width: calc(25% - 2.5px);
+}
+
+a.learn-more-arrow {
+  padding: 0 31px;
+}
+
+h2.section-center-heading {
+  color: rgba(41, 37, 33, 1);
+  font-size: 5.556vw;
+  line-height: 4.653vw;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+
+h2.section-center-heading span {
+  font-size: 5.556vw;
+  line-height: 6.111vw;
+}
+
+section.main-heading-lights {
+  text-align: center;
+}
+
+#MainContent {
+  padding-top: 0px;
+}
+
+.header-wrapper {
+  background: transparent !important;
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.header__heading-logo {
+  filter: brightness(20.5);
+}
+
+.shopify-section-header-sticky .header-wrapper {
+  background: #efebe6;
+}
+
+.shopify-section-header-sticky .header__menu-item span {
+  color: #333;
+}
+
+.shopify-section-header-sticky .header__heading-logo {
+  filter: brightness(0);
+}
+
+div#shopify-section-home-products .section-titles h2.section-title {
+  margin-bottom: 25px;
+}
+
+.animation-shutter {
+  display: none !important;
+}
+
+section.homepage-products {
+  padding: 100px 0px !important;
+}
+
+section.homepage-products h2.product-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+section.homepage-products a.learn-more-arrow {
+  min-width: 143px;
+}
+
+div.section-header.stickyHeader .header__inline-menu .header__menu-item,
+div.section-header.stickyHeader .header__heading-logo-wrapper svg path {
+  color: rgba(var(--color-foreground), 0.75) !important;
+  fill: #000 !important;
+}
+
+/*
+    ** Responsive
+    */
+
+@media (min-width: 1500px) {
+  .transparent-pg-banner h2 {
+    font-size: 80px;
+    line-height: 67px;
+  }
+  .transparent-pg-banner h2 span {
+    font-size: 86px;
+    line-height: 88px;
+  }
+
+  h2.section-center-heading {
+    font-size: 80px;
+    line-height: 67px;
+  }
+
+  h2.section-center-heading span {
+    font-size: 80px;
+    line-height: 88px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__menu-item,
+  .header__active-menu-item,
+  a.products-menu-item {
+    color: #f9f6f3 !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .importance-animation-image img {
+    min-height: 377px;
+  }
+  header.header a#cart-icon-bubble {
+    color: #f9f6f3;
+  }
+  .stickyHeader header.header a#cart-icon-bubble {
+    color: #292521;
+  }
+  .header__icon--menu svg:first-child path {
+      stroke: #f9f6f3;
+  }
+  .stickyHeader .header__icon--menu svg:first-child path {
+      stroke: #292521;
+  }
+  .stickyHeader a.login.btn-mobile {
+    color: rgba(var(--color-foreground), 0.75) !important;
+  }
+
+  .stickyHeader .header__icon--menu .icon path {
+    color: rgba(var(--color-foreground), 0.75) !important;
+    stroke: rgba(var(--color-foreground), 0.75) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .transparent-pg-banner {
+    height: 680px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  section.homepage-products {
+    padding-top: 39px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .transparent-pg-banner p {
+    width: 100%;
+  }
+  .transparent-pg-banner h2 {
+    font-size: 60px;
+    line-height: 64px;
+    margin-bottom: 20px;
+  }
+
+  .transparent-pg-banner h2 span {
+    font-size: 64px;
+    line-height: 68px;
+    display: block;
+    padding-top: 3px;
+  }
+
+  .featured-banner-section .banner-text h2 br {
+    display: none !important;
+  }
+
+  h2.section-center-heading {
+    font-size: 60px;
+    line-height: 64px;
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+
+  h2.section-center-heading span {
+    font-size: 64px;
+    line-height: 68px;
+    display: block;
+    padding-top: 8px;
+  }
+}

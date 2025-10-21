@@ -1,0 +1,6 @@
+<script src="{{ 'net30Class.js' | asset_url }}" defer="defer"></script>
+<net-30-cart-component class="hidden">
+    <div style="display: flex;justify-content: space-between; margin-bottom:10px" class="net-30-wrapper" customerId="{{ customer.id }}" cartTotal="{{ cart.total_price | divided_by: 100 }}" >
+        <span>Available NET 30 balance:</span> <span class="available-credits"></span>
+    </div>
+</net-30-cart-component>

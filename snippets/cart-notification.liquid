@@ -1,0 +1,70 @@
+{% comment %}
+  Renders cart notification
+
+  Accepts:
+  - color_scheme: {String} sets the color scheme of the notification (optional)
+  - desktop_menu_type: {String} passes the desktop menu type which allows us to use the right css class (optional)
+
+  Usage:
+  {% render 'cart-notification' %}
+{% endcomment %}
+
+<cart-notification>
+  <div class="cart-notification-wrapper{% if desktop_menu_type != 'drawer' %} page-width{% endif %}">
+    <div class="cart-notification-overlay"></div>
+    <div
+      id="cart-notification"
+      class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}"
+      aria-modal="true"
+      aria-label="{{ 'general.cart.item_added' | t }}"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div class="cart-notification__header">
+        <h2 class="cart-notification__heading caption-large text-body">
+          {%- render 'icon-checkmark' -%}
+          {{ 'general.cart.item_added' | t }}
+        </h2>
+        <button
+          type="button"
+          class="cart-notification__close modal__close-button link link--text focus-inset"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="18" fill="#EFEBE6"/>
+            <path d="M13.057 13.7506L22.2494 22.943M12.9038 23.0962L17.6532 18.3468L22.0962 13.9038" stroke="#292521" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </div>
+      <div id="cart-notification-product" class="cart-notification-product"></div>
+      <div class="cart-notification__links">
+        <div class="cart_notification_anchors">
+          <a
+            href="{{ routes.cart_url }}"
+            id="cart-notification-button"
+            class="button button--primary button--full-width"
+          >
+            <span>
+            {{- 'general.cart.view_empty_cart' | t -}}
+              </span>
+          </a>
+          <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+              <defs>
+                  <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+              </defs>
+              <g id="Layer_2-2">
+                  <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                  <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+              </g>
+          </svg>
+        </div>  
+        <button type="button" class="link button-label">{{ 'general.continue_shopping' | t }}</button>
+      </div>
+    </div>
+  </div>
+</cart-notification>
+{% style %}
+  .cart-notification {
+    display: none;
+  }
+{% endstyle %}

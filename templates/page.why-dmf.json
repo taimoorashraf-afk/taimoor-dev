@@ -1,0 +1,133 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-why-dmf-banner": {
+      "type": "main-why-dmf-banner",
+      "settings": {
+        "main_title": "Leader in light",
+        "main_subtitle": "for 40 years",
+        "main_txt": "DMF Lighting designs and builds modular downlighting solutions that lead the industry in quality, flexibility, and superior performance.",
+        "main_banner_img_desktop": "shopify://shop_images/WhyDMF_Hero.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/WhyDMF_Hero_M.jpg"
+      }
+    },
+    "importance-of-lights": {
+      "type": "animated-importance-light",
+      "settings": {
+        "heading_top_center": "Brilliant solutions,",
+        "heading_top_center_italic": "built better, and smarter.",
+        "heading_topline": "Elevate Your Home with artafex",
+        "importance_heading": "The art",
+        "importance_heading_italic": "of illumination",
+        "importance_content": "An exclusive line of luxury lighting products, Artafex recessed solutions are designed and engineered to elevate the beauty and comfort of your home. <br><br>\n\nFrom highlighting artwork and architectural details to precisely rendering the colors and textures of a room, Artafex by DMF Lighting ensures your home looks—and feels—the way it should.",
+        "importance_learnmore_text": "Learn More",
+        "importance_learnmore": "/pages/recessed",
+        "importance_img": "shopify://shop_images/WhyDMF_ArtIllum.jpg"
+      }
+    },
+    "driven-by-engineering": {
+      "type": "driven-by-engineering",
+      "settings": {
+        "driven_heading_topline": "The Heart of our company",
+        "driven_heading": "Driven",
+        "driven_heading_italic": "by engineering",
+        "driven_content": "At DMF Lighting, the art of engineering is at the heart of our company. \n<br><br>\nFor nearly 40 years, our dedicated engineers in Carson, California, have designed a range of products that reimagine the possibilities of premium lighting and how it can impact the look and feel of your home.",
+        "driven_learnmore_text": "Learn More",
+        "driven_learnmore": "/pages/products",
+        "driven_img": "shopify://shop_images/WhyDMF_DrivenEng_c1f2e59e-7940-4184-a54c-765f4cfc61f1.jpg"
+      }
+    },
+    "importance-of-lights-second": {
+      "type": "animated-importance-light-second",
+      "settings": {
+        "heading_topline": "Pioneering new possibilities",
+        "importance_heading": "Leaders",
+        "importance_heading_italic": "of innovation",
+        "importance_content": "<p>Driven by a commitment to continuous improvement, DMF Lighting is consistently at the forefront of innovation in premium lighting solutions.\n</p>",
+        "importance_learnmore_text": "Discover the Latest",
+        "importance_learnmore": "/pages/linear",
+        "importance_img": "shopify://shop_images/WhyDMf_LeaderInno3.jpg"
+      }
+    },
+    "featured-banner": {
+      "type": "three-percentage",
+      "settings": {
+        "background_image": "shopify://shop_images/BrillianceNumber_D_a7452f67-705f-4070-8b27-364521dbcfba.jpg",
+        "background_image_mobile": "shopify://shop_images/WhyDMF_BrillianceNumber_M.jpg",
+        "banner_heading": "Brilliance by",
+        "banner_subheading": "the numbers",
+        "banner_description": "DMF Lighting is dedicated to rigorous research and <p> development that have led to numerous </p><p> innovations in illumination.</p>",
+        "box_1_percent": "75%",
+        "box1_icon": "shopify://shop_images/box-icon3.svg",
+        "box_1_text": "Reduction of energy",
+        "box_2_percent": "4M+",
+        "box2_icon": "shopify://shop_images/box-icon2.svg",
+        "box_2_text": "Possible configurations of modular components",
+        "box_3_percent": "99",
+        "box3_icon": "shopify://shop_images/Colors.svg",
+        "box_3_text": "Variations of colors studied to develop True Spectrum®"
+      }
+    },
+    "home-products-whydmf": {
+      "type": "home-products",
+      "blocks": {
+        "product_8VrrdC": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex-linear",
+            "p_more_url": "/pages/linear"
+          }
+        },
+        "product_LAaj7H": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex2",
+            "p_more_url": "/pages/artafex-2"
+          }
+        },
+        "product_BpHcYT": {
+          "type": "product",
+          "settings": {
+            "selected_product": "artafex4",
+            "p_more_url": "/pages/artafex-4"
+          }
+        },
+        "product_yjxnEi": {
+          "type": "product",
+          "settings": {
+            "selected_product": "drd5s",
+            "p_more_url": "/pages/surface-mounts"
+          }
+        }
+      },
+      "block_order": [
+        "product_8VrrdC",
+        "product_LAaj7H",
+        "product_BpHcYT",
+        "product_yjxnEi"
+      ],
+      "settings": {
+        "products_heading": "You Might Need...",
+        "products_content": "",
+        "products_sellall_text": "See all",
+        "products_sellall_url": "/pages/products"
+      }
+    }
+  },
+  "order": [
+    "main-why-dmf-banner",
+    "importance-of-lights",
+    "driven-by-engineering",
+    "importance-of-lights-second",
+    "featured-banner",
+    "home-products-whydmf"
+  ]
+}

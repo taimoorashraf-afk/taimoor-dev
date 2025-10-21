@@ -1,0 +1,680 @@
+<section class="products-img-grids">
+    <div class="container">
+        <div class="top-section-row">
+            <div class="top-col-left">
+                <h2 class="font-neue-light text-dark">{{ section.settings.grid_top_heading }} <br><span class="font-austin-italic">{{ section.settings.grid_top_heading_italic }}</span></h2>
+            </div>
+            <div class="top-col-right">
+                <p class="font-neue-roman text-dark">{{ section.settings.grid_top_content }}</p>
+            </div>
+        </div>        
+    </div>
+    <div class="product-img-grid-sections">
+        <div class="container">
+            <div class="product-grids-images">
+                {% for block in section.blocks %}
+                    {% if block.type == 'image_block' %}
+                    {% assign loop_index = forloop.index %}
+                        <div class="product-grids-img-item">
+                            <img src="{{ block.settings.animated_box_image | img_url: 'original' }}" width="394" height="555" alt="product image" />
+                            <div class="product-grid-img-content">
+                                <h2 class="text-light font-neue-roman">{{ block.settings.animated_box_heading }}</h2>
+                                <p class="text-light font-neue-roman">{{ block.settings.animated_box_content }}</p>
+                                {% comment %} <div class="product-content-icons">
+                                    <div class="product-icon-item">
+                                        <svg width="22.26" height="29" viewBox="0 0 30 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_3626_9976)">
+                                                <path d="M14.6085 24.2828L14.5532 24.2324L14.6061 24.2852L14.5526 24.2318L14.4742 24.1595V24.1589L14.4767 24.1564L14.5994 24.2743L14.6079 24.2822L14.6085 24.2828Z" fill="#EFEBE6"/>
+                                                <path d="M9.34869 18.5217L8.24642 19.7868L12.6507 23.6253C12.7309 23.6952 12.819 23.7463 12.9126 23.7803C13.0055 23.8143 13.104 23.8319 13.2024 23.8319C13.3166 23.8319 13.4303 23.8089 13.5354 23.7639C13.6405 23.7183 13.7365 23.6521 13.8204 23.5609V23.5603L21.0144 15.7125L19.7778 14.578L13.1374 21.8224L9.3493 18.5223L9.34869 18.5217Z" fill="#EFEBE6"/>
+                                                <path d="M27.1899 6.37294L16.2771 0.882212C15.7703 0.627606 15.2186 0.5 14.6656 0.5C14.1187 0.5 13.5725 0.625176 13.0699 0.87492H13.0706H13.0693L2.00221 6.37537C0.784476 6.97998 0.0145836 8.22202 0.012153 9.58133C0.00789945 12.6573 0 19.2958 0 24.3661V24.3709C0.00060765 25.0764 0.135506 25.7795 0.385858 26.477C0.636817 27.1764 1.00445 27.8704 1.46687 28.5479C2.3911 29.903 3.69512 31.1906 5.16259 32.3281C7.14293 33.8642 9.38637 35.1482 11.1504 36.0512C12.9144 36.9541 14.199 37.4779 14.2664 37.5053L14.2694 37.5065C14.3703 37.5472 14.476 37.5673 14.5824 37.5673C14.6887 37.5673 14.7951 37.5472 14.8953 37.5065L14.8978 37.5053L14.9081 37.501C14.9172 37.4974 14.9312 37.4913 14.95 37.484C14.9871 37.4688 15.043 37.4457 15.1153 37.4147C15.2605 37.3534 15.4738 37.2616 15.743 37.1413C16.2808 36.9007 17.0428 36.5464 17.9305 36.0937C19.7067 35.1889 21.9902 33.8885 24.0016 32.3281C25.102 31.475 26.1113 30.538 26.9365 29.5505C27.7623 28.5631 28.4028 27.5264 28.7783 26.4776C29.0293 25.7776 29.1642 25.0734 29.1642 24.3661V9.57586C29.1642 8.22019 28.4003 6.98059 27.1893 6.37233L27.1899 6.37294ZM27.4864 24.3667V24.3685C27.4864 25.0339 27.3424 25.6768 27.0945 26.285C26.8466 26.8945 26.4966 27.4711 26.0779 28.0199C25.2412 29.1161 24.1316 30.1053 22.9728 31.0046C21.4112 32.2151 19.7061 33.2469 18.2216 34.052C16.7371 34.8565 15.4732 35.4338 14.7975 35.7291L14.5836 35.8221L14.3697 35.7291C13.6916 35.4338 12.4264 34.8565 10.942 34.052C9.45686 33.2469 7.7524 32.2157 6.19074 31.0046C5.32119 30.3301 4.4802 29.6046 3.76075 28.8226C3.0419 28.0399 2.44154 27.1995 2.06905 26.2856C1.90802 25.8894 1.79257 25.4787 1.73059 25.0563L1.67711 25.0709V24.3539C1.67711 19.2855 1.68501 12.6566 1.68927 9.58497C1.69109 8.86126 2.10125 8.20136 2.74779 7.8793H2.7484L13.8204 2.37521H13.8222C14.0878 2.24335 14.377 2.17772 14.6662 2.17772C14.9597 2.17772 15.2532 2.24578 15.5224 2.38128H15.523L26.4346 7.86958C27.0799 8.19406 27.4858 8.85458 27.4858 9.57525V24.3655L27.4864 24.3667Z" fill="#EFEBE6"/>
+                                                <path d="M15.232 38.3274V38.328L15.2289 38.3286L15.2259 38.3299L15.2806 38.4666L15.2921 38.5H15.2927L15.283 38.4733L15.2934 38.4994H15.294L15.2703 38.4332L15.2976 38.4976H15.2982L15.2697 38.4313L15.232 38.3274Z" fill="#EFEBE6"/>
+                                                <path d="M14.6 24.2743L14.4767 24.1564L14.4742 24.1589V24.1595H14.4736L14.552 24.2318L14.6055 24.2852L14.5526 24.2324L14.6079 24.2828H14.6085L14.6085 24.2822L14.6 24.2743Z" fill="#EFEBE6"/>
+                                                <path d="M13.9359 38.3286L13.9322 38.3274L13.8951 38.4313L13.8666 38.4976L13.8945 38.4332L13.8708 38.4994L13.8818 38.4733L13.8721 38.5H13.8727L13.8842 38.4666L13.9383 38.3299L13.9359 38.3286Z" fill="#EFEBE6"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_3626_9976">
+                                                <rect width="30" height="38" fill="white" transform="translate(0 0.5)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div class="product-icon-item">
+                                        <svg width="20.42" height="29" viewBox="0 0 28 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_3626_6368)">
+                                                <path d="M27.7624 19.2538C27.7624 14.38 24.0318 10.3563 19.2782 9.88964V0.0549316H17.4279V9.88964C12.6743 10.3563 8.94373 14.38 8.94373 19.2538C8.94373 24.1276 12.6704 28.1513 17.4279 28.618V38.051L19.2782 38.0549V28.618C24.0318 28.1513 27.7624 24.1276 27.7624 19.2538ZM10.7941 19.2493C10.7941 15.3945 13.6947 12.2047 17.4279 11.7465V26.7514C13.6947 26.2938 10.7941 23.104 10.7941 19.2486V19.2493ZM19.2782 11.7471C23.0114 12.2047 25.9121 15.3945 25.9121 19.2499C25.9121 23.1053 23.0114 26.2945 19.2782 26.7527V11.7471Z" fill="#292521"/>
+                                                <path d="M7.91164 11.7088C8.09232 11.8895 8.32824 11.9818 8.56417 11.9818H8.56872C8.80464 11.9818 9.04057 11.8895 9.22125 11.7088C9.58196 11.3481 9.58196 10.7605 9.22125 10.3998L6.60268 7.78128C6.24197 7.42057 5.65444 7.42057 5.29373 7.78128C4.93302 8.14199 4.93302 8.72952 5.29373 9.09023L7.91229 11.7088H7.91164Z" fill="#292521"/>
+                                                <path d="M7.91164 26.8268L5.29308 29.4453C4.93237 29.806 4.93237 30.3936 5.29308 30.7543C5.47376 30.935 5.70968 31.0273 5.94561 31.0273H5.95016C6.18608 31.0273 6.42201 30.935 6.60268 30.7543L9.22125 28.1357C9.58196 27.775 9.58196 27.1875 9.22125 26.8268C8.86054 26.4661 8.273 26.4661 7.91229 26.8268H7.91164Z" fill="#292521"/>
+                                                <path d="M12.5658 8.40521C12.686 8.80751 13.0558 9.06684 13.4542 9.06684V9.06229C13.542 9.06229 13.6297 9.05319 13.7181 9.02524C14.2036 8.87706 14.4857 8.36361 14.3381 7.87357L13.2787 4.32561C13.1306 3.84011 12.6171 3.56259 12.1271 3.70558C11.6416 3.85376 11.3595 4.3672 11.507 4.85725L12.5664 8.40521H12.5658Z" fill="#292521"/>
+                                                <path d="M6.53314 22.3254C6.38496 21.8353 5.86697 21.5578 5.38147 21.7053L1.83351 22.7647C1.34802 22.9129 1.06595 23.4263 1.21348 23.9164C1.33372 24.3187 1.70353 24.578 2.10193 24.578V24.5735C2.18967 24.5735 2.27741 24.5644 2.3658 24.5364L5.91376 23.477C6.39926 23.3289 6.68133 22.8154 6.53379 22.3254H6.53314Z" fill="#292521"/>
+                                                <path d="M14.162 29.6364C13.6668 29.5162 13.1624 29.8119 13.0376 30.3071L12.131 33.8973C12.0062 34.3926 12.3065 34.8969 12.8017 35.0217C12.8758 35.0406 12.9544 35.0497 13.0285 35.0497C13.4451 35.0497 13.8195 34.7721 13.9261 34.351L14.8327 30.7608C14.9575 30.2655 14.6572 29.7612 14.162 29.6364Z" fill="#292521"/>
+                                                <path d="M1.69898 16.4182L5.28918 17.3248C5.36327 17.343 5.44191 17.3528 5.51601 17.3528C5.93261 17.3528 6.30697 17.0753 6.41356 16.6541C6.53834 16.1589 6.23808 15.6545 5.74283 15.5297L2.15263 14.6231C1.66258 14.4983 1.15304 14.7986 1.02825 15.2938C0.903465 15.789 1.20373 16.2934 1.69898 16.4182Z" fill="#292521"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_3626_6368">
+                                                    <rect width="28" height="38" fill="white" transform="translate(0 0.0549316)"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div class="product-icon-item">
+                                        <svg width="15.34" height="29" viewBox="0 0 21 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19.9381 23.1632C19.7739 22.9959 19.5495 22.9018 19.315 22.9018C19.3056 22.9018 19.2962 22.9018 19.2862 22.9018H18.1496C16.7341 22.9601 15.3512 23.3475 14.1119 24.0346C12.9302 24.6891 11.9109 25.5993 11.126 26.6964V17.6372C12.6963 17.5695 14.1814 16.9019 15.2747 15.771C16.3812 14.6263 16.9999 13.0967 16.9999 11.5044V7.45032C16.9999 7.00397 16.8225 6.57581 16.5072 6.26048C16.1919 5.94453 15.7637 5.76775 15.3174 5.76775H14.3676V0.0549316H12.6217V5.7665H7.88624V0.0549316H6.14036V5.7665H5.23075C4.78441 5.7665 4.35624 5.94391 4.04092 6.25923C3.72497 6.57455 3.54819 7.00272 3.54819 7.44906V11.5031C3.54819 13.0948 4.1663 14.625 5.27338 15.7697C6.36667 16.9006 7.85176 17.5676 9.42211 17.636V21.0531C8.64164 19.889 7.60289 18.9192 6.38485 18.2221C5.10663 17.4905 3.67043 17.0806 2.1985 17.0273H1.01619C1.0024 17.0266 0.98798 17.026 0.974189 17.026C0.743495 17.026 0.52095 17.1175 0.356705 17.2818C0.193088 17.4467 0.101562 17.6686 0.101562 17.8993C0.101562 17.9131 0.101562 17.9275 0.102816 17.9413V19.0377C0.203745 21.334 1.16727 23.508 2.80031 25.1254C4.43335 26.7434 6.61617 27.6862 8.91371 27.7658H9.37949V38.0549H11.1254V33.7206H11.4294C13.7194 33.631 15.8922 32.6838 17.5165 31.067C19.1407 29.4503 20.098 27.2819 20.1989 24.9925V23.8152C20.1989 23.8058 20.1989 23.7958 20.1989 23.7864C20.1989 23.5525 20.1049 23.3281 19.9375 23.1639L19.9381 23.1632ZM2.14835 18.733C3.99077 18.822 5.73289 19.5962 7.03368 20.9039C8.33447 22.2116 9.09864 23.9588 9.177 25.8012V26.0513L8.96198 26.0206H8.95884C7.1158 25.9422 5.36866 25.178 4.06035 23.8773C2.75267 22.5771 1.97846 20.8344 1.88944 18.9926V18.733H2.14897H2.14835ZM15.2528 11.3972V11.4599C15.2528 12.6253 14.7901 13.7424 13.9664 14.5661C13.1427 15.3898 12.0249 15.8531 10.8596 15.8531H9.64466C8.49307 15.8425 7.39225 15.3804 6.57793 14.5667C5.7636 13.7524 5.30159 12.6516 5.29156 11.5V11.4743L5.25081 11.4342V7.47226H15.2528V11.3978V11.3972ZM11.3843 31.9754H11.1655V31.7159C11.2545 29.8847 12.0243 28.1526 13.3245 26.86C14.6246 25.5673 16.3611 24.8069 18.1935 24.7286H18.4123V24.948C18.3333 26.7866 17.5673 28.5288 16.2665 29.8295C14.965 31.131 13.2229 31.8964 11.3843 31.9754Z" fill="#292521"/>
+                                        </svg>
+                                    </div>
+                                </div> {% endcomment %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="product-progress-bar">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="product-carousel-controls">
+                <button class="carousel-control-prev" type="button" aria-label="Previous">
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                    <defs>
+                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                    </defs>
+                    <g id="Layer_2-2">
+                        <polyline class="cls-1" points="6.59 .54 1.09 5.74 6.59 10.94"/>
+                        <line class="cls-2" x1="19.04" y1="5.74" x2="1.09" y2="5.74"/>
+                    </g>
+                </svg>
+                </button>
+                <button class="carousel-control-next" type="button" aria-label="Next">
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                    <defs>
+                        <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                    </defs>
+                    <g id="Layer_2-2">
+                        <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                        <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                    </g>
+                </svg>
+                </button>
+            </div>
+            
+            <div class="product-grids-bottom-area">
+                <h2 class="font-neue-light text-light">{{ section.settings.bottom_area_heading_center }} <span class="font-austin-italic">{{ section.settings.bottom_area_heading_italic }}</span></h2>
+                <div class="bottom-content-grids">
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col1 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col1 }}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col2 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col2 }}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-content-grid-item">
+                        <div class="bottom-contents">
+                            <h3 class="font-austin-italic text-light">{{ section.settings.bottom_heading_col3 }}</h3>
+                            <p class="font-neue-roman text-light">{{ section.settings.bottom_content_col3 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    .top-section-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0px 118px;
+        margin: 100px 0px 104px;
+        padding-right: 60px;
+    }
+    .top-col-left {
+        padding-left: 60px;
+        width: max-content;
+        min-width: max-content;
+        max-width: 100%;
+    }
+    .top-col-left h2 {
+        margin: 0px;
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+    }
+    .top-col-left h2 span{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .top-col-right {
+        width: 39%;
+    }
+    .top-col-right p {
+        margin: 0px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .product-grids-images {
+        display: flex;
+        gap: 0px 17px;
+        position: relative;
+        top: -106px;
+        /* overscroll-behavior-y: contain;
+        touch-action: pan-x; */
+    }
+    .product-grids-img-item {
+        border-radius: 8px;
+        position: relative;
+        width: 33.33%;
+    }
+    .product-grids-img-item img {
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .product-grid-img-content {
+        position: absolute;
+        bottom: 16.71px;
+        width: calc(100% - 38px);
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 20px 22px;
+        backdrop-filter: blur(16px);
+        border-radius: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s all;
+        min-height: 180px;
+    }
+    .product-grids-img-item:hover .product-grid-img-content{
+        opacity: 1;
+        visibility: visible;
+    }
+    .product-grid-img-content h2 {
+        font-size: 21px;
+        line-height: 36px;
+        margin: 0px;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid rgba(249, 246, 243, 1);
+    }
+    .product-grid-img-content p{
+        margin: 0px;
+        font-size: 14px;
+        line-height: 26px;
+        padding-top: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .product-content-icons {
+        margin-top: 27px;
+        display: flex;
+        align-items: center;
+        gap: 0px 44px;
+        opacity: 1;
+        visibility: visible;
+    }
+    .product-content-icons svg path{
+        fill: rgba(239, 235, 230, 1);
+    }
+    .product-icon-item {
+        height: max-content;
+        display: flex;
+        align-items: flex-end;
+    }
+    .product-img-grid-sections {
+        background-color: rgba(41, 37, 33, 1);
+        margin-top: 200px;
+        padding-bottom: 143px;
+    }
+    .product-grids-bottom-area {
+        position: relative;
+        top: -6px;
+    }
+    .product-grids-bottom-area h2 {
+        font-size: 5.556vw;
+        line-height: 6.111vw;
+        text-align: center;
+        width: 934px;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .product-grids-bottom-area h2::first-line{
+        line-height: 4.653vw;
+    }
+    .bottom-content-grids {
+        display: flex;
+        margin-top: 60px;
+        padding: 0px 26.25px;
+    }
+    .bottom-content-grid-item {
+        width: 33.33%;
+        display: flex;
+        justify-content: center;
+        padding: 0px 50px;
+    }
+    .bottom-content-grid-item:first-child {
+        padding-left: 26.5px;
+    }
+    .bottom-content-grid-item:last-child {
+        padding-right: 26.5px;
+    }
+    .bottom-contents{
+        width: 320px;
+        text-align: center;
+    }
+    .bottom-content-grid-item:nth-child(2) {
+        border-left: 1px solid #C2BFBA;
+        border-right: 1px solid #C2BFBA;
+    }
+    .bottom-contents h3{
+        font-size: 3.75vw;
+        line-height: 4.028vw;
+    }
+    .bottom-contents p {
+        font-size: 16px;
+        line-height: 26px;
+        margin: 10px 0px 0px;
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .top-col-left h2 {
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .top-col-left h2 span{
+            font-size: 64px;
+            line-height: 68px;
+        }
+        .product-grids-bottom-area h2 {
+            font-size: 80px;
+            line-height: 88px;
+        }
+        .product-grids-bottom-area h2::first-line{
+            line-height: 67px;
+        }
+        .bottom-contents h3{
+            font-size: 54px;
+            line-height: 58px;
+            margin: 0px;
+        }
+    }
+
+    @media (max-width: 991px){
+        .product-grid-img-content {
+            opacity: 1;
+            visibility: visible;
+            padding: 15px 17px;
+        }
+        .top-col-left, .top-col-right{
+            min-width: 100%;
+        }
+        .product-grids-bottom-area h2,
+        .product-grids-bottom-area h2::first-line{
+            line-height: 64px;
+        }
+        .product-grids-bottom-area h2 span{
+            line-height: 68px;
+        }
+        section.products-banners{
+            height: auto;
+            margin-top: 75px;
+        }
+        .products-banner-img{
+            height: 423px;
+            object-fit: cover;
+        }
+    }
+
+    @media (min-width: 768px){
+        .product-progress-bar, 
+        .product-carousel-controls{
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px){
+        .top-section-row{
+            margin: 60px 0px 50px;
+            flex-flow: column;
+            padding-right: 0px;
+        }
+        .product-grids-img-item img{
+            height: auto;
+        }
+        .product-grid-img-content{
+            bottom: -131px;
+        }
+        .top-col-left{
+            padding-left: 0px;
+        }
+        .top-col-left, 
+        .top-col-right {
+            width: 100%;
+        }
+        .top-col-left h2{
+            margin-bottom: 15px;
+            font-size: 50px;
+            line-height: 58px;
+        }
+        .top-col-right p{
+            display: block;
+        }
+        .top-col-left h2 span{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            background-color: rgba(90, 88, 87, 1);
+            opacity: 1;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .progress-bar {
+            height: 1.5px;
+            background-color: rgba(249, 246, 243, 1);
+            transition: width 0.3s;
+            display: block !important;
+        }
+
+        .product-progress-bar{
+            background-color: rgba(90, 88, 87, 1);
+            width: 100%;
+            height: 1.5px;
+            position: relative;
+            top: -40px;
+        }
+
+        .product-grids-images{
+            flex-wrap: nowrap;
+            position: relative;
+            transition: transform 0.5s ease;
+            margin-bottom: 120px;
+        }
+
+        section.products-img-grids {
+            position: relative;
+        }
+
+        .product-img-grid-sections{
+            margin-top: 150px;
+            padding-bottom: 147px;
+        }
+
+        .product-grids-img-item{
+            flex: 0 0 100%;
+        }
+        .product-carousel-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0px 17px;
+        }
+        .product-carousel-controls svg{
+            width: 18.06px;
+        }
+        .product-carousel-controls svg .cls-1,
+        .product-carousel-controls svg .cls-2{
+            stroke: rgba(249, 246, 243, 1);
+        }
+        
+        .product-grids-bottom-area {
+            position: relative;
+            top: 0px;
+            margin-top: 60px;
+        }
+
+        .product-grids-bottom-area h2 {
+            font-size: 60px;
+            line-height: 64px;
+        }
+
+        .product-grids-bottom-area h2 span {
+            font-size: 64px;
+            line-height: 68px;
+        }
+
+        .bottom-content-grids{
+            margin-top: 80px;
+            flex-wrap: wrap;
+            padding: 0px 17px;
+        }
+
+        .bottom-content-grid-item {
+            padding: 0px 0px 30px;
+            width: 100%;
+            border-bottom: 1px solid rgba(194, 191, 186, 1);
+            margin-bottom: 30px;
+        }
+        .bottom-content-grid-item:first-child{
+            padding-left: 0px;
+        }
+        .bottom-content-grid-item:last-child{
+            padding-right: 0px;
+        }
+
+        .bottom-content-grid-item:nth-child(2){
+            border-left: none;
+            border-right: none;
+        }
+
+        .bottom-contents h3 {
+            font-size: 42px;
+            line-height: 46px;
+            margin: 0px 0px 5px;
+        }
+
+        .bottom-content-grid-item:last-child {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            border-bottom: none;
+        }
+        
+    }
+
+
+</style>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.product-grids-img-item');
+    const totalItems = items.length;
+    let currentIndex = 0;
+
+    // Initialize the progress bar
+    const progressBar = document.querySelector('.progress-bar');
+
+    function updateCarousel() {
+        const progress = (currentIndex / (totalItems - 1)) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Disable buttons based on current index
+        document.querySelector('.carousel-control-prev').classList.toggle('disabled', currentIndex === 0);
+        document.querySelector('.carousel-control-next').classList.toggle('disabled', currentIndex === totalItems - 1);
+    }
+
+    // Set initial state
+    updateCarousel();
+
+    // Get the gap value
+    const gapValue = 17; // The defined gap in pixels
+
+    // Function to handle translation based on currentIndex
+    function translateCarousel() {
+        const translateXValue = -((currentIndex * 100) + (currentIndex * (gapValue / window.innerWidth * 100)));
+        document.querySelector('.product-grids-images').style.transform = 'translateX(' + translateXValue + '%)';
+        updateCarousel();
+    }
+
+    // Next button functionality
+    document.querySelector('.carousel-control-next').addEventListener('click', function() {
+        if (currentIndex < totalItems - 1) {
+            currentIndex++;
+            translateCarousel();
+        }
+    });
+
+    // Previous button functionality
+    document.querySelector('.carousel-control-prev').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            translateCarousel();
+        }
+    });
+
+    // Touch functionality for mobile
+    let startX = 0;
+
+    document.querySelector('.product-grids-images').addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX; // Get initial touch position
+    });
+
+    document.querySelector('.product-grids-images').addEventListener('touchend', function(e) {
+        const endX = e.changedTouches[0].clientX; // Get final touch position
+        const diffX = startX - endX; // Calculate the difference
+
+        // Determine the swipe direction
+        if (diffX > 50) { // Swipe left (next)
+            if (currentIndex < totalItems - 1) {
+                currentIndex++;
+                translateCarousel();
+            }
+        } else if (diffX < -50) { // Swipe right (previous)
+            if (currentIndex > 0) {
+                currentIndex--;
+                translateCarousel();
+            }
+        }
+    });
+});
+
+
+
+</script>
+
+{% schema %}
+{
+    "name": "Products Image Grids",
+    "settings": [
+        {
+            "type": "text",
+            "id": "grid_top_heading",
+            "label": "Top left heading"
+        },
+        {
+            "type": "text",
+            "id": "grid_top_heading_italic",
+            "label": "Top left heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "grid_top_content",
+            "label": "Top content"
+        },
+        {
+            "type": "text",
+            "id": "bottom_area_heading_center",
+            "label": "Bottom center heading"
+        },
+        {
+            "type": "text",
+            "id": "bottom_area_heading_italic",
+            "label": "Bottom center heading in italic"
+        },
+        {
+            "type": "header",
+            "content": "Column 1"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col1",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col1",
+            "label": "Content"
+        },
+        {
+            "type": "header",
+            "content": "Column 2"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col2",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col2",
+            "label": "Content"
+        },
+        {
+            "type": "header",
+            "content": "Column 3"
+        },
+        {
+            "type": "text",
+            "id": "bottom_heading_col3",
+            "label": "Heading"
+        },
+        {
+            "type": "textarea",
+            "id": "bottom_content_col3",
+            "label": "Content"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image_block",
+            "name": "Add Image Box",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "animated_box_image",
+                    "label": "Add Image"
+                },
+                {
+                    "type": "text",
+                    "id": "animated_box_heading",
+                    "label": "Image box heading"
+                },
+                {
+                    "type": "textarea",
+                    "id": "animated_box_content",
+                    "label": "Image box content"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Products Image Grids",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

@@ -1,0 +1,84 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+<section class="dealer-portal quote-section-bg">
+  <div class="page-width">
+    <div class="content content-top">
+      <h1 class="font-neue-light">{{ section.settings.main_txt }} <span class="font-austin-italic">{{ section.settings.main_txt_italic }}</span> {{ section.settings.main_txt_remaining }}</h1>
+      <h5 class="quote-name font-neue-roman">{{ section.settings.quote_name }}</h5>
+      <h6 class="designation font-neue-roman">{{ section.settings.designation }}</h6>
+    </div>
+    <div class="image-container">
+      <img src="{{ section.settings.image_right | img_url: 'master' }}" width="367" height="518" alt="Dealer Portal Image">
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quote Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "main_txt",
+      "label": "Main Text"
+    },
+    {
+      "type": "text",
+      "id": "main_txt_italic",
+      "label": "Main Text On Italic"
+    },
+    {
+      "type": "text",
+      "id": "main_txt_remaining",
+      "label": "Main Remaining Text"
+    },
+    {
+      "type": "text",
+      "id": "quote_name",
+      "label": "Name"
+    },
+    {
+      "type": "text",
+      "id": "designation",
+      "label": "Designation"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Right Side Image"
+    }
+  ],
+ "presets": [
+    {
+      "name": "Quote Section",
+      "category": "Custom sections"
+    }
+  ]
+}
+{% endschema %}

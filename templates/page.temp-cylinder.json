@@ -1,0 +1,141 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-series-banner": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Cylinder",
+        "main_subtitle": "versatility, refined",
+        "main_txt": "Our design-forward cylinders offer a wide range of combinations to suit any space—each one engineered for seamless performance and a strikingly clean profile.",
+        "main_banner_img_desktop": "shopify://shop_images/SeriesCylinder_HeroD2.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/SeriesCylinder_HeroM.jpg"
+      }
+    },
+    "animated-image-grids-series": {
+      "type": "animated-image-grids-series",
+      "blocks": {
+        "text_block_AjYApw": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Unmatched",
+            "block_text_2": "customization",
+            "block_bottom_heading": "Limitless Design",
+            "block_percentage_txt": "of design variations to choose from",
+            "block_percentage_txt_lower": "unmatched freedom to design your perfect light.",
+            "block_percent_number": "Over 1M",
+            "block_p_txt": "Clean lines. Endless options.\nOur cylinders adapt beautifully to any space or vision.",
+            "block_tag": "Customization",
+            "block_image_large": "shopify://shop_images/Series_Cylinder_1Customization_Expanded_D.jpg"
+          }
+        },
+        "text_block_Vw76KY": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Unrivaled color",
+            "block_text_2": "depth and brilliance",
+            "block_bottom_heading": "Unveiling true beauty",
+            "block_percentage_txt": "variation of colors studied to develop True Spectrum®",
+            "block_percentage_txt_lower": "Now the finishes that were so carefully selected in the home will reach their full potential beauty",
+            "block_percent_number": "99",
+            "block_p_txt": "Our exclusive True Spectrum® chipset provides industry-leading color rendering and richness.",
+            "block_tag": "Engineering",
+            "block_image_large": "shopify://shop_images/Series_Cylinder_2Size_Expanded_D.jpg"
+          }
+        },
+        "text_block_iEqMKc": {
+          "type": "text_block",
+          "settings": {
+            "block_text_1": "Luxury",
+            "block_text_2": "made for living",
+            "block_bottom_heading": "Thoughtfully designed",
+            "block_percentage_txt": "Different finishes to choose from",
+            "block_percentage_txt_lower": "Beauty and light—our cylinder elevates spaces with timeless design and flawless illumination.",
+            "block_percent_number": "4",
+            "block_p_txt": "DMF brings the showroom sophistication of <br>\n small-aperture lighting to the entire home.",
+            "block_tag": "Aesthetic",
+            "block_image_large": "shopify://shop_images/Series_Cylinder_3Expanded_D.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_AjYApw",
+        "text_block_Vw76KY",
+        "text_block_iEqMKc"
+      ],
+      "settings": {
+        "main_title": "A silhouette of",
+        "main_subtitle": "modern sophistication",
+        "main_txt": "Every detail of our cylinders is crafted to bring warmth and character into your home—making a striking statement while quietly elevating the feeling of every room."
+      }
+    },
+    "animated-tab-carousel": {
+      "type": "animated-tab-carousel",
+      "blocks": {
+        "text_block_rRL8d4": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Housing",
+            "tab_content": "The Artafex 2 NC housing, compatible with fixed and adjustable modules, features a pull-down latch for easy below-ceiling servicing. Available in NC round and square or Remodel round and square, it includes our patent-pending Precision Lock Collars for flawless installation and no over-cutting.",
+            "tab_main_img": "shopify://shop_images/Series_2inch_Tech_HousingSmall_D.png",
+            "tab_icon": "shopify://shop_images/Housing2.svg"
+          }
+        },
+        "text_block_gUypKy": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Module",
+            "tab_content": "A marriage of large-fixture performance with small-aperture design for a quiet ceiling. Delivers up to 1250 lm with True Spectrum® color rendering and allows easy beam angle repositioning in the adjustable version.",
+            "tab_main_img": "shopify://shop_images/Series_2inch_Tech_Module_D.png",
+            "tab_icon": "shopify://shop_images/Module2.svg"
+          }
+        },
+        "text_block_DjfjMV": {
+          "type": "text_block",
+          "settings": {
+            "tab_heading": "Trim",
+            "tab_content": "Designed to blend seamlessly or stand out, with architecture-grade finishes and deep die-cast aluminum for exceptional performance. Available in round, square, pinhole, and wall wash options, with microflange or no flange, in stylish finishes.",
+            "tab_main_img": "shopify://shop_images/Series_2inch_Tech_Trim_D.png",
+            "tab_icon": "shopify://shop_images/Trim3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "text_block_rRL8d4",
+        "text_block_gUypKy",
+        "text_block_DjfjMV"
+      ],
+      "disabled": true,
+      "settings": {
+        "main_title": "Simple, small and",
+        "main_subtitle": "sophisticated"
+      }
+    },
+    "series-why-dmf": {
+      "type": "series-why-dmf",
+      "settings": {
+        "why_section_heading": "Artful lighting",
+        "why_section_subheading": "for daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 30 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/Transform_TopLeft_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/Transform_Central_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_BottomRight_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main-series-banner",
+    "animated-image-grids-series",
+    "animated-tab-carousel",
+    "series-why-dmf"
+  ]
+}

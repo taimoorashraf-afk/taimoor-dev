@@ -1,0 +1,374 @@
+.registration-page {
+    padding: 56px 0 200px;
+}
+
+.registration-container {
+    display: flex;
+    gap: 0px 27px;
+    padding: 0 69.5px;
+}
+
+.registration-left-col h1 {
+    font-size: 4.167vw;
+    line-height: 4.653vw;
+    margin: 0 0 10px;
+    color: #292521;
+}
+
+.registration-left-col {
+    width: 451px;
+    max-width: 100%;
+}
+
+.registration-right-col {
+    width: 599px;
+    max-width: 100%;
+    background-color: #F9F6F3;
+    padding: 40px 32px 50px;
+    border-radius: 8px;
+}
+
+.registration-left-col p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: #292521;
+}
+
+.contact-via {
+    font-size: 21px;
+    line-height: 36px;
+    color: #292521;
+    margin: 40px 0px 14px;
+}
+
+.dealer-email-area,
+.dealer-phone-area {
+    border-top: 1.5px solid #292521;
+    padding-top: 14px;
+    margin-bottom: 24px;
+}
+
+.dealer-phone-area{
+    margin-bottom: 0;
+}
+
+.dealer-email-area span {
+    color: #292521;
+    font-size: 16px;
+    line-height: 26px;
+    display: block;
+    margin: 0px 0px 8px;
+}
+
+.dealer-email-area a {
+    color: #292521;
+    font-size: 16px;
+    line-height: 26px;
+    text-decoration: underline;
+}
+
+.dealer-timings,
+.dealer-timings a {
+    color: #292521;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.dealer-timings a{
+    display: block;
+}
+
+.form-heading {
+    font-size: 21px;
+    line-height: 36px;
+    margin: 0;
+    padding-bottom: 13px;
+    display: block;
+    color: #292521;
+    border-bottom: 1.5px solid #292521;
+}
+
+.inquiry-form {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.inquiry-form .form-group{
+    position: relative;
+}
+
+.inquiry-form .field-label {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 21px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+    color: rgba(41, 37, 33, 1);
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    position: absolute;
+    transition: 0.1s all;
+    letter-spacing: 0.65px;
+}
+
+.form-field-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.form-field-row .form-group {
+    width: 100%;
+    display: flex;
+}
+
+.inquiry-form input {
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid rgba(194, 191, 186, 1);
+    padding: 0px 21px;
+    outline: none;
+    box-shadow: none;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    height: 50px;
+    font-weight: 500;
+    color: rgba(41, 37, 33, 1);
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+}
+
+.inquiry-form .form-control:valid ~ .field-label,
+.inquiry-form .form-control:focus ~ .field-label,
+.b-email .form-control:not(:placeholder-shown)~.field-label {
+    background-color: transparent;
+    top: 2px;
+    padding: 0px;
+    left: 23px;
+    transform: none !important;
+    font-size: 10px;
+}
+
+.b-email .form-control::placeholder {
+    color: transparent;
+}
+
+.inquiry-form textarea {
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid rgba(194, 191, 186, 1);
+    outline: none;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 101px;
+    resize: none;
+    padding: 17px 21px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.textarea-field .field-label{
+    left: 23px;
+    font-family: 'Neue Haas Grotesk Display Pro';
+    color: #292521;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    margin: 0;
+    top: 30px;
+}
+
+.inquiry-form select {
+    padding: 0 40px 0 21px !important;
+    height: 48px;
+    color: #292521;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: Neue Haas Grotesk Display Pro;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: transparent;
+    border: 1px solid rgba(194, 191, 186, 1);
+    border-radius: 8px;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-success,
+.form-error {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 34px;
+}
+
+.form-success{
+    color: green;
+}
+
+form#contact_form .form-success {
+    color: #292521;
+}
+
+.form-error{
+    color: red;
+}
+
+form#contact_form .form-success svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.form-desc {
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #5A5857;
+}
+
+button.submit-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 0 26px;
+    line-height: 23px;
+    letter-spacing: .65px;
+    background-color: #292521;
+    transition: .3s all;
+    border: 1px solid rgba(41, 37, 33, 1);
+    height: 48px;
+    border-radius: 80px;
+    font-family: Neue Haas Grotesk Display Pro;
+    font-weight: 450 !important;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+button.submit-btn:hover{
+    background-color: transparent;
+    color: #292521;
+    border-color: #292521;
+}
+
+button.submit-btn svg {
+    width: 18.06px;
+    height: auto;
+}
+
+button.submit-btn:hover svg path{
+    stroke: #292521;
+}
+
+.sel-job-function{
+    position: relative;
+}
+
+.sel-job-function .select-arrow {
+    position: absolute;
+    right: 21px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+div#result {
+    text-align: center;
+    margin-top: 16px;
+    color: green;
+}
+
+.popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+    font-size: 16px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.popup-message.error {
+    background-color: #f44336;
+}
+
+.inquiry-form .form-field-row .select-arrow {
+    position: absolute;
+    right: 21px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/*
+** Responsive
+*/
+@media (min-width: 1500px) {
+    .registration-left-col h1 {
+        font-size: 60px;
+        line-height: 67px;
+    }   
+}
+
+@media (max-width: 991px) {
+    .registration-container{
+        flex-flow: column;
+    }
+    .registration-left-col,
+    .registration-right-col {
+        width: 100%;
+    }
+    .registration-page {
+        padding: 50px 0 115px;
+    }
+    .registration-left-col h1 {
+        font-size: 50px;
+        line-height: 57px;
+        margin-bottom: 15px;
+    }
+    .registration-right-col {
+        margin-top: 50px;
+        padding: 32px 26.5px;
+    }
+    .form-heading{
+        padding-bottom: 16px;
+    }
+    .inquiry-form{
+        margin-top: 56px;
+    }
+    .inquiry-form textarea{
+        height: 133px;
+    }
+    .form-desc{
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-field-row{
+        flex-flow: column;
+    }
+}

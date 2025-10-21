@@ -1,0 +1,428 @@
+<section class="animated-tabs-section" id="product_details">
+    <div class="container p-titles">
+        <h2 class="section-heading font-neue-light">Product Details</h2>
+    </div>
+    <div class="container" style="background: url({{ 'product-tab-sections.png' | asset_url }});">
+        <div class="products-animated-tabs">
+            <!-- Left side Tabs -->
+            <div class="products-tabs">
+                {% for block in section.blocks %}
+                  {% if block.type == 'tab_block' %}
+                  {% assign loop_index = forloop.index %}
+                      <div class="products-tab font-calling-code"><div class="tabicon-img"><img src="{{ block.settings.tab_icon | image_url }}" alt="tab icon" /></div> {{ block.settings.tab_heading }}</div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="product-tab-rightarea">
+              <!-- Right side Carousel -->
+                <div class="products-carousel">
+                    {% for block in section.blocks %}
+                    {% if block.type == 'slide_block' %}
+                    {% assign loop_index = forloop.index %}
+
+                        <div class="slide {% if loop_index == 0 %} active {% endif %}">
+                            <img src="{{ block.settings.slide_image | img_url: 'master' }}" alt="Slide">
+                            <div class="content">
+                                <h2 class="font-neue-roman">{{ block.settings.product_slide_title }}</h2>
+                                <p class="font-neue-roman">{{ block.settings.product_slide_content }}</p>
+                                <div class="carousel-bottom-paginations">
+                                    <div class="products-pagination font-neue-roman"></div>
+                                    <div class="products-dots">
+                                        <span class="products-dot active" data-index="0"></span>
+                                        <span class="products-dot" data-index="1"></span>
+                                        <span class="products-dot" data-index="2"></span>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.animated-tabs-section {
+        position: relative;
+        margin: 100px 0px 77px;
+    }
+    .p-titles{
+        padding: 0px !important;
+    }
+    .tabicon-img {
+        width: 38px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .animated-tabs-section .container{
+        padding: 70px 50px 42px 46px;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        background-position: top left !important;
+    }
+    .products-tab:first-child .tabicon-img img {
+        width: 27.24px;
+        height: 38px;
+    }
+    section.animated-tabs-section .section-heading{
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+        margin-bottom: 35px;
+        margin-top: 0px;
+    }
+    .products-animated-tabs {
+        display: flex;
+        position: relative;
+        background-size: contain;
+        background-position: center !important;
+    }
+    .products-animated-tabs .products-carousel .content {
+        background: #f9f6f3;
+        padding: 35px 30px 30px 30px;
+        border-radius: 8px;
+        width: 100%;
+        height: 478px;
+        margin: 0px;
+        position: relative;
+        left: -15px;
+        top: 20px;
+    }
+    .products-pagination {
+        text-align: center;
+        font-size: 14px;
+        color: #292521;
+    }
+    .carousel-bottom-paginations {
+        display: flex;
+        justify-content: space-between;
+    }
+    .products-animated-tabs .products-carousel .content h2 {
+        font-size: 30px;
+        line-height: 42px;
+        padding-bottom: 14px;
+        margin: 0px;
+        letter-spacing: 0.65px;
+        color: rgba(41, 37, 33, 1);
+        border-bottom: 1.5px solid rgba(41, 37, 33, 1);
+    }
+    .products-animated-tabs .products-carousel .content p {
+        margin-top: 14px;
+        color: rgba(90, 88, 87, 1);
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 29px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical;
+    }
+    .products-tabs {
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        justify-content: flex-end;
+        position: relative;
+        bottom: 65px;
+    }
+
+    .products-tab {
+        display: flex;
+        align-items: center;
+        gap: 0px 20px;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+        font-size: 14px;
+        line-height: 17.5px;
+        letter-spacing: 0.65px;
+        opacity: 1;
+    }
+    .products-tab:last-child {
+        margin-bottom: 0px;
+    }
+
+    .product-tab-rightarea {
+        width: 85%;
+        display: flex;
+    }
+
+    .slide {
+        display: none;
+        animation: fadein 0.5s;
+    }
+
+    .slide.active {
+        display: flex;
+        align-items: center;
+    }
+
+    .products-animated-tabs .slide img {
+        width: 60%;
+        position: relative;
+        top: -50px;
+        right: 90px;
+    }
+
+    .content {
+        margin-top: 10px;
+    }
+
+    .products-dots {
+        display: flex;
+        align-items: center;
+        gap: 0px 38px;
+        justify-content: flex-end;
+    }
+
+    .products-dot {
+        height: 9px;
+        width: 9px;
+        background-color: rgba(194, 191, 186, 1);
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .products-dot.active {
+        background-color: rgba(41, 37, 33, 1);
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .modal-action-btns svg {
+        width: 18.06px;
+    }
+
+    .modal-action-btns svg .cls-1, 
+    .modal-action-btns svg .cls-2{
+        stroke: rgba(249, 246, 243, 1);
+    }
+
+    .modal-action-btns button.disabled {
+        pointer-events: none;
+    }
+
+    .product-tab-rightarea img {
+        width: 594px;
+        max-width: 100%;
+        position: relative;
+        left: -19px;
+        top: 4px;
+        object-fit: cover;
+        height: 616px;
+    }
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        section.animated-tabs-section .section-heading{
+            font-size: 60px;
+            line-height: 67px;
+        }
+    }
+
+    @media (max-width: 1300px){
+        .product-tab-rightarea img{
+            width: 60%;
+        }
+        section.animated-tabs-section {
+            padding: 0px 20px;
+        }
+    }
+
+    @media (max-width: 1200px){
+        .product-tab-rightarea img {
+            object-fit: contain;
+        }
+        .products-tabs{
+            width: 20%;
+        }
+        .product-tab-rightarea{
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 991px){
+        section.animated-tabs-section {
+            position: relative;
+            margin: 70px 0px 84px;
+        }
+        .products-animated-tabs{
+            flex-wrap: wrap;
+        }
+        .products-tabs{
+            width: 100%;
+            flex-wrap: wrap !important;
+            flex-flow: row;
+            gap: 0px 28px;
+            margin-bottom: 15px;
+            justify-content: flex-start;
+            bottom: 0px;
+        }
+        .animated-tabs-section .container {
+            padding: 10px 17px 28px;
+            background-repeat: repeat !important;
+            background-size: 750px !important;
+        }
+        .products-tab:last-child{
+            margin-bottom: 15px;
+        }
+        section.animated-tabs-section .section-heading{
+            font-size: 50px; 
+            line-height: 57px;
+            margin-bottom: 9px;
+        }
+        .products-tab {
+            width: max-content;
+            gap: 16px;
+            margin-bottom: 15px;
+        }
+        .product-tab-rightarea{
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .product-tab-rightarea img {
+            width: 100%;
+            height: auto;
+            left: 0px;
+            top: 0px;
+            object-fit: contain;
+        }
+        .products-animated-tabs .products-carousel .content{
+            width: 100%;
+            margin: 0 auto;
+            padding: 25px 30px;
+            top: 0px;
+            left: auto;
+            right: auto;
+            height: auto;
+        }
+        .product-customizer .option-set-title{
+            margin: 5px 0px;
+            line-height: 42px;
+            min-height: unset;
+        }
+        .products-animated-tabs .slide img{
+            width: 100%;
+            top: 0px;
+            margin-bottom: 20px;
+            margin-left: 0;
+        }
+        .products-animated-tabs{
+            flex-wrap: wrap;
+        }
+        .slide.active{
+            flex-wrap: wrap;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.products-dot');
+        const totalSlides = slides.length;
+
+        function activateSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+
+            slides[index]?.classList.add('active');
+
+            const activeSlideDots = slides[index]?.querySelectorAll('.products-dot');
+            activeSlideDots?.forEach((dot) => {
+                if (dot.getAttribute('data-index') == index) {
+                    dot.classList.add('active');
+                }
+            });
+
+            // debugger
+            // Update slide pagination (e.g., 1/3)
+            if(slides.length){
+                const pagination = slides[index]?.querySelector('.products-pagination');
+                pagination.textContent = `${parseInt(index) + 1}/${totalSlides}`;
+            }
+        }
+
+        // Add click event listeners to dots
+        dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+                const index = dot.getAttribute('data-index');
+                activateSlide(index);
+            });
+        });
+
+        // Initialize with pagination for the first slide
+        activateSlide(0);
+    });
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Product Details Tab",
+  "blocks": [
+    {
+      "type": "tab_block",
+      "name": "Tab Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_heading",
+          "label": "Tab Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "tab_icon",
+          "label": "Tab Icon"
+        }
+      ]
+    },
+    {
+      "type": "slide_block",
+      "name": "Add Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_slide_title",
+          "label": "Slide Title"
+        },
+        {
+          "type": "textarea",
+          "id": "product_slide_content",
+          "label": "Slide Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Add slide image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Details Tab"
+    }
+  ]
+}
+{% endschema %}
+

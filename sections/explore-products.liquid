@@ -1,0 +1,569 @@
+<section class="explore-our-products">
+    <div class="container">
+        <h2 class="font-neue-light text-light">{{ section.settings.explore_main_heading }} <span class="font-austin-italic">{{ section.settings.explore_main_heading_italic }}</span> {{ section.settings.explore_main_heading_remaining }}</h2>
+        <p class="font-neue-roman text-light">{{ section.settings.explore_main_content }}</p>
+
+        <div class="tabbing-image-grids">
+            <div class="tabbing-headers">
+                {% if section.settings.explore_tab_title1 != blank %}
+                    <a href="#" class="font-neue-roman tab-btn active" data-tab="tab1">
+                        {{ section.settings.explore_tab_title1 }}
+                    </a>
+                {% endif %}
+                
+                {% if section.settings.explore_tab_title2 != blank %}
+                    <a href="#" class="font-neue-roman tab-btn" data-tab="tab2">
+                        {{ section.settings.explore_tab_title2 }}
+                    </a>
+                {% endif %}
+                
+                {% if section.settings.explore_tab_title3 != blank %}
+                    <a href="#" class="font-neue-roman tab-btn" data-tab="tab3">
+                        {{ section.settings.explore_tab_title3 }}
+                    </a>
+                {% endif %}
+            </div>
+
+            <!-- Desktop Content -->
+            <div class="tabbing-contents masonry-on-desktop">
+                <div id="tab1" class="tabbing-content active">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block' and block.settings.recessed_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.recessed_images | img_url: 'original' }}" width="394" height="408" alt="Recessed Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block' and block.settings.recessed_images %}
+                                {% if img_counter == 2 %}
+                                    <img src="{{ block.settings.recessed_images | img_url: 'original' }}" width="394" height="545" alt="Recessed Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col3">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block' and block.settings.recessed_images %}
+                                {% if img_counter > 2 %}
+                                    <img src="{{ block.settings.recessed_images | img_url: 'original' }}" width="394" height="427" alt="Recessed Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="tab2" class="tabbing-content">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block2' and block.settings.surface_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.surface_images | img_url: 'original' }}" width="394" height="408" alt="Surface Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block2' and block.settings.surface_images %}
+                                {% if img_counter == 2 %}
+                                    <img src="{{ block.settings.surface_images | img_url: 'original' }}" width="394" height="545" alt="Surface Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col3">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block2' and block.settings.surface_images %}
+                                {% if img_counter > 2 %}
+                                    <img src="{{ block.settings.surface_images | img_url: 'original' }}" width="394" height="427" alt="Surface Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="tab3" class="tabbing-content">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block3' and block.settings.cylinder_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.cylinder_images | img_url: 'original' }}" width="394" height="408" alt="Cylinder Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block3' and block.settings.cylinder_images %}
+                                {% if img_counter == 2 %}
+                                    <img src="{{ block.settings.cylinder_images | img_url: 'original' }}" width="394" height="545" alt="Cylinder Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col3">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block3' and block.settings.cylinder_images %}
+                                {% if img_counter > 2 %}
+                                    <img src="{{ block.settings.cylinder_images | img_url: 'original' }}" width="394" height="427" alt="Cylinder Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Content -->
+            <div class="tabbing-contents masonry-on-mobile">
+                <div id="tab1" class="tabbing-content active">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block' and block.settings.recessed_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.recessed_images | img_url: 'original' }}" width="467" height="484" alt="Recessed Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block' and block.settings.recessed_images %}
+                                {% if img_counter >= 2 %}
+                                    <img src="{{ block.settings.recessed_images | img_url: 'original' }}" width="467" height="646" alt="Recessed Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="tab2" class="tabbing-content">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block2' and block.settings.surface_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.surface_images | img_url: 'original' }}" width="467" height="484" alt="Surface Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block2' and block.settings.surface_images %}
+                                {% if img_counter >= 2 %}
+                                    <img src="{{ block.settings.surface_images | img_url: 'original' }}" width="467" height="646" alt="Surface Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div id="tab3" class="tabbing-content">
+                    <div class="tabbing-content-col1">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block3' and block.settings.cylinder_images %}
+                                {% if img_counter < 2 %}
+                                    <img src="{{ block.settings.cylinder_images | img_url: 'original' }}" width="467" height="484" alt="Cylinder Image" />
+                                    {% assign img_counter = img_counter | plus: 1 %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="tabbing-content-col2">
+                        {% assign img_counter = 0 %}
+                        {% for block in section.blocks %}
+                            {% if block.type == 'image_block3' and block.settings.cylinder_images %}
+                                {% if img_counter >= 2 %}
+                                    <img src="{{ block.settings.cylinder_images | img_url: 'original' }}" width="467" height="646" alt="Cylinder Image" />
+                                {% endif %}
+                                {% assign img_counter = img_counter | plus: 1 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    .explore-our-products {
+        background-color: rgba(41, 37, 33, 1);
+        padding: 78px 0px 0px;
+    }
+
+    .explore-our-products h2 {
+        font-size: 5.556vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        text-align: center;
+        margin: 0px 0px 30px;
+    }
+
+    .explore-our-products p {
+        font-size: 16px;
+        line-height: 26px;
+        text-align: center;
+        width: 612px;
+        max-width: 100%;
+        margin: 0px auto;
+    }
+
+    .explore-our-products .container{
+        padding-bottom: 80px;
+        border-bottom: 0.75px solid #F9F6F3;
+    }
+
+    .tabbing-image-grids {
+        margin-top: 80px;
+    }
+
+    .tabbing-headers a {
+        cursor: pointer;
+        height: 50px;
+        color: rgba(249, 246, 243, 1);
+        background-color: rgba(239, 235, 230, 0.2);
+        border-radius: 80px;
+        width: 226px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 13px;
+        line-height: 23px;
+    }
+
+    .tabbing-headers a.active {
+        background-color: rgba(249, 246, 243, 1);
+        color: rgba(41, 37, 33, 1);
+    }
+
+    .tabbing-content {
+        display: none;
+    }
+
+    .tabbing-content.active {
+        display: flex;
+        gap: 17px;
+        align-items: flex-end;
+    }
+
+    .tabbing-content-col1, 
+    .tabbing-content-col2, 
+    .tabbing-content-col3 {
+        width: 33.33%;
+        display: flex;
+        flex-flow: column;
+        gap: 17px 0px;
+        height: max-content;
+    }
+
+    .tabbing-content img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .tabbing-headers {
+        display: flex;
+        justify-content: center;
+        gap: 0px 21px;
+        border-bottom: 0.75px solid rgba(249, 246, 243, 0.2);
+        padding-bottom: 40px;
+        margin-bottom: 60px;
+    }
+
+    .masonry-on-mobile{
+        display: none;
+    }
+
+
+
+    /*
+    ** Responsive
+    */
+    @media (min-width: 1500px){
+        .explore-our-products h2 {
+            font-size: 80px;
+            line-height: 67px;
+        }
+        .explore-our-products h2 span{
+            font-size: 86px;
+            line-height: 88px;
+        }
+    }
+
+    @media (max-width: 991px){
+        .explore-our-products h2 {
+            font-size: 50px;
+            line-height: 57px;
+            margin-bottom: 15px;
+            padding: 0px 20px;
+        }
+        .tabbing-content-col2 {
+            flex-flow: column-reverse;
+        }
+        .explore-our-products h2 span{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .explore-our-products p{
+            padding: 0px 20px;
+        }
+        .explore-our-products {
+            padding: 70px 0px 0px;
+        }
+
+        .tabbing-content {
+            display: none;
+            padding: 0px 20px;
+        }
+
+        .masonry-on-desktop{
+            display: none;
+        }
+
+        .masonry-on-mobile{
+            display: block;
+        }
+
+        .masonry-on-mobile:before{
+            content: '';
+            height: 0.75px;
+            background-color: #F9F6F3;
+            width: calc(100% - 40px);
+            display: block;
+            margin: 0 auto 50px;
+        }
+
+        .tabbing-contents.masonry-on-mobile:after{
+            content: '' !important;
+            height: 0.75px;
+            background-color: #F9F6F3;
+            width: calc(100% - 40px);
+            display: block !important;
+            margin: 50px auto 0px;
+        }
+
+        .tabbing-content-col1, 
+        .tabbing-content-col2{
+            width: 50%;
+        }
+
+        .tabbing-content-col2 img:last-child{
+            display: none;
+        }
+
+        .tabbing-headers a {
+            width: 124px;
+            min-width: 124px;
+        }
+
+        .tabbing-headers {
+            gap: 0px 16px;
+            overflow-x: auto;
+            width: 100%;
+            justify-content: center;
+            padding-bottom: 30px;
+            margin-bottom: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-bottom: none;
+        }
+        
+        .tabbing-image-grids {
+            margin-top: 50px;
+        }
+        .explore-our-products .container {
+            padding: 0px;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    // Function to activate first tab
+    function activateFirstTab() {
+        const tabButtons = document.querySelectorAll('.tabbing-headers a');
+        const desktopContents = document.querySelectorAll('.masonry-on-desktop .tabbing-content');
+        const mobileContents = document.querySelectorAll('.masonry-on-mobile .tabbing-content');
+        
+        // Remove active class from all tabs first
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        desktopContents.forEach(content => content.classList.remove('active'));
+        mobileContents.forEach(content => content.classList.remove('active'));
+        
+        // Activate first tab
+        if (tabButtons[0]) tabButtons[0].classList.add('active');
+        
+        // Activate first tab content for both desktop and mobile
+        const firstDesktopTab = document.querySelector('.masonry-on-desktop #tab1');
+        const firstMobileTab = document.querySelector('.masonry-on-mobile #tab1');
+        
+        if (firstDesktopTab) firstDesktopTab.classList.add('active');
+        if (firstMobileTab) firstMobileTab.classList.add('active');
+    }
+
+    // Run on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+        activateFirstTab();
+        
+        const tabButtons = document.querySelectorAll('.tabbing-headers a');
+        const desktopContents = document.querySelectorAll('.masonry-on-desktop .tabbing-content');
+        const mobileContents = document.querySelectorAll('.masonry-on-mobile .tabbing-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                desktopContents.forEach(content => content.classList.remove('active'));
+                mobileContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button
+                const tabId = this.getAttribute('data-tab');
+                this.classList.add('active');
+
+                // Show the corresponding tab content for both desktop and mobile
+                desktopContents.forEach(content => {
+                    if (content.id === tabId) {
+                        content.classList.add('active');
+                    }
+                });
+                
+                mobileContents.forEach(content => {
+                    if (content.id === tabId) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    });
+
+    // Also run on window load to ensure it stays active
+    window.addEventListener('load', activateFirstTab);
+</script>
+
+
+{% schema %}
+{
+    "name": "Explore our products",
+    "settings": [
+        {
+            "type": "text",
+            "id": "explore_main_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "explore_main_heading_italic",
+            "label": "Section heading in italic"
+        },
+        {
+            "type": "text",
+            "id": "explore_main_heading_remaining",
+            "label": "Section remaining heading text"
+        },
+        {
+            "type": "textarea",
+            "id": "explore_main_content",
+            "label": "Section centered content"
+        },
+        {
+            "type": "header",
+            "content": "Tab Titles"
+        },
+        {
+            "type": "text",
+            "id": "explore_tab_title1",
+            "label": "Tab 1 title"
+        },
+        {
+            "type": "text",
+            "id": "explore_tab_title2",
+            "label": "Tab 2 title"
+        },
+        {
+            "type": "text",
+            "id": "explore_tab_title3",
+            "label": "Tab 3 title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image_block",
+            "name": "Add recessed tab image",
+            "limit": 5,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "recessed_images",
+                    "label": "Add Image"
+                }
+            ]
+        },
+        {
+            "type": "image_block2",
+            "name": "Add surface tab image",
+            "limit": 5,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "surface_images",
+                    "label": "Add Image"
+                }
+            ]
+        },
+        {
+            "type": "image_block3",
+            "name": "Add cylinder tab image",
+            "limit": 5,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "cylinder_images",
+                    "label": "Add Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+        "name": "Explore our products",
+        "category": "Custom"
+        }
+    ]
+}
+{% endschema %}

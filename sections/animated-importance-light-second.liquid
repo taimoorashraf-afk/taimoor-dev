@@ -1,0 +1,226 @@
+<section class="importance-of-lights">
+    <div class="container">
+        <div class="row">
+            <div class="importance-content-area">
+                <span class="section-top-tagline font-calling-code">{{ section.settings.heading_topline }}</span>
+                <h2 class="font-neue-light">{{ section.settings.importance_heading }} <br><span class="font-austin-italic">{{ section.settings.importance_heading_italic }}</span></h2>
+                <p class="font-neue-roman">{{ section.settings.importance_content }}</p>
+                <a class="learn-more-arrow btn-transparent font-neue-roman" href="{{ section.settings.importance_learnmore }}">{{ section.settings.importance_learnmore_text }} 
+                    <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+                        <defs>
+                            <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+                        </defs>
+                        <g id="Layer_2-2">
+                            <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"/>
+                            <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <div class="importance-animation-image">
+                <img src="{{ section.settings.importance_img | img_url: 'original' }}" width="711" height="749" alt="importance of lights" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<style type="text/css">
+    section.importance-of-lights {
+        position: relative;
+        margin: 100px 0px;
+        padding: 0;
+    }
+    section.importance-of-lights .row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .importance-content-area {
+        width: 494px;
+        min-width: 494px;
+        max-width: 100%;
+        padding-top: 51px;
+    }
+    .importance-animation-image {
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        width: 711px;
+        height: 38.889vw;
+        overflow: hidden;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        right: 0px;
+    }
+    .importance-animation-image img{
+        width: 711px;
+        max-width: 100%;
+        height: 38.889vw;
+        object-fit: cover;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        min-height: 100%;
+        max-height: 100%;
+        display: block;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        right: 0px;
+    }
+    span.section-top-tagline {
+        font-size: 14px;
+        line-height: 28px;
+        text-transform: uppercase;
+        letter-spacing: 0.65px;
+        margin-bottom: 3px;
+    }
+    .importance-content-area h2 {
+        font-size: 4.167vw;
+        line-height: 4.653vw;
+        letter-spacing: 0.65px;
+        margin: 0px 0px 36px 0px;
+    }
+    .importance-content-area h2 span.font-austin-italic{
+        font-size: 4.444vw;
+        line-height: 4.722vw;
+    }
+    .imp-contents {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0.65px;
+    }
+
+    .imp-contents p {
+        margin: 0px;
+    }
+    .importance-content-area a.learn-more-arrow {
+        margin-top: 40px;
+        background-color: transparent;
+    }
+
+    /** Responsive */
+    @media (min-width: 1500px){
+        .importance-content-area h2{
+            font-size: 60px;
+            line-height: 67px;
+        }
+        .importance-content-area h2 span.font-austin-italic{
+            font-size: 64px;
+            line-height: 68px;
+        }
+    }
+
+    @media (max-width: 1366px) and (min-width: 1200px){
+        .importance-animation-image{
+            width: 600px;
+        }
+    }
+
+    @media (max-width: 1199px) and (min-width: 992px){
+        .importance-animation-image img{
+            width: 400px;
+            height: 500px;
+        }
+        .importance-animation-image{
+            width: 400px;
+        }
+    }
+
+    @media (max-width: 991px){
+        section.importance-of-lights .row {
+            flex-flow: column-reverse;
+        }
+
+        .importance-content-area h2 {
+            font-size: 50px;
+            line-height: 57px;
+            margin-bottom: 20px;
+        }
+
+        .importance-content-area{
+            min-width: unset;
+        }
+        .importance-content-area h2 span.font-austin-italic{
+            font-size: 54px;
+            line-height: 58px;
+        }
+        .importance-content-area a.learn-more-arrow {
+            margin-top: 30px;
+        }
+        .importance-animation-image, .importance-content-area {
+            width: 100%;
+        }
+        .importance-animation-image{
+            position: relative;
+            border-radius: 8px;
+            height: auto;
+            max-width: 100%;
+            width: 100%;
+        }
+        .importance-animation-image img{
+            border-radius: 8px;
+            position: relative;
+            top: unset; 
+            transform: none;
+            height: auto;
+            width: 100%;
+        }
+
+        section.importance-of-lights {
+            padding: 70px 0px;
+            margin: 0px;
+        }
+        .importance-content-area {
+            padding: 28px 0px 0px;
+        }
+    }
+</style>
+
+{% schema %}
+{
+    "name": "Importance Light Second",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading_topline",
+            "label": "Heading topline"
+        },
+        {
+            "type": "text",
+            "id": "importance_heading",
+            "label": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "importance_heading_italic",
+            "label": "Section heading in italic"
+        },
+        {
+            "type": "textarea",
+            "id": "importance_content",
+            "label": "Section content"
+        },
+        {
+            "type": "text",
+            "id": "importance_learnmore_text",
+            "label": "Learn more button text"
+        },
+        {
+            "type": "text",
+            "id": "importance_learnmore",
+            "label": "Learn more URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "importance_img",
+            "label": "Upload Image"
+        }
+    ],
+    "presets": [
+        {
+        "name": "Importance of Lights Second",
+        "category": "Custom"
+        }
+    ] 
+}
+{% endschema %}

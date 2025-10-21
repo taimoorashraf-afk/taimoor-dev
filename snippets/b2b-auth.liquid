@@ -1,0 +1,55 @@
+{% if customer %}
+  <script>
+    const customerCompanyId = {{ customer.current_company.id | json }};
+    {% if customer.default_address %}
+      const hasCompanyAddress = {{ customer.default_address.company | json }} !== null && 
+                               {{ customer.default_address.company | json }} !== '';
+    {% else %}
+      const hasCompanyAddress = false;
+    {% endif %}
+    const isAuthorized = customerCompanyId !== null;
+    if (!isAuthorized) {
+      localStorage.setItem('b2b_unauthorized', 'Please contact the support team for assistance.');
+      window.location.href = '/account/logout?_fd=0&return_url=/';
+    }
+  </script>
+{% endif %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const message = localStorage.getItem('b2b_unauthorized');
+    if (message) {
+      localStorage.removeItem('b2b_unauthorized');
+      const popup = document.createElement('div');
+      popup.style.position = 'fixed';
+      popup.style.top = '0';
+      popup.style.left = '0';
+      popup.style.width = '100%';
+      popup.style.height = '100%';
+      popup.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+      popup.style.display = 'flex';
+      popup.style.justifyContent = 'center';
+      popup.style.alignItems = 'center';
+      popup.style.zIndex = '10000';
+      popup.innerHTML = `
+        <div style="background-color: white; border-radius: 5px; padding: 20px; max-width: 400px; width: 90%;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+            <h3 style="margin: 0; font-size: 18px;">Dealer Account not found</h3>
+            <button style="background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+          </div>
+          <p style="margin-bottom: 20px;">${message}</p>
+          <div style="text-align: right;">
+            <button style="padding: 8px 16px; background-color: #000; color: white; border: none; border-radius: 4px; cursor: pointer;">OK</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(popup);
+      const closeButtons = popup.querySelectorAll('button');
+      closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          popup.remove();
+        });
+      });
+    }
+  });
+</script>

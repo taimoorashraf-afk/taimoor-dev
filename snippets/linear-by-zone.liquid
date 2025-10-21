@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
+
+<div id="linear-accordion-container">
+    <div class="linear-accordion active" data-id="1">
+        <div class="accordion-header toggle-accordion">
+            <span class="font-neue-roman accordion-title">Zone 1</span>
+            <div class="accordion-action-btns">
+                <button class="add-zone font-neue-roman">Add Zone</button>
+            </div>
+            <svg class="accordion-plusIcon" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.71667 0.5L6.71667 13.5M0 7H6.71667L13 7" stroke="#5A5857" stroke-width="1.5"></path>
+            </svg>
+            <svg class="accordion-minusIcon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 1L6.71667 1L13 1" stroke="#5A5857"></path>
+            </svg>
+        </div>
+        <div class="accordion-content" style="height: auto;">
+            <!-- Zone content here -->
+            <div class="form-row">
+                <label class="form-labels font-neue-roman">Zone Name</label>
+                <input name="" type="text" class="field-styles font-neue-roman">
+            </div>
+            <div class="form-row">
+                <label class="form-labels font-neue-roman">Total Linear Footage of Fixtures 
+                    <div class="tooltip">
+                        <!-- Tooltip icon here -->
+                    </div>
+                </label>
+                <input min="1" class="total-linear-footage field-styles" name="" type="number"  class="field-styles">
+            </div>
+            <div class="form-row select-styles">
+                <label class="form-labels font-neue-roman">Mounting Type</label>
+                <div class="select-box-styles">
+                    <select class="mounting-type dropdown-styles font-neue-roman" name="">
+                        <option value="flat-track">Flat Track</option>
+                        <option value="45-deg-track" >45 Degree Track</option>
+                    </select>
+                    <div class="select-arrow">
+                        <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.62282 8.4032L15.5 1.52625L14.974 1L8.545 7.40251L2.11603 1L1.59 1.52625L8.545 8.48125L8.62282 8.4032Z" fill="#292521" stroke="#292521"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row wattage-drivers">
+                <p class="zone-wattage font-neue-roman">Total Zone Wattage: <span class="total-wattage"></span></p>
+                <p class="zone-wattage font-neue-roman">Number of drivers needed: <span class="total-drivers"></span></p>
+                <p class="weight-100 italic font-size-15"> Max. 20' of fixtures per driver.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="form-row form-action-btns">
+    <button id="trigger-bom-zone" class="form-btn-styles font-neue-roman" disabled>Create BOM</button>
+    <!-- <button class="form-btn-styles font-neue-roman">Save to Project</button> -->
+</div>
+<script src="{{ 'helper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'linear-by-zone.js' | asset_url }}" defer="defer"></script>

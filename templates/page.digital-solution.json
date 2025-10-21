@@ -1,0 +1,140 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_series_banner_67TPN4": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "A new era",
+        "main_subtitle": "in illumination ",
+        "main_txt": "With our dynamic tunable white lighting, DMF Lighting presents the next great leap forward in luxury LED illumination.",
+        "main_banner_img_desktop": "shopify://shop_images/SolutionDigital_Hero_D.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/SolutionDigital_Hero_M.jpg"
+      }
+    },
+    "solutions_image_grids_XLDdhg": {
+      "type": "solutions-image-grids",
+      "blocks": {
+        "image_block_gzDndb": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/SolutiongDigital_Main_A.jpg",
+            "animated_box_heading": "PhaseX",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "PhaseX technology unlocks the ability to adjust lighting for mood, task, or aesthetics with simple tunable white technology. Available on Artafex 2 and Artafex 4",
+            "explore_button_text": "Discover Artafex 2",
+            "explore_button_url": "/pages/artafex-2"
+          }
+        },
+        "image_block_JP3bxK": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/SolutiongDigital_Main_B.jpg",
+            "animated_box_heading": "DALI-2",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "DALI is a digital protocol that allows for real-time monitoring, status feedback, and remote management of lighting systems and it's available on both Artafex 2 and 4",
+            "explore_button_text": "Recessed Products",
+            "explore_button_url": "/pages/recessed"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_gzDndb",
+        "image_block_JP3bxK"
+      ],
+      "settings": {
+        "grid_top_heading": "The power of digital control",
+        "grid_top_heading_italic": "is in your hands ",
+        "grid_top_content": "With the ability to control each fixture individually, you have the power to set scenes and moods to match any moment in the circadian cycle."
+      }
+    },
+    "solutions_image_carousel_yDmV6U": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_qCpfgJ": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/SolutiongDigital_Block2_B.jpg"
+          }
+        },
+        "image_block_4qigLT": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/SolutiongDigital_Block1_C.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_qCpfgJ",
+        "image_block_4qigLT"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "PhaseX",
+        "first_content": "PhaseX is an exclusive digital solution for technology integrators that combines the simplicity of wireless with the reliability of wired connections, achieving DMX speed and open protocol flexibility. Embedded in the Artafex 2 and 4 families, it enables soft zoning, .1% dimming, and tunable white, using familiar wiring options for electricians.",
+        "learnmore_text": "",
+        "learnmore_url": "",
+        "learnmore_url_loggedin": "",
+        "second_heading": "A New Standard",
+        "second_content": "PhaseX retrofits outdated centralized dimming cabinets to modern standards at a lower cost than similar systems, integrating seamlessly with Crestron and adapting easily to other control manufacturers, paving the way for a new era of digital projects.",
+        "bottom_learnmore_text": "Learn more about PhaseX",
+        "bottom_learnmore_url": "/pages/phaseX"
+      }
+    },
+    "solutions_image_carousel_kxRkrA": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_CxybjB": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/SolutiongDigital_Block2_A_a3290eb3-4142-49b3-a6d4-7d269ef5112e.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_CxybjB"
+      ],
+      "settings": {
+        "content_layout": "content_right",
+        "first_heading": "DALI Protocol",
+        "first_content": "As the preferred choice for modern lighting control systems, DALI-2  provides precision and flexibility over individual light fixtures and provides a modern, adaptable, and efficient solution for lighting control that surpasses the limitations of traditional phase control systems. \n <br>\n<br>\nDALI-2 offers precise control, digital communication, scalability, energy efficiency, compatibility, and enhanced maintenance capabilities, making it the preferred choice for lighting in today's smart building and lighting design applications.",
+        "learnmore_text": "",
+        "learnmore_url": "",
+        "learnmore_url_loggedin": "",
+        "second_heading": "",
+        "second_content": "",
+        "bottom_learnmore_text": "",
+        "bottom_learnmore_url": ""
+      }
+    },
+    "product_type_why_dmf_znMMrt": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#292521",
+        "section_text_color": "#f9f6f3",
+        "why_section_heading": "Artful lighting for",
+        "why_section_subheading": "daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 40 years, DMF knows that the quality of your light can profoundly enhance the quality of your life.\nWith exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_TopLeft_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main_series_banner_67TPN4",
+    "solutions_image_grids_XLDdhg",
+    "solutions_image_carousel_yDmV6U",
+    "solutions_image_carousel_kxRkrA",
+    "product_type_why_dmf_znMMrt"
+  ]
+}

@@ -1,0 +1,146 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Dealer page styles {% endcomment %}
+{{ 'page.dealer.css' | asset_url | stylesheet_tag }}
+{% unless customer %}
+  <section class="dealer-portal">
+    <div class="page-width">
+      <div class="content content-top">
+        <h1 class="font-neue-light">{{ section.settings.heading }} <br><span class="font-austin-italic">{{ section.settings.heading_in_italic }}</span></h1>
+        <div class="description font-neue-roman">{{ section.settings.description }}</div>
+        <ul class="font-neue-roman">
+          {% for block in section.blocks %}
+            <li class="font-neue-roman">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.75" y="0.75" width="28.5" height="28.5" rx="14.25" stroke="#292521" stroke-width="1.5"/>
+                <path d="M20.5421 9.44885L12.3609 17.6298L9.4505 14.7191L8 16.1441L12.3689 20.5512L22 10.9067L20.5421 9.44885Z" fill="#292521"/>
+              </svg>
+              {{ block.settings.bullet_point }}</li>
+          {% endfor %}
+        </ul>
+        
+        <div class="links">
+          <a href="{{ section.settings.apply_button_link }}" class="learn-more-arrow btn-transparent font-neue-roman" href="#">{{ section.settings.apply_button_text }}
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 6.1873H18.0582H0Z" fill="white"/>
+              <path d="M12.5345 1L18.0582 6.1873L12.5345 1Z" fill="white"/>
+              <path d="M12.5345 11.41L18.0582 6.1873L12.5345 11.41Z" fill="white"/>
+              <path d="M0 6.1873H18.0582M18.0582 6.1873L12.5345 1M18.0582 6.1873L12.5345 11.41" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+            </svg>
+          </a>
+          <a href="{{ section.settings.link_1 }}" class="font-calling-code" style="text-decoration:none;">{{ section.settings.link_1_text }}</a>
+          <a href="{{ section.settings.link_2 }}" class="font-calling-code">{{ section.settings.link_2_text }}</a>
+        </div>
+        <a class="learn-more-arrow btn-transparent font-neue-roman dealer-logins" href="/customer_authentication/login?return_to={{ "/pages/configurators" | url_encode }}" class="header__icon header__icon--account link focus-inset{% if section.settings.userMenu != blank %} small-hide{% endif %}">Login
+          <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 6.1873H18.0582H0Z" fill="white"/>
+              <path d="M12.5345 1L18.0582 6.1873L12.5345 1Z" fill="white"/>
+              <path d="M12.5345 11.41L18.0582 6.1873L12.5345 11.41Z" fill="white"/>
+              <path d="M0 6.1873H18.0582M18.0582 6.1873L12.5345 1M18.0582 6.1873L12.5345 11.41" stroke="white" stroke-width="1.5" stroke-miterlimit="10"/>
+            </svg>
+        </a>
+      </div>
+      <div class="image-container">
+        <img src="{{ section.settings.image | img_url: 'master' }}" width="367" height="518" alt="Dealer Portal Image">
+      </div>
+    </div>
+  </section>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_in_italic",
+      "label": "Heading in italic"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "url",
+      "id": "apply_button_link",
+      "label": "Apply Button Link"
+    },
+    {
+      "type": "text",
+      "id": "apply_button_text",
+      "label": "Apply Button Text",
+      "default": "Apply"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "First Link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_1_text",
+      "label": "First Link Text"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Second Link URL"
+    },
+    {
+      "type": "text",
+      "id": "link_2_text",
+      "label": "Second Link Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list_item",
+      "name": "Bullet Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bullet_point",
+          "label": "Bullet Point Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1148 @@
+{% comment %} Projects Stylesheet {% endcomment %}
+{{ 'page.projects.css' | asset_url | stylesheet_tag }}
+
+<link href="{{ 'tailwind.min.css' | asset_url }}" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="{{ 'api-domain-config.js' | asset_url }}"></script>
+<!-- Styles -->
+<style>
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide Firefox spinners */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  /* Style the quantity input */
+  .quantitybox input[type='number'] {
+    text-align: center;
+    border: none;
+    margin: 0 8px;
+    font-size: 14px;
+    background: transparent;
+  }
+
+  .quantitybox input[type='number']:focus {
+    outline: none;
+    border-color: none;
+    box-shadow: none;
+  }
+
+  /* Ensure buttons and input align properly */
+  .quantitybox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .printed-price {
+    display: none;
+  }
+
+  .cart-pdf-note {
+    text-align: left;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  @media print {
+    #printContent {
+      width: 100% !important;
+      box-sizing: border-box; /* Ensures padding and borders are included in width */
+      margin: 0;
+      padding: 0;
+      background-color: #efebe6;
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .printed-price {
+      display: block;
+    }
+
+    .table-styles {
+      width: 100% !important;
+      border-collapse: collapse;
+      table-layout: fixed;
+      border-right: 1px solid #c1bdbd;
+    }
+    th,
+    td {
+      border: 1px solid #c1bdbd !important; /* Ensure visible borders */
+      padding: 10px 5px !important;
+      word-wrap: break-word !important;
+      min-width: 10% !important;
+      font-size: 6px !important;
+    }
+    th.project-image,
+    td.project-image {
+      width: 20%;
+    }
+    th.project-item-quantity,
+    td.project-item-quantity {
+      width: 20%;
+    }
+    th.project-order-count,
+    td.project-order-count {
+      width: 20%;
+    }
+    th.project-price,
+    td.project-price {
+      width: 15%;
+    }
+    th.project-quantity,
+    td.project-quantity {
+      width: 25%;
+    }
+    table,
+    tbody,
+    thead,
+    tr {
+      page-break-inside: avoid; /* Prevent breaking table rows across pages */
+    }
+    tbody {
+      border-top: none;
+    }
+  }
+</style>
+
+<div x-data="projectDetail()" x-init="init()" class="container mx-auto p-4">
+  <!-- Message and Cart Alert -->
+  <template x-if="message && message.content !=='A project with the same name already exists'">
+    <div
+      :class="{ 'text-red-700': message.type === 'error', 'text-green-700': message.type === 'success' }"
+      class="py-3 rounded relative my-2 font-neue-roman text-center"
+      role="alert"
+    >
+      <span class="font-neue-roman" x-text="message.content"></span>
+    </div>
+  </template>
+
+  <template x-if="cartUrl">
+    <div class="text-green-700 py-3 relative my-2 text-center" role="alert">
+      <span class="font-neue-roman">Item added to cart successfully! </span>
+      <a :href="cartUrl" class="font-neue-roman" target="_blank">View Cart</a>
+    </div>
+  </template>
+
+  <!-- Project Details -->
+  <div class="project-details">
+    <div class="flex justify-between items-center mb-4 details-top-area">
+      <div class="flex items-center border p-4" style="border: 1px solid #c1bdbd; font-weight: 400; border-radius: 5px">
+        <h2 x-text="project?.name" class="text-2xl mr-4 font-neue-roman"></h2>
+        <!-- Edit Button with Pencil Icon -->
+        <button @click="showEditModal = true" class="text-black">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="15"
+            height="15"
+          >
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="flex gap-10 project-table-header">
+        <template x-if="project?.items?.length > 0">
+          <button @click="handlePrint()" class="font-neue-roman">Print</button>
+        </template>
+        <button @click="onBackToList" class="font-neue-roman">Projects</button>
+      </div>
+    </div>
+
+    <!-- Remove Item Confirmation Modal -->
+    <div
+      x-show="showRemoveModal"
+      x-cloak
+      class="fixed inset-0 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
+    >
+      <div class="modal-content">
+        <div class="">
+          <!-- Modal header -->
+          <div class="">
+            <h3>Confirm Remove Item</h3>
+            <button @click="showRemoveModal = false" class="close-modal" type="button">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05604 0.750599L10.2484 9.94299M0.902835 10.0962L5.65224 5.34679L10.0952 0.903806" stroke="#292521" stroke-width="1.5"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="remove-cart-item-modal remove-cart-item-modal-text">
+            <p>Are you sure you want to remove this item from the project?</p>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-btns">
+            <button @click="confirmRemoveItem" class="btn-styles">
+              Remove
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 6.1873H18.0582H0Z" fill="white"></path>
+                <path d="M12.5345 1L18.0582 6.1873L12.5345 1Z" fill="white"></path>
+                <path d="M12.5345 11.41L18.0582 6.1873L12.5345 11.41Z" fill="white"></path>
+                <path d="M0 6.1873H18.0582M18.0582 6.1873L12.5345 1M18.0582 6.1873L12.5345 11.41" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path>
+              </svg>
+            </button>
+            <button @click="showRemoveModal = false" class="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add to Cart Confirmation Modal -->
+    <div
+      x-show="showSaveModal"
+      x-cloak
+      class="fixed inset-0 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
+    >
+      <div class="modal-content">
+        <div class="">
+          <!-- Modal header -->
+          <div class="">
+            <h3>Confirm Save Project</h3>
+            <button @click="showSaveModal = false" class="close-modal" type="button">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05604 0.750599L10.2484 9.94299M0.902835 10.0962L5.65224 5.34679L10.0952 0.903806" stroke="#292521" stroke-width="1.5"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="save-project-confirmation-text">
+            <p>Are you sure you want to save the project?</p>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-btns">
+            <button @click="confirmSaveProject" class="btn-styles">
+              Save Project
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 6.1873H18.0582H0Z" fill="white"></path>
+                <path d="M12.5345 1L18.0582 6.1873L12.5345 1Z" fill="white"></path>
+                <path d="M12.5345 11.41L18.0582 6.1873L12.5345 11.41Z" fill="white"></path>
+                <path d="M0 6.1873H18.0582M18.0582 6.1873L12.5345 1M18.0582 6.1873L12.5345 11.41" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path>
+              </svg>
+            </button>
+            <button @click="showSaveModal = false" class="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Editing Project Name -->
+    <div
+      x-show="showEditModal"
+      x-cloak
+      class="showEditModal fixed inset-0 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
+    >
+      <div class="modal-content">
+        <div class="">
+          <!-- Modal header -->
+          <div class="">
+            <h3>Edit Project Name</h3>
+            <button @click="showEditModal = false" class="close-modal" type="button">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.05604 0.750599L10.2484 9.94299M0.902835 10.0962L5.65224 5.34679L10.0952 0.903806" stroke="#292521" stroke-width="1.5"></path>
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div>
+            <input
+              type="text"
+              x-model="editProjectName"
+              maxlength="32"
+              class="w-full p-2 border border-gray-300 rounded mb-4"
+            >
+            <template x-if="message && message.type === 'error'">
+              <p class="text-red-600 text-sm mt-2" style="color: red !important" x-text="message.content"></p>
+            </template>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-btns">
+            <button @click="saveProject" class="btn-styles">
+              Save
+              <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 6.1873H18.0582H0Z" fill="white"></path>
+                <path d="M12.5345 1L18.0582 6.1873L12.5345 1Z" fill="white"></path>
+                <path d="M12.5345 11.41L18.0582 6.1873L12.5345 11.41Z" fill="white"></path>
+                <path d="M0 6.1873H18.0582M18.0582 6.1873L12.5345 1M18.0582 6.1873L12.5345 11.41" stroke="white" stroke-width="1.5" stroke-miterlimit="10"></path>
+              </svg>
+            </button>
+            <button @click="closeModal()" class="cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loader -->
+    <div x-show="loading" class="p-8 text-center">
+      <svg
+        class="animate-spin h-8 w-8 text-blue-500 mx-auto"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C6.477 0 2 4.477 2 10h2zm2 5.291A7.965 7.965 0 014 12H2c0 2.161.879 4.121 2.291 5.709L6 17.291z"></path>
+      </svg>
+      <p class="text-gray-700">Loading projects...</p>
+    </div>
+
+    <!-- Table for displaying project items -->
+    <div id="printContent">
+      <div class="cart-pdf-note printed-price">
+        <p class="font-neue-roman">
+          <strong
+            >Confidential Dealer Pricing <br>
+            Do Not Share</strong
+          >
+        </p>
+      </div>
+
+      <table class="table-styles leading-normal" x-show="!loading">
+        <thead>
+          <!--
+            <tr>
+                <th>Item</th>
+                <th>Order Count</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+          -->
+          <tr class="uppercase font-neue-roman">
+            <th class="project-image">Item</th>
+            <th class="project-item-quantity">Original Quantity</th>
+            <th class="project-order-count">Order Count</th>
+            {% comment %} <th class="project-item-count">Item Count</th> {% endcomment %}
+            <th class="project-price">Price</th>
+            <th class="project-quantity">Quantity</th>
+            <th class="project-actions" data-hide-pdf>Actions</th>
+          </tr>
+        </thead>
+        <tbody class="font-neue-roman">
+          <template x-for="(item, index) in project?.items" :key="item._id">
+            <tr>
+              <td class="project-image">
+                <div class="flex items-center">
+                  <img :src="item.image.url" alt="Product Image" class="w-20 h-20 rounded-full mr-3">
+                  <div class="flex flex-col">
+                    <span class="font-neue-roman" x-text="item.productTitle"></span>
+                    <div class="fixturetypes">
+                      Fixture Type:
+                      <input
+                        type="text"
+                        name="fixture_type"
+                        x-model="item.properties.currentFixture"
+                        @input="validateFixtureInput($event, index)"
+                        maxlength="25"
+                        :class="fixtureErrors[index] ? 'border-red-500' : 'border-gray-300'"
+                        class="rounded px-2 py-1 w-full border"
+                      >
+                      <div
+                        x-show="fixtureErrors[index]"
+                        x-text="fixtureErrors[index]"
+                        class="text-red-500 text-sm absolute -bottom-5 left-0"
+                      ></div>
+                    </div>
+                    <!--
+                      <span class="text-gray-600 whitespace-no-wrap text-xl" x-show="item.properties.currentFixture" x-text="'Fixture Type: ' + item.properties.currentFixture"></span>
+                    -->
+                    {% comment %} <span class="font-neue-roman" x-show="item.properties.currentFixture" x-text="'Fixture Type: ' + item.properties.currentFixture"></span> {% endcomment %}
+                  </div>
+                </div>
+              </td>
+              {% comment %} <td class="project-item-quantity" x-show="item.originalPrice" x-text="item.quantity"></td> {% endcomment %}
+              <td class="project-item-quantity"  x-text="item.originalQuantity"></td>
+              {% comment %} <td class="project-item-count"  x-text="item.order_count"></td> {% endcomment %}
+              <td class="project-order-count" 
+                  x-text="Number(item.order_count) || 0">
+              </td>
+              <td class="print-hide project-price" data-hide-pdf>
+                <div class="flex flex-col">
+                  <span
+                    x-text="'$' + Number((item.currentPrice || item.originalPrice || 0) * item.quantity).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+                  ></span>
+                </div>
+              </td>
+              <td class="project-price desktop-hidden" x-show="item.originalPrice">
+                <div class="flex flex-col">
+                  {% comment %}
+                    <span
+                      x-text="'$' + Number(item.originalPrice * item.quantity).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+                    ></span>
+                  {% endcomment %}
+                  {% comment %} <span
+                    x-text="'$' + Number((item.currentPrice || item.originalPrice || 0) * item.quantity).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"
+                  ></span> {% endcomment %}
+                  <span
+                    x-text="'$' + (
+                      ((Number(item.currentPrice) || Number(item.originalPrice)) || 0) * (Number(item.quantity) || 1)
+                    ).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })"
+                  ></span>
+                  
+                </div>
+              </td>
+              <td class="project-quantity">
+                <div class="flex items-center quantitybox">
+                  <button
+                    @click="decreaseQuantity(index)"
+                    class="quantity-minus-btn"
+                    :disabled="item.quantity <= 1"
+                    :class="{ 'opacity-50 cursor-not-allowed': item.quantity <= 1 }"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                      class="icon icon-minus"
+                      fill="none"
+                      viewBox="0 0 10 2"
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                  <input
+                    type="number"
+                    x-model="item.quantity"
+                    @input="validateQuantity($event, index)"
+                    @blur="handleQuantityBlur($event, index)"
+                    min="1"
+                    class="font-neue-roman text-center w-16 mx-2 border border-gray-300 rounded px-2 py-1"
+                    style="appearance: textfield;"
+                  >
+                  <button @click="increaseQuantity(index)" class="quantity-plus-btn">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                      class="icon icon-plus"
+                      fill="none"
+                      viewBox="0 0 10 10"
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+                </div>
+              </td>
+              <td class="print-hide project-actions" data-hide-pdf>
+                <button
+                  @click="addToCart(index, item)"
+                  class="btn-styles print-hide"
+                  x-bind:disabled="loadingStates[index]"
+                  title="Add this item to cart"
+                >
+                  <i class="fas fa-shopping-cart"></i>
+                </button>
+                <button
+                  @click="removeItem(item._id, project._id)"
+                  class="btn-styles print-hide secondary-btn"
+                  x-bind:disabled="removingItem"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      x-show="project?.items?.length > 0"
+      class="flex flex-wrap justify-end space-x-4 cart-btns"
+      style="border-bottom: 1px solid #c1bdbd; font-weight: 400; border-right: 1px solid #c1bdbd; border-left: 1px solid #c1bdbd; padding: 20px;"
+    >
+      <button @click="addAllToCart" class="btn-styles">Add to Cart</button>
+      <button @click="saveProject" class="btn-styles secondary-btn">Save Project</button>
+    </div>
+
+    <div x-show="project?.items?.length === 0" class="p-8 text-center font-neue-roman no-projects-found">
+      No item found.
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js" defer></script>
+
+<script>
+  function projectDetail() {
+  return {
+    project: null,
+    message: null,
+    cartUrl: null,
+    loading: false,
+    savingProject: false,
+    removingItem: false,
+    loadingStates: {},
+    addingAllToCart: false,
+    showEditModal: false,
+    showRemoveModal: false,
+    showSaveModal: false,
+    editProjectName: '',
+    itemToRemove: null,
+    projectIdToRemove: null,
+    fixtureErrors: {},
+
+    formatPrice(amount) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount);
+    },
+
+    closeModal() {
+      this.showEditModal = false;
+      this.editProjectName = this.project.name; // Reset to original name
+      this.message = null; // Clear any error messages
+    },
+
+    async handlePrint() {
+      // Get customer ID from page
+      const CUSTOMER_ID = document.querySelector('meta[name="customer-id"]')?.content || 
+                          "{{ customer.id | remove: 'gid://shopify/Customer/' }}";
+      
+      // Calculate total amount
+      let totalAmount = 0;
+      if (this.project && this.project.items) {
+        totalAmount = this.project.items.reduce((sum, item) => {
+          const price = item.currentPrice || item.originalPrice || 0;
+          if (price && item.quantity) {
+            return sum + price * item.quantity;
+          }
+          return sum;
+        }, 0);
+      }
+
+      // Fetch shipping data if customer ID is available
+      let shippingData = null;
+      if (CUSTOMER_ID && totalAmount > 0) {
+        try {
+          const apiUrl = buildApiUrl('api/shipping/calculate');
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              customer_id: CUSTOMER_ID,
+              cart_total: totalAmount
+            })
+          });
+          
+          if (response.ok) {
+            shippingData = await response.json();
+          }
+        } catch (error) {
+          console.error('Error fetching shipping data:', error);
+        }
+      }
+
+      // Create the PDF content container
+      const container = document.createElement('div');
+      container.style.cssText = `
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: white;
+      `;
+
+      // Add header
+      const headerContainer = this.createProjectPDFHeader();
+      container.appendChild(headerContainer);
+
+      // Add product table
+      const productTable = this.createProjectProductTable();
+      container.appendChild(productTable);
+
+      // Add footer with shipping and totals
+      const footerContainer = this.createProjectPDFFooter(totalAmount, shippingData);
+      container.appendChild(footerContainer);
+
+      // Create temporary container and add to document
+      const tempContainer = document.createElement('div');
+      tempContainer.style.position = 'fixed';
+      tempContainer.style.top = '0';
+      tempContainer.style.left = '0';
+      tempContainer.style.width = '100%';
+      tempContainer.style.height = '100%';
+      tempContainer.style.zIndex = '-1';
+      tempContainer.style.opacity = '0';
+      tempContainer.style.pointerEvents = 'none';
+      tempContainer.appendChild(container);
+      document.body.appendChild(tempContainer);
+
+      // Load web fonts
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      const scale = Math.max(2, Math.ceil(window.devicePixelRatio || 2));
+      const filename = `${this.project?.name || 'project'}-dealer-po.pdf`;
+      
+      const opt = {
+        margin: [0.2, 0.5, 0.5, 0.5],
+        filename: filename,
+        image: { type: 'png', quality: 1 },
+        html2canvas: {
+          scale,
+          useCORS: true,
+          logging: false,
+          backgroundColor: '#ffffff',
+          scrollY: 0,
+          windowWidth: container.scrollWidth
+        },
+        jsPDF: {
+          unit: 'mm',
+          format: 'a4',
+          orientation: 'portrait',
+          compress: false
+        }
+      };
+
+      try {
+        // Generate PDF
+        await html2pdf().set(opt).from(container).save();
+      } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('There was an error generating the PDF. Please try again.');
+      } finally {
+        // Clean up temporary container
+        document.body.removeChild(tempContainer);
+      }
+    },
+
+    createProjectPDFHeader() {
+      const date = new Date().toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric' 
+      });
+
+      const headerContainer = document.createElement('div');
+      headerContainer.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        align-items: flex-start;
+      `;
+      
+      headerContainer.innerHTML = `
+        <div style="width: 33.33%">&nbsp;</div>
+        <div style="width: 33.33%; text-align: center; display: flex; flex-direction: column; align-items: center;">
+          <svg width="90" height="35" viewBox="0 0 90 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.4789 11.8786H17.3842C15.7263 9.65432 13.4053 8.51852 10.3737 8.51852C3.41053 8.51852 0 14.5761 0 20.965C0 27.8745 3.26842 34.5 10.9895 34.5C13.8316 34.5 16.2 33.2695 17.7632 30.9506H17.8579V33.7901H25.5316V0H17.4789V11.8786ZM12.9789 28.3477C9.28421 28.3477 8.05263 24.609 8.05263 21.249C8.05263 18.1255 9.28421 14.6708 12.9789 14.6708C16.4842 14.6708 17.7632 17.9362 17.7632 21.4856C17.7632 24.609 16.9105 28.3477 12.9789 28.3477Z" fill="#141414"/>
+            <path d="M60.4895 8.51852C57.1737 8.51852 54.7579 9.89094 52.8158 12.4938C51.4895 9.51234 48.7421 8.51852 45.6632 8.51852C42.5842 8.51852 40.0737 10.1276 38.6053 12.5885H38.5105V9.22839H30.6947V33.7901H38.7474V21.8169C38.7474 16.8004 39.9789 15.144 42.8684 15.144C45.0474 15.144 45.9 16.9424 45.9 19.8292V33.7901H53.9526V21.7695C53.9526 17.7942 54.2842 15.144 57.7421 15.144C59.8263 15.144 61.1053 16.7058 61.1053 19.356V33.7901H69.1579V19.1193C69.1579 14.4342 68.3053 8.51852 60.4895 8.51852Z" fill="#141414"/>
+            <path d="M87.8211 5.67901C88.5316 5.67901 89.2421 5.72634 90 5.82099V0.141975C88.7211 0.0946502 87.3947 0 86.1158 0C79.2474 0 76.7842 2.17695 76.7842 9.22839H72.9V14.4342H76.7842V33.7901H84.8368V14.4342H89.6684V9.22839H84.8368V8.13992C84.8368 5.91564 85.9737 5.67901 87.8211 5.67901Z" fill="#141414"/>
+          </svg>
+
+          <h1 style="margin: 10px 0 5px 0; font-size: 20px; line-height: 20px; font-weight: 700;">Confidential Pricing</h1>
+        </div>
+        <div style="text-align: right; width: 33.33%; margin-top: 10px;">
+          <p style="margin: 0; font-size: 12px; font-weight: normal; color: #000000; text-align: right;"><strong>Date:</strong> ${date}</p>
+          <p style="margin: 0; font-size: 12px; font-weight: normal; color: #000000; text-align: right;"><strong>Project:</strong> ${this.project?.name || 'N/A'}</p>
+        </div>
+      `;
+
+      return headerContainer;
+    },
+
+    createProjectProductTable() {
+      const table = document.createElement('div');
+      table.style.cssText = `
+        margin: 30px 0;
+        width: 100%;
+        padding: 0px 30px;
+      `;
+      
+      // Create table header
+      const headerRow = document.createElement('div');
+      headerRow.style.cssText = `
+        display: flex;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 12px;
+        padding: 0px 5px;
+        color: #000000;
+        justify-content: center;
+      `;
+      
+      headerRow.innerHTML = `
+        <div style="text-align: center; border: none; text-decoration: underline; padding: 10px 5px 0px; font-weight: 800; font-size: 12px; line-height: 12px; width: 40%;">Product</div>
+        <div style="text-align: center; border: none; text-decoration: underline; padding: 10px 5px 0px; font-weight: 800; font-size: 12px; line-height: 12px; width: 30%;">Unit Price</div>
+        <div style="text-align: center; border: none; text-decoration: underline; padding: 10px 5px 0px; font-weight: 800; font-size: 12px; line-height: 12px; width: 15%;">Qty</div>
+        <div style="text-align: right; border: none; text-decoration: underline; padding: 10px 5px 0px; font-weight: 800; font-size: 12px; line-height: 12px; width: 15%;">Price</div>
+      `;
+      
+      table.appendChild(headerRow);
+      
+      // Create product rows
+      this.project.items.forEach((item, index) => {
+        const row = document.createElement('div');
+        row.style.cssText = `
+          display: flex;
+          align-items: flex-start;
+          padding: 10px 0;
+          page-break-inside: avoid;
+          color: #000000;
+        `;
+        
+        const unitPrice = item.currentPrice || item.originalPrice || 0;
+        const totalPrice = unitPrice * item.quantity;
+        
+        row.innerHTML = `
+          <div style="padding: 10px 0px; vertical-align: top; width: 40%; border: none;">
+            <div style="display: flex;">
+              <img src="${item.image.url}" alt="${item.productTitle}" style="width: 34px; height: 46px; margin-right: 15px; object-fit: cover; border-radius: 2px;">
+              <div style="width: calc(100% - 49px);">
+                <div style="font-weight: bold; font-size: 12px; margin-bottom: 4px; line-height: 1.2;">
+                  ${item.productTitle}
+                </div>
+                <div style="font-size: 10px; color: #000000; line-height: 14px; margin-left: 12px;">
+                  ${item.properties.currentFixture ? `<strong>Fixture Type:</strong> ${item.properties.currentFixture}<br>` : ''}
+                  {% comment %} <strong>Order Count:</strong> ${item.order_count || 0} {% endcomment %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 10px 5px; text-align: center; font-weight: normal; border: none; font-size: 12px; width: 30%;">
+            ${this.formatPrice(unitPrice)}
+          </div>
+          <div style="padding: 10px 5px; text-align: center; font-size: 12px; border: none; width: 15%;">
+            ${item.quantity}
+          </div>
+          <div style="padding: 10px 5px; text-align: right; font-weight: bold; border: none; font-size: 12px; width: 15%;">
+            ${this.formatPrice(totalPrice)}
+          </div>
+        `;
+        
+        table.appendChild(row);
+      });
+      
+      return table;
+    },
+
+    createProjectPDFFooter(totalAmount, shippingData) {
+      // Get shipping information from API response
+      let shippingAddress = 'Your Company Name<br>1234 W Main Street<br>Anytown, USA 55512';
+      let shippingCost = 'Calculated at Checkout';
+      let totalDisplay = 'Calculated at Checkout';
+      
+      // Use actual shipping data from API response if available
+      if (shippingData && shippingData.success) {
+        // Get company information
+        if (shippingData.company_name && shippingData.company_address) {
+          const company = shippingData.company_name;
+          const addr = shippingData.company_address;
+          
+          shippingAddress = `
+            ${company}<br>
+            ${addr.address1 ? `${addr.address1}<br>` : ''}
+            ${addr.address2 ? `${addr.address2}<br>` : ''}
+            ${addr.city && addr.provinceCode && addr.zip ? 
+              `${addr.city}, ${addr.provinceCode} ${addr.zip}` : ''}
+          `;
+        }
+        
+        // Get shipping cost from shipping_rates
+        if (shippingData.shipping_rates && shippingData.shipping_rates.length > 0) {
+          const shippingRate = shippingData.shipping_rates[0].total_charge;
+          if (shippingRate === 0) {
+            shippingCost = 'FREE';
+            totalDisplay = this.formatPrice(totalAmount);
+          } else {
+            shippingCost = this.formatPrice(shippingRate);
+            totalDisplay = this.formatPrice(totalAmount + shippingRate);
+          }
+        }
+      }
+
+      const footerContainer = document.createElement('div');
+      footerContainer.style.cssText = `
+        margin-top: 20px;
+        padding: 20px 20px 0px 20px;
+        border-top: 2px solid #000000;
+        display: flex;
+        color: #000000;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-family: "Inter", sans-serif;
+        page-break-inside: avoid;
+      `;
+      
+      footerContainer.innerHTML = `
+        <div style="width: 100%; margin-right: 20px;">
+          <h3 style="font-size: 12px; font-weight: bold; margin: 0 0 7px 0; color: #000000;">Shipping Address</h3>
+          <div style="color: #000000; line-height: 12px; font-size: 10px;">
+            ${shippingAddress}
+          </div>
+          <p style="font-size: 8px; color: #000000; margin: 9px 0 0 0; line-height: 10px; max-width: 204px; font-style: italic;">
+            <strong>Note:</strong> This address is used to calculate the shipping costs. If a different address is required please contact your sales support team member for a custom quote.
+          </p>
+        </div>
+
+        <div style="flex: 0 0 300px; text-align: right;">
+          <div style="padding: 0px 16px;">
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
+              <span style="color: #000000; font-weight: bold;">SubTotal</span>
+              <span style="font-weight: bold; color: #000000;">${this.formatPrice(totalAmount)}</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px;">
+              <span style="color: #000000; font-weight: bold;">Expected Shipping</span>
+              <span style="color: #000000; font-style: italic; font-size: 10px;">${shippingCost}</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: bold;">
+              <span style="color: #000000; font-weight: bold;">Total</span>
+              <span style="color: #000000; font-style: italic; font-size: 10px;">${totalDisplay}</span>
+            </div>
+            
+          </div>
+        </div>
+      `;
+
+      return footerContainer;
+    },
+
+    init() {
+      console.log('Initializing project detail. showEditModal:', this.showEditModal);
+      this.fetchProjectDetail();
+    },
+
+    async fetchProjectDetail() {
+      this.loading = true;
+      try {
+        const projectId = new URLSearchParams(window.location.search).get('projectId');
+        const response = await fetch(buildApiUrl(`api/cartProjects/findById?id=${projectId}`));
+        if (!response.ok) throw new Error('Failed to fetch project details');
+        const data = await response.json();
+        if (data.data && data.data.items) {
+          data.data.items.forEach((item) => {
+            // Create a new property to store the original quantity
+            item.originalQuantity = item.quantity;
+          });
+        }
+        this.project = data.data;
+        this.editProjectName = this.project.name;
+      } catch (error) {
+        this.message = { type: 'error', content: 'Failed to fetch project details: ' + error.message };
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    validateFixtureInput(event, index) {
+      const field = event.target;
+      const value = field.value.trim();
+      const regex = /^[a-zA-Z0-9\s]*$/;
+
+      // Reset error first
+      this.fixtureErrors[index] = '';
+
+      // Validate length
+      if (value.length > 25) {
+        this.fixtureErrors[index] = 'Maximum 25 characters allowed';
+        // Truncate the value to 25 characters
+        this.project.items[index].properties.currentFixture = value.substring(0, 25);
+        return;
+      }
+
+      // Validate for alphanumeric characters
+      if (!regex.test(value)) {
+        this.fixtureErrors[index] = 'Only letters, numbers, and spaces allowed';
+        return;
+      }
+
+      // Update value if validation passes
+      this.project.items[index].properties.currentFixture = value;
+    },
+
+    async saveProject() {
+      const hasInvalidInputs = this.project.items.some((item) => {
+        const value = item.properties.currentFixture?.trim() || '';
+        const regex = /^[a-zA-Z0-9\s]*$/;
+        return value.length > 25 || !regex.test(value);
+      });
+
+      if (hasInvalidInputs) {
+        this.message = { type: 'error', content: 'Please fix invalid fixture type inputs before saving.' };
+        return;
+      }
+
+      const projectName = this.editProjectName.trim();
+      if (projectName === '') {
+        this.message = { type: 'error', content: 'Project name cannot be empty.' };
+        return;
+      }
+
+      if (projectName.length > 32) {
+        this.message = { type: 'error', content: 'Project name cannot exceed 32 characters.' };
+        return;
+      }
+
+      // Close the edit modal first
+      this.showEditModal = false;
+
+      // Then show save confirmation modal
+      setTimeout(() => {
+        this.showSaveModal = true;
+      }, 100);
+    },
+
+    // Add new method for confirming project save
+    async confirmSaveProject() {
+      this.loading = true;
+      try {
+        const updates = this.project.items.map((item) => ({
+          itemId: item._id,
+          quantity: item.quantity,
+          currentFixture: item.properties.currentFixture,
+        }));
+
+        const saveResponse = await fetch(buildApiUrl('api/cartProjects/updateProject'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            projectId: this.project._id,
+            name: this.editProjectName,
+            updates: updates,
+          }),
+        });
+
+        const saveData = await saveResponse.json();
+        if (!saveResponse.ok || !saveData.success) {
+          this.message = { type: 'error', content: saveData.message };
+          setTimeout(() => {
+            this.message = null;
+          }, 3000);
+          return;
+        }
+
+        // After successful project save, update cart items with new project name
+        try {
+          const cartResponse = await fetch('/cart.js');
+          const cartData = await cartResponse.json();
+
+          // Find all items that belong to this project
+          const projectItems = cartData.items.filter(
+            (item) => item.properties && item.properties['_Project ID'] === this.project._id
+          );
+
+          // Update each item's properties one by one
+          for (const item of projectItems) {
+            const formData = {
+              id: item.key,
+              quantity: item.quantity,
+              properties: {
+                'Project Name': this.editProjectName,
+                'Fixture Type': item.properties['Fixture Type'],
+                '_Project ID': this.project._id,
+              },
+            };
+
+            const changeResponse = await fetch('/cart/change.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(formData),
+            });
+
+            if (!changeResponse.ok) {
+              throw new Error('Failed to update cart item');
+            }
+          }
+        } catch (cartError) {
+          console.error('Error updating cart items:', cartError);
+          this.message = { type: 'error', content: 'Project saved but cart update failed: ' + cartError.message };
+          setTimeout(() => {
+            this.message = null;
+          }, 3000);
+        }
+
+        this.project.name = this.editProjectName;
+        this.message = { type: 'success', content: 'Project saved successfully!' };
+        setTimeout(() => {
+          this.message = null;
+        }, 3000);
+        this.showSaveModal = false;
+        this.showEditModal = false;
+
+        // Reload the page to show updated cart
+        window.location.reload();
+      } catch (error) {
+        this.message = { type: 'error', content: 'Error saving project: ' + error.message };
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    validateQuantity(event, index) {
+      const input = event.target;
+      const value = input.value;
+
+      // Remove any non-numeric characters but allow empty string temporarily
+      const numericValue = value.replace(/[^0-9]/g, '');
+      input.value = numericValue;
+
+      // Only update Alpine.js data if value is not empty
+      if (numericValue !== '') {
+        const parsedValue = parseInt(numericValue);
+        if (parsedValue >= 1) {
+          this.project.items[index].quantity = parsedValue;
+        }
+      }
+      // If empty, don't update the Alpine.js data yet - wait for blur event
+    },
+
+    handleQuantityBlur(event, index) {
+      const input = event.target;
+      let value = input.value.trim();
+
+      // If empty or invalid, set to 1
+      if (value === '' || isNaN(parseInt(value)) || parseInt(value) < 1) {
+        input.value = 1;
+        this.project.items[index].quantity = 1;
+      } else {
+        const parsedValue = parseInt(value);
+        input.value = parsedValue;
+        this.project.items[index].quantity = parsedValue;
+      }
+    },
+
+    // Update existing functions to work with input field
+    decreaseQuantity(index) {
+      if (this.project.items[index].quantity > 1) {
+        this.project.items[index].quantity -= 1;
+      }
+    },
+
+    increaseQuantity(index) {
+      this.project.items[index].quantity += 1;
+    },
+
+    async addToCart(index, item) {
+      this.loadingStates[index] = true;
+      try {
+        const cartResponse = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [
+              {
+                id: item.shopifyVariantId,
+                quantity: item.quantity,
+                properties: {
+                  'Project Name': this.editProjectName || this.project.name,
+                  'Fixture Type': item.properties.currentFixture,
+                  '_Project ID': this.project._id,
+                  'SKU': item.properties.PRODUCT_SKU || ''
+                },
+              },
+            ],
+          }),
+        });
+        if (!cartResponse.ok) throw new Error('Failed to add to cart');
+        const cartData = await cartResponse.json();
+        this.cartUrl = '/cart';
+      } catch (error) {
+        this.message = { type: 'error', content: 'Error adding to cart: ' + error.message };
+      } finally {
+        this.loadingStates[index] = false;
+        window.location.reload();
+      }
+    },
+
+    async addAllToCart() {
+      this.addingAllToCart = true;
+      try {
+        const items = this.project.items.map((item) => ({
+          id: item.shopifyVariantId,
+          quantity: item.quantity,
+          properties: {
+            'Project Name': this.editProjectName || this.project.name,
+            'Fixture Type': item.properties.currentFixture,
+            '_Project ID': this.project._id,
+            'SKU': item.properties.PRODUCT_SKU || ''
+          },
+        }));
+        const cartResponse = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items }),
+        });
+        if (!cartResponse.ok) throw new Error('Failed to add items to cart');
+        const cartData = await cartResponse.json();
+        this.cartUrl = '/cart';
+        this.message = { type: 'success', content: 'All items added to cart successfully!' };
+      } catch (error) {
+        this.message = { type: 'error', content: 'Error adding items to cart: ' + error.message };
+      } finally {
+        this.addingAllToCart = false;
+        window.location.reload();
+      }
+    },
+
+    async removeItem(itemId, projectId) {
+      this.itemToRemove = itemId;
+      this.projectIdToRemove = projectId;
+      this.showRemoveModal = true;
+    },
+
+    // Add new method for confirming item removal
+    async confirmRemoveItem() {
+      this.removingItem = true;
+      try {
+        const removeResponse = await fetch(
+          buildApiUrl(`api/cartProjects/removeLineItem?lineItemId=${this.itemToRemove}&projectId=${this.projectIdToRemove}`),
+          {
+            method: 'DELETE',
+          }
+        );
+        if (!removeResponse.ok) throw new Error('Failed to remove item');
+        this.project.items = this.project.items.filter((item) => item._id !== this.itemToRemove);
+        this.message = { type: 'success', content: 'Item removed successfully!' };
+        this.showRemoveModal = false;
+      } catch (error) {
+        this.message = { type: 'error', content: 'Error removing item: ' + error.message };
+      } finally {
+        this.removingItem = false;
+        this.itemToRemove = null;
+        this.projectIdToRemove = null;
+      }
+    },
+
+    onBackToList() {
+      window.location.href = '/pages/projects'; // Adjust the URL to your project list page
+    }
+  };
+}
+</script>

@@ -1,0 +1,451 @@
+.listing-container h2 {
+  font-size: 60px;
+  line-height: 67px;
+  margin-bottom: 25px;
+  color: #292521;
+}
+
+.remove-cart-item-modal,
+.save-project-confirmation-text{
+  padding-bottom: 16px;
+} 
+
+.project-details div[x-show="showSaveModal"],
+.project-details div[x-show="showRemoveModal"] {
+  z-index: 9;
+}
+
+.project-listing {
+  padding: 56px 0px 100px;
+}
+
+table.table-styles {
+  width: 100%;
+}
+
+table.table-styles thead,
+table.table-styles tbody {
+  border: 1px solid #c1bdbd;
+}
+
+table.table-styles th {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-weight: 450;
+  text-align: left;
+  color: #292521;
+}
+
+table.table-styles td {
+  padding: 5px 15px;
+  text-align: left;
+  color: #292521;
+}
+
+table.table-styles .action-column svg {
+  stroke: #292521;
+  transition: 0.3s all;
+}
+
+button.delete-project-btn:hover svg {
+  stroke: red;
+}
+
+button.view-project-btn:hover svg {
+  stroke: #c2bfba;
+}
+
+.btn-styles {
+  background-color: #292521;
+  border-radius: 80px;
+  font-size: 16px;
+  line-height: 23px;
+  padding: 0 26px;
+  height: 50px;
+  border: 1px solid #292521;
+  color: #f9f6f3;
+  transition: 0.3s all;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-styles:hover {
+  background-color: transparent;
+  color: #292521;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: #292521;
+}
+
+.secondary-btn:hover {
+  background-color: #292521;
+  color: #f9f6f3;
+}
+
+.search-projects {
+  position: relative;
+}
+
+.search-projects button {
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 0 26px;
+  line-height: 23px;
+  letter-spacing: 0.65px;
+  background-color: #292521;
+  transition: 0.3s all;
+  border: 1px solid #292521;
+  height: 48px;
+  border-radius: 80px;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-weight: 450 !important;
+}
+
+.search-projects button:hover {
+  background-color: transparent;
+  color: #292521;
+}
+
+.search-projects input {
+  height: 48px;
+  font-weight: 500;
+  color: #292521;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: "Neue Haas Grotesk Display Pro";
+  width: 300px;
+  max-width: 100%;
+  background-color: transparent;
+  border: 1px solid #292521;
+  padding-right: 40px;
+  border-radius: 8px;
+  margin-right: 16px;
+}
+
+.clearbtn {
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  position: absolute;
+  right: 276px;
+  outline: none;
+}
+
+.clearbtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.table-pagination,
+.projects-loader,
+.projects-loader span,
+.no-projects-found {
+  color: #292521;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.project-details .table-styles td {
+  padding: 10px 15px;
+}
+
+.project-actions .btn-styles {
+  padding: 0;
+  font-size: 13px;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 5px;
+  border-radius: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-actions,
+.project-order-count,
+.project-item-count {
+  text-align: center !important;
+  width: 150px;
+}
+
+.project-price {
+  width: 120px;
+}
+
+.project-item-quantity {
+  width: 200px;
+  text-align: center !important;
+}
+
+.project-image {
+  max-width: 100%;
+  width: 350px;
+}
+
+.quantitybox {
+  width: 157px;
+  height: 50px;
+  border: 1.25px solid #292521;
+  border-radius: 8px;
+  position: relative;
+}
+
+.quantitybox button {
+  position: absolute;
+  top: 40%;
+}
+
+.quantitybox svg {
+  width: 9px;
+  height: 9px;
+}
+
+.quantitybox span {
+  font-size: 16px;
+  line-height: 16px;
+  color: #292521;
+  letter-spacing: 0.75px;
+  opacity: 1;
+  width: 100%;
+  text-align: center;
+  padding: 0px 40px;
+}
+
+.footer__copyright.caption p {
+  margin: 0;
+}
+
+.project-details td.project-price.desktop-hidden {
+    display: none;
+}
+
+.footer__blocks-wrapper.grid {
+  display: flex;
+}
+
+body{
+  line-height: calc(1 + 0.8 / var(--font-body-scale));
+}
+
+.quantity-minus-btn {
+  left: 30px;
+}
+
+.quantity-plus-btn {
+  right: 30px;
+}
+
+.project-quantity {
+  width: 187px;
+  text-align: center !important;
+}
+
+.project-details {
+  padding: 56px 0px 100px;
+  width: 1215px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.project-details span,
+.project-details p {
+  font-size: 16px;
+  line-height: 26px;
+  color: #292521;
+}
+
+.project-table-header button {
+  border-bottom: 1px solid #292521;
+}
+
+.showEditModal {
+  z-index: 99;
+}
+
+.modal-content {
+  background-color: #fdf9f5;
+  padding: 60px 53px 32px;
+  border-radius: 8px;
+  width: 519px;
+  height: 276px;
+  box-shadow: 0px 8px 10px 0px #00000026;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  background: rgba(239, 235, 230, 1);
+  text-align: center;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-modal svg {
+  width: 13px;
+  height: 13px;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-weight: 450 !important;
+  letter-spacing: 0.65px;
+}
+
+.modal-content input {
+  padding: 0px 15px;
+  border: 1.25px solid #c2bfba;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-shadow: none !important;
+  outline: none !important;
+  font-family: "Neue Haas Grotesk Display Pro";
+  font-weight: 450 !important;
+  letter-spacing: 0.65px;
+  height: 50px;
+  background-color: transparent;
+}
+
+.modal-btns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.modal-btns button {
+  width: 100%;
+}
+
+.modal-btns .cancel-btn {
+  margin-top: 16px;
+  color: rgba(41, 37, 33, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.65px;
+  font-family: "Calling Code";
+  font-weight: 400;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.project-names-underline:hover {
+  text-decoration: underline;
+}
+
+.modal-btns .btn-styles {
+  justify-content: space-between;
+}
+
+.modal-btns .btn-styles:hover svg path {
+  stroke: #292521;
+}
+
+.fixturetypes input {
+  border: 1.25px solid #c2bfba;
+  margin: 0;
+  height: 40px;
+  padding: 0 21px;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  color: #5a5857;
+  box-shadow: none !important;
+  outline: none !important;
+  font-family: "Neue Haas Grotesk Display Pro" !important;
+  font-weight: 450;
+  width: 140px;
+}
+
+.fixturetypes {
+  display: flex;
+  align-items: center;
+  gap: 0px 16px;
+  margin-top: 10px;
+}
+
+.project-image .flex.items-center {
+  gap: 0px 16px;
+}
+
+.project-details .table-styles .project-image img {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.project-listing button[disabled=disabled] {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/*
+** Responsive
+*/
+
+@media (max-width: 767px) {
+  table.table-styles th {
+    min-width: 200px;
+  }
+  .listing-container {
+    flex-wrap: wrap;
+  }
+  .search-projects {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .search-projects input {
+    width: 100%;
+    margin: 0 0 15px;
+  }
+  .clearbtn {
+    right: 12px;
+  }
+  table.table-styles {
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    display: block;
+  }
+  .cart-btns {
+    gap: 16px 0px;
+  }
+  .cart-btns button {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+  .details-top-area {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .project-table-header {
+    margin-top: 16px;
+  }
+  .modal-content {
+    max-width: 90vw;
+    padding: 50px 30px 40px;
+  }
+}

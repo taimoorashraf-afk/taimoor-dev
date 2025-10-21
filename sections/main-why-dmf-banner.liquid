@@ -1,0 +1,64 @@
+<section class="transparent-pg-banner" data-image-mobile={{ section.settings.main_banner_img_mobile | image_url }} style="background: url({{ section.settings.main_banner_img_desktop | image_url }}) no-repeat;">
+    <div class="page-width">
+        <h2 class="font-neue-light text-light">{{ section.settings.main_title }} <br><span class="font-austin-italic">{{ section.settings.main_subtitle }}</span></h2>
+        <p class="font-neue-roman text-light">{{ section.settings.main_txt }}</p>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+    // Change background image on mobile by using attribute "data-image-mobile"
+    document.addEventListener("DOMContentLoaded", function() {
+        const banner = document.querySelector(".transparent-pg-banner");
+        const mobileImage = banner.getAttribute("data-image-mobile");
+        
+        function setMobileBackground() {
+            if (window.innerWidth <= 767) { // Define mobile width (you can adjust the width limit as needed)
+                banner.style.backgroundImage = `url(${mobileImage})`;
+            } else {
+                banner.style.backgroundImage = `url('{{ section.settings.main_banner_img_desktop | image_url }})`;
+            }
+        }
+
+        // Initial check
+        setMobileBackground();
+
+        // Listen to window resize and change the background if necessary
+        window.addEventListener("resize", setMobileBackground);
+    });
+</script>
+
+
+{% schema %}
+{
+  "name": "Main Why DMF Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title"
+    },
+    {
+      "type": "text",
+      "id": "main_subtitle",
+      "label": "Main Sub Title"
+    },
+    {
+      "type": "textarea",
+      "id": "main_txt",
+      "label": "Main Text"
+    },
+    {
+        "type": "image_picker",
+        "id": "main_banner_img_desktop",
+        "label": "Main Banner Desktop"
+    },
+    {
+        "type": "image_picker",
+        "id": "main_banner_img_mobile",
+        "label": "Main Banner Mobile"
+    }
+  ]
+}
+{% endschema %}

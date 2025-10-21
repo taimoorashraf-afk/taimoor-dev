@@ -1,0 +1,109 @@
+{% comment %} item : line_item, index: forloop.index  {% endcomment %}
+{% comment %} script tag for fixture class added "fixture-field-class.js" in theme.liquid  {% endcomment %}
+<style>
+    .fixture-type{
+        margin-top: 100px;
+    }
+    .fixture-types-tips {
+        position: relative;
+        font-size: 16px;
+        line-height: 26px;
+        color: #292521;
+    }
+    .tooltips {
+        position: absolute;
+        right: 0;
+        top: -4px;
+        left: 102%;
+        z-index: 9;
+        width: 11px;
+    }
+
+    .tooltips .tooltip-text {
+        background-color: #f9f6f3;
+        padding: 11px;
+        border: .75px solid #C2BFBA;
+        border-radius: 8px;
+        position: absolute;
+        bottom: 33px;
+        left: -83px;
+        width: 253.5px;
+        min-width: 253.5px;
+        max-width: 90%;
+        transition: .3s all;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .tooltips:hover .tooltip-text {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .tooltips span.metafield-rich_text_field {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+    }
+
+    .tooltips span.metafield-rich_text_field p{
+        font-size: 11px;
+        line-height: 16px;
+        color: #5a5857;
+        letter-spacing: .5px;
+        margin: 0;
+        font-weight: 450;
+    }
+
+    .tooltips .tooltip-text:before{
+        content: "";
+        position: absolute;
+        bottom: -9px;
+        left: calc(32% + 1px);
+        width: 0;
+        height: 0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-top: 9px solid #f9f6f3;
+        z-index: 1;
+    }
+
+    td.cart-item__details .fixture-type .tooltips {
+        left: 93px;
+    }
+
+    @media (max-width: 991px){
+        
+    }
+</style>
+
+<custom-box>
+    <div class="fixture-type">
+        <div class="font-neue-roman fixture-types-tips">Fixture Type 
+            <div class="tooltips">
+              <svg width="11" height="11" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="16" height="16" rx="8" stroke="#292521"/>
+                <path d="M7.75 9.73684V9.42105C7.75 8.76316 8 8.39474 8.92105 7.6579C9.72368 7.02632 9.93421 6.71053 9.93421 6.19737C9.93421 5.4079 9.39474 4.94737 8.48684 4.94737C7.53947 4.94737 7.02632 5.44737 7.02632 6.39474V6.5H6V6.28947C6 4.82895 6.89474 4 8.5 4C10.0263 4 11 4.81579 11 6.07895C11 7.02632 10.7237 7.46053 9.69737 8.28947C8.94737 8.89474 8.77632 9.10526 8.77632 9.48684V9.73684H7.75ZM8.34211 13C7.77632 13 7.35526 12.5789 7.35526 12.0132C7.35526 11.4474 7.77632 11.0263 8.34211 11.0263C8.9079 11.0263 9.32895 11.4474 9.32895 12.0132C9.32895 12.5789 8.9079 13 8.34211 13Z" fill="#292521"/>
+              </svg>
+              <div class="tooltip-text font-neue-roman">
+                <span class="metafield-rich_text_field">
+                    <p>Enter a label or description for this fixture to identify its type or placement on the jobsite.</p>
+                </span>
+              </div>
+        </div> 
+        <div class="order-notes-bg">
+        <input class="fixture_input" edit-fixture-field name="fixture-type" maxlength="25" autocomplete="off" type="text" lineitemKey="{{item.key}}" line="{{index}}" value="{{item.properties['Fixture Type'] | strip}}" disabled />
+        </div>
+        <a href="javascript:void(0);" class="edit-notes" edit-fixture-button>Edit</a>
+        <a href="javascript:void(0);" class="edit-notes" save-fixture-button style="display: none; margin-left:10px; " >Save</a>
+        <a href="javascript:void(0);" class="edit-notes" cancel-edit-fixture-button style="display: none;">Cancel</a>
+    </div>
+</custom-box>
+
+
+
+
+
+

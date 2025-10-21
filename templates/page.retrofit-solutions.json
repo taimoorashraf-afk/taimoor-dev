@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_series_banner_67TPN4": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Retrofit",
+        "main_subtitle": "Solutions",
+        "main_txt": "Upgrading your lighting with a retrofit solution retains the existing above-ceiling fixture and lighting layout while offering you improved color representation, advanced optics, 1% dimming, warm dim options, increased energy efficiency and compatibility with home automation systems.",
+        "main_banner_img_desktop": "shopify://shop_images/SolutionDigital_Hero_F.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/SolutionRetrofit_Hero_M.jpg"
+      }
+    },
+    "solutions_image_grids_XLDdhg": {
+      "type": "solutions-image-grids",
+      "blocks": {
+        "image_block_gzDndb": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/ConversionPlate2_8fc66ed9-ce55-425d-b9fd-1426c5d0d6ad.jpg",
+            "animated_box_heading": "Conversion Kit",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "Upgrade large, outdated can lights to sleek, modern lighting with a clean, seamless finish.",
+            "explore_button_text": "Learn More",
+            "explore_button_url": "/pages/phasex"
+          }
+        },
+        "image_block_JP3bxK": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/RetrofitTrims.png",
+            "animated_box_heading": "Retrofit Trims",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "Easily replace outdated fixtures with Artafex 4 and refined trims—no ceiling work required.",
+            "explore_button_text": "Learn More",
+            "explore_button_url": "/products/artafex4-kits"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_gzDndb",
+        "image_block_JP3bxK"
+      ],
+      "custom_css": [
+        ".learn-more-arrow {display: none;}"
+      ],
+      "settings": {
+        "grid_top_heading": "Elegant, effortless,",
+        "grid_top_heading_italic": "transformative.",
+        "grid_top_content": "Elegant retrofit solutions, designed to bring high performance and refined design into your home, with minimal disruption."
+      }
+    },
+    "solutions_image_carousel_yDmV6U": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_4QLAm8": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/BeforeAfter.jpg"
+          }
+        },
+        "image_block_P7XfRW": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/ConversionPlate2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_4QLAm8",
+        "image_block_P7XfRW"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "6\" to 4\" Conversion Kit",
+        "first_content": "From bulky to beautiful—without touching your ceiling. Our conversion kit is a true breakthrough, it Converts existing 6\" recessed housings to a 4\" fixture and a wide variety of 4\" trims. A design-forward transformation that feels like a full renovation—without the dust.",
+        "learnmore_text": "Choose your Artafex 4 style",
+        "learnmore_url": "/products/4-trims-1",
+        "learnmore_url_loggedin": "/products/dealer-4-trims",
+        "second_heading": "6\" to 2\" Conversion Kit",
+        "second_content": "Our most dramatic transformation possible, converting an existing 6\" housing to a modern 2\" fixture.",
+        "bottom_learnmore_text": "Choose your Artafex 2 style",
+        "bottom_learnmore_url": "/products/2-trims",
+        "bottom_learnmore_text_dealer": "Choose your Artafex 2 style",
+        "bottom_learnmore_url_dealer": "/products/2-trims-1"
+      }
+    },
+    "solutions_image_carousel_kxRkrA": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_Ct9ggQ": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/RetrpfitTrim.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_Ct9ggQ"
+      ],
+      "settings": {
+        "content_layout": "content_right",
+        "first_heading": "Retrofit Trims",
+        "first_content": "A small change that makes a big difference. Using a simple adapter, you can replace your old, underperforming recessed lights and instantly upgrade to the powerful Artafex 4 module—paired with our modern, architectural trims.  \n<br>\n<br>\n\nIt’s a seamless swap that brings better light, better design, and a more luxurious feel to any room. No major renovation. Just a cleaner, crisper, more beautiful light.",
+        "learnmore_text": "Choose your style",
+        "learnmore_url": "/products/4-retrofit-trims",
+        "learnmore_url_loggedin": "/products/dealer-4-retrofit-trims",
+        "second_heading": "",
+        "second_content": "",
+        "bottom_learnmore_text": "",
+        "bottom_learnmore_url": "",
+        "bottom_learnmore_text_dealer": "",
+        "bottom_learnmore_url_dealer": ""
+      }
+    },
+    "product_type_why_dmf_znMMrt": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#292521",
+        "section_text_color": "#f9f6f3",
+        "why_section_heading": "Artful lighting for",
+        "why_section_subheading": "daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 40 years, DMF knows that the quality of your light can profoundly enhance the quality of your life.\nWith exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_TopLeft_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "main_series_banner_67TPN4",
+    "solutions_image_grids_XLDdhg",
+    "solutions_image_carousel_yDmV6U",
+    "solutions_image_carousel_kxRkrA",
+    "product_type_why_dmf_znMMrt"
+  ]
+}

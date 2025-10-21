@@ -1,0 +1,31 @@
+<!-- child item properties -->
+
+{% assign item_metadata = item.product.metafields.custom.metadataoptions.value %}
+{% assign item_classname = item.product.metafields.custom.class_name.value %}
+{% unless item.properties['_bundleId'] %}
+    
+    <!-- if class name is available then we will display title here 
+     and class name inthe position of its product title right next to prduct image -->
+    {% if item_classname %}     
+        {{item.product.title}}
+    {% endif %}
+
+    <p class="property-item">
+        {% if item.sku %}
+            <span class="property-label ">SKU:</span>
+            <span class="property-value no-wrap">{{item.sku}}</span>
+        {% endif %}
+        
+        {% if item_metadata %}
+            {% assign metadata_parts = item_metadata | split: ', ' %}
+            {% for part in metadata_parts %}
+            {% assign key_value = part | split: ': ' %}
+            <p class="property-item">
+                <span class="property-label">{{ key_value[0] }}:</span>
+                <span class="property-value">{{ key_value[1] }}</span>
+            </p>
+            {% endfor %}
+        {% endif %}
+    </p> 
+
+{% endunless %}

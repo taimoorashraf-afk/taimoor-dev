@@ -1,0 +1,16 @@
+{% comment %} for product page only {% endcomment %}
+<custom-box>
+    <div class="customizer-fixtures-section">
+        <label class="label-styles font-neue-roman">Fixture Type <span class="optional-text font-neue-roman">(optional)</span></label>
+
+        <input class="fixture_input" autocomplete="off" type="text" name="properties[Fixture Type]" edit-fixture-field placeholder="Enter Fixture Type" maxlength="25" />
+
+    </div>
+    {% if product.title == "Linear by Footage" %}
+        {%- render 'save-cart-linear' -%}
+    {% elsif product.selected_or_first_available_variant.sku == blank %}
+        {%- render 'save-cart' -%}
+    {% else %}
+        {%- render 'save-parent-product' -%}
+    {% endif %}
+</custom-box>

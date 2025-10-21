@@ -1,0 +1,359 @@
+<style type="text/css">
+  .featured-banner-section {
+    position: relative;
+    height: auto;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 129px 0px 0px;
+    height: 820px;
+  }
+
+  .banner-text {
+    width: 594px;
+    max-width: 100%;
+  }
+
+  .featured-banner-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .featured-banner-image {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .banner-content {
+    max-width: 594px;
+  }
+
+  .banner-text p {
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(249, 246, 243, 1);
+    margin: 10px 0px;
+  }
+
+  .banner-text h2 {
+    font-size: 5.556vw;
+    line-height: 4.653vw;
+    margin-top: 0;
+    margin-bottom: 36px;
+    color: rgba(249, 246, 243, 1);
+  }
+
+  .banner-text span {
+    font-size: 5.972vw;
+    margin-top: 3px;
+    line-height: 6.111vw;
+    color: rgba(249, 246, 243, 1);
+  }
+
+  .banner-text p{
+    margin: 0px;
+  }
+
+  .percentage-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 35px 0px;
+    max-width: 239px;
+  }
+
+  .percentage-box {
+    padding: 13.5px 22px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    text-align: center;
+    text-align: left;
+    height: 170px;
+    width: 239px;
+    max-width: 100%;
+  }
+
+  .percentage-box h3 {
+    font-size: 5.972vw;
+    line-height: 6.111vw;
+    color: #fff;
+    margin: 0;
+    text-align: left;
+  }
+
+  .percentage-box h3 img {
+    float: right;
+    position: relative;
+    top: 12px;
+    width: 30px;
+    height: 38px;
+  }
+
+  .percentage-box:nth-child(2) h3 img {
+      width: 28px;
+      top: 13px;
+  }
+
+  .percentage-box:last-child h3 img {
+      max-width: 22px;
+      height: auto;
+      top: 5px;
+  }
+
+  .percentage-box p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0px;
+    width: 100%;
+  }
+
+  @media (min-width: 1500px){
+    .banner-text h2{
+      font-size: 80px;
+      line-height: 67px;
+    }
+    .banner-text span{
+      font-size: 86px;
+      line-height: 88px;
+    }
+
+    .percentage-box h3{
+      font-size: 86px;
+      line-height: 88px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    section.benefits-digital-controls {
+      padding: 0px 0px;
+    }
+
+    section.importance-of-lights {
+      padding: 50px 0px;
+    }
+
+    .featured-banner-section .container {
+      padding: 0;
+      width: 100%;
+    }
+
+    .banner-content {
+      max-width: 100%;
+      position: initial;
+      padding: 0px 20px;
+      margin-top: 40px;
+    }
+
+    .banner-text h2 br {
+        display: none;
+    }
+
+    .featured-banner-image {
+      display: block;
+    }
+
+    .percentage-boxes {
+      position: initial;
+      padding: 0px 20px;
+      display: block;
+      max-width: 100%;
+      margin-top: 40px;
+    }
+
+    .featured-banner-section {
+      padding: 0px 0px;
+      background-image: none !important;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    .percentage-box {
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      max-width: 100%;
+      background: rgba(249, 246, 243, 0.6);
+      width: 100%;
+      margin-bottom: 21px;
+      height: auto;
+      min-height: 124px;
+    }
+
+    .featured-banner-image img.show_mobile {
+      display: block !important;
+      width: 100%;
+    }
+
+    .percentage-box h3 img{
+      filter: brightness(0);
+    }
+
+    .percentage-box h3{
+      font-size: 64px;
+      line-height: 68px;
+    }
+
+    .banner-text p,
+    .banner-text h2 {
+      color: rgba(41, 37, 33, 1) !important;
+    }
+
+    .percentage-box p,
+    .percentage-box h3 {
+      color: rgba(41, 37, 33, 1) !important;
+    }
+
+    .banner-text span {
+      font-size: 64px;
+      line-height: 68px;
+      color: #292521;
+    }
+
+    .banner-text h2 {
+      font-size: 60px;
+      line-height: 64px;
+      margin-bottom: 16px;
+    }
+
+    .section-header:not(.shopify-section-header-sticky) .header__icon .icon path,
+    .section-header:not(.shopify-section-header-sticky) a.login.btn-mobile {
+      stroke: #fff;
+      color: #fff;
+    }
+  }
+
+</style>
+
+<section class="featured-banner-section" style="background-image: url('{{ section.settings.background_image | img_url: 'master' }}');">
+  <div class="container">
+    <div class="featured-banner-wrapper">
+      <!-- Background Image -->
+      <div class="featured-banner-image">
+
+        <img src="{{ section.settings.background_image_mobile | img_url: 'master' }}" class="show_mobile" width="786" height="846" style="display:none;" />
+        
+        <div class="banner-content">
+          <div class="banner-text">
+            <h2 class="text-light font-neue-light">{{ section.settings.banner_heading }} <br><span class="font-austin-italic">{{ section.settings.banner_subheading }}</span></h2>
+            <p class="text-light font-neue-roman">{{ section.settings.banner_description }}</p>
+          </div>
+        </div>
+  
+        <!-- Right Side Percentage Boxes -->
+        <div class="percentage-boxes">
+          <div class="percentage-box">
+            <h3 class="font-austin-italic">{{ section.settings.box_1_percent }} <img src="{{ section.settings.box1_icon | img_url: 'original' }}" width="30" height="38" alt="box icon" />
+ </h3>
+            <p class="text-light font-neue-roman">{{ section.settings.box_1_text }}</p>
+          </div>
+          <div class="percentage-box">
+            <h3 class="font-austin-italic">{{ section.settings.box_2_percent }} <img src="{{ section.settings.box2_icon | img_url: 'original' }}" width="28" height="38" alt="box icon" />
+</h3>
+            <p class="text-light font-neue-roman">{{ section.settings.box_2_text }}</p>
+          </div>
+          <div class="percentage-box">
+            <h3 class="font-austin-italic">{{ section.settings.box_3_percent }} <img src="{{ section.settings.box3_icon | img_url: 'original' }}" width="22" height="22" alt="box icon" />
+</h3>
+            <p class="text-light font-neue-roman">{{ section.settings.box_3_text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Featured Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image Mobile"
+    },
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "Lorem et"
+    },
+    {
+      "type": "text",
+      "id": "banner_subheading",
+      "label": "Banner Subheading",
+      "default": "dis testing magnis"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_description",
+      "label": "Banner Description",
+      "default": "Duis in hendrerit lectus. Ut eleifend cursus nulla. Vestibulum vel felis turpis. Suspendisse varius molestie sapien sed ultricies."
+    },
+    {
+      "type": "text",
+      "id": "box_1_percent",
+      "label": "Box 1 Percentage",
+      "default": "99%"
+    },
+    {
+      "type": "image_picker",
+      "id": "box1_icon",
+      "label": "Upload icon for box 1"
+    },
+    {
+      "type": "text",
+      "id": "box_1_text",
+      "label": "Box 1 Text",
+      "default": "Maecenas eget est at purus lobortis facilisis."
+    },
+    {
+      "type": "text",
+      "id": "box_2_percent",
+      "label": "Box 2 Percentage",
+      "default": "99%"
+    },
+    {
+      "type": "image_picker",
+      "id": "box2_icon",
+      "label": "Upload icon for box 2"
+    },
+    {
+      "type": "text",
+      "id": "box_2_text",
+      "label": "Box 2 Text",
+      "default": "Maecenas eget est at purus lobortis facilisis."
+    },
+    {
+      "type": "text",
+      "id": "box_3_percent",
+      "label": "Box 3 Percentage",
+      "default": "99%"
+    },
+    {
+      "type": "image_picker",
+      "id": "box3_icon",
+      "label": "Upload icon for box 3"
+    },
+    {
+      "type": "text",
+      "id": "box_3_text",
+      "label": "Box 3 Text",
+      "default": "Maecenas eget est at purus lobortis facilisis."
+    }
+  ]
+}
+{% endschema %}

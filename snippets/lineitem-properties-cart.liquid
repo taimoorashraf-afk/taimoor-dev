@@ -1,0 +1,29 @@
+<style>
+    .no-wrap{
+        text-wrap: nowrap;
+    }
+    .metadata-properties-wrapper .property-item:last-child{
+        margin-bottom: 20px;
+    }
+    .properties-wrapper .property-site-black span.property-value {
+        color: #292521 !important;
+    }
+    .pdf-tariff-note p{
+        font-size: 12px;
+    }
+</style>
+
+{% render 'child-item-properties' item: item %}
+
+{% render 'bundle-properties' item: item %}
+
+<br>
+
+{% render 'default-lineitem-properties' item: item, itemProperties:item.properties %}
+
+{% comment %} {% if item.sku == 'TARIFF' %}
+  <div class="printed-price pdf-tariff-note">
+    <p class="font-neue-roman"><strong>This is only available when you go into checkout and back and is not required of Phase 1</strong></p>
+  </div>
+{% endif %} {% endcomment %}
+

@@ -1,0 +1,983 @@
+{% comment %} cartClass.js loaded in index.js file since it will be used over the theme {% endcomment %}
+<!-- {{ 'product-customizer.css' | asset_url | stylesheet_tag }} -->
+<style>
+  .required-sign{
+    /* 
+      this is hardcodded hidden beacuse we are not using this in the design
+      later on if required we can just remove !important tag and required red dots will start working 
+     */
+    display: none !important;
+  }
+  .option-list:has(input:required) .required-sign{
+    display: inline;
+  }
+  /* .breakable-label span {
+    display: block;
+  } */
+  .product-customizer .option-list{
+    display: none;
+  }
+  .product-customizer .option-list:has(input:not([disabled="true"])){
+    display: block;
+  }
+
+
+  /*
+  ** Fixture Accordion
+  */
+
+  .fixture-minusIcon{
+    display: none;
+  }
+
+  .fixture-plusIcon{
+    display: block;
+    width: 13px;
+    height: 13px;
+  }
+
+  .fixture-accordion-trigger[aria-expanded=true] .fixture-plusIcon{
+    display: none;
+  }
+
+  .fixture-accordion-trigger[aria-expanded=true] .fixture-minusIcon{
+    display: block;
+  }
+
+  .fixture-accordion-header {
+    position: relative;
+  }
+
+  .fixture-accordion-trigger {
+    width: 100%;
+    font-size: 16px;
+    line-height: 26px;
+    min-height: 42px;
+    padding-right: 13px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 11px 0px 3px;
+    padding-bottom: 8px;
+  }
+
+  .fixture-accordion-content {
+    display: none;
+    margin-top: 15px;
+  }
+
+  .fixture-accordion-content.active {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .fixture-area{
+    position: relative;
+  }
+
+  .tooltips {
+    position: absolute;
+    right: 0;
+    top: -4px;
+    left: 102%;
+    z-index: 9;
+    width: 11px;
+  }
+
+  .tooltips .tooltip-text {
+    background-color: #f9f6f3;
+    padding: 11px;
+    border: .75px solid #C2BFBA;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 33px;
+    left: -83px;
+    width: 253.5px;
+    min-width: 253.5px;
+    max-width: 90%;
+    transition: .3s all;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .tooltips:hover .tooltip-text {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .tooltips span.metafield-rich_text_field {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+
+  .tooltips span.metafield-rich_text_field p{
+    font-size: 11px;
+    line-height: 16px;
+    color: #5a5857;
+    letter-spacing: .5px;
+    margin: 0;
+    font-weight: 450;
+  }
+
+  .tooltips .tooltip-text:before{
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: calc(32% + 1px);
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #f9f6f3;
+    z-index: 1;
+  }
+  .pc-swatch label span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pc-swatch label span img{
+    margin-left: 5px;
+    width: 27px;
+    height: 27px;
+  }
+  .options-wrapper.has-swatch-style.has-size-4,
+  .options-wrapper.has-swatch-style.has-size-5 {
+    gap: 14px !important;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .pc-radio-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pc-radio-outer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 21px;
+    height: 21px;
+    margin-right: 10px;
+  }
+  .pc-radio-middle {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #C2BFBA;
+    border-radius: 50%;
+    background: #F5F3EF;
+    position: relative;
+  }
+  .pc-radio-inner {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: #C2BFBA;
+    border-radius: 50%;
+    border: 1px solid #C2BFBA;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  [allradiooptionsselected="true"] .pc-radio-inner {
+    border-color: #6B9B87;
+    background: #6B9B87;
+  }
+
+  [allradiooptionsselected="true"] .pc-radio-middle {
+    border-color: #5A5857;
+  }
+  
+  .pc-bundle-details {
+    padding-top: 16px;
+    margin-bottom: 16px;
+    font-family: inherit;
+    background: none;
+  }
+  .pc-bundle-row {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #292521;
+    line-height: 1.4;
+    flex-wrap: wrap;
+  }
+  .pc-bundle-label {
+    font-weight: 400;
+    color: #292521;
+  }
+  .pc-bundle-value {
+    font-weight: 450;
+    margin-left: 4px;
+    color: #5A5857;
+  }
+  .pc-bundle-dash {
+    margin: 0 6px 0 8px;
+    color: #292521;
+  }
+  .pc-bundle-price {
+    font-weight: 450;
+    color: #5A5857;
+  }
+  .pc-option-set:not(:has(input[required])) .pc-radio-outer {
+    display: none;
+  }
+
+  .global-disclaimer-container{
+    margin-bottom: 22px;
+  }
+  
+  .global-disclaimer-container .disclaimer-text {
+    font-size: 16px;
+    z-index: 1000;
+    line-height: 16px;
+    letter-spacing: 0.65px;
+    display: inline;
+  }
+
+  .global-disclaimer-container .disclaimer-text a{
+    text-decoration: underline;
+  }
+
+  .global-disclaimer-container img {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+  }
+
+  @media (max-width: 500px){
+    .options-wrapper.has-swatch-style.has-size-4 .pc-swatch,
+    .options-wrapper.has-swatch-style.has-size-5 .pc-swatch {
+      width: calc(50% - 7px) !important;
+    }
+  }
+
+  
+            
+</style>
+<script src="{{ 'helper.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'product-customizer.js' | asset_url }}" defer="defer"></script>
+<form class="pc-form">
+  <div class="product-customizer">
+    <div class="customizer-top-section">
+      {% comment %} <div class="font-neue-roman product-short-desc">
+        {{ product.metafields.custom.product_short_description  }}
+      </div> {% endcomment %}
+    </div>
+
+    <!-- Product modal -->
+    <div id="product-modal" class="product-modal">
+      <div class="modal-content">
+        <span class="close-button">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="18" fill="#EFEBE6"></rect>
+            <path d="M13.057 13.7506L22.2494 22.943M12.9038 23.0962L17.6532 18.3468L22.0962 13.9038" stroke="#292521" stroke-width="1.5"></path>
+          </svg>
+        </span>
+        
+        {% assign richtext_description1 = product.metafields.custom.modal_description_1.value %}
+        {% assign richtext_description2 = product.metafields.custom.modal_description_2.value %}
+
+        {% if richtext_description1.children %}
+          <div class="product-description1">
+          {% for block in richtext_description1.children %}
+            {% case block.type %}
+              {% when 'heading' %}
+                <h{{ block.level }} class="font-neue-roman">
+                  {% for child in block.children %}
+                    {{ child.value }}
+                  {% endfor %}
+                </h{{ block.level }}>
+              {% when 'paragraph' %}
+                <p class="font-neue-roman">
+                  {% for child in block.children %}
+                    {{ child.value }}
+                  {% endfor %}
+                </p>
+              {% when 'list' %}
+                <ul>
+                  {% for item in block.children %}
+                    <li class="font-neue-roman">
+                      {% for child in item.children %}
+                        {{ child.value }}
+                      {% endfor %}
+                    </li>
+                  {% endfor %}
+                </ul>
+            {% endcase %}
+          {% endfor %}
+          </div>
+        {% endif %}
+        
+        {% if richtext_description2.children %}
+          <div class="product-description2">
+          {% for block in richtext_description2.children %}
+            {% case block.type %}
+              {% when 'heading' %}
+                <h{{ block.level }} class="font-neue-roman">
+                  {% for child in block.children %}
+                    {{ child.value }}
+                  {% endfor %}
+                </h{{ block.level }}>
+              {% when 'paragraph' %}
+                <p class="font-neue-roman">
+                  {% for child in block.children %}
+                    {{ child.value }}
+                  {% endfor %}
+                </p>
+              {% when 'list' %}
+                <ul>
+                  {% for item in block.children %}
+                    <li class="font-neue-roman">
+                      {% for child in item.children %}
+                        {{ child.value }}
+                      {% endfor %}
+                    </li>
+                  {% endfor %}
+                </ul>
+            {% endcase %}
+          {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="product-modal-images">
+          {% for i in (1..3) %}
+            {% assign product_img_key = "modal_image_" | append: i %}
+            {% assign product_img_value = product.metafields.custom[product_img_key] %}
+            
+            {% if product_img_value %}
+              {% assign file_url = product_img_value | file_url %}
+              {% assign file_name = file_url | split: '/' | last | split: '.' | first %}
+              {% assign alt_text = file_name | replace: '-', ' ' | replace: '_', ' ' | capitalize %}
+              
+              <div class="modal-image-item">
+                <img src="{{ file_url }}" alt="{{ alt_text }}" />
+                <p class="image-captions font-calling-code">{{ alt_text }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% assign customization_settings = product.metafields.custom.custom_configuration_options.value %}
+    
+    {% for option_set in customization_settings %} <!-- option_set -->
+      {% liquid
+          assign option_set_system_handle = option_set.system.handle
+          assign optionSetCount = forloop.index
+      %}
+      <div blockDefaultMetadataSearch="{{ option_set.block_default_metadata_search }}" optionSetSystemHandle="{{ option_set_system_handle }}" class="pc-option-set activeAccordion {% if option_set.kit_product_shape_values %} kit_product_shape_values {% endif %}" optionSetTitle="{{option_set.title}}" >
+        <h4 class="option-set-title font-neue-roman">
+          <span class="pc-radio-wrapper">
+            <span class="pc-radio-outer">
+              <span class="pc-radio-middle">
+                <span class="pc-radio-inner"></span>
+              </span>
+            </span>
+            {{ option_set.title }} 
+          </span>
+          
+          <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span> 
+          <svg class="accordion-plusIcon" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.71667 0.5L6.71667 13.5M0 7H6.71667L13 7" stroke="#5A5857" stroke-width="1.5"/>
+          </svg>
+
+          <svg class="accordion-minusIcon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 1L6.71667 1L13 1" stroke="#5A5857"/>
+          </svg>
+        </h4>
+        <div class="option-set-options-wrapper tabs-open ">
+          {% for option_list in option_set.option_lists.value %} <!-- option_list -->
+            {% liquid  
+                assign option_set_handle =  option_set.title | handleize
+                assign option_list_title =  option_list.option_title | handleize
+                assign final_handle = option_set_handle | append: '__' | append: option_list_title
+                assign triggerImageChange = option_list.trigger_image_change
+                assign temparate_swatch_value = "Temperate swatch"
+              %}
+
+            <div class="option-list" optionSetSystemHandle="{{ option_set_system_handle }}" optionSetHandle="{{option_set_handle}}" optionListHandle="{{option_list_title}}">
+              <h4 class="font-neue-roman">{{ option_list.option_title }} 
+                {% assign tooltip_text = option_list.help_tooltips | strip %}
+                {% if tooltip_text != blank %}
+                  <div class="attribute-tooltips">
+                    <span class="help-tooltip-icon">
+                      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.375" y="0.375" width="10.25" height="10.25" rx="5.125" stroke="#292521" stroke-width="0.75"/>
+                        <path d="M5.04167 6.25585V6.06287C5.04167 5.66082 5.19445 5.43567 5.75732 4.98538C6.24781 4.59942 6.37647 4.40643 6.37647 4.09284C6.37647 3.61038 6.04679 3.32895 5.49197 3.32895C4.91302 3.32895 4.59942 3.6345 4.59942 4.21345V4.27778H3.97223V4.14912C3.97223 3.25658 4.51901 2.75 5.50001 2.75C6.43276 2.75 7.02778 3.24854 7.02778 4.02047C7.02778 4.59942 6.85893 4.86477 6.23173 5.37135C5.7734 5.74123 5.66887 5.86988 5.66887 6.10307V6.25585H5.04167ZM5.40352 8.25C5.05776 8.25 4.80045 7.99269 4.80045 7.64693C4.80045 7.30117 5.05776 7.04386 5.40352 7.04386C5.74928 7.04386 6.00659 7.30117 6.00659 7.64693C6.00659 7.99269 5.74928 8.25 5.40352 8.25Z" fill="#292521"/>
+                      </svg>
+                    </span>
+                    <div class="help-tooltip-text">
+                      {{ option_list.help_tooltips | metafield_tag }}
+                    </div>
+                  </div>
+                {% endif %}
+                
+                <span class="required-sign font-neue-roman">*</span><span class="selected-value"></span>
+              </h4>
+
+              {% liquid
+                if option_list.swatch_style contains "Size 1"
+                  assign swatch_style_active = 'has-swatch-style has-size-1'
+                elsif option_list.swatch_style contains "Size 2"
+                  assign swatch_style_active = 'has-swatch-style has-size-2'
+                elsif option_list.swatch_style contains "Size 3"
+                  assign swatch_style_active = 'has-swatch-style has-size-3'
+                  elsif option_list.swatch_style contains "Size 4"
+                  assign swatch_style_active = 'has-swatch-style has-size-4'
+                  elsif option_list.swatch_style contains "Size 5"
+                  assign swatch_style_active = 'has-swatch-style has-size-5'
+                else
+                  assign swatch_style_active = ''
+                endif
+              %}
+                <div class="options-wrapper {{ swatch_style_active }}" >
+                  
+                  
+                {% for option in option_list.options_list.value %}<!-- option --> 
+  
+                  {% liquid
+                      assign option_handle = option.title | handleize 
+                      assign system_option_handle = option.system.handle
+                      assign id_for_option = final_handle | append: '__' | append: option_handle
+                      assign optionId = option.unique_identifier
+
+                      
+                      if option_list.swatch_style contains "Size 1"
+                        assign swatch_style = 'swatch-style-28 swatch-style-active '
+                      elsif option_list.swatch_style contains "Size 2"
+                        assign swatch_style = 'swatch-style-95 swatch-style-active'
+                      elsif option_list.swatch_style contains "Size 3"
+                        assign swatch_style = 'swatch-style-110 swatch-style-active'
+                      else
+                        assign swatch_style = blank
+                      endif
+                      
+                      if option.swatch_image
+                        if option_list.swatch_style contains "Size 1"
+                          assign swatch_image_url = option.swatch_image | image_url: width: 28  
+                        elsif option_list.swatch_style contains "Size 2"
+                          assign swatch_image_url = option.swatch_image | image_url: width: 95  
+                        elsif option_list.swatch_style contains "Size 3"
+                          assign swatch_image_url = option.swatch_image | image_url: width: 110
+                        else
+                          assign swatch_image_url = option.swatch_image | image_url: width: 95
+                        endif
+                      else 
+                        assign swatch_image_url = blank
+                      endif
+                  %}
+
+
+  
+                  <div class="pc-swatch {{swatch_style}}" triggerImageChange="{%- if option.block_image_search == true -%} False {%- else -%} {{- triggerImageChange -}} {%- endif -%}">
+                    
+                  {% capture condition_sets %}
+                    {
+                      "relation" : "{{- option.relation -}}",
+                      "conditionSets": [
+                        {%- for condition_set in option.conditions_sets.value -%}
+                          {
+                            "relation" : "{{- condition_set.relation -}}",
+                            "conditions" : [
+                              {%- for condition in condition_set.conditions.value -%}
+                                {
+                                  "conditonOptionSetTitle" : "{{- condition.option_set.value.title |  handleize -}}",
+                                  "conditonOptionListTitle" : "{{- condition.option.value.option_title |  handleize -}}",
+                                  {%- assign value = condition.selected_option.value | map: 'value' |  json | escape -%}
+                                  "values" : {{- value -}}
+                                } {%- unless forloop.last -%}, {%- endunless -%} 
+                              {%- endfor -%}
+                            ]
+                          } {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ]
+                    }
+                  {% endcapture %}
+
+                  <input condition_sets_and_relation="{{ condition_sets |  escape }}" systemOptionHandle="{{ system_option_handle }}" {%unless option_list.optional_field == true %} required {% endunless %} optionId="{{optionId}}" optionListTitle="{{option_list.option_title}}" optionSetHandle="{{option_set_handle}}" optionListHandle="{{option_list_title}}" optionHandle="{{ option_handle  }}"  class="pc_options hide" id="{{id_for_option}}" name="{{final_handle}}" type="radio" optionSku="{{option.sku}}" value="{{ option.value }}"  /> 
+
+                    <label for="{{id_for_option}}" class="font-neue-roman">
+                      {% if option_list_title == "installation" %}
+                        <div class="swatch-image-wrapper">
+                          {% unless swatch_style == blank %}
+                            <img class="{{swatch_style}}-img" src="{{ swatch_image_url | img_url: 'master' }}" width="101" height="101" alt="Swatch image"> 
+                          {% else %}
+                            <img class="{{swatch_style}}-img" src="{{ 'placeholder-shopify.gif' | asset_url }}" width="101" height="101" alt="Placeholder image">
+                          {% endunless %}
+                        </div>
+                      {% else %}
+                        {% unless swatch_style == blank %}
+                          <div class="swatch-image-wrapper">
+                            <img class="{{swatch_style}}-img" src="{{ swatch_image_url | img_url: 'master' }}" width="101" height="101" alt="Swatch image" > 
+                          </div>
+                        {% endunless %}
+                      {% endif %}
+
+                      <span class=" breakable-label font-neue-roman swatch-title">
+                        <!-- to break the label like this "Tunable White (4000K - 1800K)" into two lines -->
+                        {% liquid
+                          if option.title contains '(' 
+                            assign first_part = option.title | split: '(' | first 
+                            assign second_part = option.title | split: '(' | last 
+                          else 
+                            assign first_part = blank
+                            assign second_part = blank
+                          endif
+                        %}
+                        {% if first_part != blank %}
+                          <span>{{ first_part }}</span>
+                          <span class="breakable">{{ second_part | prepend: '(' }}</span>
+                        {% else %}
+                            {{option.title}}
+                        {% endif %}
+                        {% if option_list.swatch_style == temparate_swatch_value %}
+                          <img src="{{ option.swatch_image |  image_url  }}" alt="">
+                        {% endif %}
+                      </span>
+                    </label>
+                  </div>
+                    
+                {% endfor %}
+                </div>
+            </div>
+            
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    
+  </div>
+  {% if customer %}
+    <fixture-accordion>
+      <div class="fixture-accordion">
+        <div class="fixture-accordion-header">
+          <h2 class="fixture-accordion-trigger">
+            <div class="font-neue-roman fixture-area">Fixture Type / Project <div class="tooltips">
+              <svg width="11" height="11" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="16" height="16" rx="8" stroke="#292521"/>
+                <path d="M7.75 9.73684V9.42105C7.75 8.76316 8 8.39474 8.92105 7.6579C9.72368 7.02632 9.93421 6.71053 9.93421 6.19737C9.93421 5.4079 9.39474 4.94737 8.48684 4.94737C7.53947 4.94737 7.02632 5.44737 7.02632 6.39474V6.5H6V6.28947C6 4.82895 6.89474 4 8.5 4C10.0263 4 11 4.81579 11 6.07895C11 7.02632 10.7237 7.46053 9.69737 8.28947C8.94737 8.89474 8.77632 9.10526 8.77632 9.48684V9.73684H7.75ZM8.34211 13C7.77632 13 7.35526 12.5789 7.35526 12.0132C7.35526 11.4474 7.77632 11.0263 8.34211 11.0263C8.9079 11.0263 9.32895 11.4474 9.32895 12.0132C9.32895 12.5789 8.9079 13 8.34211 13Z" fill="#292521"/>
+              </svg>
+              <div class="tooltip-text font-neue-roman">
+                <span class="metafield-rich_text_field">
+                    <p>Enter a label or description for this fixture to identify its type or placement on the jobsite.</p>
+                </span>
+              </div>
+            </div></div>
+            <svg class="fixture-plusIcon" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.71667 0.5L6.71667 13.5M0 7H6.71667L13 7" stroke="#5A5857" stroke-width="1.5"></path>
+            </svg>
+            <svg class="fixture-minusIcon" width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 1L6.71667 1L13 1" stroke="#5A5857"></path>
+            </svg>
+          </h2>
+        </div>
+        <div class="fixture-accordion-content">
+          {% render 'fixture-type' %}
+        </div>
+      </div>
+    </fixture-accordion> 
+    
+  
+  <div class="product-customizer-buttons">
+    <div class="pc-bundle-details">
+      {% for option_set in customization_settings %}
+
+        {% assign optional_field = true %}
+        {% for option_list in option_set.option_lists.value %}
+          {% unless option_list.optional_field %}
+            {% assign optional_field = false %}
+          {% endunless %}
+        {% endfor %}
+        
+        {% if option_set.display_in_additional_details != false %}
+          <div class="pc-bundle-row" {% if optional_field == true %} style="display: none;" {% endif %} optionSetSystemHandle="{{option_set.system.handle}}" style="display: flex;" {% if option_set.show_additional_sku_details_here %} show_additional_sku_details_here="{{-option_set.show_additional_sku_details_here-}}{% endif %}">
+            <span class="pc-bundle-label">{{ option_set.class_type }}:</span>
+            <span class="pc-bundle-value">---</span>
+            <span class="pc-bundle-dash" style="display: none;">-</span>
+            <span class="pc-bundle-price" style="display: none;"></span>
+          </div>   
+        {% endif %}
+        
+      {% endfor %}
+    </div>
+
+    <div class="price-note pc-total-price ">      
+      <div data-price-container="">
+        <span id="pc-ProductPrice" class="ProductPrice product-single__price font-neue-roman" itemprop="price">$0</span>
+      </div>
+    </div>
+    <!-- Add disclaimer container here -->
+    <div class="global-disclaimer-container" style="display: none;">
+      {% comment %} <img src="https://cdn.shopify.com/s/files/1/0921/7182/9618/files/26a0.png?v=1754397865" />&nbsp; {% endcomment %}
+      <p class="disclaimer-text font-neue-roman"></p>
+    </div>
+    <div class="buttons-row">
+      <div class="product-single__quantity pc-quantity-selector">
+        {% comment %} <label for="Quantity" class="product-single__quantity-label js-quantity-selector hide">Quantity</label> {% endcomment %}
+        <div class="js-qty">
+          <button type="button" class="js-qty__adjust js-qty__adjust--minus icon-fallback-text" data-id="" data-qty="0" aria-label="Reduce item quantity by one">
+            <span class="icon icon-minus" aria-hidden="true"></span>
+            <span class="fallback-text" aria-hidden="true">
+              <svg width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 1L6.71667 1L13 1" stroke="#5A5857"></path>
+              </svg>
+            </span>
+          </button>
+          
+          <input type="text" class="js-qty__num" value="1" min="1" continue-selling-when-out-of-stock="{{product.variants[0].inventory_policy}}" max="{{product.variants[0].inventory_quantity}}" data-id="" aria-label="quantity" pattern="[0-9]*" name="quantity" id="">
+          <button type="button" class="js-qty__adjust js-qty__adjust--plus icon-fallback-text" data-id="" data-qty="11" aria-label="Increase item quantity by one">
+            <span class="icon icon-plus" aria-hidden="true"></span>
+            <span class="fallback-text" aria-hidden="true">
+              <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.71667 0.5L6.71667 13.5M0 7H6.71667L13 7" stroke="#5A5857" stroke-width="1.5"></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="make-selections">
+        <button class="pc-add-to-cart make-selections-btn fone-neue-roman" type="submit" disabled >
+          Add to Cart 
+        </button>
+        <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.04 11.49">
+            <defs>
+                <style>.cls-1{stroke-miterlimit:5;}.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:1.5px;}.cls-2{stroke-linejoin:round;}</style>
+            </defs>
+            <g id="Layer_2-2">
+                <polyline class="cls-1" points="12.45 .54 17.95 5.74 12.45 10.94"></polyline>
+                <line class="cls-2" y1="5.74" x2="17.95" y2="5.74"></line>
+            </g>
+        </svg>
+      </div>
+      {% else %}
+      {% render 'contact-us-button' %}
+  {% endif %} 
+    </div>
+    {% if customer %}
+      <div class="errors hide pc-error "></div>
+    {% endif %}
+
+  </div>
+</form>
+
+{%- capture product_configurations_object -%}
+  {
+    "optionSets" : [
+      {% for option_set in customization_settings %} {%- comment -%}<!-- option_set -->{%- endcomment -%} 
+        {
+          "option_set_title" : `{{- option_set.title -}}`,
+          "displayOnlyClassItem" : `{{- option_set.kit_product_shape_values -}}`, 
+          "optionSetSystemHandle" : `{{- option_set.system.handle -}}`,
+          "relation" : `{{- option_set.relation -}}`,
+          "condition_sets": [
+            {%- for condition_set in option_set.condition_sets.value -%}
+              {
+                "relation" : `{{- condition_set.relation -}}`,
+                "conditions" : [
+                  {%- for condition in condition_set.conditions.value -%}
+                    {
+                      "conditonOptionSetTitle" : `{{- condition.option_set.value.title |  handleize -}}`,
+                      "conditonOptionListTitle" : `{{- condition.option.value.option_title |  handleize -}}`,
+                      {% comment %} "values" : `{{- condition.selected_option.value | map: 'value' | join: ','  -}}`, {% endcomment %}
+                      "values" : `{{- condition.selected_option.value | map: 'value' | json  -}}`,
+                    } {%- unless forloop.last -%}, {%- endunless -%} 
+                  {%- endfor -%}
+                ]
+              } {%- unless forloop.last -%}, {%- endunless -%} 
+            {%- endfor -%}
+          ], 
+          "option_lists" : [
+            {%- for option_list in option_set.option_lists.value -%} {%- comment -%}<!-- option_list -->{%- endcomment -%} 
+              {
+                "option_list_title" : `{{- option_list.option_title -}}`,
+                "optional_field" : `{{- option_list.optional_field -}}`,
+                "relation" : `{{- option_list.relation -}}`,
+                
+                {% comment %} Add disclaimer fields {% endcomment %}
+                "disclaimer_text" : `{{- option_list.disclaimer_text -}}`,
+                "disclaimer_text_color" : `{{- option_list.disclaimer_text_color -}}`,
+                "disclaimer_relation" : `{{- option_list.disclaimer_relation -}}`,
+                "disclaimer_sets": [
+                  {%- for disclaimer_set in option_list.disclaimer_sets.value -%}
+                    {
+                      "relation" : `{{- disclaimer_set.relation -}}`,
+                      "conditions" : [
+                        {%- for condition in disclaimer_set.conditions.value -%}
+                          {
+                            "conditonOptionSetTitle" : `{{- condition.option_set.value.title | handleize -}}`,
+                            "conditonOptionListTitle" : `{{- condition.option.value.option_title | handleize -}}`,
+                            "values" : `{{- condition.selected_option.value | map: 'value' | json -}}`,
+                          } {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ]
+                    } {%- unless forloop.last -%}, {%- endunless -%} 
+                  {%- endfor -%}
+                ],
+                "condition_sets": [
+                  {%- for condition_set in option_list.condition_sets.value -%}
+                    {
+                      "relation" : `{{- condition_set.relation -}}`,
+                      "conditions" : [
+                        {%- for condition in condition_set.conditions.value -%}
+                          {
+                            "conditonOptionSetTitle" : `{{- condition.option_set.value.title |  handleize -}}`,
+                            "conditonOptionListTitle" : `{{- condition.option.value.option_title |  handleize -}}`,
+                            {% comment %} "values" : `{{- condition.selected_option.value | map: 'value' | join: ','  -}}`, {% endcomment %}
+                            "values" : `{{- condition.selected_option.value | map: 'value' | json  -}}`,
+                          } {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ]
+                    } {%- unless forloop.last -%}, {%- endunless -%} 
+                  {%- endfor -%}
+                ],
+                {%- liquid  
+                  assign option_set_handle =  option_set.title | handleize
+                  assign option_list_title =  option_list.option_title | handleize
+                  assign final_handle = option_set_handle | append: '__' | append: option_list_title
+                -%}
+                "options" : [
+                  {%- for option in option_list.options_list.value -%} {%- comment -%} <!-- option --> {%- endcomment -%}
+                    {
+                      {% liquid
+                          assign option_handle = option.title | handleize 
+                          assign id_for_option = final_handle | append: '__' | append: option_handle
+                      %}
+                      "option_set_handle" : `{{- option_set_handle -}}`,
+                      "option_list_handle" : `{{- option_list_title -}}`,
+                      "option_handle" : `{{- option_handle -}}`,
+                      "final_handle" : `{{- final_handle -}}`,
+                      "option_title" : `{{- option.title -}}`,
+                      "id_for_option" : `{{- id_for_option -}}`,
+                      "option_sku" : `{{- option.sku -}}`,
+                      "option_value" : `{{- option.value -}}`,
+                      "system_option_handle" : `{{- option.system.handle -}}`,
+                      "relation" : `{{- option.relation -}}`,
+                      "conditionSets": [
+                        {%- for condition_set in option.conditions_sets.value -%}
+                          {
+                            "relation" : `{{- condition_set.relation -}}`,
+                            "conditions" : [
+                              {%- for condition in condition_set.conditions.value -%}
+                                {
+                                  "conditonOptionSetTitle" : `{{- condition.option_set.value.title |  handleize -}}`,
+                                  "conditonOptionListTitle" : `{{- condition.option.value.option_title |  handleize -}}`,
+                                  {% comment %} "values" : `{{- condition.selected_option.value | map: 'value' | join: ','  -}}`, {% endcomment %}
+                                  "values" : `{{- condition.selected_option.value | map: 'value' | json  -}}`,
+                                } {%- unless forloop.last -%}, {%- endunless -%} 
+                              {%- endfor -%}
+                            ]
+                          } {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ],
+                      "conditionalSwatchImages" : [
+                        {%- for swatch_image in option.conditional_swatch_images.value -%}
+                          {
+                            "relation" : `{{- swatch_image.relation -}}`,
+                            "image": `{{- swatch_image.swatch_image |  img_url: 'master'  -}}`,
+                            "conditionSets": [
+                              {%- for swatch_condition_set in swatch_image.condition_sets.value -%}
+                                {
+                                  "relation" : `{{- swatch_condition_set.relation -}}`,
+                                  "conditions" : [
+                                    {%- for condition in swatch_condition_set.conditions.value -%}
+                                      {
+                                        "conditonOptionSetTitle" : `{{- condition.option_set.value.title |  handleize -}}`,
+                                        "conditonOptionListTitle" : `{{- condition.option.value.option_title |  handleize -}}`,
+                                        {% comment %} "values" : `{{- condition.selected_option.value | map: 'value' | join: ','  -}}`, {% endcomment %}
+                                        "values" : `{{- condition.selected_option.value | map: 'value' | json  -}}`,
+                                      } {%- unless forloop.last -%}, {%- endunless -%} 
+                                    {%- endfor -%}
+                                  ]
+                                } {%- unless forloop.last -%}, {%- endunless -%} 
+                              {%- endfor -%}
+                            ],
+                          } {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ]
+                      
+                    } {%- unless forloop.last -%}, {%- endunless -%} 
+                  {%- endfor -%}
+                ]
+
+              } {%- unless forloop.last -%}, {%- endunless -%} 
+
+            {%- endfor -%}
+
+          ]
+
+        } {%- unless forloop.last -%}, {%- endunless -%} 
+
+      {%- endfor -%}
+    ]
+  }
+{%- endcapture -%}
+
+{% assign additional_skus_settings = product.metafields.custom.additional_sku.value %}
+{%- capture additional_skus -%}
+  {
+    "additional_sku_sets" : [
+      {% for sku_set in additional_skus_settings %} {%- comment -%}<!-- option_set -->{%- endcomment -%} 
+        {
+          "title" : `{{- sku_set.system_title -}}`,
+          "condition_sets": [
+            {%- for condition_set in sku_set.condition_sets.value -%}
+              {
+                "relation" : `{{- condition_set.relation -}}`,
+                "conditions" : [
+                  {%- for condition in condition_set.conditions.value -%}
+                    {
+                      "conditonOptionSetTitle" : `{{- condition.option_set.value.title |  handleize -}}`,
+                      "conditonOptionListTitle" : `{{- condition.option.value.option_title |  handleize -}}`,
+                      "values" : [
+                        {%- for value in condition.selected_option.value -%}
+                          `{{- value.system.handle -}}`
+                          {%- unless forloop.last -%}, {%- endunless -%} 
+                        {%- endfor -%}
+                      ],
+                    } {%- unless forloop.last -%}, {%- endunless -%} 
+                  {%- endfor -%}
+                ]
+              } {%- unless forloop.last -%}, {%- endunless -%} 
+            {%- endfor -%}
+          ],
+          "relation" : `{{- sku_set.relation -}}`,
+          "sku_list" : [
+            {%- for item in sku_set.sku_list.value -%}
+              {
+                "class" : `item`,
+                "defaultVariant" : {
+                  "id": `gid://shopify/ProductVariant/{{- item.variants[0].id -}}`,
+                  "price" : {amount: "{{- item.variants[0].price |  divided_by: 100 -}}", currencyCode: 'USD'},
+                  "sku": `{{- item.variants[0].sku -}}`,
+                  "title" : "Default title"
+                },
+                "defaultVariantId" : `gid://shopify/ProductVariant/{{- item.variants[0].id -}}`,
+                "id": `{{- item.id -}}`,
+                "sku": `{{- item.variants[0].sku -}}`, 
+                "title": `{{- item.variants[0].sku -}}`,
+                "featured_image_url": `{%- if item.featured_image -%}{{- item.featured_image | img_url: 'master' -}}{%- endif -%}`
+              } {%- unless forloop.last -%}, {%- endunless -%} 
+            {%- endfor -%}
+          ],
+        } {%- unless forloop.last -%}, {%- endunless -%} 
+      {%- endfor -%}
+    ]
+  }
+{%- endcapture -%}
+
+<script>
+  const productGallery = {{ product.media | json }}
+
+  if (Array.isArray(productGallery)) {
+    productGallery.forEach(function(mediaObj) {
+      mediaObj.product_handle = "{{ product.handle }}";
+    });
+  }
+ 
+  let additionalMediaArray = [];
+
+  {% assign additional_media = product.metafields.custom.additional_media.value %}
+  {% if additional_media %}
+      {% for product in additional_media %}
+        // Save product media in an array and add product handle to each object, then push to productGallery
+        
+        {
+          const productMedia = {{ product.media | json }};
+          const productHandle = "{{ product.handle }}";
+          if (Array.isArray(productMedia)) {
+            additionalMediaArray = productMedia.map(mediaObj => {
+              return {
+                ...mediaObj,
+                product_handle: productHandle
+              };
+            });
+            productGallery.push(...additionalMediaArray);
+          }
+        }
+      {% endfor %}
+  {% endif %}
+  
+</script>
+
+<script>
+  const shopUrl = "{{shop.url}}"
+
+  const productConfigurationsObject = {{- product_configurations_object  -}};
+  const additionalSkus = {{- additional_skus -}};
+  const parentProduct = {{product |  json}};
+  parentProduct.url = '{{ product.url }}'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all option inputs
+    const optionInputs = document.querySelectorAll('.pc_options');
+
+    optionInputs.forEach(input => {
+      input.addEventListener('change', (event) => {
+        const selectedInput = event.target;
+
+        // Find the closest h4 and update the selected value span
+        const optionWrapper = selectedInput.closest('.option-list');
+        const titleElement = optionWrapper.querySelector('h4 .selected-value');
+
+        if (titleElement) {
+          // Update the selected value
+          titleElement.textContent = selectedInput.closest('.pc-swatch')?.querySelector('.breakable-label')?.textContent;
+        }
+      });
+    });
+
+    // Product Modal
+    const modal = document.getElementById("product-modal");
+    const triggers = document.querySelectorAll(".product-modal-trigger");
+    const closeButton = modal.querySelector(".close-button");
+
+    const openModal = () => {
+      modal.style.display = "flex";
+    };
+
+    const closeModal = () => {
+      modal.style.display = "none";
+    };
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener("click", openModal);
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Fixture accordions
+    const accordionTrigger = document.querySelector('.fixture-accordion-trigger');
+    const accordionContent = document.querySelector('.fixture-accordion-content');
+    
+    if(accordionTrigger && accordionContent) {
+      accordionTrigger.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        this.setAttribute('aria-expanded', !isExpanded);
+        accordionContent.classList.toggle('active');
+      });
+    }
+  });
+
+</script>

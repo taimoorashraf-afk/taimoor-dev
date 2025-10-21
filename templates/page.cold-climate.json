@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_series_banner_UBnLNV": {
+      "type": "main-series-banner",
+      "settings": {
+        "main_title": "Luxury in here when",
+        "main_subtitle": "it’s cold out there",
+        "main_txt": "Homes built for cold-climate regions require the right materials and construction techniques to withstand the wintry weather—and the right lighting solutions to keep things warm inside.",
+        "main_banner_img_desktop": "shopify://shop_images/SolutionDigital_Hero_D_ffcea7d1-9ef0-44f1-8ab5-88ca10145fe3.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/SolutionDigital_Hero_M_1229fbd0-7807-4fb5-bebc-0209b417d441.jpg"
+      }
+    },
+    "solutions_image_grids_TqWqkA": {
+      "type": "solutions-image-grids",
+      "blocks": {
+        "image_block_Jki8Lj": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/Solutions_block1_A.jpg",
+            "animated_box_heading": " Spray foam safe ",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "Our Artafex LED downlighting products are safe to install in insulated ceilings, thanks to housings that are suitable for direct contact with spray foam lining.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        },
+        "image_block_f39Kqn": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/Solutions_block1_B1.jpg",
+            "animated_box_heading": " Deep installation ",
+            "animated_box_heading_italic": "",
+            "animated_box_content": "The extension collars for our Artafex products allow for secure and easy installation in ceilings with layers of sheet rock, wood, and other materials.",
+            "explore_button_text": "Discover",
+            "explore_button_url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_Jki8Lj",
+        "image_block_f39Kqn"
+      ],
+      "custom_css": [
+        ".learn-more-arrow {display: none;}"
+      ],
+      "settings": {
+        "grid_top_heading": "Sustainable, flexible solutions",
+        "grid_top_heading_italic": " for homes in cold climates. ",
+        "grid_top_content": "Designed and engineered for secure installation, compatibility, and energy efficiency, DMF Lighting’s recessed downlighting products bring peak performance to extreme weather environments."
+      }
+    },
+    "solutions_image_carousel_6eVcMD": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_AqrGbc": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/Solutions_block2_A_39f2e8d1-917a-4096-bb63-552aa2886edb.jpg"
+          }
+        },
+        "image_block_W7BRM9": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/Solutions_block2_B.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_AqrGbc",
+        "image_block_W7BRM9"
+      ],
+      "settings": {
+        "content_layout": "content_left",
+        "first_heading": "Spray foam rated housings ",
+        "first_content": "Our Artafex series housings meet the requirements of UL 1598 and the current NFP regulations as published in the NEC.",
+        "learnmore_text": "",
+        "learnmore_url": "",
+        "learnmore_url_loggedin": "",
+        "second_heading": "Aesthetic extensions ",
+        "second_content": "Our extra-long extension collars enable installation of fixtures in deeply insulated ceilings without compromising the exterior look and feel.",
+        "bottom_learnmore_text": "",
+        "bottom_learnmore_url": ""
+      }
+    },
+    "solutions_image_carousel_QH4zWx": {
+      "type": "solutions-image-carousel",
+      "blocks": {
+        "image_block_G4bqkK": {
+          "type": "image_block",
+          "settings": {
+            "carousel_image": "shopify://shop_images/Solutions_block2_D.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_G4bqkK"
+      ],
+      "settings": {
+        "content_layout": "content_right",
+        "first_heading": "Designed for efficiency ",
+        "first_content": "DMF Lighting fixtures have earned ENERGY STAR ratings for efficient performance that saves energy and cost.",
+        "learnmore_text": "",
+        "learnmore_url": "",
+        "learnmore_url_loggedin": "",
+        "second_heading": "Air-tight installation ",
+        "second_content": "Our housings ensure air-tight installation to reduce heat transfer and require less energy to maintain consistent interior temperatures.",
+        "bottom_learnmore_text": "",
+        "bottom_learnmore_url": ""
+      }
+    },
+    "product_type_why_dmf_Xn8dXx": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#292521",
+        "section_text_color": "#f9f6f3",
+        "why_section_heading": "Artful lighting for",
+        "why_section_subheading": "daily luxury",
+        "why_section_content": "s designers and engineers of premium lighting solutions for more than 40 years, DMF knows that the quality of your light can profoundly enhance the quality of your life. With exquisite design and exceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/WhyDMF_DrivenEng_c1f2e59e-7940-4184-a54c-765f4cfc61f1.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img4": "shopify://shop_images/Homepage_03_Artafex2_Disappear_C_expand_D.png",
+        "why_img5": "shopify://shop_images/WhyDMF_Footer_Cold_M.jpg"
+      }
+    }
+  },
+  "order": [
+    "main_series_banner_UBnLNV",
+    "solutions_image_grids_TqWqkA",
+    "solutions_image_carousel_6eVcMD",
+    "solutions_image_carousel_QH4zWx",
+    "product_type_why_dmf_Xn8dXx"
+  ]
+}

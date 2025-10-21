@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner_product_type": {
+      "type": "banner-product-type",
+      "settings": {
+        "main_title": "Silent beauty",
+        "main_subtitle": "engineered.",
+        "main_txt": "With sleek, space-saving design and innovative engineering, our recessed lighting systems blend beautifully into any room, leaving ceilings clean and quiet.",
+        "main_banner_img_desktop": "shopify://shop_images/ProductTypeRecessed_Hero_D.jpg",
+        "main_banner_img_mobile": "shopify://shop_images/ProductTypeRecessed_Hero_M.jpg"
+      }
+    },
+    "product_type_image_grids": {
+      "type": "product-type-image-grids",
+      "blocks": {
+        "image_block_CkbMmJ": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/ProductTypeRecessed_2inch_D.jpg",
+            "animated_box_heading": "Small-aperture design",
+            "animated_box_heading_italic": "large-fixture output",
+            "animated_box_content": "Small yet mighty and designed to complement  or completely disappear, with architecture-grade finishes and knife-edge options for superior performance and visual appeal.",
+            "explore_button_text": "Explore 2",
+            "explore_button_url": "/pages/artafex-2"
+          }
+        },
+        "image_block_J9kU3A": {
+          "type": "image_block",
+          "settings": {
+            "animated_box_image": "shopify://shop_images/ProductTypeRecessed_4inch_D.jpg",
+            "animated_box_heading": "Exceptionally versatile,",
+            "animated_box_heading_italic": "completely customizable",
+            "animated_box_content": "Our most multifaceted recessed lighting system with housings <br> that work in almost all installations and ceiling designs, <br> including concrete and low-profile.",
+            "explore_button_text": "Explore 4",
+            "explore_button_url": "/pages/artafex-4"
+          }
+        }
+      },
+      "block_order": [
+        "image_block_CkbMmJ",
+        "image_block_J9kU3A"
+      ],
+      "settings": {
+        "grid_top_heading": "Multifaceted for",
+        "grid_top_heading_italic": "any space or purpose",
+        "grid_top_content": "From highlighting artwork and architectural details with minimal glare to precisely rendering the colors and textures of a room, our recessed products are exceptionally adaptable to any setting, any need.",
+        "bottom_area_heading_center": "The luxury of light  you",
+        "bottom_area_heading_italic": "can see and feel",
+        "bottom_heading_col1": "75%",
+        "bottom_content_col1": "Reduction in energy <br>\nconsumption",
+        "bottom_heading_col2": "4M+",
+        "bottom_content_col2": "Possible configurations <br>\nof modular components",
+        "bottom_heading_col3": "99",
+        "bottom_content_col3": "Variation of colors studied to develop <br> True Spectrum®"
+      }
+    },
+    "product_type_why_dmf": {
+      "type": "product-type-why-dmf",
+      "settings": {
+        "section_bg_color": "#efebe6",
+        "section_text_color": "#292521",
+        "why_section_heading": "Artful lighting for",
+        "why_section_subheading": "daily luxury",
+        "why_section_content": "As designers and engineers of premium lighting solutions for more than 30 years, DMF knows that\nthe quality of your light can profoundly enhance the quality of your life. <br> With exquisite design and\nexceptional performance, DMF products ensure your home looks—and feels—luxurious.",
+        "why_img1": "shopify://shop_images/WhyDMF_Footer_1_D.jpg",
+        "why_img2": "shopify://shop_images/Transform_BottomLeft_D.jpg",
+        "why_img3": "shopify://shop_images/WhyDMF_Footer_2_D.jpg",
+        "why_img4": "shopify://shop_images/Transform_TopRight_D.jpg",
+        "why_img5": "shopify://shop_images/Transform_TopLeft_D.jpg"
+      }
+    }
+  },
+  "order": [
+    "banner_product_type",
+    "product_type_image_grids",
+    "product_type_why_dmf"
+  ]
+}
