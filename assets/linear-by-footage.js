@@ -325,17 +325,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 let data =  {
                     properties: {
                         "_bundleId" : bundleId,
-                        "_parentProduct" : parentProductData,
+                        "_parentProduct" : JSON.stringify(parentProductData),
                         "SKU" : item.getAttribute('sku'),
                         "Fixture Type": fixtureType // Add fixture type property to items
                     },
                     quantity: parseFloat(item.value),
-                    id: parseFloat(item.dataset.productId)
+                    id: parseInt(item.dataset.productId)
                 }
                 itemsToAddCart.push(data);
             })
-            
             formData.items = itemsToAddCart;
+            // console.log("formData:", JSON.stringify(formData, null, 2));
             formData = getCartNotificationSections(formData)
             fetch('/cart/add.js', {
                 method: 'POST',
