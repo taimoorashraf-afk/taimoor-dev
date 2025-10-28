@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("tenInchKits").value = tenInchKits;
         document.getElementById("oneInchKits").value = oneInchKits;
         document.getElementById("mountingKits").value = mountingKits;
-        document.getElementById("mountingKits45deg").value = fourtyFiveDegMountingKits;        
+        document.getElementById("mountingKits45deg").value = fourtyFiveDegMountingKits;           
 
         handlemountingTypeChange()
 
@@ -291,6 +291,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return Math.ceil(totalLinearFootage / 20); 
     }
 
+    const newSubmitButton = submitButton.cloneNode(true);
+    submitButton.parentNode.replaceChild(newSubmitButton, submitButton);
+    submitButton = newSubmitButton; // Reassign to the new element
+
+
     submitButton.setAttribute('type', 'button');
 
     // Get the form element
@@ -299,7 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if(bomGenerated){
             submitButtonLoading(true)
-            let billInputs = document.querySelectorAll('.bill-of-material input');
+            let billInputs = document.querySelectorAll('.bill-of-material .bill-contents.enable input');
             let formData = {
                 'items': []
             };
