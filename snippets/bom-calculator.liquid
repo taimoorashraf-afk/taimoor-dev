@@ -5,71 +5,27 @@
 {% assign ten_inch_kit = '' %}
 {% assign ten_inch_kit_text = '' %}
 {% assign driver = '' %}
-{% assign driver_text = '' %}
+{% assign driver_text = '' %} 
 
-{% assign linear_items = product.metafields.custom.linear_items.value %}
-
-{% assign flat_mounting_kit = linear_items.flat_mounting_kit.value %}
-{% assign flat_mounting_kit_text = linear_items.flat_mounting_kit_text.value %}
-{% assign fourty_five_degree_track = linear_items['45_degree_track'].value %}
-{% assign fourty_five_degree_track_text = linear_items['45_degree_track_text'].value %}
-
-{% comment %} 
-{%if current_option == 'phasex' %}
-  {%assign configurations_list = product.metafields.custom.configurations.value %} 
-  {%for config_entry in configurations_list %}
-    {{ config_entry.linear_options.value }}
-
-  {%endfor %}
-{%endif %} {% endcomment %}
-
-{% comment %} {% liquid
-   if current_option == 'phasex'
-    assign configurations_list = product.metafields.custom.configurations.value 
-    for config_entry in configurations_list 
-      for linear_list in config_entry.linear_options.value 
-          if linearlist.display_title == 'PhaseX'
-            for sku_entry in linearlist.linear_skus.value
-              if sku_entry.sku_type.value == "PhaseX"
-                case sku_entry.type.value
-                  when "1' Kits"
-                    assign one_inch_kit = sku_entry.linear_product.value
-                    assign one_inch_kit_text = sku_entry.display_title
-                  when "10' Kits"
-                    assign ten_inch_kit = sku_entry.linear_product.value
-                    assign ten_inch_kit_text = sku_entry.display_title
-                  when "Drivers"
-                    assign driver = sku_entry.linear_product.value
-                    assign driver_text = sku_entry.display_title
-                endcase
-              endif
-            endfor
-          endif
-        endfor
-      endfor
-    elsif current_option == 'TRIAC/ELV'
-      assign linear_items = product.metafields.custom.linear_items.value
-      assign ten_inch_kit = linear_items.ten_inch_kit.value
-      assign one_inch_kit = linear_items.one_inch_kit.value
-      assign flat_mounting_kit = linear_items.flat_mounting_kit.value
-      assign fourty_five_degree_track = linear_items['45_degree_track'].value
-      assign driver = linear_items.driver.value
-
-      assign ten_inch_kit_text = linear_items.ten_inch_text.value
-      assign one_inch_kit_text = linear_items.one_inch_text.value
-      assign flat_mounting_kit_text = linear_items.flat_mounting_kit_text.value
-      assign fourty_five_degree_track_text = linear_items['45_degree_track_text'].value
-      assign driver_text = linear_items.driver_text.value
-    endif 
-    assign linear_items = product.metafields.custom.linear_items.value
-    assign flat_mounting_kit = linear_items.flat_mounting_kit.value
-%} {% endcomment %}
 <div class="bill-of-material">
   <h2 class="bill-heading font-neue-light">Bill of Materials</h2>
   <p class="bill-price font-neue-roman">Total Price: <span id="total-amount">$0</span></p>
   {% assign configurations_list = product.metafields.custom.configurations.value %}
-  {% for config_entry in configurations_list %} 
+  {% for config_entry in configurations_list %}
+    {% comment %} FIRST LETS RESOLVE MOUNTING OPTIONS  {% endcomment %}
+    {% for mounting_list in config_entry.mounting_options.value %}
+      {% case mounting_list.mounting_type.value %}
+      {% when "45 Deg Track" %}
+        {% assign fourty_five_degree_track = mounting_list.mounting_product.value %}
+        {% assign fourty_five_degree_track_text = mounting_list.display_name %}
+      {% when "Flat Track" %}
+        {% assign flat_mounting_kit = mounting_list.mounting_product.value %}
+        {% assign flat_mounting_kit_text = mounting_list.display_name %}
+      {% endcase %}
+    {% endfor %}
+    {% comment %} ----------------------  {% endcomment %}
     {% for linear_list in config_entry.linear_options.value %}
+    {% comment %} SET PRODUCTS TO THEIR RESPECTIVE OPTIONS [TRIAC - PHASEX] {% endcomment %}
       {%for sku_entry in linear_list.linear_skus.value%}
         {% if sku_entry.sku_type.value == linear_list.display_title  %}
           {% case sku_entry.type.value %}
@@ -85,7 +41,7 @@
           {% endcase %}
         {% endif %}
       {% endfor %}
-      {% assign option_handle = linear_list.linear_option.handle | default: config_entry.handle | append: '-' | append: forloop.index %}
+    {% comment %} ----------------------  {% endcomment %}
       {% assign option_name = linear_list.display_title | handleize %}
       <div class="bill-contents" id="bill-contents-{{ option_name }}" >
 
