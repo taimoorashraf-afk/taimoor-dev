@@ -1,6 +1,17 @@
 * {
   box-sizing: border-box;
 }
+/* Hide all bill-contents divs by default */
+.bill-of-material .bill-contents {
+    display: none;
+}
+
+/* Show ONLY the bill-contents div that has the 'enable' class */
+.bill-of-material .bill-contents.enable {
+    display: block;
+}
+
+
 
 /* Hide spin buttons in Chrome, Safari, Edge, Opera */
 input[type=number]::-webkit-inner-spin-button,

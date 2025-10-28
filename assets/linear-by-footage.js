@@ -119,13 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
             drivers,
             fourtyFiveDegMountingKits,
         } = calculateBOM(totalLinearFootage);
-        
-        document.getElementById("tenInchKits").value = tenInchKits;
-        document.getElementById("oneInchKits").value = oneInchKits;
-        document.getElementById("mountingKits").value = mountingKits;
-        document.getElementById("mountingKits45deg").value = fourtyFiveDegMountingKits;           
+        console.log("Hamza",calculateBOM(totalLinearFootage)    )
+                const kitValues = {
+        tenInchKits: tenInchKits,
+        oneInchKits: oneInchKits,
+        mountingKits: mountingKits,
+        mountingKits45deg: fourtyFiveDegMountingKits,
+        };
 
-        handlemountingTypeChange()
+Object.entries(kitValues).forEach(([id, value]) => {
+  // Use querySelectorAll in case there are multiple elements with same ID (or change to class)
+  document.querySelectorAll(`#${id}`).forEach((el) => {
+    el.value = value;
+  });
+});
+         
+
+        handleMountingTypeChange()
 
         document.getElementById("drivers").value = drivers;
         
@@ -172,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         ];
 
-        window.dispatchEvent(new Event('bomDataUpdated'));
+        // window.dispatchEvent(new Event('bomDataUpdated'));
         
         billOfMaterial.style.display = "block";
         bomGenerated = true;
@@ -182,24 +192,32 @@ document.addEventListener("DOMContentLoaded", () => {
         
     });
 
-    function handlemountingTypeChange()  {
-        
-        const mountingKitElement = document.getElementById("mountingKits").closest('.bill-content');
-        const mountingKits45degElement = document.getElementById("mountingKits45deg").closest('.bill-content');
-        
-        if(mountingTypeElement?.value == 'flat-track') {
-            mountingKits45degElement.style.display = "none";
-            mountingKitElement.style.display = "flex";
-        }
-        else {
-            mountingKits45degElement.style.display = "flex";
-            mountingKitElement.style.display = "none";
-        }
+  function handleMountingTypeChange() {
+  const mountingTypeElement = document.getElementById("mounting-type"); // assuming this exists
+
+  const mountingKitElements = document.querySelectorAll("#mountingKits");
+  const mountingKits45degElements = document.querySelectorAll("#mountingKits45deg");
+
+  // loop over all matched elements
+  mountingKitElements.forEach((el) => {
+    const wrapper = el.closest('.bill-content');
+    if (wrapper) {
+      wrapper.style.display = (mountingTypeElement?.value === 'flat-track') ? "flex" : "none";
     }
+  });
+
+  mountingKits45degElements.forEach((el) => {
+    const wrapper = el.closest('.bill-content');
+    if (wrapper) {
+      wrapper.style.display = (mountingTypeElement?.value === 'flat-track') ? "none" : "flex";
+    }
+  });
+}
+
 
     const updatePrice = () => {
         const totalAmountElement = document.querySelector('.bill-price #total-amount');
-        let inputElements = document.querySelectorAll('.bill-contents input[name="quantity"]')
+        let inputElements = document.querySelectorAll('.bill-contents.enable input[name="quantity"]')
         inputElements = Array.from(inputElements).filter(item => parseInt(item.value) > 0)
         let totalPrice = 0
         if(inputElements.length){
