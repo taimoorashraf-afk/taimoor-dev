@@ -1,77 +1,341 @@
 <link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
-<label class="form-labels font-neue-roman">Dimming</label>
 
-<div class="form-row dimming-options-container">
-    {% comment %}
-        Assumes 'product.metafields.c_configuration.dimming_options' is a metaobject reference.
-        This metaobject is expected to have a field with the key 'options'
-        which is a list of metaobject references (e.g., to your 'TRIAC-ELV' and 'PhaseX' metaobjects).
-    {% endcomment %}
-    {%- assign dimming_config = product.metafields.c_configuration.dimming_options.value -%}
-    {%- if dimming_config and dimming_config.options.value -%}
-        {%- for dimming_option in dimming_config.options.value -%}
-            <div class="radio-option-wrapper">
-                <input 
-                    type="radio" 
-                    id="dimming-{{ dimming_option.handle }}" 
-                    name="dimming_option" 
-                    value="{{ dimming_option.handle }}" 
-                    class="radio-input"
-                    {% if forloop.first %}checked{% endif %}>
-                <label 
-                    for="dimming-{{ dimming_option.handle }}" 
-                    class="radio-label font-neue-roman">
-                        {% comment %}
-                            Displays the 'name' field from the metaobject. 
-                            If it's empty, it falls back to a formatted version of the handle.
-                        {% endcomment %}
-                        {{ dimming_option.name | default: dimming_option.handle | replace: '-', ' ' | capitalize }}
-                </label>
-            </div>
+<div class="form-row">
+  <label class="form-labels font-neue-roman">Dimming</label>
+  {% assign configurations_list = product.metafields.custom.configurations.value %}
+
+  <div class="option-list" optionsetsystemhandle="linear" optionsethandle="dimming">
+    <div class="options-wrapper">
+      {%- for config_entry in configurations_list -%}
+        <input type="hidden" name="selected_option_{{ forloop.index0 }}" value="" />
+        {%- for linear_option in config_entry.linear_options.value -%}
+          <div class="pc-swatch" triggerimagechange="True">
+            <input
+              type="radio"
+              id="dimming__{{ forloop.parentloop.index0 }}__{{ forloop.index0 }}"
+              name="dimming_group_{{ forloop.parentloop.index0 }}"
+              value="{{ linear_option.display_title | escape }}"
+              class="pc_options hide"
+              data-group="{{ forloop.parentloop.index0 }}"
+              data-dimming-type="{{ linear_option.display_title | handleize }}"
+              data-linear-option="{{ linear_option | json | escape }}"
+              data-option-handle="{{ linear_option.display_title | handleize }}"
+            >
+            <label for="dimming__{{ forloop.parentloop.index0 }}__{{ forloop.index0 }}" class="linear-opt-btn font-neue-roman">
+              {{ linear_option.display_title }}
+            </label>
+          </div>
         {%- endfor -%}
-    {%- endif -%}
-</div>
-<div class="form-row">
-    <label class="form-labels font-neue-roman">Total Linear Footage of Fixtures 
-        <div class="tooltip">
-            <svg width="11" height="11" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.5" y="0.5" width="16" height="16" rx="8" stroke="#292521"/>
-                <path d="M7.75 9.73684V9.42105C7.75 8.76316 8 8.39474 8.92105 7.6579C9.72368 7.02632 9.93421 6.71053 9.93421 6.19737C9.93421 5.4079 9.39474 4.94737 8.48684 4.94737C7.53947 4.94737 7.02632 5.44737 7.02632 6.39474V6.5H6V6.28947C6 4.82895 6.89474 4 8.5 4C10.0263 4 11 4.81579 11 6.07895C11 7.02632 10.7237 7.46053 9.69737 8.28947C8.94737 8.89474 8.77632 9.10526 8.77632 9.48684V9.73684H7.75ZM8.34211 13C7.77632 13 7.35526 12.5789 7.35526 12.0132C7.35526 11.4474 7.77632 11.0263 8.34211 11.0263C8.9079 11.0263 9.32895 11.4474 9.32895 12.0132C9.32895 12.5789 8.9079 13 8.34211 13Z" fill="#292521"/>
-            </svg>
-            <span class="tooltip-text font-neue-roman">
-                <span class="metafield-rich_text_field">
-                    <p>Total Linear Footage of Fixtures</p>
-                </span>
-            </span>
-        </div>
-    </label>
-    <input id="total-linear-footage" min="1" max="9999" name="" type="number"  class="field-styles">
-    <span total-linear-footage-error class="error" style="display: none;" ></span>
-</div>
-<div class="form-row select-styles">
-    <label class="form-labels font-neue-roman">Mounting Type</label>
-    <div class="select-box-styles">
-        <select id="mounting-type" name="" class="dropdown-styles font-neue-roman">
-            <option value="flat-track">Flat Track</option>
-            <option value="45-deg-track" >45 Degree Track</option>
-        </select>
-        <div class="select-arrow">
-            <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.62282 8.4032L15.5 1.52625L14.974 1L8.545 7.40251L2.11603 1L1.59 1.52625L8.545 8.48125L8.62282 8.4032Z" fill="#292521" stroke="#292521"></path>
-            </svg>
-        </div>
+      {%- endfor -%}
     </div>
+  </div>
+
+  <label class="form-labels font-neue-roman">
+    Total Linear Footage of Fixtures
+    <div class="tooltip">
+      <svg width="11" height="11" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="16" height="16" rx="8" stroke="#292521"/>
+        <path d="M7.75 9.73684V9.42105C7.75 8.76316 8 8.39474 8.92105 7.6579C9.72368 7.02632 9.93421 6.71053 9.93421 6.19737C9.93421 5.4079 9.39474 4.94737 8.48684 4.94737C7.53947 4.94737 7.02632 5.44737 7.02632 6.39474V6.5H6V6.28947C6 4.82895 6.89474 4 8.5 4C10.0263 4 11 4.81579 11 6.07895C11 7.02632 10.7237 7.46053 9.69737 8.28947C8.94737 8.89474 8.77632 9.10526 8.77632 9.48684V9.73684H7.75ZM8.34211 13C7.77632 13 7.35526 12.5789 7.35526 12.0132C7.35526 11.4474 7.77632 11.0263 8.34211 11.0263C8.9079 11.0263 9.32895 11.4474 9.32895 12.0132C9.32895 12.5789 8.9079 13 8.34211 13Z" fill="#292521"/>
+      </svg>
+      <span class="tooltip-text font-neue-roman">
+        <span class="metafield-rich_text_field">
+          <p>Total Linear Footage of Fixtures</p>
+        </span>
+      </span>
+    </div>
+  </label>
+
+  <input id="total-linear-footage" min="1" max="9999" name="" type="number" class="field-styles">
+  <span total-linear-footage-error class="error" style="display: none;"></span>
+
+  <input type="hidden" id="selected-dimming-type" value="">
+  <input type="hidden" id="selected-linear-option" value="">
 </div>
+
+
+<div class="form-row select-styles">
+  <label class="form-labels font-neue-roman">Mounting Type</label>
+  <div class="select-box-styles">
+    <select id="mounting-type" name="" class="dropdown-styles font-neue-roman">
+      <option value="flat-track">Flat Track</option>
+      <option value="45-deg-track">45 Degree Track</option>
+    </select>
+    <div class="select-arrow">
+      <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.62282 8.4032L15.5 1.52625L14.974 1L8.545 7.40251L2.11603 1L1.59 1.52625L8.545 8.48125L8.62282 8.4032Z" fill="#292521" stroke="#292521"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
 <div class="form-row">
-    <p class="zone-wattage font-neue-roman">Total Wattage: <span id="total-wattage"></span></p>
-    <p class="zone-wattage font-neue-roman margin-b-0">Number of drivers needed: <span id="total-drivers"></span></p>
-    <p class="weight-100 italic font-size-15">Max. 20' of fixtures per driver.</p>
+  <p class="zone-wattage font-neue-roman">Total Wattage: <span id="total-wattage"></span></p>
+  <p class="zone-wattage font-neue-roman margin-b-0">Number of drivers needed: <span id="total-drivers"></span></p>
+  <p class="weight-100 italic font-size-15">Max. 20' of fixtures per driver.</p>
 </div>
+
 {% if customer.b2b? %}
-    <div class="form-row form-action-btns">
-        <button id="trigger-bom" class="form-btn-styles font-neue-roman" disabled >Create BOM</button>
-        
-        </div>
-    <script src="{{ 'helper.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'linear-by-footage.js' | asset_url }}" defer="defer"></script>
+  <div class="form-row form-action-btns">
+    <button id="trigger-bom" class="form-btn-styles font-neue-roman" disabled>Create BOM</button>
+  </div>
+
+  <script src="{{ 'helper.js' | asset_url }}" defer></script>
+  <script src="{{ 'linear-by-footage.js' | asset_url }}" defer></script>
 {% endif %}
+
+
+<style>
+
+.option-title{
+    padding:10px 20px;
+    border : 1px solid black;
+  }
+  .options-wrapper{
+    display:flex;
+    gap:10px;
+    flex-wrap: wrap;
+  }
+  .option-list{
+    padding:10px;
+    background:transparent;
+  }
+  .option-list h4{
+    color: #333;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    position: relative;
+    display: flex;
+  }
+  .required-sign{
+    display: none;
+  }
+  .option-list:has(input:required) .required-sign{
+    display: block;
+  }
+  .pc-swatch{
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    align-items: center;
+  
+    color: #777;
+    float: right;
+    background: transparent;
+    border: 1px solid #c7c3c3;
+    font-family: helveticaneueltstd-md, Helvetica Neue, Helvetica, Arial, sans-serif;
+    position: relative;
+    z-index: 9;
+    align-items: center;
+    background-color: #fff;
+  }
+  .pc-swatch label{
+    font-size: 13px;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 100%;
+  }
+  .pc-swatch label:has(.top-swatch){
+    flex-direction: column;
+  }
+  .pc-swatch label:has(.top-swatch) img{
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .pc-swatch label img{
+    margin-right: 10px;
+  }
+  .pc-swatch label img.round-swatch{
+    border-radius: 100%;
+  }
+  
+  .hide {
+    display: none !important;
+  }
+  .pc-error{
+    margin-top: 10px;
+  }
+  .option-set-title{
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    font-family: helveticaneueltstd-bd, Helvetica Neue, Helvetica, Arial, sans-serif;
+    
+    padding-left: 9px;
+    /* border-top: 1.5px solid #c7c6c6;
+    border-left: 1.5px solid #c7c6c6;
+    border-right: 1.5px solid #c7c6c6; 
+    border-bottom: 1.5px solid #c7c6c6; */
+    -webkit-border-radius: 0;  
+    -moz-border-radius: 0;
+    border-radius: 0;
+    counter-increment: ui-header;
+    background-color: #f9f8f8;
+    padding: .5em .5em .5em .7em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .option-set-title span{
+    background: url(acc-arrow.png) 0 3px no-repeat;
+    background-size: 30px 30px;
+    margin-top: -1px;
+    width: 30px;
+    height: 18px;
+  }
+
+  .option-set-title span.rotate{
+    transform: rotate(180deg);
+  }
+  
+  .pc-swatch:has(input:checked){
+    border : 2px solid black;
+  }
+  .pc-add-to-cart{
+    color: #fff;
+    font-size: 16px;
+    font-family: helveticaneueltstd-bd, Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: #000;
+    padding: 11px 30px;
+    height: 47px;
+  }
+  .pc-add-to-cart:disabled{
+    cursor: not-allowed;
+  }
+  .pc-option-set{
+    clear: both;
+    /* padding: 15px; */
+    border-bottom: 1.5px solid #fc3434;
+    border-left: 1.5px solid #666666;
+    border-right: 1.5px solid #666666;
+    border-top: none;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    color: #333333;
+  }
+  
+  .pc-swatch:has(input:disabled){
+    background: #efefef;
+    color: #dad8d8;
+    border: 1.5px solid #ebeaea;
+    opacity: .7;
+    pointer-events: none;
+  }
+  .product-single__quantity.pc-quantity-selector{
+    margin-top: -300px ;
+  }
+  
+  .price-note:not(.pc-total-price ), 
+  .product-single__quantity:not(.pc-quantity-selector),
+  .product-single__add-to-cart
+  {
+   display:none !important;
+  }
+  
+  .required-sign{
+    color: red;
+    font-size: 20px;
+    margin-left: 5px;
+  }
+  .lineitem-components{
+    margin-top:10px;
+  }
+  
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const dimmingInputs = document.querySelectorAll('.option-list input[type="radio"]');
+  const allBillContents = document.querySelectorAll('.bill-contents');
+  const firstInput = dimmingInputs[0];
+
+  /**
+   * Toggles the 'enable' class on the correct BOM content div
+   * based on the selected option's handle.
+   */
+  function setActiveBOM(optionHandle) {
+    // 1. Remove the 'enable' class from ALL bill content divs
+    allBillContents.forEach(content => {
+      content.classList.remove('enable');
+    });
+
+    // 2. Find the div matching the option handle
+    const activeDivId = `bill-contents-${optionHandle}`;
+    const activeDiv = document.getElementById(activeDivId);
+    
+    // 3. Add the 'enable' class to the active div
+    if (activeDiv) {
+      activeDiv.classList.add('enable');
+    }
+  }
+
+  // --- Main Change Handler Function ---
+  // This function contains all the logic for updating the state.
+  function handleDimmingChange(inputElement) {
+    const groupIndex = inputElement.dataset.group;
+    const optionHandle = inputElement.dataset.optionHandle; 
+    const dimmingType = inputElement.dataset.dimmingType;
+
+    // 1. Update selection visual style
+    // (Ensure the unselected inputs in the group lose the 'selected' class)
+    const groupInputs = document.querySelectorAll(`[data-group="${groupIndex}"]`);
+    groupInputs.forEach(i => {
+        i.closest('.pc-swatch').classList.remove('selected');
+    });
+    inputElement.closest('.pc-swatch').classList.add('selected');
+
+    // 2. Update the group-specific hidden input field
+    const groupSpecificHiddenInput = document.querySelector(`input[name="selected_option_${groupIndex}"]`);
+    if (groupSpecificHiddenInput) {
+      groupSpecificHiddenInput.value = optionHandle; 
+    }
+
+    // 3. Update the global fields
+    const selectedDimmingTypeInput = document.getElementById('selected-dimming-type');
+    const selectedLinearOptionInput = document.getElementById('selected-linear-option');
+    if (selectedDimmingTypeInput) {
+      selectedDimmingTypeInput.value = dimmingType;
+    }
+    if (selectedLinearOptionInput) {
+      selectedLinearOptionInput.value = optionHandle;
+    }
+
+    // 4. Update the Bill of Materials (BOM) section based on the handle
+    setActiveBOM(optionHandle); 
+
+    // 5. Dispatch a custom event
+    window.dispatchEvent(new CustomEvent('dimmingSelectionChanged', {
+      detail: {
+        groupIndex: groupIndex,
+        dimmingType,
+        optionHandle: optionHandle
+      }
+    }));
+  }
+
+  // --- Event Listener Setup ---
+  dimmingInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      handleDimmingChange(input);
+    });
+  });
+
+  // --- Initial Default Selection (Runs on page load) ---
+
+  if (firstInput) {
+    // 1. Manually check the first radio button
+    firstInput.checked = true;
+    
+    // 2. Run the change handler for the first input to set all states (including the 'enable' class on the div)
+    handleDimmingChange(firstInput);
+  }
+});
+</script>
+
