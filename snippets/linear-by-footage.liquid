@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
 
-<div class="form-row">
+<div class="form-row"> 
   <label class="form-labels font-neue-roman">Dimming</label>
+  
   {% assign configurations_list = product.metafields.custom.configurations.value %}
 
   <div class="option-list" optionsetsystemhandle="linear" optionsethandle="dimming">
@@ -52,13 +53,16 @@
   <input type="hidden" id="selected-linear-option" value="">
 </div>
 
-
 <div class="form-row select-styles">
   <label class="form-labels font-neue-roman">Mounting Type</label>
   <div class="select-box-styles">
     <select id="mounting-type" name="" class="dropdown-styles font-neue-roman">
-      <option value="flat-track">Flat Track</option>
-      <option value="45-deg-track">45 Degree Track</option>
+      {% assign configurations_list = product.metafields.custom.configurations.value %}
+      {% for config_mounting in configurations_list %}
+        {% for mounting_type in config_mounting.mounting_options.value %}
+        <option value="{{ mounting_type.mounting_type | handleize }}"> {{ mounting_type.option_name }} </option>
+        {% endfor %}
+      {% endfor %} 
     </select>
     <div class="select-arrow">
       <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -327,13 +331,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // --- Initial Default Selection (Runs on page load) ---
-
   if (firstInput) {
-    // 1. Manually check the first radio button
     firstInput.checked = true;
-    
-    // 2. Run the change handler for the first input to set all states (including the 'enable' class on the div)
     handleDimmingChange(firstInput);
   }
 });
