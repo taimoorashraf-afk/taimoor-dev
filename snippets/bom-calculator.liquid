@@ -1,145 +1,206 @@
-{% liquid
+<script src="{{ 'linear-by-footage.js' | asset_url }}" defer></script>
+
+{% assign one_inch_kit = '' %}
+{% assign one_inch_kit_text = '' %}
+{% assign ten_inch_kit = '' %}
+{% assign ten_inch_kit_text = '' %}
+{% assign driver = '' %}
+{% assign driver_text = '' %}
+
+{% assign linear_items = product.metafields.custom.linear_items.value %}
+
+{% assign flat_mounting_kit = linear_items.flat_mounting_kit.value %}
+{% assign flat_mounting_kit_text = linear_items.flat_mounting_kit_text.value %}
+{% assign fourty_five_degree_track = linear_items['45_degree_track'].value %}
+{% assign fourty_five_degree_track_text = linear_items['45_degree_track_text'].value %}
+
+{% comment %} 
+{%if current_option == 'phasex' %}
+  {%assign configurations_list = product.metafields.custom.configurations.value %} 
+  {%for config_entry in configurations_list %}
+    {{ config_entry.linear_options.value }}
+
+  {%endfor %}
+{%endif %} {% endcomment %}
+
+{% comment %} {% liquid
+   if current_option == 'phasex'
+    assign configurations_list = product.metafields.custom.configurations.value 
+    for config_entry in configurations_list 
+      for linear_list in config_entry.linear_options.value 
+          if linearlist.display_title == 'PhaseX'
+            for sku_entry in linearlist.linear_skus.value
+              if sku_entry.sku_type.value == "PhaseX"
+                case sku_entry.type.value
+                  when "1' Kits"
+                    assign one_inch_kit = sku_entry.linear_product.value
+                    assign one_inch_kit_text = sku_entry.display_title
+                  when "10' Kits"
+                    assign ten_inch_kit = sku_entry.linear_product.value
+                    assign ten_inch_kit_text = sku_entry.display_title
+                  when "Drivers"
+                    assign driver = sku_entry.linear_product.value
+                    assign driver_text = sku_entry.display_title
+                endcase
+              endif
+            endfor
+          endif
+        endfor
+      endfor
+    elsif current_option == 'TRIAC/ELV'
+      assign linear_items = product.metafields.custom.linear_items.value
+      assign ten_inch_kit = linear_items.ten_inch_kit.value
+      assign one_inch_kit = linear_items.one_inch_kit.value
+      assign flat_mounting_kit = linear_items.flat_mounting_kit.value
+      assign fourty_five_degree_track = linear_items['45_degree_track'].value
+      assign driver = linear_items.driver.value
+
+      assign ten_inch_kit_text = linear_items.ten_inch_text.value
+      assign one_inch_kit_text = linear_items.one_inch_text.value
+      assign flat_mounting_kit_text = linear_items.flat_mounting_kit_text.value
+      assign fourty_five_degree_track_text = linear_items['45_degree_track_text'].value
+      assign driver_text = linear_items.driver_text.value
+    endif 
     assign linear_items = product.metafields.custom.linear_items.value
-    assign ten_inch_kit = linear_items.ten_inch_kit.value
-    assign one_inch_kit = linear_items.one_inch_kit.value
     assign flat_mounting_kit = linear_items.flat_mounting_kit.value
-    assign fourty_five_degree_track = linear_items['45_degree_track'].value
-    assign driver = linear_items.driver.value
-
-    assign ten_inch_kit_text = linear_items.ten_inch_text.value
-    assign one_inch_kit_text = linear_items.one_inch_text.value
-    assign flat_mounting_kit_text = linear_items.flat_mounting_kit_text.value
-    assign fourty_five_degree_track_text = linear_items['45_degree_track_text'].value
-    assign driver_text = linear_items.driver_text.value
-%}
-
-<script>
-    //these variables are used in linear-by-footage.js
-    let tenInchKitProduct = {{ ten_inch_kit | json }};
-    let oneInchkitProduct = {{  one_inch_kit | json  }};
-    let flatMountingKitProduct = {{  flat_mounting_kit | json  }};
-    let driverProduct = {{  driver | json  }};
-</script>
-
+%} {% endcomment %}
 <div class="bill-of-material">
-    <h2 class="bill-heading font-neue-light">Bill of Materials</h2>
-    <p class="bill-price font-neue-roman">Total Price: <span id="total-amount">$0</span></p>
+  <h2 class="bill-heading font-neue-light">Bill of Materials</h2>
+  <p class="bill-price font-neue-roman">Total Price: <span id="total-amount">$0</span></p>
+  {% assign configurations_list = product.metafields.custom.configurations.value %}
+  {% for config_entry in configurations_list %} 
+    {% for linear_list in config_entry.linear_options.value %}
+      {%for sku_entry in linear_list.linear_skus.value%}
+        {% if sku_entry.sku_type.value == linear_list.display_title  %}
+          {% case sku_entry.type.value %}
+          {% when "1' Kits" %}
+            {% assign one_inch_kit = sku_entry.linear_product.value %}
+            {% assign one_inch_kit_text = sku_entry.display_title %}
+          {% when "10' Kits" %}
+            {% assign ten_inch_kit = sku_entry.linear_product.value %}
+            {% assign ten_inch_kit_text = sku_entry.display_title %}
+          {% when "Drivers" %}
+            {%assign driver = sku_entry.linear_product.value %}
+            {% assign driver_text = sku_entry.display_title %}
+          {% endcase %}
+        {% endif %}
+      {% endfor %}
+      {% assign option_handle = linear_list.linear_option.handle | default: config_entry.handle | append: '-' | append: forloop.index %}
+      {% assign option_name = linear_list.display_title | handleize %}
+      <div class="bill-contents" id="bill-contents-{{ option_name }}" >
 
-    <div class="bill-contents">
-        <!-- Loop start -->
-        <div class="bill-content">
-            <div class="bill-content-left">
-                <span class="font-neue-roman">10' Kits</span>
-                <div class="quantity-control">
-                    <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                    <input data-product-id="{{ ten_inch_kit.variants[0].id }}" sku="{{ ten_inch_kit.variants[0].sku }}" price="{{ ten_inch_kit.variants[0].price }}" type="number" id="tenInchKits" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
-                    <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="bill-content-right">
-                <p class="font-neue-roman">{{ten_inch_kit_text}}</p>
-            </div>
-        </div>
+          <div class="bill-content">
+              <div class="bill-content-left">
+                  <span class="font-neue-roman">10' Kits</span>
+                  <div class="quantity-control">
+                      <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                      <input data-product-id="{{ ten_inch_kit.variants[0].id }}" sku="{{ ten_inch_kit.variants[0].sku }}" price="{{ ten_inch_kit.variants[0].price }}" type="number" id="tenInchKits" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
+                      <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+              <div class="bill-content-right">
+                  <p class="font-neue-roman">{{ten_inch_kit_text}}</p>
+              </div>
+          </div>
 
-        <div class="bill-content">
-            <div class="bill-content-left">
-                <span class="font-neue-roman">1' Kits</span>
-                <div class="quantity-control">
-                    <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                    <input data-product-id="{{ one_inch_kit.variants[0].id }}" sku="{{ one_inch_kit.variants[0].sku }}" price="{{ one_inch_kit.variants[0].price }}" type="number" id="oneInchKits" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
-                    <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="bill-content-right">
-                <p class="font-neue-roman">{{one_inch_kit_text}} </p>
-            </div>
-        </div>
+          <div class="bill-content">
+              <div class="bill-content-left">
+                  <span class="font-neue-roman">1' Kits</span>
+                  <div class="quantity-control">
+                      <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                      <input data-product-id="{{ one_inch_kit.variants[0].id }}" sku="{{ one_inch_kit.variants[0].sku }}" price="{{ one_inch_kit.variants[0].price }}" type="number" id="oneInchKits" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
+                      <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+              <div class="bill-content-right">
+                  <p class="font-neue-roman">{{one_inch_kit_text}} </p>
+              </div>
+          </div>
 
-        <div class="bill-content">
-            <div class="bill-content-left">
-                <span class="font-neue-roman">Flat Mounting Kits</span>
-                <div class="quantity-control">
-                    <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                    <input data-product-id="{{ flat_mounting_kit.variants[0].id }}" sku="{{ flat_mounting_kit.variants[0].sku }}" price="{{ flat_mounting_kit.variants[0].price }}" type="number" id="mountingKits" name="quantity"  min="1" aria-label="Quantity" class="font-neue-roman">
-                    <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="bill-content-right">
-                <p class="font-neue-roman">{{  flat_mounting_kit_text }} </p>
-            </div>
-        </div>
+          <div class="bill-content">
+              <div class="bill-content-left">
+                  <span class="font-neue-roman">Flat Mounting Kits</span>
+                  <div class="quantity-control">
+                      <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                      <input data-product-id="{{ flat_mounting_kit.variants[0].id }}" sku="{{ flat_mounting_kit.variants[0].sku }}" price="{{ flat_mounting_kit.variants[0].price }}" type="number" id="mountingKits" name="quantity"  min="1" aria-label="Quantity" class="font-neue-roman">
+                      <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+              <div class="bill-content-right">
+                  <p class="font-neue-roman">{{  flat_mounting_kit_text }} </p>
+              </div>
+          </div>
 
-        <div class="bill-content">
-            <div class="bill-content-left">
-                <span class="font-neue-roman">45° Mounting Kits</span>
-                <div class="quantity-control">
-                    <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                    <input data-product-id="{{ fourty_five_degree_track.variants[0].id }}" sku="{{ fourty_five_degree_track.variants[0].sku }}" price="{{ fourty_five_degree_track.variants[0].price }}" type="number" id="mountingKits45deg" name="quantity"  min="1" aria-label="Quantity" class="font-neue-roman">
-                    <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="bill-content-right">
-                <p class="font-neue-roman">{{  fourty_five_degree_track_text }} </p>
-            </div>
-        </div>
+          <div class="bill-content">
+              <div class="bill-content-left">
+                  <span class="font-neue-roman">45° Mounting Kits</span>
+                  <div class="quantity-control">
+                      <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                      <input data-product-id="{{ fourty_five_degree_track.variants[0].id }}" sku="{{ fourty_five_degree_track.variants[0].sku }}" price="{{ fourty_five_degree_track.variants[0].price }}" type="number" id="mountingKits45deg" name="quantity"  min="1" aria-label="Quantity" class="font-neue-roman">
+                      <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+              <div class="bill-content-right">
+                  <p class="font-neue-roman">{{  fourty_five_degree_track_text }} </p>
+              </div>
+          </div>
 
-        <div class="bill-content">
-            <div class="bill-content-left">
-                <span class="font-neue-roman">Drivers</span>
-                <div class="quantity-control">
-                    <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                    <input data-product-id="{{ driver.variants[0].id }}" sku="{{ driver.variants[0].sku }}" type="number" price="{{ driver.variants[0].price }}" id="drivers" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
-                    <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="bill-content-right">
-                <p class="font-neue-roman">{{  driver_text  }} </p>
-            </div>
-        </div>
-        
-        <!-- Loop end -->
-    </div>
-    
+          <div class="bill-content">
+              <div class="bill-content-left">
+                  <span class="font-neue-roman">Drivers</span>
+                  <div class="quantity-control">
+                      <button type="button" class="quantity-btn minus font-neue-roman" aria-label="Decrease Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-minus" fill="none" viewBox="0 0 10 2">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                      <input data-product-id="{{ driver.variants[0].id }}" sku="{{ driver.variants[0].sku }}" type="number" price="{{ driver.variants[0].price }}" id="drivers" name="quantity" value="1" min="1" aria-label="Quantity" class="font-neue-roman">
+                      <button type="button" class="quantity-btn plus font-neue-roman" aria-label="Increase Quantity">
+                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class="icon icon-plus" fill="none" viewBox="0 0 10 10">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor"></path>
+                          </svg>
+                      </button>
+                  </div>
+              </div>
+              <div class="bill-content-right">
+                  <p class="font-neue-roman">{{  driver_text  }} </p>
+              </div>
+          </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
 </div>
 {% if customer and product.id == 9982461804855%}
   <!-- Added Fixture Type Accordion -->
@@ -287,6 +348,16 @@
     z-index: 1;
   }
 </style>
+
+<script>
+    //these variables are used in linear-by-footage.js
+    let tenInchKitProduct = {{ ten_inch_kit | json }};
+    let oneInchkitProduct = {{  one_inch_kit | json  }};
+    let flatMountingKitProduct = {{  flat_mounting_kit | json  }};
+    let driverProduct = {{  driver | json  }};
+</script>
+
+
 
 <!-- Add JavaScript for Fixture Accordion -->
 <script>

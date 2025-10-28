@@ -1,5 +1,36 @@
 <link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
+<label class="form-labels font-neue-roman">Dimming</label>
 
+<div class="form-row dimming-options-container">
+    {% comment %}
+        Assumes 'product.metafields.c_configuration.dimming_options' is a metaobject reference.
+        This metaobject is expected to have a field with the key 'options'
+        which is a list of metaobject references (e.g., to your 'TRIAC-ELV' and 'PhaseX' metaobjects).
+    {% endcomment %}
+    {%- assign dimming_config = product.metafields.c_configuration.dimming_options.value -%}
+    {%- if dimming_config and dimming_config.options.value -%}
+        {%- for dimming_option in dimming_config.options.value -%}
+            <div class="radio-option-wrapper">
+                <input 
+                    type="radio" 
+                    id="dimming-{{ dimming_option.handle }}" 
+                    name="dimming_option" 
+                    value="{{ dimming_option.handle }}" 
+                    class="radio-input"
+                    {% if forloop.first %}checked{% endif %}>
+                <label 
+                    for="dimming-{{ dimming_option.handle }}" 
+                    class="radio-label font-neue-roman">
+                        {% comment %}
+                            Displays the 'name' field from the metaobject. 
+                            If it's empty, it falls back to a formatted version of the handle.
+                        {% endcomment %}
+                        {{ dimming_option.name | default: dimming_option.handle | replace: '-', ' ' | capitalize }}
+                </label>
+            </div>
+        {%- endfor -%}
+    {%- endif -%}
+</div>
 <div class="form-row">
     <label class="form-labels font-neue-roman">Total Linear Footage of Fixtures 
         <div class="tooltip">
@@ -40,8 +71,7 @@
     <div class="form-row form-action-btns">
         <button id="trigger-bom" class="form-btn-styles font-neue-roman" disabled >Create BOM</button>
         
-        <!-- <button class="form-btn-styles font-neue-roman">Save to Project</button> -->
-    </div>
+        </div>
     <script src="{{ 'helper.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'linear-by-footage.js' | asset_url }}" defer="defer"></script>
 {% endif %}
