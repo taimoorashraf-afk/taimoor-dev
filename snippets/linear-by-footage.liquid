@@ -258,6 +258,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const dimmingInputs = document.querySelectorAll('.option-list input[type="radio"]');
   const allBillContents = document.querySelectorAll('.bill-contents');
+  const bomButton = document.getElementById('trigger-bom');
   const firstInput = dimmingInputs[0];
 
   /**
@@ -281,14 +282,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // --- Main Change Handler Function ---
-  // This function contains all the logic for updating the state.
+  // This function now ONLY saves the state, it does not display the BOM.
   function handleDimmingChange(inputElement) {
     const groupIndex = inputElement.dataset.group;
     const optionHandle = inputElement.dataset.optionHandle; 
     const dimmingType = inputElement.dataset.dimmingType;
 
     // 1. Update selection visual style
-    // (Ensure the unselected inputs in the group lose the 'selected' class)
     const groupInputs = document.querySelectorAll(`[data-group="${groupIndex}"]`);
     groupInputs.forEach(i => {
         i.closest('.pc-swatch').classList.remove('selected');
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
       groupSpecificHiddenInput.value = optionHandle; 
     }
 
-    // 3. Update the global fields
+    // 3. Update the global fields to store the choice
     const selectedDimmingTypeInput = document.getElementById('selected-dimming-type');
     const selectedLinearOptionInput = document.getElementById('selected-linear-option');
     if (selectedDimmingTypeInput) {
@@ -310,11 +310,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (selectedLinearOptionInput) {
       selectedLinearOptionInput.value = optionHandle;
     }
+    
+    // REMOVED: The call to setActiveBOM is no longer here.
 
-    // 4. Update the Bill of Materials (BOM) section based on the handle
-    setActiveBOM(optionHandle); 
-
-    // 5. Dispatch a custom event
+    // 4. Dispatch a custom event
     window.dispatchEvent(new CustomEvent('dimmingSelectionChanged', {
       detail: {
         groupIndex: groupIndex,
@@ -324,17 +323,32 @@ document.addEventListener("DOMContentLoaded", function() {
     }));
   }
 
-  // --- Event Listener Setup ---
+  // --- Radio Button Event Listener Setup ---
   dimmingInputs.forEach(input => {
     input.addEventListener('change', () => {
       handleDimmingChange(input);
     });
   });
 
+  // ADDED: New event listener for the "Create BOM" button
+  if (bomButton) {
+    bomButton.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent any default button action
+
+      // 1. Get the handle of the currently selected dimming option from the hidden input
+      const selectedOptionHandle = document.getElementById('selected-linear-option').value;
+
+      // 2. If a handle is selected, activate the corresponding BOM section
+      if (selectedOptionHandle) {
+        setActiveBOM(selectedOptionHandle);
+      }
+    });
+  }
+  
+  // --- Set Initial State ---
   if (firstInput) {
     firstInput.checked = true;
     handleDimmingChange(firstInput);
   }
 });
 </script>
-
