@@ -119,8 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             drivers,
             fourtyFiveDegMountingKits,
         } = calculateBOM(totalLinearFootage);
-        console.log("Hamza",calculateBOM(totalLinearFootage)    )
-                const kitValues = {
+        const kitValues = {
         tenInchKits: tenInchKits,
         oneInchKits: oneInchKits,
         mountingKits: mountingKits,
@@ -247,7 +246,7 @@ Object.entries(kitValues).forEach(([id, value]) => {
             fourtyFiveDegMountingKits = tenInchKits;
             if(oneInchKits > 0) fourtyFiveDegMountingKits += 1;
         }
-
+        
         return {
             tenInchKits,
             oneInchKits,

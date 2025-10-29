@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="{{ 'linear.css' | asset_url }}">
 
-<div class="form-row"> 
-  <label class="form-labels font-neue-roman">Dimming</label>
-  
+<div class="form-row">
+  <label class="form-labels font-neue-roman">Dimming
+    <span id="selected-dimming-display" class="font-neue-roman"></span>
+  </label>
+
   {% assign configurations_list = product.metafields.custom.configurations.value %}
 
   <div class="option-list" optionsetsystemhandle="linear" optionsethandle="dimming">
@@ -62,7 +64,7 @@
         {% for mounting_type in config_mounting.mounting_options.value %}
         <option value="{{ mounting_type.mounting_type | handleize }}"> {{ mounting_type.option_name }} </option>
         {% endfor %}
-      {% endfor %} 
+      {% endfor %}
     </select>
     <div class="select-arrow">
       <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,167 +92,68 @@
 
 
 <style>
+  #selected-dimming-display {
+    padding-left: 12px;
+    color: #5a5857;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: .65px;
+  }
 
-.option-title{
-    padding:10px 20px;
-    border : 1px solid black;
-  }
-  .options-wrapper{
-    display:flex;
-    gap:10px;
+  /* --- Wrapper for all the buttons --- */
+  .options-wrapper {
+    display: flex;
     flex-wrap: wrap;
+    gap: 10px; 
   }
-  .option-list{
-    padding:10px;
-    background:transparent;
+
+  /* --- Base Styling for the Button Container --- */
+  .pc-swatch {
+    margin: 0;
+    padding: 0;
+    border: none; 
   }
-  .option-list h4{
-    color: #333;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    position: relative;
+
+  /* --- Core Styling for the Button (The Label) --- */
+  .pc-swatch .linear-opt-btn {
     display: flex;
-  }
-  .required-sign{
-    display: none;
-  }
-  .option-list:has(input:required) .required-sign{
-    display: block;
-  }
-  .pc-swatch{
-    display: flex;
+    align-items: center;
     justify-content: center;
-    border: 1px solid;
-    align-items: center;
-  
-    color: #777;
-    float: right;
-    background: transparent;
-    border: 1px solid #c7c3c3;
-    font-family: helveticaneueltstd-md, Helvetica Neue, Helvetica, Arial, sans-serif;
-    position: relative;
-    z-index: 9;
-    align-items: center;
-    background-color: #fff;
+    padding: 10px 50px; 
+    height: 40px; 
+    min-width: 100px; 
+    max-width: 95%;
+
+    /* Visuals */
+    background-color: #c2bfba1a; /* White background */
+    color: #292521; /* Dark text */
+    border: 1px solid #c7c3c3; /* Standard border */
+    border-radius: 8px; /* Slightly rounded corners */
   }
-  .pc-swatch label{
-    font-size: 13px;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    height: 100%;
+
+  /* --- Selected State: Uses the class your JavaScript adds! --- */
+  .pc-swatch.selected .linear-opt-btn {
+    border: 1px solid black;
+    background-color: transparent;
   }
-  .pc-swatch label:has(.top-swatch){
-    flex-direction: column;
-  }
-  .pc-swatch label:has(.top-swatch) img{
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-  .pc-swatch label img{
-    margin-right: 10px;
-  }
-  .pc-swatch label img.round-swatch{
-    border-radius: 100%;
-  }
-  
   .hide {
     display: none !important;
   }
-  .pc-error{
-    margin-top: 10px;
-  }
-  .option-set-title{
-    cursor: pointer;
-    color: #333;
-    font-size: 16px;
-    font-family: helveticaneueltstd-bd, Helvetica Neue, Helvetica, Arial, sans-serif;
-    
-    padding-left: 9px;
-    /* border-top: 1.5px solid #c7c6c6;
-    border-left: 1.5px solid #c7c6c6;
-    border-right: 1.5px solid #c7c6c6; 
-    border-bottom: 1.5px solid #c7c6c6; */
-    -webkit-border-radius: 0;  
-    -moz-border-radius: 0;
-    border-radius: 0;
-    counter-increment: ui-header;
-    background-color: #f9f8f8;
-    padding: .5em .5em .5em .7em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .option-set-title span{
-    background: url(acc-arrow.png) 0 3px no-repeat;
-    background-size: 30px 30px;
-    margin-top: -1px;
-    width: 30px;
-    height: 18px;
-  }
 
-  .option-set-title span.rotate{
-    transform: rotate(180deg);
-  }
-  
-  .pc-swatch:has(input:checked){
-    border : 2px solid black;
-  }
-  .pc-add-to-cart{
-    color: #fff;
-    font-size: 16px;
-    font-family: helveticaneueltstd-bd, Helvetica Neue, Helvetica, Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    background-color: #000;
-    padding: 11px 30px;
-    height: 47px;
-  }
-  .pc-add-to-cart:disabled{
-    cursor: not-allowed;
-  }
-  .pc-option-set{
-    clear: both;
-    /* padding: 15px; */
-    border-bottom: 1.5px solid #fc3434;
-    border-left: 1.5px solid #666666;
-    border-right: 1.5px solid #666666;
-    border-top: none;
-    border: 1px solid #dddddd;
-    background: #ffffff;
-    color: #333333;
-  }
-  
-  .pc-swatch:has(input:disabled){
+  .pc-swatch:has(input:disabled) .linear-opt-btn {
     background: #efefef;
     color: #dad8d8;
     border: 1.5px solid #ebeaea;
     opacity: .7;
     pointer-events: none;
+    cursor: not-allowed;
   }
-  .product-single__quantity.pc-quantity-selector{
-    margin-top: -300px ;
+
+  /* Other styles from your original sheet */
+  .option-list{
+    padding: 10px 0; /* Adjusted padding */
+    background:transparent;
   }
-  
-  .price-note:not(.pc-total-price ), 
-  .product-single__quantity:not(.pc-quantity-selector),
-  .product-single__add-to-cart
-  {
-   display:none !important;
-  }
-  
-  .required-sign{
-    color: red;
-    font-size: 20px;
-    margin-left: 5px;
-  }
-  .lineitem-components{
-    margin-top:10px;
-  }
-  
 </style>
 
 
@@ -260,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const allBillContents = document.querySelectorAll('.bill-contents');
   const bomButton = document.getElementById('trigger-bom');
   const firstInput = dimmingInputs[0];
+  const selectedDimmingDisplay = document.getElementById('selected-dimming-display');
 
   /**
    * Toggles the 'enable' class on the correct BOM content div
@@ -274,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 2. Find the div matching the option handle
     const activeDivId = `bill-contents-${optionHandle}`;
     const activeDiv = document.getElementById(activeDivId);
-    
+
     // 3. Add the 'enable' class to the active div
     if (activeDiv) {
       activeDiv.classList.add('enable');
@@ -282,26 +186,28 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // --- Main Change Handler Function ---
-  // This function now ONLY saves the state, it does not display the BOM.
+  // saves the state, it does not display the BOM.
   function handleDimmingChange(inputElement) {
     const groupIndex = inputElement.dataset.group;
-    const optionHandle = inputElement.dataset.optionHandle; 
+    const optionHandle = inputElement.dataset.optionHandle;
     const dimmingType = inputElement.dataset.dimmingType;
+    // Get the display title of the selected option
+    const displayTitle = inputElement.value;
 
-    // 1. Update selection visual style
+    // Update selection visual style
     const groupInputs = document.querySelectorAll(`[data-group="${groupIndex}"]`);
     groupInputs.forEach(i => {
         i.closest('.pc-swatch').classList.remove('selected');
     });
     inputElement.closest('.pc-swatch').classList.add('selected');
 
-    // 2. Update the group-specific hidden input field
+    // Update the group-specific hidden input field
     const groupSpecificHiddenInput = document.querySelector(`input[name="selected_option_${groupIndex}"]`);
     if (groupSpecificHiddenInput) {
-      groupSpecificHiddenInput.value = optionHandle; 
+      groupSpecificHiddenInput.value = optionHandle;
     }
 
-    // 3. Update the global fields to store the choice
+    // Update the global fields to store the choice
     const selectedDimmingTypeInput = document.getElementById('selected-dimming-type');
     const selectedLinearOptionInput = document.getElementById('selected-linear-option');
     if (selectedDimmingTypeInput) {
@@ -310,10 +216,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (selectedLinearOptionInput) {
       selectedLinearOptionInput.value = optionHandle;
     }
-    
-    // REMOVED: The call to setActiveBOM is no longer here.
 
-    // 4. Dispatch a custom event
+    // Update the visible display text
+    if (selectedDimmingDisplay) {
+        selectedDimmingDisplay.textContent = `${displayTitle}`;
+    }
+
+    // Dispatch a custom event
     window.dispatchEvent(new CustomEvent('dimmingSelectionChanged', {
       detail: {
         groupIndex: groupIndex,
@@ -330,21 +239,21 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // ADDED: New event listener for the "Create BOM" button
+  // Event listener for the "Create BOM" button
   if (bomButton) {
     bomButton.addEventListener('click', function(event) {
       event.preventDefault(); // Prevent any default button action
 
-      // 1. Get the handle of the currently selected dimming option from the hidden input
+      // Get the handle of the currently selected dimming option from the hidden input
       const selectedOptionHandle = document.getElementById('selected-linear-option').value;
 
-      // 2. If a handle is selected, activate the corresponding BOM section
+      // If a handle is selected, activate the corresponding BOM section
       if (selectedOptionHandle) {
         setActiveBOM(selectedOptionHandle);
       }
     });
   }
-  
+
   // --- Set Initial State ---
   if (firstInput) {
     firstInput.checked = true;
